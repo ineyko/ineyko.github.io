@@ -332,6 +332,15 @@ const dailyChangeRateData = [
     "limitUpCount": 83,
     "limitDownCount": 26,
     "volume": 20922.06
+  },
+  {
+    "date": "2025-12-15",
+    "value": 0.91,
+    "upStockCount": 464,
+    "downStockCount": 512,
+    "limitUpCount": 65,
+    "limitDownCount": 24,
+    "volume": 17734.39
   }
 ]
 
@@ -472,5 +481,186 @@ const stockResultsData = [
     "prevClose": 14.19,
     "prevHigh": 14.39,
     "open": 14.57
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300423",
+    "stockName": "昇辉科技",
+    "prevClose": 8.55,
+    "prevHigh": 8.74,
+    "open": 8.84
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300141",
+    "stockName": "和顺电气",
+    "prevClose": 12.17,
+    "prevHigh": 12.32,
+    "open": 12.45
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300138",
+    "stockName": "晨光生物",
+    "prevClose": 12.68,
+    "prevHigh": 12.82,
+    "open": 12.98
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "002389",
+    "stockName": "航天彩虹",
+    "prevClose": 22.76,
+    "prevHigh": 23.13,
+    "open": 23.4
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "301548",
+    "stockName": "崇德科技",
+    "prevClose": 53,
+    "prevHigh": 54,
+    "open": 54.6
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "301232",
+    "stockName": "飞沃科技",
+    "prevClose": 109.5,
+    "prevHigh": 110.81,
+    "open": 112.28
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300118",
+    "stockName": "东方日升",
+    "prevClose": 11.14,
+    "prevHigh": 11.45,
+    "open": 12.18
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "301306",
+    "stockName": "西测测试",
+    "prevClose": 78.65,
+    "prevHigh": 80,
+    "open": 83.33
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "603058",
+    "stockName": "永吉分股",
+    "prevClose": 9.2,
+    "prevHigh": 9.59,
+    "open": 10.12
+  }
+]
+
+const aiData = [
+  {
+    "date": "2025-12-15",
+    "deepseek": {
+      "upStockCount": "620",
+      "downStockCount": "320",
+      "limitUpCount": "88",
+      "limitDownCount": "16",
+      "volume": "20500"
+    },
+    "gpt": {
+      "upStockCount": "520",
+      "downStockCount": "405",
+      "limitUpCount": "48",
+      "limitDownCount": "18",
+      "volume": "18300"
+    },
+    "grok": {
+      "upStockCount": "812",
+      "downStockCount": "178",
+      "limitUpCount": "96",
+      "limitDownCount": "14",
+      "volume": "21780"
+    },
+    "gemini": {
+      "upStockCount": "450",
+      "downStockCount": "350",
+      "limitUpCount": "70",
+      "limitDownCount": "20",
+      "volume": "18500"
+    },
+    "doubao": {
+      "upStockCount": "520",
+      "downStockCount": "350",
+      "limitUpCount": "65",
+      "limitDownCount": "18",
+      "volume": "19500"
+    },
+    "yuanbao": {
+      "upStockCount": "",
+      "downStockCount": "",
+      "limitUpCount": "",
+      "limitDownCount": "",
+      "volume": ""
+    },
+    "scores": {
+      "deepseek": 72.88,
+      "gpt": 82.82,
+      "grok": 59.88,
+      "gemini": 87.48,
+      "doubao": 84.71,
+      "yuanbao": 0
+    }
+  },
+  {
+    "date": "2025-12-16",
+    "deepseek": {
+      "upStockCount": "560",
+      "downStockCount": "438",
+      "limitUpCount": "75",
+      "limitDownCount": "19",
+      "volume": "18500"
+    },
+    "gpt": {
+      "upStockCount": "561",
+      "downStockCount": "340",
+      "limitUpCount": "72",
+      "limitDownCount": "16",
+      "volume": "18650"
+    },
+    "grok": {
+      "upStockCount": "580",
+      "downStockCount": "420",
+      "limitUpCount": "75",
+      "limitDownCount": "15",
+      "volume": "19500"
+    },
+    "gemini": {
+      "upStockCount": "750",
+      "downStockCount": "850",
+      "limitUpCount": "70",
+      "limitDownCount": "8",
+      "volume": "18500"
+    },
+    "doubao": {
+      "upStockCount": "428",
+      "downStockCount": "576",
+      "limitUpCount": "59",
+      "limitDownCount": "22",
+      "volume": "18650.2"
+    },
+    "yuanbao": {
+      "upStockCount": "720",
+      "downStockCount": "420",
+      "limitUpCount": "95",
+      "limitDownCount": "22",
+      "volume": "20500"
+    },
+    "scores": {
+      "deepseek": 0,
+      "gpt": 0,
+      "grok": 0,
+      "gemini": 0,
+      "doubao": 0,
+      "yuanbao": 0
+    }
   }
 ]

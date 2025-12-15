@@ -105,6 +105,21 @@
     </style>
 
     <style>
+
+        /*
+        这个数据文件中，是A股每日涨跌幅数据。
+        upStockCount：涨幅>=3%的股票数量（包含涨停板）
+        downStockCount：跌幅<=-3%的股票数量（包含跌停板）
+        limitUpCount：涨停板数量
+        limitDownCount：跌停板数量
+        volume：全市场成交量
+        value：涨跌幅股票数量比例
+        根据已有的数据（特别是value字段），以及数据变化的趋势，你觉得2025年12月15日应该是怎么样的。
+        这里的预测方法主要根据已有的数据，观察数据变化的一个趋势来预测，传统的 加权平均、中位数以及算术平均的方式在A股市场中死得很惨。主要是体会A股市场的一个 涨跌波动以及情绪的变化，来进行一个简单的预期管理
+
+        最后，需要给出这6个指标具体的预测值
+        
+        */
         /* 全局样式 */
         body {
             font-family: 'Inter', system-ui, sans-serif;
@@ -1093,7 +1108,8 @@ SELECT_COND;</code></pre>
 
         // AI预测大挑战功能
         // AI预测数据存储
-        let aiPredictionsData = JSON.parse(localStorage.getItem('aiPredictionsData')) || [];
+        // let aiPredictionsData = JSON.parse(localStorage.getItem('aiPredictionsData')) || [];
+        let aiPredictionsData = aiData;
         const aiModels = ['deepseek', 'gpt', 'grok', 'gemini', 'doubao', 'yuanbao'];
         const aiModelNames = {
             'deepseek': 'Deepseek',
@@ -1147,6 +1163,29 @@ SELECT_COND;</code></pre>
             // 返回最终得分，保留两位小数
             return Math.round(totalScore * 100) / 100;
         }
+        
+        // 计算并更新所有AI预测数据的分数
+        function updateAIPredictionScores() {
+            // 遍历所有预测数据
+            aiPredictionsData = aiPredictionsData.map(item => {
+                const actualData = getActualData(item.date);
+                
+                // 为每个模型计算分数
+                const scores = {};
+                aiModels.forEach(model => {
+                    scores[model] = calculateAIScore(item[model], actualData);
+                });
+                
+                // 将分数添加到预测数据对象中
+                return {
+                    ...item,
+                    scores: scores
+                };
+            });
+            
+            // 保存到本地存储
+            localStorage.setItem('aiPredictionsData', JSON.stringify(aiPredictionsData));
+        }
 
         // 获取实际数据
         function getActualData(date) {
@@ -1166,8 +1205,8 @@ SELECT_COND;</code></pre>
                 aiPredictionsData.push(prediction);
             }
             
-            // 保存到本地存储
-            localStorage.setItem('aiPredictionsData', JSON.stringify(aiPredictionsData));
+            // 计算并更新所有预测数据的分数
+            updateAIPredictionScores();
             
             // 更新表格
             renderAIPredictionsTable();
@@ -1190,18 +1229,20 @@ SELECT_COND;</code></pre>
                 
                 // 计算每个模型的分数并找出最高分
                 const modelScores = aiModels.map(model => {
+                    // 优先使用预存的分数，如果没有则重新计算
+                    let aiScore = item.scores?.[model] || calculateAIScore(item[model], actualData);
                     return {
                         model: model,
                         name: aiModelNames[model],
-                        score: calculateAIScore(item[model], actualData)
+                        score: aiScore
                     };
                 });
                 
                 // 找出最高分模型
                 let highestScoreModel = { name: '-', score: 0 };
-                modelScores.forEach(item => {
-                    if (item.score > highestScoreModel.score) {
-                        highestScoreModel = item;
+                modelScores.forEach(scoreItem => {
+                    if (scoreItem.score > highestScoreModel.score) {
+                        highestScoreModel = scoreItem;
                     }
                 });
                 
@@ -3263,7 +3304,11 @@ SELECT_COND;`;
         }
 
         // 页面加载完成后初始化
-        window.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('DOMContentLoaded', () => {
+            init();
+            // 计算并更新所有AI预测数据的分数
+            updateAIPredictionScores();
+        });
     </script>
 </body>
 
