@@ -1,0 +1,3270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日涨跌幅比例图</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入ElementUI CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.15.14/lib/theme-chalk/index.css">
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
+    <!-- 引入ElementUI JS -->
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.15.14/lib/index.js"></script>
+    <!-- 引入Chart.js核心库 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 引入时间处理库（Chart.js时间轴依赖） -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <!-- 引入Chart.js时间轴插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.1/dist/chartjs-adapter-moment.min.js"></script>
+    <!-- 引入Chart.js缩放/拖动插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    <!-- 引入数据文件 -->
+    <script src="data.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                        success: '#22c55e',
+                        danger: '#ef4444',
+                        warning: '#f59e0b',
+                        info: '#0ea5e9',
+                        light: '#f8fafc',
+                        dark: '#1e293b',
+                        'chart-up': '#f23645',
+                        'chart-limit-up': '#ff9800',
+                        'chart-down': '#089981',
+                        'chart-limit-down': '#00008b',
+                        'chart-line': '#409eff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        card: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card {
+                @apply bg-white rounded-xl shadow-card p-6 transition-all duration-300 hover:shadow-card-hover;
+            }
+            .btn {
+                @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2;
+            }
+            .btn-primary {
+                @apply bg-primary text-white hover:bg-blue-600 active:bg-blue-700;
+            }
+            .btn-success {
+                @apply bg-success text-white hover:bg-green-600 active:bg-green-700;
+            }
+            .btn-danger {
+                @apply bg-danger text-white hover:bg-red-600 active:bg-red-700;
+            }
+            .btn-outline {
+                @apply border border-gray-300 text-gray-700 hover:bg-gray-50 active:bg-gray-100;
+            }
+            .input-field {
+                @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200;
+            }
+            .label {
+                @apply block text-sm font-medium text-gray-700 mb-1;
+            }
+            .badge {
+                @apply px-2 py-1 text-xs font-semibold rounded-full;
+            }
+            .badge-success {
+                @apply bg-green-100 text-green-800;
+            }
+            .badge-danger {
+                @apply bg-red-100 text-red-800;
+            }
+            .badge-warning {
+                @apply bg-yellow-100 text-yellow-800;
+            }
+            .tooltip {
+                @apply invisible absolute z-10 py-1 px-2 bg-gray-900 text-white text-xs rounded opacity-0 transition-opacity duration-300;
+            }
+            .has-tooltip:hover .tooltip {
+                @apply visible opacity-100;
+            }
+        }
+    </style>
+
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* 页面样式 */
+        .page {
+            transition: opacity 0.3s ease;
+        }
+
+        .page.hidden {
+            display: none;
+        }
+
+        /* 图表容器样式 */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            margin: 0 auto;
+        }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* 文件输入隐藏 */
+        #file-input {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            opacity: 0;
+        }
+
+        /* 动画效果 */
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 0.3s ease;
+        }
+
+        .fade-enter-from,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        .slide-up-enter-active,
+        .slide-up-leave-active {
+            transition: all 0.3s ease-out;
+        }
+
+        .slide-up-enter-from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .slide-up-leave-to {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <div id="app" class="flex h-screen overflow-hidden">
+        <!-- 左侧导航栏 -->
+        <aside id="sidebar" class="w-64 bg-white shadow-md z-10 hidden md:block transition-all duration-300 ease-in-out">
+            <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <i class="fa fa-line-chart text-primary text-2xl"></i>
+                    <h1 class="text-lg font-bold text-gray-800">市场分析工具</h1>
+                </div>
+                <button id="toggle-sidebar" class="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600">
+                    <i class="fa fa-angle-double-left"></i>
+                </button>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#chart-page"
+                            class="nav-link active flex items-center space-x-3 p-3 rounded-lg bg-blue-50 text-primary font-medium">
+                            <i class="fa fa-bar-chart"></i>
+                            <span>每日涨跌幅比例分析</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#stock-picker-page"
+                            class="nav-link flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 text-gray-700 transition-colors">
+                            <i class="fa fa-filter"></i>
+                            <span>每日选股</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ai-prediction-page"
+                            class="nav-link flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 text-gray-700 transition-colors">
+                            <i class="fa fa-cubes"></i>
+                            <span>AI预测大挑战</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 主内容区域 -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- 顶部导航栏 -->
+            <header class="bg-white shadow-sm sticky top-0 z-50">
+                <div class="px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                        </button>
+                        <div class="relative">
+                            <button id="help-button" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 主要内容区域 -->
+            <main id="chart-page" class="page flex-grow px-6 py-6 overflow-y-auto">
+                <!-- 图表卡片 -->
+                <div class="card mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800">涨跌幅趋势分析（每日15:00~15:10更新）</h2>
+                        <div class="flex items-center space-x-2">
+                            <button id="reset-zoom" class="btn btn-outline text-sm py-1 px-3">
+                                <i class="fa fa-search-minus"></i>
+                                <span>重置缩放</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chart"></canvas>
+                    </div>
+                    <div class="mt-4 text-sm text-gray-500 flex items-center justify-center">
+                        <i class="fa fa-info-circle mr-2"></i>
+                        <span>提示：使用鼠标滚轮或触控板可缩放图表，按住拖动可平移查看历史数据</span>
+                    </div>
+                </div>
+
+                <!-- 数据输入和操作区域 -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- 数据输入卡片 -->
+                    <div class="lg:col-span-2 card">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                            添加涨跌幅数据
+                        </h2>
+                        <p class="text-sm text-gray-600 mb-4">
+                            输入每日涨跌数据，系统将自动计算涨跌幅比例（计算公式：当日涨幅 >= 3% / 当日跌幅 <= -3%） </p>
+
+                                <form id="stock-form" class="space-y-4">
+                                    <!-- 日期输入 -->
+                                    <div class="mb-4">
+                                        <label for="stock-date-input" class="label">日期</label>
+                                        <input type="date" id="stock-date-input" class="input-field" placeholder="选择日期">
+                                    </div>
+
+                                    <!-- 涨幅相关数据 -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="up-stock-input" class="label flex items-center">
+                                                <span class="inline-block w-3 h-3 rounded-full bg-chart-up mr-2"></span>
+                                                涨幅>=3%的股票数量
+                                            </label>
+                                            <input type="number" id="up-stock-input" min="0" class="input-field"
+                                                placeholder="例如: 1200">
+                                        </div>
+                                        <div>
+                                            <label for="limit-up-input" class="label flex items-center">
+                                                <span
+                                                    class="inline-block w-3 h-3 rounded-full bg-chart-limit-up mr-2"></span>
+                                                涨停家数
+                                            </label>
+                                            <input type="number" id="limit-up-input" min="0" class="input-field"
+                                                placeholder="例如: 150">
+                                        </div>
+                                    </div>
+
+                                    <!-- 跌幅相关数据 -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="down-stock-input" class="label flex items-center">
+                                                <span
+                                                    class="inline-block w-3 h-3 rounded-full bg-chart-down mr-2"></span>
+                                                跌幅<=-3%的股票数量 </label>
+                                                    <input type="number" id="down-stock-input" min="0"
+                                                        class="input-field" placeholder="例如: 800">
+                                        </div>
+                                        <div>
+                                            <label for="limit-down-input" class="label flex items-center">
+                                                <span
+                                                    class="inline-block w-3 h-3 rounded-full bg-chart-limit-down mr-2"></span>
+                                                跌停家数
+                                            </label>
+                                            <input type="number" id="limit-down-input" min="0" class="input-field"
+                                                placeholder="例如: 50">
+                                        </div>
+                                    </div>
+
+                                    <!-- 成交量数据 -->
+                                    <div>
+                                        <label for="volume-input" class="label flex items-center">
+                                            <span class="inline-block w-3 h-3 rounded-full bg-purple-500 mr-2"></span>
+                                            全市场成交量(亿元)
+                                        </label>
+                                        <input type="number" id="volume-input" min="0" step="0.01" class="input-field"
+                                            placeholder="例如: 8500.50">
+                                    </div>
+
+                                    <!-- 提交按钮 -->
+                                    <div class="pt-2">
+                                        <button type="submit" id="add-stock-btn"
+                                            class="btn btn-primary w-full md:w-auto">
+                                            <i class="fa fa-save"></i>
+                                            <span>保存数据</span>
+                                        </button>
+                                    </div>
+                                </form>
+                    </div>
+
+                    <!-- 操作卡片 -->
+                    <div class="card">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                            数据管理
+                        </h2>
+
+                        <div class="space-y-4">
+                            <!-- 数据统计 -->
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h3 class="text-sm font-medium text-gray-700 mb-3">数据统计</h3>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">记录总数</span>
+                                        <span id="total-records" class="font-semibold">0</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">最新记录</span>
+                                        <span id="latest-record" class="font-semibold">-</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">最新涨跌幅比例</span>
+                                        <span id="average-ratio" class="font-semibold">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 操作按钮 -->
+                            <div class="space-y-3">
+                                <button id="export-btn" class="btn btn-outline w-full">
+                                    <i class="fa fa-download"></i>
+                                    <span>导出JSON数据</span>
+                                </button>
+                                <button id="import-btn" class="btn btn-success w-full">
+                                    <i class="fa fa-upload"></i>
+                                    <span>导入JSON数据</span>
+                                </button>
+                                <input type="file" id="file-input" accept=".json">
+                                <button id="clear-btn" class="btn btn-danger w-full">
+                                    <i class="fa fa-trash"></i>
+                                    <span>清空所有数据</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数据表格卡片 -->
+                <div class="card mt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                            历史数据记录
+                        </h2>
+                        <div class="relative">
+                            <input type="text" id="search-input" placeholder="搜索日期..." class="input-field pr-10">
+                            <i
+                                class="fa fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="px-4 py-3 text-left font-medium text-gray-600 rounded-l-lg">日期</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">涨幅≥3%</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">涨停</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">跌幅≤-3%</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">跌停</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600 rounded-r-lg">比例</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data-table-body">
+                                <tr>
+                                    <td colspan="6" class="px-4 py-8 text-center text-gray-500">暂无数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 分页 -->
+                    <div id="pagination" class="flex justify-between items-center mt-4">
+                        <div class="text-sm text-gray-600">
+                            显示 <span id="showing-records">0</span> 条记录
+                        </div>
+                        <div class="flex space-x-1">
+                            <button id="prev-page" class="btn btn-outline text-sm py-1 px-3" disabled>
+                                <i class="fa fa-chevron-left"></i>
+                            </button>
+                            <button id="next-page" class="btn btn-outline text-sm py-1 px-3" disabled>
+                                <i class="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 每日选股页面 -->
+            <main id="stock-picker-page" class="page hidden flex-grow px-6 py-6 overflow-y-auto">
+                <!-- 选股结果展示 -->
+                <div class="card mb-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                        <div class="flex items-center gap-4">
+                            <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                                选股结果展示（每日09:30~10:00更新）
+                            </h2>
+                            <!-- <div class="relative">
+                                <input type="date" id="left-date-picker"
+                                    class="input-field"
+                                    value="${new Date().toISOString().split('T')[0]}">
+                            </div> -->
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+                            <div class="relative">
+                                <input type="date" id="stock-result-date-filter"
+                                    class="input-field w-full sm:w-auto pr-10">
+                            </div>
+                            <div class="flex space-x-2 w-full sm:w-auto">
+                                <button id="add-stock-result-btn" class="btn btn-primary text-sm flex-1 sm:flex-none">
+                                    <i class="fa fa-plus"></i>
+                                    <span>新增</span>
+                                </button>
+                                <button id="export-stock-results-btn"
+                                    class="btn btn-outline text-sm flex-1 sm:flex-none">
+                                    <i class="fa fa-download"></i>
+                                    <span>导出</span>
+                                </button>
+                                <button id="import-stock-results-btn"
+                                    class="btn btn-success text-sm flex-1 sm:flex-none">
+                                    <i class="fa fa-upload"></i>
+                                    <span>导入</span>
+                                </button>
+                                <input type="file" id="stock-results-file-input" accept=".json" class="hidden">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead id="stock-results-table">
+                                <tr class="bg-gray-50">
+                                    <th
+                                        class="px-4 py-3 text-left font-medium text-gray-600 rounded-l-lg cursor-pointer hover:bg-gray-100">
+                                        日期</th>
+                                    <th
+                                        class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        股票代码</th>
+                                    <th
+                                        class="px-4 py-3 text-left font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        股票名称</th>
+                                    <th
+                                        class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        昨日收盘价</th>
+                                    <th
+                                        class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        昨日最高价</th>
+                                    <th
+                                        class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        今日开盘价</th>
+                                    <th
+                                        class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        跳空高开比例</th>
+                                    <th class="px-4 py-3 text-center font-medium text-gray-600 rounded-r-lg">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stock-results-table-body">
+                                <tr>
+                                    <td colspan="7" class="px-4 py-8 text-center text-gray-500">暂无选股结果数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 通达信选股公式 -->
+                <div class="card">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        通达信选股公式
+                    </h2>
+                    <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <pre class="text-sm text-gray-100 font-mono"><code>{昨日上影线大于0、昨日阳线、昨日放量、今日开盘跳空高开1%以上、排除特定板块、技术条件选股}
+
+{N1: 成交量放量比例，默认为1.1倍}
+N1 := 1;
+
+{排除北交所股票（代码83、87、88开头）}
+NOT_BJ := NOT(CODELIKE('83') OR CODELIKE('87') OR CODELIKE('88') OR CODELIKE('92'));
+
+{排除科创板（代码688开头）}
+NOT_KC := NOT(CODELIKE('688'));
+
+{排除ST和*ST股票}
+NOT_ST := NOT(NAMELIKE('ST') OR NAMELIKE('*ST'));
+
+{排除退市股票（代码400开头）}
+NOT_TS := NOT(CODELIKE('400'));
+
+{综合排除条件}
+FILTER_COND := NOT_BJ AND NOT_KC AND NOT_ST AND NOT_TS;
+
+{昨日K线条件}
+{昨日阳线}
+YESTERDAYUP := REF(CLOSE > OPEN, 1);
+
+{昨日上影线大于0}
+YESTERDAYSHADOW := REF(HIGH, 1) > REF(MAX(OPEN, CLOSE), 1);
+
+{昨日下影线小于上影线}
+YESTERDAY_RATIO := 
+    (REF(MIN(OPEN, CLOSE), 1) - REF(LOW, 1)) < 
+    (REF(HIGH, 1) - REF(MAX(OPEN, CLOSE), 1));
+
+{昨日成交量放量（大于前一日）}
+YESTERDAYVOLUP := REF(VOL, 1) > REF(VOL, 2) * N1;
+
+{今日开盘跳空条件}
+{今日开盘价高于昨日最高价1%以上}
+TODAY_GAP := (OPEN - REF(HIGH, 1)) / REF(HIGH, 1) >= 0.01;
+
+{五日线向上}
+{今日5日均线 > 昨日5日均线}
+MA5_UP := MA(CLOSE, 5) > REF(MA(CLOSE, 5), 1);
+
+{综合选股条件}
+SELECT_COND := 
+    FILTER_COND AND
+    YESTERDAYUP AND
+    YESTERDAYSHADOW AND
+    YESTERDAY_RATIO AND
+    YESTERDAYVOLUP AND
+    TODAY_GAP AND
+    MA5_UP;
+
+{输出选股结果}
+SELECT_COND;</code></pre>
+                    </div>
+
+                    <div class="mt-4">
+                        <h3 class="text-md font-medium text-gray-800 mb-2">公式说明：</h3>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+                            <li>排除条件：北交所股票、科创板、ST/*ST股票、退市股票</li>
+                            <li>昨日K线条件：阳线、上影线大于0、下影线小于上影线、成交量放量</li>
+                            <li>今日条件：开盘跳空高开1%以上</li>
+                            <li>技术条件：5日均线向上</li>
+                            <li>可调整参数：N1（成交量放量比例，默认为1.1倍）</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-6 flex justify-end">
+                        <button id="copy-formula-btn" class="btn btn-primary">
+                            <i class="fa fa-copy"></i>
+                            <span>复制公式</span>
+                        </button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- AI预测大挑战页面 -->
+            <main id="ai-prediction-page" class="page hidden flex-grow px-6 py-6 overflow-y-auto">
+                <!-- 页面标题和操作按钮 -->
+                <div class="card mb-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                            AI预测大挑战（每日涨跌幅数据预测）
+                        </h2>
+                        <div class="flex space-x-2 w-full sm:w-auto">
+                            <button id="add-ai-prediction-btn" class="btn btn-primary text-sm">
+                                <i class="fa fa-plus"></i>
+                                <span>新增预测数据</span>
+                            </button>
+                            <button id="export-ai-predictions-btn" class="btn btn-outline text-sm">
+                                <i class="fa fa-download"></i>
+                                <span>导出</span>
+                            </button>
+                            <button id="import-ai-predictions-btn" class="btn btn-success text-sm">
+                                <i class="fa fa-upload"></i>
+                                <span>导入</span>
+                            </button>
+                            <input type="file" id="ai-predictions-file-input" accept=".json" class="hidden">
+                        </div>
+                    </div>
+
+                    <!-- 当前日涨跌幅数据指标 -->
+                    <div id="current-day-data" class="mb-6 bg-blue-50 rounded-lg p-4">
+                        <h3 class="text-sm font-medium text-gray-800 mb-2">当前日涨跌幅数据指标</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                            <div class="text-center">
+                                <div class="text-xs text-gray-600">日期</div>
+                                <div id="current-day-date" class="font-medium">-</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-xs text-gray-600">涨幅≥3%</div>
+                                <div id="current-day-up" class="font-medium text-chart-up">-</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-xs text-gray-600">跌幅≤-3%</div>
+                                <div id="current-day-down" class="font-medium text-chart-down">-</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-xs text-gray-600">涨停家数</div>
+                                <div id="current-day-limit-up" class="font-medium text-chart-limit-up">-</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-xs text-gray-600">跌停家数</div>
+                                <div id="current-day-limit-down" class="font-medium text-chart-limit-down">-</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-xs text-gray-600">成交量(亿元)</div>
+                                <div id="current-day-volume" class="font-medium">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- 预测数据表格 -->
+                <div class="card mb-6">
+                    <h3 class="text-md font-medium text-gray-800 mb-3">AI预测数据及评分(每日15:00之后更新)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="px-4 py-3 text-left font-bold text-gray-600 rounded-l-lg">日期</th>
+                                    <th class="px-4 py-3 text-center font-bold text-gray-600">当日最高分</th>
+                                    <th class="px-4 py-3 text-center font-bold text-gray-600">Deepseek</th>
+                                    <th class="px-4 py-3 text-center font-bold text-gray-600">GPT</th>
+                                    <th class="px-4 py-3 text-center font-bold text-gray-600">Grok</th>
+                                    <th class="px-4 py-3 text-center font-bold text-gray-600">Gemini</th>
+                                    <th class="px-4 py-3 text-center font-bold text-gray-600">豆包</th>
+                                    <th class="px-4 py-3 text-center font-bold text-gray-600 rounded-r-lg">元宝</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ai-predictions-table-body">
+                                <tr>
+                                    <td colspan="8" class="px-4 py-8 text-center text-gray-500">暂无AI预测数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                    <!-- 分数计算公式 -->
+                    <div class="mb-6 bg-gray-50 rounded-lg p-4">
+                        <h3 class="text-sm font-medium text-gray-800 mb-2">分数计算公式</h3>
+                        <div class="text-sm text-gray-600">
+                            <h4 class="font-medium mt-3 mb-2">1. 单项得分公式 (Sᵢ)</h4>
+                            <p class="mb-2">对于第 i 个指标，我们计算其准确度：</p>
+                            <div class="bg-white p-3 rounded-lg overflow-x-auto mb-3">
+                                <pre class="text-sm text-gray-700">Sᵢ = max(0, 1 - |Pᵢ - Aᵢ| / max(Aᵢ, Pᵢ, ε)) × 100</pre>
+                            </div>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><strong>Pᵢ</strong>：预测值 (Predicted)</li>
+                                <li><strong>Aᵢ</strong>：真实值 (Actual)</li>
+                                <li><strong>ε</strong>：防零常数（取5）。防止真实值和预测值都极小（例如跌停家数真实为0，预测为1）时分母为0或分数波动过大</li>
+                                <li><strong>解释</strong>：使用了"对称误差"的逻辑。无论预测偏大还是偏小，得分都在 0 到 100 之间</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">2. 总分公式 (Total Score)</h4>
+                            <p class="mb-2">将5个指标加权求和：</p>
+                            <div class="bg-white p-3 rounded-lg overflow-x-auto mb-3">
+                                <pre class="text-sm text-gray-700">Total Score = Σ(Weightᵢ × Sᵢ)</pre>
+                            </div>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><strong>Weightᵢ</strong>：权重。每个指标权重占20% (0.2)</li>
+                                <li><strong>指标</strong>：涨幅≥3%、跌幅≤-3%、涨停家数、跌停家数、成交量</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">3. 评分标准</h4>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>绿色：≥80分（优秀）</li>
+                                <li>黄色：≥60分（良好）</li>
+                                <li>红色：<60分（待改进）</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- AI预测数据录入模态窗口 -->
+                <div id="ai-prediction-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                    <div class="bg-white rounded-xl shadow-lg w-full max-w-5xl max-h-[90vh] overflow-y-auto">
+                        <!-- 模态窗口头部 -->
+                        <div class="bg-primary text-white px-6 py-4 flex justify-between items-center">
+                            <h3 class="text-lg font-semibold">录入预测数据</h3>
+                            <button id="close-ai-prediction-modal" class="text-white hover:text-gray-200">
+                                <i class="fa fa-times text-xl"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- 模态窗口内容 -->
+                        <div class="p-6">
+                            <form id="ai-prediction-form" class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <label for="ai-prediction-date" class="label">日期</label>
+                                        <input type="date" id="ai-prediction-date" class="input-field" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- AI预测数据录入 -->
+                                <div class="space-y-4">
+                                    <h4 class="text-sm font-medium text-gray-700">AI模型预测数据</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <!-- Deepseek -->
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h5 class="font-medium text-gray-800 mb-2">Deepseek</h5>
+                                            <div class="space-y-2">
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                        <input type="number" class="input-field" id="deepseek-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                        <input type="number" class="input-field" id="deepseek-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                        <input type="number" class="input-field" id="deepseek-limit-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                        <input type="number" class="input-field" id="deepseek-limit-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                        <input type="number" class="input-field" id="deepseek-volume" min="0" step="0.01">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- GPT -->
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h5 class="font-medium text-gray-800 mb-2">GPT</h5>
+                                            <div class="space-y-2">
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                        <input type="number" class="input-field" id="gpt-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                        <input type="number" class="input-field" id="gpt-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                        <input type="number" class="input-field" id="gpt-limit-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                        <input type="number" class="input-field" id="gpt-limit-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                        <input type="number" class="input-field" id="gpt-volume" min="0" step="0.01">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Grok -->
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h5 class="font-medium text-gray-800 mb-2">Grok</h5>
+                                            <div class="space-y-2">
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                        <input type="number" class="input-field" id="grok-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                        <input type="number" class="input-field" id="grok-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                        <input type="number" class="input-field" id="grok-limit-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                        <input type="number" class="input-field" id="grok-limit-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                        <input type="number" class="input-field" id="grok-volume" min="0" step="0.01">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <!-- Gemini -->
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h5 class="font-medium text-gray-800 mb-2">Gemini</h5>
+                                            <div class="space-y-2">
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                        <input type="number" class="input-field" id="gemini-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                        <input type="number" class="input-field" id="gemini-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                        <input type="number" class="input-field" id="gemini-limit-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                        <input type="number" class="input-field" id="gemini-limit-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                        <input type="number" class="input-field" id="gemini-volume" min="0" step="0.01">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 豆包 -->
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h5 class="font-medium text-gray-800 mb-2">豆包</h5>
+                                            <div class="space-y-2">
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                        <input type="number" class="input-field" id="doubao-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                        <input type="number" class="input-field" id="doubao-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                        <input type="number" class="input-field" id="doubao-limit-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                        <input type="number" class="input-field" id="doubao-limit-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                        <input type="number" class="input-field" id="doubao-volume" min="0" step="0.01">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 元宝 -->
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h5 class="font-medium text-gray-800 mb-2">元宝</h5>
+                                            <div class="space-y-2">
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                        <input type="number" class="input-field" id="yuanbao-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                        <input type="number" class="input-field" id="yuanbao-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                        <input type="number" class="input-field" id="yuanbao-limit-up" min="0" step="1">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                        <input type="number" class="input-field" id="yuanbao-limit-down" min="0" step="1">
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                        <input type="number" class="input-field" id="yuanbao-volume" min="0" step="0.01">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-end space-x-2">
+                                    <button type="button" id="cancel-ai-prediction" class="btn btn-outline">取消</button>
+                                    <button type="submit" class="btn btn-primary">保存预测数据</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+
+            <!-- 页脚 -->
+            <footer class="bg-white border-t border-gray-200 py-4">
+                <div class="container mx-auto px-4 text-center text-sm text-gray-600">
+                    <p>© 2025 市场分析工具 | 数据仅供参考，投资需谨慎</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- 帮助对话框 -->
+    <div id="help-dialog" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">使用帮助</h2>
+                    <button id="close-help" class="text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">什么是涨跌幅比例？</h3>
+                        <p class="text-gray-600">涨跌幅比例是指当日涨幅≥3%的股票数量与跌幅≤-3%的股票数量的比值，用于衡量市场整体强弱。</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">如何使用本工具？</h3>
+                        <ol class="list-decimal list-inside space-y-1 text-gray-600">
+                            <li>在"添加涨跌幅数据"区域输入日期和相关数据</li>
+                            <li>点击"保存数据"按钮</li>
+                            <li>图表将自动更新，展示涨跌幅比例趋势</li>
+                            <li>可以使用缩放和平移功能查看历史数据</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">图表说明</h3>
+                        <ul class="list-disc list-inside space-y-1 text-gray-600">
+                            <li><span class="inline-block w-3 h-3 rounded-full bg-chart-up mr-1"></span> 红色柱：涨幅≥3%的股票数量
+                            </li>
+                            <li><span class="inline-block w-3 h-3 rounded-full bg-chart-limit-up mr-1"></span> 橙色柱：涨停家数
+                            </li>
+                            <li><span class="inline-block w-3 h-3 rounded-full bg-chart-down mr-1"></span>
+                                绿色柱：跌幅≤-3%的股票数量</li>
+                            <li><span class="inline-block w-3 h-3 rounded-full bg-chart-limit-down mr-1"></span>
+                                蓝色柱：跌停家数</li>
+                            <li><span class="inline-block w-3 h-0.5 bg-chart-line mr-1"></span> 蓝色线：涨跌幅比例</li>
+                            <li><span class="inline-block w-3 h-0.5 bg-red-500 mr-1"></span> 红色虚线：1.0警戒线</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2">数据管理</h3>
+                        <p class="text-gray-600">您可以导出数据备份，或导入之前导出的数据。所有数据都存储在您的浏览器本地，不会上传到服务器。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量
+        let chartInstance = null;
+        // 使用data.js中定义的每日涨跌幅数据
+        let chartData = dailyChangeRateData;
+        // 确保数据格式正确
+        chartData = chartData.map(item => ({
+            date: item.date,
+            value: item.value,
+            upStockCount: item.upStockCount || 0,
+            downStockCount: item.downStockCount || 0,
+            limitUpCount: item.limitUpCount || 0,
+            limitDownCount: item.limitDownCount || 0,
+            volume: item.volume || 0,
+        }));
+
+        // 当前页码和每页记录数
+        let currentPage = 1;
+        const recordsPerPage = 10;
+        let filteredData = [...chartData];
+
+        // 选股结果数据 - 使用data.js中定义的变量
+        let filteredStockResults = [...stockResultsData];
+        let currentFilterDate = '';
+
+        // 股票缓存数据 - 只包含唯一的股票代码和名称
+        let stockCache = [];
+        const uniqueStocks = new Map();
+
+        // 排序状态管理
+        let stockResultsSortConfig = {
+            column: 'gapUpRatio',
+            direction: 'desc'
+        };
+
+        // 从stockResultsData中提取唯一的股票代码和名称
+        stockResultsData.forEach(stock => {
+            if (!uniqueStocks.has(stock.stockCode)) {
+                uniqueStocks.set(stock.stockCode, stock.stockName);
+            }
+        });
+
+        // 将唯一股票转换为数组格式
+        uniqueStocks.forEach((name, code) => {
+            stockCache.push({ stockCode: code, stockName: name });
+        });
+
+        // 侧边栏伸缩功能
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggle-sidebar');
+        
+        toggleBtn.addEventListener('click', () => {
+            // 切换侧边栏宽度
+            sidebar.classList.toggle('w-64');
+            sidebar.classList.toggle('w-20');
+            
+            // 切换图标
+            const icon = toggleBtn.querySelector('i');
+            if (icon.classList.contains('fa-angle-double-left')) {
+                icon.classList.remove('fa-angle-double-left');
+                icon.classList.add('fa-angle-double-right');
+            } else {
+                icon.classList.remove('fa-angle-double-right');
+                icon.classList.add('fa-angle-double-left');
+            }
+            
+            // 切换导航文本显示
+            const navTexts = sidebar.querySelectorAll('.nav-link span');
+            navTexts.forEach(text => {
+                text.classList.toggle('hidden');
+            });
+            
+            // 切换标题文本显示
+            const title = sidebar.querySelector('h1');
+            title.classList.toggle('hidden');
+        });
+
+        // AI预测大挑战功能
+        // AI预测数据存储
+        let aiPredictionsData = JSON.parse(localStorage.getItem('aiPredictionsData')) || [];
+        const aiModels = ['deepseek', 'gpt', 'grok', 'gemini', 'doubao', 'yuanbao'];
+        const aiModelNames = {
+            'deepseek': 'Deepseek',
+            'gpt': 'GPT',
+            'grok': 'Grok',
+            'gemini': 'Gemini',
+            'doubao': '豆包',
+            'yuanbao': '元宝'
+        };
+
+        // 计算AI预测分数
+        function calculateAIScore(predictedData, actualData) {
+            if (!actualData) return 0;
+            
+            // 权重数组，每个指标的权重占20%
+            const weights = {
+                'upStockCount': 0.2,
+                'downStockCount': 0.2,
+                'limitUpCount': 0.2,
+                'limitDownCount': 0.2,
+                'volume': 0.2
+            };
+            
+            // 防零常数，取5（防止真实值和预测值都极小时分母为0或分数波动过大）
+            const epsilon = 5;
+            
+            let totalScore = 0;
+            
+            // 计算每个字段的相似度得分
+            const fields = [
+                'upStockCount',
+                'downStockCount',
+                'limitUpCount',
+                'limitDownCount',
+                'volume'
+            ];
+            
+            fields.forEach(field => {
+                const predicted = parseFloat(predictedData[field]) || 0;
+                const actual = parseFloat(actualData[field]) || 0;
+                
+                // 单项得分公式：Si = max(0, 1 - |Pi - Ai| / max(Ai, Pi, ε)) × 100
+                const absoluteError = Math.abs(predicted - actual);
+                const maxValue = Math.max(actual, predicted, epsilon);
+                const fieldScore = Math.max(0, 1 - (absoluteError / maxValue)) * 100;
+                
+                // 加权总分：Total Score = Σ(Wi × Si)
+                totalScore += weights[field] * fieldScore;
+            });
+            
+            // 返回最终得分，保留两位小数
+            return Math.round(totalScore * 100) / 100;
+        }
+
+        // 获取实际数据
+        function getActualData(date) {
+            return chartData.find(item => item.date === date);
+        }
+
+        // 保存AI预测数据
+        function saveAIPrediction(prediction) {
+            // 检查是否已存在该日期的预测数据
+            const existingIndex = aiPredictionsData.findIndex(item => item.date === prediction.date);
+            
+            if (existingIndex > -1) {
+                // 更新现有数据
+                aiPredictionsData[existingIndex] = prediction;
+            } else {
+                // 添加新数据
+                aiPredictionsData.push(prediction);
+            }
+            
+            // 保存到本地存储
+            localStorage.setItem('aiPredictionsData', JSON.stringify(aiPredictionsData));
+            
+            // 更新表格
+            renderAIPredictionsTable();
+        }
+
+        // 渲染AI预测数据表格
+        function renderAIPredictionsTable() {
+            const tableBody = document.getElementById('ai-predictions-table-body');
+            
+            if (aiPredictionsData.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-500">暂无AI预测数据</td></tr>';
+                return;
+            }
+            
+            // 按日期倒序排序
+            const sortedData = [...aiPredictionsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            tableBody.innerHTML = sortedData.map(item => {
+                const actualData = getActualData(item.date);
+                
+                // 计算每个模型的分数并找出最高分
+                const modelScores = aiModels.map(model => {
+                    return {
+                        model: model,
+                        name: aiModelNames[model],
+                        score: calculateAIScore(item[model], actualData)
+                    };
+                });
+                
+                // 找出最高分模型
+                let highestScoreModel = { name: '-', score: 0 };
+                modelScores.forEach(item => {
+                    if (item.score > highestScoreModel.score) {
+                        highestScoreModel = item;
+                    }
+                });
+                
+                return `
+                    <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 text-gray-800">${formatDate(item.date)}</td>
+                        <td class="px-4 py-3 text-center">
+                            <div class="font-medium text-blue-600">${highestScoreModel.name}</div>
+                            <div class="text-xs text-gray-500">${highestScoreModel.score}分</div>
+                        </td>
+                        ${modelScores.map(item => {
+                            return `
+                                <td class="px-4 py-3 text-center">
+                                    <div class="font-medium ${item.score >= 80 ? 'text-green-600' : item.score >= 60 ? 'text-yellow-600' : 'text-red-600'}">${item.score}</div>
+                                    <div class="text-xs text-gray-500">分</div>
+                                </td>
+                            `;
+                        }).join('')}
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // 处理添加预测数据按钮点击事件
+        const addAIPredictionBtn = document.getElementById('add-ai-prediction-btn');
+        const aiPredictionModal = document.getElementById('ai-prediction-modal');
+        const closeAIPredictionModalBtn = document.getElementById('close-ai-prediction-modal');
+        const cancelAIPredictionBtn = document.getElementById('cancel-ai-prediction');
+        
+        addAIPredictionBtn.addEventListener('click', () => {
+            aiPredictionModal.classList.remove('hidden');
+        });
+        
+        // 关闭模态窗口
+        function closeAIPredictionModal() {
+            aiPredictionModal.classList.add('hidden');
+            document.getElementById('ai-prediction-form').reset();
+        }
+        
+        // 点击关闭按钮关闭模态窗口
+        closeAIPredictionModalBtn.addEventListener('click', closeAIPredictionModal);
+        
+        // 点击取消按钮关闭模态窗口
+        cancelAIPredictionBtn.addEventListener('click', closeAIPredictionModal);
+        
+        // 点击模态窗口外部关闭模态窗口
+        aiPredictionModal.addEventListener('click', (e) => {
+            if (e.target === aiPredictionModal) {
+                closeAIPredictionModal();
+            }
+        });
+
+        // 处理AI预测数据表单提交
+        const aiPredictionForm = document.getElementById('ai-prediction-form');
+        
+        aiPredictionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const date = document.getElementById('ai-prediction-date').value;
+            
+            // 收集各AI模型的预测数据
+            const predictionData = {
+                date,
+                deepseek: {
+                    upStockCount: document.getElementById('deepseek-up').value,
+                    downStockCount: document.getElementById('deepseek-down').value,
+                    limitUpCount: document.getElementById('deepseek-limit-up').value,
+                    limitDownCount: document.getElementById('deepseek-limit-down').value,
+                    volume: document.getElementById('deepseek-volume').value
+                },
+                gpt: {
+                    upStockCount: document.getElementById('gpt-up').value,
+                    downStockCount: document.getElementById('gpt-down').value,
+                    limitUpCount: document.getElementById('gpt-limit-up').value,
+                    limitDownCount: document.getElementById('gpt-limit-down').value,
+                    volume: document.getElementById('gpt-volume').value
+                },
+                grok: {
+                    upStockCount: document.getElementById('grok-up').value,
+                    downStockCount: document.getElementById('grok-down').value,
+                    limitUpCount: document.getElementById('grok-limit-up').value,
+                    limitDownCount: document.getElementById('grok-limit-down').value,
+                    volume: document.getElementById('grok-volume').value
+                },
+                gemini: {
+                    upStockCount: document.getElementById('gemini-up').value,
+                    downStockCount: document.getElementById('gemini-down').value,
+                    limitUpCount: document.getElementById('gemini-limit-up').value,
+                    limitDownCount: document.getElementById('gemini-limit-down').value,
+                    volume: document.getElementById('gemini-volume').value
+                },
+                doubao: {
+                    upStockCount: document.getElementById('doubao-up').value,
+                    downStockCount: document.getElementById('doubao-down').value,
+                    limitUpCount: document.getElementById('doubao-limit-up').value,
+                    limitDownCount: document.getElementById('doubao-limit-down').value,
+                    volume: document.getElementById('doubao-volume').value
+                },
+                yuanbao: {
+                    upStockCount: document.getElementById('yuanbao-up').value,
+                    downStockCount: document.getElementById('yuanbao-down').value,
+                    limitUpCount: document.getElementById('yuanbao-limit-up').value,
+                    limitDownCount: document.getElementById('yuanbao-limit-down').value,
+                    volume: document.getElementById('yuanbao-volume').value
+                }
+            };
+            
+            // 保存预测数据
+            saveAIPrediction(predictionData);
+            
+            // 清空表单并关闭模态窗口
+            aiPredictionForm.reset();
+            aiPredictionModal.classList.add('hidden');
+            
+            showMessage('AI预测数据保存成功！', 'success');
+        });
+
+        // 更新当前日涨跌幅数据指标
+        function updateCurrentDayData() {
+            // 获取今天的日期，格式为YYYY-MM-DD
+            const today = new Date().toISOString().split('T')[0];
+            
+            // 从chartData中查找今天的实际数据（chartData已包含data.js中的数据）
+            const todayData = chartData.find(item => item.date === today);
+            
+            if (todayData) {
+                // 如果找到今天的数据，显示今天的数据
+                document.getElementById('current-day-date').textContent = formatDate(todayData.date);
+                document.getElementById('current-day-up').textContent = todayData.upStockCount;
+                document.getElementById('current-day-down').textContent = todayData.downStockCount;
+                document.getElementById('current-day-limit-up').textContent = todayData.limitUpCount;
+                document.getElementById('current-day-limit-down').textContent = todayData.limitDownCount;
+                document.getElementById('current-day-volume').textContent = todayData.volume;
+            } else {
+                // 如果没有找到今天的数据，显示最新的数据
+                const sortedChartData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
+                const latestData = sortedChartData[0];
+                
+                if (latestData) {
+                    document.getElementById('current-day-date').textContent = formatDate(latestData.date) + ' (最新)';
+                    document.getElementById('current-day-up').textContent = latestData.upStockCount;
+                    document.getElementById('current-day-down').textContent = latestData.downStockCount;
+                    document.getElementById('current-day-limit-up').textContent = latestData.limitUpCount;
+                    document.getElementById('current-day-limit-down').textContent = latestData.limitDownCount;
+                    document.getElementById('current-day-volume').textContent = latestData.volume;
+                }
+            }
+        }
+
+        // 导航切换功能
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // 移除所有激活状态
+                navLinks.forEach(l => l.classList.remove('active', 'bg-blue-50', 'text-primary'));
+                pages.forEach(p => p.classList.add('hidden'));
+                
+                // 添加激活状态
+                link.classList.add('active', 'bg-blue-50', 'text-primary');
+                
+                // 显示对应页面
+                const targetId = link.getAttribute('href').substring(1);
+                const targetPage = document.getElementById(targetId);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                    
+                    // 如果是AI预测页面，渲染表格并更新当前日数据
+                    if (targetId === 'ai-prediction-page') {
+                        renderAIPredictionsTable();
+                        updateCurrentDayData();
+                    }
+                }
+            });
+        });
+
+        // 导出AI预测数据
+        const exportAIPredictionsBtn = document.getElementById('export-ai-predictions-btn');
+        exportAIPredictionsBtn.addEventListener('click', () => {
+            if (aiPredictionsData.length === 0) {
+                showMessage('暂无AI预测数据可导出！', 'info');
+                return;
+            }
+
+            const jsonStr = JSON.stringify(aiPredictionsData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `AI预测数据_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
+            a.click();
+
+            URL.revokeObjectURL(url);
+            showMessage('AI预测数据导出成功！', 'success');
+        });
+
+        // 导入AI预测数据
+        const importAIPredictionsBtn = document.getElementById('import-ai-predictions-btn');
+        const aiPredictionsFileInput = document.getElementById('ai-predictions-file-input');
+        
+        importAIPredictionsBtn.addEventListener('click', () => {
+            aiPredictionsFileInput.click();
+        });
+        
+        aiPredictionsFileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            if (!file.name.endsWith('.json')) {
+                showMessage('请选择JSON格式的文件！', 'warning');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onerror = function () {
+                showMessage('文件读取失败，请检查文件是否损坏！', 'error');
+            };
+
+            reader.onload = function (e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+
+                    if (!Array.isArray(importedData)) {
+                        throw new Error('导入数据格式错误，必须是数组！');
+                    }
+
+                    // 验证导入数据的格式
+                    const validData = importedData.filter(item => {
+                        if (!item || typeof item !== 'object') return false;
+                        if (!item.date || isNaN(new Date(item.date).getTime())) return false;
+                        return true;
+                    });
+
+                    if (validData.length === 0) {
+                        showMessage('导入的JSON文件中无有效数据！', 'warning');
+                        return;
+                    }
+
+                    // 合并数据，保留最新的记录
+                    const mergedData = [...aiPredictionsData];
+                    validData.forEach(item => {
+                        const index = mergedData.findIndex(d => d.date === item.date);
+                        if (index > -1) {
+                            mergedData[index] = item;
+                        } else {
+                            mergedData.push(item);
+                        }
+                    });
+
+                    // 更新数据并保存到本地存储
+                    aiPredictionsData = mergedData;
+                    localStorage.setItem('aiPredictionsData', JSON.stringify(aiPredictionsData));
+
+                    // 更新表格
+                    renderAIPredictionsTable();
+
+                    showMessage(`成功导入 ${validData.length} 条AI预测数据！`, 'success');
+
+                } catch (err) {
+                    showMessage(`导入失败：${err.message}`, 'error');
+                }
+            };
+            reader.readAsText(file);
+            
+            // 清空文件输入
+            e.target.value = '';
+        });
+
+        /**
+         * 获取排序后的数据
+         */
+        function getSortedData() {
+            if (chartData.length === 0) return [];
+
+            // 按日期升序排序（图表展示需要）
+            return [...chartData].sort((a, b) => new Date(a.date) - new Date(b.date));
+        }
+
+        /**
+         * 验证日期是否重复
+         */
+        function isDateDuplicate(date) {
+            return chartData.some(item => item.date === date);
+        }
+
+        /**
+         * 计算涨跌幅比例
+         */
+        function calculateChangeRate(upStockCount, downStockCount) {
+            const actualUpCount = Math.max(0, upStockCount);
+            const actualDownCount = Math.max(0, downStockCount);
+
+            if (actualDownCount === 0) {
+                return 999.99;
+            }
+            return parseFloat((actualUpCount / actualDownCount).toFixed(2));
+        }
+
+        /**
+         * 添加涨跌幅数据
+         */
+        function addStockData(e) {
+            if (e) e.preventDefault();
+
+            const dateInput = document.getElementById('stock-date-input');
+            const upStockInput = document.getElementById('up-stock-input');
+            const limitUpInput = document.getElementById('limit-up-input');
+            const downStockInput = document.getElementById('down-stock-input');
+            const limitDownInput = document.getElementById('limit-down-input');
+            const volumeInput = document.getElementById('volume-input');
+
+            const date = dateInput.value.trim();
+
+            // 获取用户输入值，但不默认转为0，以便区分未输入和输入0的情况
+            const upStockInputValue = upStockInput.value.trim();
+            const limitUpInputValue = limitUpInput.value.trim();
+            const downStockInputValue = downStockInput.value.trim();
+            const limitDownInputValue = limitDownInput.value.trim();
+            const volumeInputValue = volumeInput.value.trim();
+
+            if (!date) {
+                showMessage('请选择日期！', 'warning');
+                dateInput.focus();
+                return;
+            }
+
+            // 查找现有数据
+            const existingIndex = chartData.findIndex(item => item.date === date);
+            let upStockCount, limitUpCount, downStockCount, limitDownCount, volume;
+
+            if (existingIndex > -1) {
+                // 有现有数据，使用现有值作为默认值
+                upStockCount = chartData[existingIndex].upStockCount || 0;
+                limitUpCount = chartData[existingIndex].limitUpCount || 0;
+                downStockCount = chartData[existingIndex].downStockCount || 0;
+                limitDownCount = chartData[existingIndex].limitDownCount || 0;
+                volume = chartData[existingIndex].volume || 0;
+
+                // 只更新用户输入的字段
+                if (upStockInputValue !== '') {
+                    upStockCount = parseInt(upStockInputValue);
+                    if (upStockCount < 0) {
+                        showMessage('涨幅股票数量不能为负数！', 'warning');
+                        upStockInput.focus();
+                        return;
+                    }
+                }
+                if (limitUpInputValue !== '') {
+                    limitUpCount = parseInt(limitUpInputValue);
+                    if (limitUpCount < 0) {
+                        showMessage('涨停家数不能为负数！', 'warning');
+                        limitUpInput.focus();
+                        return;
+                    }
+                }
+                if (downStockInputValue !== '') {
+                    downStockCount = parseInt(downStockInputValue);
+                    if (downStockCount < 0) {
+                        showMessage('跌幅股票数量不能为负数！', 'warning');
+                        downStockInput.focus();
+                        return;
+                    }
+                }
+                if (limitDownInputValue !== '') {
+                    limitDownCount = parseInt(limitDownInputValue);
+                    if (limitDownCount < 0) {
+                        showMessage('跌停家数不能为负数！', 'warning');
+                        limitDownInput.focus();
+                        return;
+                    }
+                }
+                if (volumeInputValue !== '') {
+                    volume = parseFloat(volumeInputValue);
+                    if (volume < 0) {
+                        showMessage('成交量不能为负数！', 'warning');
+                        volumeInput.focus();
+                        return;
+                    }
+                } else {
+                    volume = 0;
+                }
+            } else {
+                // 没有现有数据，使用用户输入的值，如果未输入则使用0
+                if (upStockInputValue !== '') {
+                    upStockCount = parseInt(upStockInputValue);
+                    if (upStockCount < 0) {
+                        showMessage('涨幅股票数量不能为负数！', 'warning');
+                        upStockInput.focus();
+                        return;
+                    }
+                } else {
+                    upStockCount = 0;
+                }
+                if (limitUpInputValue !== '') {
+                    limitUpCount = parseInt(limitUpInputValue);
+                    if (limitUpCount < 0) {
+                        showMessage('涨停家数不能为负数！', 'warning');
+                        limitUpInput.focus();
+                        return;
+                    }
+                } else {
+                    limitUpCount = 0;
+                }
+                if (downStockInputValue !== '') {
+                    downStockCount = parseInt(downStockInputValue);
+                    if (downStockCount < 0) {
+                        showMessage('跌幅股票数量不能为负数！', 'warning');
+                        downStockInput.focus();
+                        return;
+                    }
+                } else {
+                    downStockCount = 0;
+                }
+                if (limitDownInputValue !== '') {
+                    limitDownCount = parseInt(limitDownInputValue);
+                    if (limitDownCount < 0) {
+                        showMessage('跌停家数不能为负数！', 'warning');
+                        limitDownInput.focus();
+                        return;
+                    }
+                } else {
+                    limitDownCount = 0;
+                }
+
+                if (volumeInputValue !== '') {
+                    volume = parseFloat(volumeInputValue);
+                    if (volume < 0) {
+                        showMessage('成交量不能为负数！', 'warning');
+                        volumeInput.focus();
+                        return;
+                    }
+                } else {
+                    volume = 0;
+                }
+            }
+
+            // 验证逻辑：涨停家数不能大于涨幅股票数量
+            if (limitUpCount > upStockCount) {
+                showMessage('涨停家数不能大于涨幅股票数量！', 'warning');
+                limitUpInput.focus();
+                return;
+            }
+            // 验证逻辑：跌停家数不能大于跌幅股票数量
+            if (limitDownCount > downStockCount) {
+                showMessage('跌停家数不能大于跌幅股票数量！', 'warning');
+                limitDownInput.focus();
+                return;
+            }
+
+            // 计算涨跌幅比例
+            const calculatedValue = calculateChangeRate(upStockCount, downStockCount);
+
+            if (existingIndex > -1) {
+                // 更新现有数据
+                chartData[existingIndex].upStockCount = upStockCount;
+                chartData[existingIndex].limitUpCount = limitUpCount;
+                chartData[existingIndex].downStockCount = downStockCount;
+                chartData[existingIndex].limitDownCount = limitDownCount;
+                chartData[existingIndex].volume = volume;
+                chartData[existingIndex].value = calculatedValue;
+                showMessage(`日期 ${formatDate(date)} 的涨跌幅数据已更新，涨跌幅比例为 ${calculatedValue}！`, 'success');
+            } else {
+                // 添加新数据
+                chartData.push({
+                    date,
+                    value: calculatedValue,
+                    upStockCount,
+                    limitUpCount,
+                    downStockCount,
+                    limitDownCount,
+                    volume
+                });
+                showMessage(`涨跌幅数据添加成功，涨跌幅比例为 ${calculatedValue}！`, 'success');
+            }
+
+            // 保存并更新图表
+            chartData.sort((a, b) => new Date(a.date) - new Date(b.date));
+            localStorage.setItem('dailyChangeRateData', JSON.stringify(chartData));
+
+            // 更新过滤后的数据，按日期倒序排序
+            filteredData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
+            currentPage = 1;
+
+            // 清空输入框
+            dateInput.value = '';
+            upStockInput.value = '';
+            limitUpInput.value = '';
+            downStockInput.value = '';
+            limitDownInput.value = '';
+            volumeInput.value = '';
+            dateInput.focus();
+
+            // 更新UI
+            initChart();
+            updateTable();
+            updateStats();
+        }
+
+        /**
+         * 导出JSON数据
+         */
+        function exportJSON() {
+            if (chartData.length === 0) {
+                showMessage('暂无数据可导出！', 'info');
+                return;
+            }
+
+            const jsonStr = JSON.stringify(chartData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `每日涨跌幅数据_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
+            a.click();
+
+            URL.revokeObjectURL(url);
+            showMessage('数据导出成功！', 'success');
+        }
+
+        /**
+         * 导入JSON数据
+         */
+        function importJSON(file) {
+            if (!file.name.endsWith('.json')) {
+                showMessage('请选择JSON格式的文件！', 'warning');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onerror = function () {
+                showMessage('文件读取失败，请检查文件是否损坏！', 'error');
+            };
+
+            reader.onload = function (e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+
+                    if (!Array.isArray(importedData)) {
+                        throw new Error('导入数据格式错误，必须是数组！');
+                    }
+
+                    const validData = importedData.filter(item => {
+                        if (!item || typeof item !== 'object') return false;
+                        if (!item.date || isNaN(new Date(item.date).getTime())) return false;
+                        if (item.value === undefined || isNaN(parseFloat(item.value))) return false;
+                        return true;
+                    });
+
+                    const processedData = validData.map(item => ({
+                        date: item.date,
+                        value: parseFloat(item.value),
+                        upStockCount: item.upStockCount !== undefined ? parseInt(item.upStockCount) : 0,
+                        downStockCount: item.downStockCount !== undefined ? parseInt(item.downStockCount) : 0,
+                        limitUpCount: item.limitUpCount !== undefined ? parseInt(item.limitUpCount) : 0,
+                        limitDownCount: item.limitDownCount !== undefined ? parseInt(item.limitDownCount) : 0,
+                        volume: item.volume !== undefined ? parseFloat(item.volume) : 0
+                    }));
+
+                    if (validData.length === 0) {
+                        showMessage('导入的JSON文件中无有效数据！', 'warning');
+                        return;
+                    }
+
+                    const newData = [...chartData];
+                    processedData.forEach(item => {
+                        const index = newData.findIndex(d => d.date === item.date);
+                        if (index > -1) {
+                            newData[index] = item;
+                        } else {
+                            newData.push(item);
+                        }
+                    });
+
+                    // 导入成功后，按日期升序排序（图表展示需要）
+                    chartData = newData.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    localStorage.setItem('dailyChangeRateData', JSON.stringify(chartData));
+
+                    // 更新过滤后的数据，按日期倒序排序
+                    filteredData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
+                    currentPage = 1;
+
+                    // 更新UI
+                    initChart();
+                    updateTable();
+                    updateStats();
+
+                    showMessage(`成功导入 ${processedData.length} 条有效数据！`, 'success');
+
+                } catch (err) {
+                    showMessage(`导入失败：${err.message}`, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        /**
+         * 清空所有数据
+         */
+        function clearAllData() {
+            if (chartData.length === 0) {
+                showMessage('暂无数据可清空！', 'info');
+                return;
+            }
+
+            if (confirm('确定要清空所有数据吗？此操作不可恢复！')) {
+                chartData = [];
+                filteredData = [];
+                currentPage = 1;
+                localStorage.removeItem('dailyChangeRateData');
+
+                // 更新UI
+                initChart();
+                updateTable();
+                updateStats();
+
+                showMessage('所有数据已清空！', 'success');
+            }
+        }
+
+        /**
+         * 更新数据表格
+         */
+        function updateTable() {
+            const tableBody = document.getElementById('data-table-body');
+            const showingRecords = document.getElementById('showing-records');
+            const prevPageBtn = document.getElementById('prev-page');
+            const nextPageBtn = document.getElementById('next-page');
+
+            // 计算分页
+            const totalPages = Math.ceil(filteredData.length / recordsPerPage);
+            const startIndex = (currentPage - 1) * recordsPerPage;
+            const endIndex = startIndex + recordsPerPage;
+            const pageData = filteredData.slice(startIndex, endIndex);
+
+            // 更新显示记录数
+            showingRecords.textContent = filteredData.length > 0
+                ? `${startIndex + 1}-${Math.min(endIndex, filteredData.length)} / ${filteredData.length}`
+                : '0';
+
+            // 更新分页按钮状态
+            prevPageBtn.disabled = currentPage === 1;
+            nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
+
+            prevPageBtn.classList.toggle('opacity-50', prevPageBtn.disabled);
+            nextPageBtn.classList.toggle('opacity-50', nextPageBtn.disabled);
+
+            // 更新表格内容
+            if (pageData.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" class="px-4 py-8 text-center text-gray-500">暂无数据</td></tr>';
+            } else {
+                tableBody.innerHTML = pageData.map(item => `
+                    <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 text-gray-800">${formatDate(item.date)}</td>
+                        <td class="px-4 py-3 text-right text-gray-800">${item.upStockCount}</td>
+                        <td class="px-4 py-3 text-right text-chart-limit-up font-medium">${item.limitUpCount}</td>
+                        <td class="px-4 py-3 text-right text-gray-800">${item.downStockCount}</td>
+                        <td class="px-4 py-3 text-right text-chart-limit-down font-medium">${item.limitDownCount}</td>
+                        <td class="px-4 py-3 text-right font-semibold">${item.value}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        /**
+         * 更新统计信息
+         */
+        function updateStats() {
+            const totalRecords = document.getElementById('total-records');
+            const latestRecord = document.getElementById('latest-record');
+            const averageRatio = document.getElementById('average-ratio');
+
+            totalRecords.textContent = chartData.length;
+
+            if (chartData.length === 0) {
+                latestRecord.textContent = '-';
+                averageRatio.textContent = '-';
+                return;
+            }
+
+            // 获取最新记录
+            const sortedData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
+            latestRecord.textContent = formatDate(sortedData[0].date);
+
+            // 计算最新涨跌幅比例
+            // const sum = chartData.reduce((acc, item) => acc + item.value, 0);
+            // const avg = sum / chartData.length;
+            averageRatio.textContent = sortedData[0].value.toFixed(2);
+        }
+
+        /**
+         * 格式化日期
+         */
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        /**
+         * 显示消息提示
+         */
+        function showMessage(message, type = 'info') {
+            // 使用Element UI的Message组件
+            if (window.Vue && Vue.prototype.$message) {
+                Vue.prototype.$message({
+                    message: message,
+                    type: type,
+                    duration: 3000
+                });
+            } else {
+                // 降级处理
+                alert(message);
+            }
+        }
+
+        /**
+         * 页面切换功能
+         */
+        function initPageNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // 更新导航链接状态
+                    navLinks.forEach(l => {
+                        l.classList.remove('active', 'bg-blue-50', 'text-primary');
+                        l.classList.add('text-gray-700');
+                    });
+                    link.classList.add('active', 'bg-blue-50', 'text-primary');
+                    link.classList.remove('text-gray-700');
+
+                    // 显示对应页面
+                    const targetId = link.getAttribute('href').substring(1);
+                    pages.forEach(page => {
+                        page.classList.add('hidden');
+                    });
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+        }
+
+        /**
+         * 渲染选股结果表格
+         */
+        function renderStockResultsTable() {
+            const tableBody = document.getElementById('stock-results-table-body');
+
+            if (filteredStockResults.length === 0) {
+                const message = stockResultsData.length === 0 ? '暂无选股结果数据' : '该日期暂无选股结果';
+                tableBody.innerHTML = `<tr><td colspan="8" class="px-4 py-8 text-center text-gray-500">${message}</td></tr>`;
+                return;
+            }
+
+            // 根据排序配置进行排序
+            const sortedData = [...filteredStockResults].sort((a, b) => {
+                let valueA, valueB;
+
+                switch (stockResultsSortConfig.column) {
+                    case 'date':
+                        valueA = new Date(a.date);
+                        valueB = new Date(b.date);
+                        break;
+                    case 'stockCode':
+                    case 'stockName':
+                        valueA = a[stockResultsSortConfig.column].toLowerCase();
+                        valueB = b[stockResultsSortConfig.column].toLowerCase();
+                        break;
+                    case 'prevClose':
+                    case 'prevHigh':
+                    case 'open':
+                        valueA = a[stockResultsSortConfig.column];
+                        valueB = b[stockResultsSortConfig.column];
+                        break;
+                    case 'gapUpRatio':
+                        valueA = (a.open - a.prevClose) / a.prevClose;
+                        valueB = (b.open - b.prevClose) / b.prevClose;
+                        break;
+                    default:
+                        return 0;
+                }
+
+                if (stockResultsSortConfig.direction === 'asc') {
+                    return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
+                } else {
+                    return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
+                }
+            });
+
+            tableBody.innerHTML = sortedData.map((item, index) => {
+                const gapUpRatio = (item.open - item.prevClose) / item.prevClose;
+                // 原高亮条件：高开比例在9.90~10.09之间并且股票代码以60或00开头
+                const condition1 = gapUpRatio >= 0.099 && gapUpRatio <= 0.1015 && (item.stockCode.startsWith('60') || item.stockCode.startsWith('00'));
+                // 新增高亮条件：高开比例在19.90~20.10之间并且股票代码以30或68开头
+                const condition2 = gapUpRatio >= 0.199 && gapUpRatio <= 0.2015 && (item.stockCode.startsWith('30') || item.stockCode.startsWith('68'));
+                // 是否需要高亮整行
+                const isHighlighted = condition1 || condition2;
+
+                return `
+                <tr class="border-b border-gray-100 transition-colors ${isHighlighted ? 'bg-[rgba(242,54,69,0.3)]' : 'hover:bg-gray-100'}">
+                    <td class="px-4 py-3">${formatDate(item.date)}</td>
+                    <td class="px-4 py-3 font-medium">${item.stockCode}</td>
+                    <td class="px-4 py-3">${item.stockName}</td>
+                    <td class="px-4 py-3 text-right">${item.prevClose.toFixed(2)}</td>
+                    <td class="px-4 py-3 text-right">${item.prevHigh.toFixed(2)}</td>
+                    <td class="px-4 py-3 text-right">${item.open.toFixed(2)}</td>
+                    <td class="px-4 py-3 text-right font-bold">${(gapUpRatio * 100).toFixed(2)}%</td>
+                    <td class="px-4 py-3 text-center">
+                        <div class="flex justify-center space-x-2">
+                            <button class="edit-stock-btn p-1 text-blue-600 hover:text-blue-800" data-index="${index}">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="delete-stock-btn p-1 text-red-600 hover:text-red-800" data-index="${index}">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `}).join('');
+
+            // 添加编辑和删除按钮事件监听
+            document.querySelectorAll('.edit-stock-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    editStockResult(index);
+                });
+            });
+
+            document.querySelectorAll('.delete-stock-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    deleteStockResult(index);
+                });
+            });
+        }
+
+        /**
+         * 显示选股结果表单
+         */
+        function showStockResultForm(stockData = null, index = -1) {
+            const isEdit = stockData !== null;
+            const title = isEdit ? '编辑选股结果' : '新增选股结果';
+
+
+            // 创建表单HTML
+            const formHtml = `
+                <div class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center" id="stock-form-overlay">
+                    <div class="bg-white rounded-xl p-6 w-full max-w-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">${title}</h3>
+                            <button id="close-stock-form" class="text-gray-500 hover:text-gray-700">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                        <form id="stock-result-form" class="space-y-4">
+                            <div>
+                                <label for="stock-form-date" class="label">日期</label>
+                                <input type="date" id="stock-form-date" class="input-field" value="${isEdit ? stockData.date : new Date().toISOString().split('T')[0]}" required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="stock-form-code" class="label">股票代码</label>
+                                    <div class="relative">
+                                        <input type="text" id="stock-form-code" 
+                                            class="input-field w-full pr-10" 
+                                            placeholder="输入股票代码..." 
+                                            value="${isEdit ? stockData.stockCode : ''}" 
+                                            required>
+                                        <button type="button" id="clear-stock-code" class="btn btn-outline absolute right-1 top-1/2 -translate-y-1/2 h-8 px-2">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                        <div id="stock-suggestions" class="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto z-10 hidden">
+                                            <!-- 搜索结果将在这里显示 -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="stock-form-name" class="label">股票名称</label>
+                                    <input type="text" id="stock-form-name" 
+                                        class="input-field" 
+                                        placeholder="输入股票名称..." 
+                                        value="${isEdit ? stockData.stockName : ''}" 
+                                        required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="stock-form-prev-close" class="label">昨日收盘价</label>
+                                <input type="number" id="stock-form-prev-close" step="0.01" min="0" class="input-field" placeholder="例如: 10.50" value="${isEdit ? stockData.prevClose : ''}" required>
+                            </div>
+                            <div>
+                                <label for="stock-form-prev-high" class="label">昨日最高价</label>
+                                <input type="number" id="stock-form-prev-high" step="0.01" min="0" class="input-field" placeholder="例如: 10.80" value="${isEdit ? stockData.prevHigh : ''}" required>
+                            </div>
+                            <div>
+                                <label for="stock-form-open" class="label">今日开盘价</label>
+                                <input type="number" id="stock-form-open" step="0.01" min="0" class="input-field" placeholder="例如: 10.90" value="${isEdit ? stockData.open : ''}" required>
+                            </div>
+                            <div class="pt-2 flex justify-end space-x-3">
+                                <button type="button" id="cancel-stock-form" class="btn btn-outline">取消</button>
+                                <button type="submit" class="btn btn-primary">${isEdit ? '更新' : '保存'}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            // 添加表单到页面
+            document.body.insertAdjacentHTML('beforeend', formHtml);
+
+            // 添加事件监听
+            document.getElementById('close-stock-form').addEventListener('click', closeStockResultForm);
+            document.getElementById('cancel-stock-form').addEventListener('click', closeStockResultForm);
+            document.getElementById('stock-form-overlay').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    closeStockResultForm();
+                }
+            });
+
+            document.getElementById('stock-result-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveStockResult(isEdit ? index : -1);
+            });
+
+            // 初始化股票选择器
+            initStockSelector();
+        }
+
+        /**
+         * 关闭选股结果表单
+         */
+        function closeStockResultForm() {
+            const overlay = document.getElementById('stock-form-overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        /**
+         * 初始化股票选择器
+         */
+        function initStockSelector() {
+            const codeInput = document.getElementById('stock-form-code');
+            const nameInput = document.getElementById('stock-form-name');
+            const suggestions = document.getElementById('stock-suggestions');
+            const clearBtn = document.getElementById('clear-stock-code');
+            const infoDisplay = document.getElementById('selected-stock-info');
+
+            if (!codeInput || !suggestions || !clearBtn) {
+                return;
+            }
+
+            // 搜索股票
+            codeInput.addEventListener('input', function () {
+                const query = this.value.toLowerCase().trim();
+
+                if (query.length < 1) {
+                    suggestions.classList.add('hidden');
+                    return;
+                }
+
+                // 从全局变量获取最新的股票缓存数据
+                const latestStockCache = stockCache;
+
+                // 搜索缓存的股票 - 只根据股票代码搜索
+                const results = latestStockCache.filter(stock =>
+                    stock.stockCode.toLowerCase().includes(query)
+                );
+
+                if (results.length > 0) {
+                    displaySuggestions(results);
+                } else {
+                    // 没有匹配结果，关闭下拉框
+                    suggestions.classList.add('hidden');
+                }
+            });
+
+            // 清除选择
+            clearBtn.addEventListener('click', function () {
+                codeInput.value = '';
+                nameInput.value = '';
+                infoDisplay.textContent = '未选择';
+                suggestions.classList.add('hidden');
+            });
+
+            // 点击外部关闭下拉框
+            document.addEventListener('click', function (e) {
+                if (!codeInput.contains(e.target) && !suggestions.contains(e.target)) {
+                    suggestions.classList.add('hidden');
+                }
+            });
+
+            // 显示搜索建议
+            function displaySuggestions(stocks) {
+                suggestions.innerHTML = stocks.map(stock => `
+                    <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer" data-code="${stock.stockCode}" data-name="${stock.stockName}">
+                        <div class="font-medium">${stock.stockCode}</div>
+                        <div class="text-sm text-gray-500">${stock.stockName}</div>
+                    </div>
+                `).join('');
+
+                suggestions.classList.remove('hidden');
+
+                // 添加选择事件监听
+                suggestions.querySelectorAll('[data-code]').forEach(item => {
+                    item.addEventListener('click', function () {
+                        const code = this.getAttribute('data-code');
+                        const name = this.getAttribute('data-name');
+
+                        codeInput.value = code;
+                        nameInput.value = name;
+                        infoDisplay.textContent = `${code} - ${name}`;
+                        suggestions.classList.add('hidden');
+                    });
+                });
+            }
+        }
+
+        /**
+         * 显示创建股票对话框
+         */
+        function showCreateStockDialog(query) {
+            const dialogHtml = `
+                <div class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center" id="create-stock-dialog-overlay">
+                    <div class="bg-white rounded-xl p-6 w-full max-w-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">创建新股票</h3>
+                            <button id="close-create-stock-dialog" class="text-gray-500 hover:text-gray-700">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                        <form id="create-stock-form" class="space-y-4">
+                            <div>
+                                <label for="new-stock-code" class="label">股票代码</label>
+                                <input type="text" id="new-stock-code" class="input-field" placeholder="例如: 600000" value="${query}" required>
+                            </div>
+                            <div>
+                                <label for="new-stock-name" class="label">股票名称</label>
+                                <input type="text" id="new-stock-name" class="input-field" placeholder="例如: 浦发银行" required>
+                            </div>
+                            <div class="pt-2 flex justify-end space-x-3">
+                                <button type="button" id="cancel-create-stock" class="btn btn-outline">取消</button>
+                                <button type="submit" class="btn btn-primary">创建并选择</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', dialogHtml);
+
+            // 添加事件监听
+            document.getElementById('close-create-stock-dialog').addEventListener('click', closeCreateStockDialog);
+            document.getElementById('cancel-create-stock').addEventListener('click', closeCreateStockDialog);
+            document.getElementById('create-stock-dialog-overlay').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    closeCreateStockDialog();
+                }
+            });
+
+            document.getElementById('create-stock-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                createAndSelectStock();
+            });
+        }
+
+        /**
+         * 关闭创建股票对话框
+         */
+        function closeCreateStockDialog() {
+            const overlay = document.getElementById('create-stock-dialog-overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        /**
+         * 创建并选择股票
+         */
+        function createAndSelectStock() {
+            const code = document.getElementById('new-stock-code').value.trim();
+            const name = document.getElementById('new-stock-name').value.trim();
+
+            if (!code || !name) {
+                showMessage('请填写股票代码和名称！', 'warning');
+                return;
+            }
+
+            // 添加到股票缓存
+            const existingIndex = stockCache.findIndex(stock => stock.stockCode === code);
+            if (existingIndex === -1) {
+                stockCache.push({ stockCode: code, stockName: name });
+            }
+
+            // 更新选择器
+            const selector = document.getElementById('stock-form-stock-selector');
+            const codeInput = document.getElementById('stock-form-code');
+            const nameInput = document.getElementById('stock-form-name');
+            const infoDisplay = document.getElementById('selected-stock-info');
+
+            if (selector && codeInput && nameInput && infoDisplay) {
+                selector.value = `${code} - ${name}`;
+                codeInput.value = code;
+                nameInput.value = name;
+                infoDisplay.textContent = `${code} - ${name}`;
+            }
+
+            // 关闭对话框
+            closeCreateStockDialog();
+
+            showMessage(`股票 ${name} (${code}) 已创建并选择！`, 'success');
+        }
+
+        /**
+         * 保存选股结果
+         */
+        function saveStockResult(index) {
+            const date = document.getElementById('stock-form-date').value;
+            const stockCode = document.getElementById('stock-form-code').value.trim();
+            const stockName = document.getElementById('stock-form-name').value.trim();
+            const prevClose = parseFloat(document.getElementById('stock-form-prev-close').value);
+            const prevHigh = parseFloat(document.getElementById('stock-form-prev-high').value);
+            const open = parseFloat(document.getElementById('stock-form-open').value);
+
+            // 验证输入
+            if (!date || !stockCode || !stockName || isNaN(prevClose) || isNaN(prevHigh) || isNaN(open)) {
+                showMessage('请填写所有必填字段！', 'warning');
+                return;
+            }
+
+            // 更新股票缓存（确保代码和名称的映射关系正确）
+            const cacheIndex = stockCache.findIndex(stock => stock.stockCode === stockCode);
+            if (cacheIndex >= 0) {
+                // 更新现有缓存的股票名称
+                stockCache[cacheIndex].stockName = stockName;
+            } else {
+                // 添加新的股票到缓存
+                stockCache.push({ stockCode, stockName });
+            }
+
+            const stockData = {
+                date,
+                stockCode,
+                stockName,
+                prevClose,
+                prevHigh,
+                open
+            };
+
+            // 检查是否已存在相同日期和股票代码的记录
+            const existingIndex = stockResultsData.findIndex(item =>
+                item.date === date && item.stockCode === stockCode
+            );
+
+            if (existingIndex >= 0) {
+                // 更新现有数据
+                stockResultsData[existingIndex] = stockData;
+                showMessage('选股结果已更新！', 'success');
+            } else {
+                // 添加新数据
+                stockResultsData.push(stockData);
+                showMessage('选股结果已添加！', 'success');
+            }
+
+            // 保存到本地存储
+            localStorage.setItem('stockResultsData', JSON.stringify(stockResultsData));
+
+            // 重新应用过滤条件
+            applyStockResultFilter();
+
+            // 关闭表单
+            closeStockResultForm();
+        }
+
+        /**
+         * 编辑选股结果
+         */
+        function editStockResult(index) {
+            // 找到原始数据中的索引
+            const stockItem = filteredStockResults[index];
+            const originalIndex = stockResultsData.findIndex(item =>
+                item.date === stockItem.date && item.stockCode === stockItem.stockCode
+            );
+
+            if (originalIndex > -1) {
+                showStockResultForm(stockResultsData[originalIndex], originalIndex);
+            }
+        }
+
+        /**
+         * 删除选股结果
+         */
+        function deleteStockResult(index) {
+            if (confirm('确定要删除这条选股结果吗？')) {
+                // 找到原始数据中的索引
+                const stockItem = filteredStockResults[index];
+                const originalIndex = stockResultsData.findIndex(item =>
+                    item.date === stockItem.date && item.stockCode === stockItem.stockCode
+                );
+
+                if (originalIndex > -1) {
+                    stockResultsData.splice(originalIndex, 1);
+                    localStorage.setItem('stockResultsData', JSON.stringify(stockResultsData));
+
+                    // 重新应用过滤条件
+                    applyStockResultFilter();
+
+                    showMessage('选股结果已删除！', 'success');
+                }
+            }
+        }
+
+        /**
+         * 导出选股结果JSON
+         */
+        function exportStockResultsJSON() {
+            if (stockResultsData.length === 0) {
+                showMessage('暂无数据可导出！', 'info');
+                return;
+            }
+
+            const jsonStr = JSON.stringify(stockResultsData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `选股结果数据_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
+            a.click();
+
+            URL.revokeObjectURL(url);
+            showMessage('数据导出成功！', 'success');
+        }
+
+        /**
+         * 处理选股结果表格排序
+         */
+        function handleStockResultsSort(column) {
+            if (stockResultsSortConfig.column === column) {
+                // 如果点击的是当前排序列，切换排序方向
+                stockResultsSortConfig.direction = stockResultsSortConfig.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                // 如果点击的是新列，设置新的排序列并默认降序
+                stockResultsSortConfig.column = column;
+                stockResultsSortConfig.direction = 'desc';
+            }
+
+            // 重新渲染表格
+            renderStockResultsTable();
+
+            // 更新表头排序指示
+            updateStockResultsSortIndicators();
+        }
+
+        /**
+         * 更新选股结果表格排序指示
+         */
+        function updateStockResultsSortIndicators() {
+            // 清除所有排序指示
+            const headers = document.querySelectorAll('#stock-results-table th');
+            headers.forEach(header => {
+                header.innerHTML = header.innerHTML.replace(/ <i class="fa fa-sort-(asc|desc)"><\/i>/g, '');
+            });
+
+            // 添加当前排序指示
+            const sortableColumns = {
+                'date': '日期',
+                'stockCode': '股票代码',
+                'stockName': '股票名称',
+                'prevClose': '昨日收盘价',
+                'prevHigh': '昨日最高价',
+                'open': '今日开盘价',
+                'gapUpRatio': '跳空高开比例'
+            };
+
+            // 查找当前排序列的表头元素
+            const currentColumnText = sortableColumns[stockResultsSortConfig.column];
+            let currentHeader = null;
+
+            headers.forEach(header => {
+                if (header.textContent.trim() === currentColumnText) {
+                    currentHeader = header;
+                }
+            });
+
+            if (currentHeader) {
+                currentHeader.innerHTML += ` <i class="fa fa-sort-${stockResultsSortConfig.direction}"></i>`;
+            }
+        }
+
+        /**
+         * 应用选股结果日期过滤
+         */
+        function applyStockResultFilter() {
+            const dateFilterInput = document.getElementById('stock-result-date-filter');
+            if (!dateFilterInput) {
+                return;
+            }
+
+            const filterDate = dateFilterInput.value;
+            currentFilterDate = filterDate;
+
+            if (!filterDate) {
+                // 如果没有选择日期，显示今日数据
+                const today = new Date().toISOString().split('T')[0];
+                filteredStockResults = stockResultsData.filter(item => item.date === today);
+            } else {
+                // 按选择的日期过滤
+                filteredStockResults = stockResultsData.filter(item => item.date === filterDate);
+            }
+
+            // 更新表格
+            renderStockResultsTable();
+
+            // 更新排序指示
+            updateStockResultsSortIndicators();
+        }
+
+        /**
+         * 重置选股结果过滤
+         */
+        function resetStockResultFilter() {
+            document.getElementById('stock-result-date-filter').value = '';
+            currentFilterDate = '';
+            applyStockResultFilter();
+        }
+
+        /**
+         * 导入选股结果JSON
+         */
+        function importStockResultsJSON(file) {
+            if (!file.name.endsWith('.json')) {
+                showMessage('请选择JSON格式的文件！', 'warning');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onerror = function () {
+                showMessage('文件读取失败，请检查文件是否损坏！', 'error');
+            };
+
+            reader.onload = function (e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+
+                    if (!Array.isArray(importedData)) {
+                        throw new Error('导入数据格式错误，必须是数组！');
+                    }
+
+                    const validData = importedData.filter(item => {
+                        if (!item || typeof item !== 'object') return false;
+                        if (!item.date || !item.stockCode || !item.stockName) return false;
+                        if (isNaN(parseFloat(item.prevClose)) || isNaN(parseFloat(item.prevHigh)) || isNaN(parseFloat(item.open))) return false;
+                        return true;
+                    });
+
+                    if (validData.length === 0) {
+                        showMessage('导入的JSON文件中无有效数据！', 'warning');
+                        return;
+                    }
+
+                    // 合并数据
+                    const newData = [...stockResultsData];
+                    const stocksToAddToCache = [];
+
+                    validData.forEach(item => {
+                        const stockData = {
+                            date: item.date,
+                            stockCode: item.stockCode,
+                            stockName: item.stockName,
+                            prevClose: parseFloat(item.prevClose),
+                            prevHigh: parseFloat(item.prevHigh),
+                            open: parseFloat(item.open)
+                        };
+
+                        // 添加到股票缓存收集列表
+                        stocksToAddToCache.push({
+                            code: item.stockCode,
+                            name: item.stockName
+                        });
+
+                        // 检查是否已存在相同日期和股票代码的记录
+                        const existingIndex = newData.findIndex(d => d.date === stockData.date && d.stockCode === stockData.stockCode);
+                        if (existingIndex > -1) {
+                            newData[existingIndex] = stockData;
+                        } else {
+                            newData.push(stockData);
+                        }
+                    });
+
+                    stockResultsData = newData;
+                    localStorage.setItem('stockResultsData', JSON.stringify(stockResultsData));
+
+                    // 更新股票缓存
+                    stocksToAddToCache.forEach(stock => {
+                        const existingIndex = stockCache.findIndex(s => s.code === stock.code);
+                        if (existingIndex === -1) {
+                            stockCache.push(stock);
+                        }
+                    });
+
+                    if (stocksToAddToCache.length > 0) {
+                        localStorage.setItem('stockCache', JSON.stringify(stockCache));
+                    }
+
+                    // 重新应用过滤条件
+                    applyStockResultFilter();
+
+                    showMessage(`成功导入 ${validData.length} 条有效数据！`, 'success');
+
+                } catch (err) {
+                    showMessage(`导入失败：${err.message}`, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        /**
+         * 复制公式到剪贴板
+         */
+        function copyFormulaToClipboard() {
+            const formulaCode = `{昨日上影线大于0、昨日阳线、昨日放量、今日开盘跳空高开1%以上、排除特定板块、技术条件选股}
+
+{N1: 成交量放量比例，默认为1.1倍}
+N1 := 1;
+
+{排除北交所股票（代码83、87、88开头）}
+NOT_BJ := NOT(CODELIKE('83') OR CODELIKE('87') OR CODELIKE('88') OR CODELIKE('92'));
+
+{排除科创板（代码688开头）}
+NOT_KC := NOT(CODELIKE('688'));
+
+{排除ST和*ST股票}
+NOT_ST := NOT(NAMELIKE('ST') OR NAMELIKE('*ST'));
+
+{排除退市股票（代码400开头）}
+NOT_TS := NOT(CODELIKE('400'));
+
+{综合排除条件}
+FILTER_COND := NOT_BJ AND NOT_KC AND NOT_ST AND NOT_TS;
+
+{昨日K线条件}
+{昨日阳线}
+YESTERDAYUP := REF(CLOSE > OPEN, 1);
+
+{昨日上影线大于0}
+YESTERDAYSHADOW := REF(HIGH, 1) > REF(MAX(OPEN, CLOSE), 1);
+
+{昨日下影线小于上影线}
+YESTERDAY_RATIO := 
+    (REF(MIN(OPEN, CLOSE), 1) - REF(LOW, 1)) < 
+    (REF(HIGH, 1) - REF(MAX(OPEN, CLOSE), 1));
+
+{昨日成交量放量（大于前一日）}
+YESTERDAYVOLUP := REF(VOL, 1) > REF(VOL, 2) * N1;
+
+{今日开盘跳空条件}
+{今日开盘价高于昨日最高价1%以上}
+TODAY_GAP := (OPEN - REF(HIGH, 1)) / REF(HIGH, 1) >= 0.01;
+
+{五日线向上}
+{今日5日均线 > 昨日5日均线}
+MA5_UP := MA(CLOSE, 5) > REF(MA(CLOSE, 5), 1);
+
+{综合选股条件}
+SELECT_COND := 
+    FILTER_COND AND
+    YESTERDAYUP AND
+    YESTERDAYSHADOW AND
+    YESTERDAY_RATIO AND
+    YESTERDAYVOLUP AND
+    TODAY_GAP AND
+    MA5_UP;
+
+{输出选股结果}
+SELECT_COND;`;
+
+            navigator.clipboard.writeText(formulaCode).then(() => {
+                showMessage('公式已复制到剪贴板！', 'success');
+            }).catch(err => {
+                showMessage('复制失败，请手动复制！', 'error');
+                console.error('复制失败:', err);
+            });
+        }
+
+        /**
+         * 初始化事件监听
+         */
+        function initEventListeners() {
+            // 表单提交
+            document.getElementById('stock-form').addEventListener('submit', addStockData);
+
+            // 导出按钮
+            document.getElementById('export-btn').addEventListener('click', exportJSON);
+
+            // 导入按钮
+            document.getElementById('import-btn').addEventListener('click', () => {
+                document.getElementById('file-input').click();
+            });
+
+            // 文件输入变化
+            document.getElementById('file-input').addEventListener('change', (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    importJSON(e.target.files[0]);
+                    // 重置文件输入，允许重复选择同一文件
+                    e.target.value = '';
+                }
+            });
+
+            // 清空按钮
+            document.getElementById('clear-btn').addEventListener('click', clearAllData);
+
+            // 重置缩放按钮
+            document.getElementById('reset-zoom').addEventListener('click', () => {
+                if (chartInstance) {
+                    chartInstance.resetZoom();
+                }
+            });
+
+            // 搜索输入
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filteredData = chartData.filter(item =>
+                    item.date.toLowerCase().includes(searchTerm)
+                ).sort((a, b) => new Date(b.date) - new Date(a.date));
+                currentPage = 1;
+                updateTable();
+            });
+
+            // 分页按钮
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateTable();
+                }
+            });
+
+            document.getElementById('next-page').addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredData.length / recordsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updateTable();
+                }
+            });
+
+            // 帮助对话框
+            document.getElementById('help-button').addEventListener('click', () => {
+                document.getElementById('help-dialog').classList.remove('hidden');
+            });
+
+            document.getElementById('close-help').addEventListener('click', () => {
+                document.getElementById('help-dialog').classList.add('hidden');
+            });
+
+            // 点击对话框外部关闭
+            document.getElementById('help-dialog').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    e.currentTarget.classList.add('hidden');
+                }
+            });
+
+            // 主题切换
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                document.body.classList.toggle('dark');
+                // 这里可以添加深色模式切换逻辑
+            });
+
+            // 复制公式按钮
+            document.addEventListener('click', function (e) {
+                if (e.target && e.target.id === 'copy-formula-btn' || e.target.closest('#copy-formula-btn')) {
+                    copyFormulaToClipboard();
+                }
+            });
+
+            // 选股结果相关按钮
+            document.addEventListener('click', function (e) {
+                // 新增按钮
+                if (e.target && e.target.id === 'add-stock-result-btn' || e.target.closest('#add-stock-result-btn')) {
+                    showStockResultForm();
+                }
+
+                // 导出JSON按钮
+                if (e.target && e.target.id === 'export-stock-results-btn' || e.target.closest('#export-stock-results-btn')) {
+                    exportStockResultsJSON();
+                }
+
+                // 导入JSON按钮
+                if (e.target && e.target.id === 'import-stock-results-btn' || e.target.closest('#import-stock-results-btn')) {
+                    document.getElementById('stock-results-file-input').click();
+                }
+
+                // 过滤按钮
+                if (e.target && e.target.id === 'filter-stock-results-btn' || e.target.closest('#filter-stock-results-btn')) {
+                    applyStockResultFilter();
+                }
+
+                // 选股结果表格排序
+                const thElement = e.target.closest('#stock-results-table th');
+                if (thElement) {
+                    const textContent = thElement.textContent.trim();
+                    switch (textContent) {
+                        case '日期':
+                            handleStockResultsSort('date');
+                            break;
+                        case '股票代码':
+                            handleStockResultsSort('stockCode');
+                            break;
+                        case '股票名称':
+                            handleStockResultsSort('stockName');
+                            break;
+                        case '昨日收盘价':
+                            handleStockResultsSort('prevClose');
+                            break;
+                        case '昨日最高价':
+                            handleStockResultsSort('prevHigh');
+                            break;
+                        case '今日开盘价':
+                            handleStockResultsSort('open');
+                            break;
+                        case '跳空高开比例':
+                            handleStockResultsSort('gapUpRatio');
+                            break;
+                    }
+                }
+
+            });
+
+            // 重新实现日期搜索功能
+            setTimeout(() => {
+                const dateFilterInput = document.getElementById('stock-result-date-filter');
+                const filterButton = document.getElementById('filter-stock-results-btn');
+
+                if (dateFilterInput) {
+                    // 移除所有现有事件监听器
+                    const newInput = dateFilterInput.cloneNode(true);
+                    dateFilterInput.parentNode.replaceChild(newInput, dateFilterInput);
+
+                    // 重新添加事件监听器
+                    newInput.addEventListener('change', function () {
+                        applyStockResultFilter();
+                    });
+
+                    newInput.addEventListener('input', function () {
+                    });
+
+                    newInput.addEventListener('keypress', function (e) {
+                        if (e.key === 'Enter') {
+                            applyStockResultFilter();
+                        }
+                    });
+                }
+
+                if (filterButton) {
+                    // 移除所有现有事件监听器
+                    const newButton = filterButton.cloneNode(true);
+                    filterButton.parentNode.replaceChild(newButton, filterButton);
+
+                    // 重新添加事件监听器
+                    newButton.addEventListener('click', function () {
+                        applyStockResultFilter();
+                    });
+                }
+            }, 100);
+
+            // 选股结果文件输入变化
+            document.addEventListener('change', function (e) {
+                if (e.target && e.target.id === 'stock-results-file-input') {
+                    if (e.target.files && e.target.files[0]) {
+                        importStockResultsJSON(e.target.files[0]);
+                        // 重置文件输入，允许重复选择同一文件
+                        e.target.value = '';
+                    }
+                }
+            });
+        }
+
+        /**
+         * 初始化图表
+         */
+        function initChart() {
+            const ctx = document.getElementById('chart').getContext('2d');
+
+            // 获取所有排序后的数据
+            const allSortedData = getSortedData();
+            const labels = allSortedData.map(item => item.date);
+            const values = allSortedData.map(item => item.value);
+
+            // 销毁已有图表实例
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            // 重新计算各类数据 - 确保跌停数在跌幅柱最底部
+            // 1. 涨幅相关数据（0轴上方）
+            // 非涨停涨幅数 = 总涨幅数 - 涨停数
+            const regularUpCounts = allSortedData.map(item => Math.max(0, item.upStockCount - item.limitUpCount));
+            // 涨停数（叠在涨幅数顶部）
+            const limitUpCounts = allSortedData.map(item => item.limitUpCount || 0);
+
+            // 2. 跌幅相关数据（0轴下方，负值）
+            // 跌停数（跌幅柱最底部，纯负值）
+            const limitDownCounts = allSortedData.map(item => -Math.max(0, item.limitDownCount));
+            // 非跌停跌幅数 = -(总跌幅数 - 跌停数)，叠在跌停数上方
+            const regularDownCounts = allSortedData.map(item => {
+                const regularDown = Math.max(0, item.downStockCount - item.limitDownCount);
+                return -regularDown; // 转为负值，显示在0轴下方
+            });
+
+            // 创建图表
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        // ========== 涨幅部分（0轴上方）==========
+                        // 3. 非涨停涨幅数 - 基础涨幅柱
+                        {
+                            label: '涨幅>=3%的股票数量(非涨停)',
+                            data: regularUpCounts,
+                            backgroundColor: '#f23645', // 红色（涨幅主色）
+                            borderColor: '#f23645',
+                            borderWidth: 1,
+                            stack: 'stockStack', // 统一堆叠组
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.9,
+                            order: 1
+                        },
+
+                        // 4. 涨停家数 - 叠在涨幅柱顶部
+                        {
+                            label: '涨停家数',
+                            data: limitUpCounts,
+                            backgroundColor: 'rgba(255, 152, 0, 0.8)', // 橘黄色
+                            borderColor: 'rgba(255, 152, 0, 1)',
+                            borderWidth: 1,
+                            stack: 'stockStack', // 统一堆叠组
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.9,
+                            order: 1
+                        },
+
+                        // ========== 跌幅部分（0轴下方）==========
+                        // 2. 非跌停跌幅数 - 叠在跌停数上方
+                        {
+                            label: '跌幅<=-3%的股票数量(非跌停)',
+                            data: regularDownCounts,
+                            backgroundColor: '#089981', // 绿色（跌幅主色）
+                            borderColor: '#089981',
+                            borderWidth: 1,
+                            stack: 'stockStack', // 统一堆叠组
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.9,
+                            order: 1
+                        },
+                        // 1. 跌停家数 - 放在跌幅柱最底部
+                        {
+                            label: '跌停家数',
+                            data: limitDownCounts,
+                            backgroundColor: 'rgba(0, 0, 139, 0.8)', // 深蓝色
+                            borderColor: 'rgba(0, 0, 139, 1)',
+                            borderWidth: 1,
+                            stack: 'stockStack', // 统一堆叠组
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.9,
+                            order: 1
+                        },
+
+                        // ========== 涨跌幅比例折线图 ==========
+                        {
+                            label: '涨跌幅比例',
+                            data: values,
+                            borderColor: '#409eff',
+                            backgroundColor: 'rgba(64, 158, 255, 0.1)',
+                            borderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            tension: 0.4,
+                            fill: true,
+                            type: 'line',
+                            yAxisID: 'y1',
+                            order: 0 // 线图在最顶层
+                        },
+                        // ========== 全市场成交量折线图 ==========
+                        {
+                            label: '全市场成交量(亿元)',
+                            data: allSortedData.map(item => item.volume || 0),
+                            borderColor: '#9c27b0',
+                            backgroundColor: 'rgba(156, 39, 176, 0.1)',
+                            borderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            tension: 0.4,
+                            fill: true,
+                            type: 'line',
+                            yAxisID: 'y2',
+                            order: 0 // 线图在最顶层
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: 'x',
+                                threshold: 1,
+                                modifierKey: ''
+                            },
+                            zoom: {
+                                wheel: {
+                                    enabled: true,
+                                },
+                                pinch: {
+                                    enabled: true
+                                },
+                                mode: 'x',
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            padding: 12,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            cornerRadius: 8,
+                            displayColors: true,
+                            callbacks: {
+                                title: function (tooltipItems) {
+                                    const date = new Date(tooltipItems[0].label);
+                                    const year = date.getFullYear();
+                                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                                    const day = String(date.getDate()).padStart(2, '0');
+                                    return `${year}-${month}-${day}`;
+                                },
+                                label: function (context) {
+                                    const datasetLabel = context.dataset.label;
+                                    let value = context.raw;
+
+                                    // 显示绝对值（跌幅/跌停数据是负值，界面展示为正数）
+                                    if (datasetLabel.includes('跌幅') || datasetLabel.includes('跌停')) {
+                                        value = Math.abs(value);
+                                    }
+
+                                    return `${datasetLabel}：${value}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'category',
+                            ticks: {
+                                maxRotation: 0,
+                                autoSkip: true,
+                                maxTicksLimit: 10,
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: 'rgba(0,0,0,0.05)'
+                            }
+                        },
+                        y: {
+                            // 左侧Y轴：股票数量
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            stacked: true, // 启用堆叠（核心）
+                            title: {
+                                display: true,
+                                text: '股票数量',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: 'rgba(0,0,0,0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        y1: {
+                            // 右侧Y轴：涨跌幅比例
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '涨跌幅比例',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                                color: function (context) {
+                                    if (context.tick.value === 1.0) {
+                                        return 'rgba(255, 0, 0, 0.5)';
+                                    }
+                                    return 'rgba(0, 0, 0, 0)';
+                                },
+                                lineWidth: function (context) {
+                                    return context.tick.value === 1.0 ? 2 : 0;
+                                }
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                },
+                                callback: function (value) {
+                                    // 为1.0位置添加红色虚线参考线
+                                    if (value === 1.0) {
+                                        return '1.0 (警戒线)';
+                                    }
+                                    return value;
+                                }
+                            }
+                        },
+                        y2: {
+                            // 右侧Y轴：全市场成交量
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '全市场成交量(亿元)',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                },
+                                color: '#9c27b0'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                },
+                                color: '#9c27b0'
+                            },
+                            // 调整位置，避免与y1重叠
+                            offset: true
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                plugins: [{
+                    id: 'referenceLine',
+                    beforeDraw: function (chart) {
+                        if (!chart.chartArea) return;
+
+                        const ctx = chart.ctx;
+                        const chartArea = chart.chartArea;
+                        const yAxis = chart.scales.y1;
+
+                        // 计算1.0值对应的像素位置
+                        const yPosition = yAxis.getPixelForValue(1.0);
+
+                        // 绘制红色虚线
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.moveTo(chartArea.left, yPosition);
+                        ctx.lineTo(chartArea.right, yPosition);
+                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = 'rgba(255, 0, 0, 0.7)';
+                        ctx.setLineDash([5, 5]);
+                        ctx.stroke();
+
+                        // 绘制标签
+                        ctx.fillStyle = 'rgba(255, 0, 0, 0.7)';
+                        ctx.font = '12px Arial';
+                        ctx.textAlign = 'left';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('1.0', chartArea.right + 5, yPosition);
+
+                        ctx.restore();
+                    }
+                }]
+            });
+        }
+
+        /**
+         * 初始化
+         */
+        function init() {
+            // 初始化时，按日期倒序排序表格数据
+            filteredData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // 初始化选股结果表格，默认显示今日数据
+            applyStockResultFilter();
+
+            // 设置今天的日期为默认值
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('stock-date-input').value = today;
+
+            // 初始化左侧日期选择器
+            const leftDatePicker = document.getElementById('stock-result-date-filter');
+            if (leftDatePicker) {
+                leftDatePicker.value = today;
+            }
+
+            // 初始化事件监听
+            initEventListeners();
+
+            // 初始化图表
+            initChart();
+
+            // 初始化表格
+            updateTable();
+
+            // 初始化统计信息
+            updateStats();
+
+            // 初始化页面导航
+            initPageNavigation();
+
+            // 显示欢迎消息
+            if (chartData.length === 0) {
+                setTimeout(() => {
+                    showMessage('欢迎使用涨跌幅比例分析工具！', 'info');
+                }, 1000);
+            }
+        }
+
+        // 页面加载完成后初始化
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>
