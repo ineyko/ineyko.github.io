@@ -341,6 +341,15 @@ const dailyChangeRateData = [
     "limitUpCount": 65,
     "limitDownCount": 24,
     "volume": 17734.39
+  },
+  {
+    "date": "2025-12-16",
+    "value": 0.24,
+    "upStockCount": 297,
+    "limitUpCount": 46,
+    "downStockCount": 1258,
+    "limitDownCount": 36,
+    "volume": 17241.73
   }
 ]
 
@@ -553,6 +562,24 @@ const stockResultsData = [
     "prevClose": 9.2,
     "prevHigh": 9.59,
     "open": 10.12
+  },
+  {
+    "date": "2025-12-16",
+    "stockCode": "600686",
+    "stockName": "金龙汽车",
+    "prevClose": 17.21,
+    "prevHigh": 17.75,
+    "open": 18,
+    "close": 16.1
+  },
+  {
+    "date": "2025-12-16",
+    "stockCode": "300698",
+    "stockName": "万马科技",
+    "prevClose": 39.69,
+    "prevHigh": 40.57,
+    "open": 42.32,
+    "close": 40.79
   }
 ]
 
@@ -653,6 +680,59 @@ const aiData = [
       "limitUpCount": "95",
       "limitDownCount": "22",
       "volume": "20500"
+    },
+    "scores": {
+      "deepseek": 59.03,
+      "gpt": 56.15,
+      "grok": 55.2,
+      "gemini": 57.66,
+      "doubao": 69.34,
+      "yuanbao": 53.65
+    }
+  },
+  {
+    "date": "2025-12-17",
+    "deepseek": {
+      "upStockCount": "520",
+      "downStockCount": "480",
+      "limitUpCount": "62",
+      "limitDownCount": "18",
+      "volume": "17800"
+    },
+    "gpt": {
+      "upStockCount": "420",
+      "downStockCount": "620",
+      "limitUpCount": "52",
+      "limitDownCount": "18",
+      "volume": "17800"
+    },
+    "grok": {
+      "upStockCount": "580",
+      "downStockCount": "420",
+      "limitUpCount": "72",
+      "limitDownCount": "18",
+      "volume": "19200"
+    },
+    "gemini": {
+      "upStockCount": "420",
+      "downStockCount": "380",
+      "limitUpCount": "52",
+      "limitDownCount": "15",
+      "volume": "16800"
+    },
+    "doubao": {
+      "upStockCount": "320",
+      "downStockCount": "750",
+      "limitUpCount": "55",
+      "limitDownCount": "12",
+      "volume": "17000"
+    },
+    "yuanbao": {
+      "upStockCount": "215",
+      "downStockCount": "1082",
+      "limitUpCount": "43",
+      "limitDownCount": "22",
+      "volume": "17532.45"
     },
     "scores": {
       "deepseek": 0,

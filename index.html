@@ -105,7 +105,6 @@
     </style>
 
     <style>
-
         /*
         这个数据文件中，是A股每日涨跌幅数据。
         upStockCount：涨幅>=3%的股票数量（包含涨停板）
@@ -203,7 +202,8 @@
 <body class="min-h-screen">
     <div id="app" class="flex h-screen overflow-hidden">
         <!-- 左侧导航栏 -->
-        <aside id="sidebar" class="w-64 bg-white shadow-md z-10 hidden md:block transition-all duration-300 ease-in-out">
+        <aside id="sidebar"
+            class="w-64 bg-white shadow-md z-10 hidden md:block transition-all duration-300 ease-in-out">
             <div class="p-4 border-b border-gray-200 flex justify-between items-center">
                 <div class="flex items-center space-x-3">
                     <i class="fa fa-line-chart text-primary text-2xl"></i>
@@ -521,6 +521,15 @@
                                     <th
                                         class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
                                         跳空高开比例</th>
+                                    <th
+                                        class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        今日收盘价</th>
+                                    <th
+                                        class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        今日涨跌幅</th>
+                                    <th
+                                        class="px-4 py-3 text-right font-medium text-gray-600 cursor-pointer hover:bg-gray-100">
+                                        开盘买入对比</th>
                                     <th class="px-4 py-3 text-center font-medium text-gray-600 rounded-r-lg">操作</th>
                                 </tr>
                             </thead>
@@ -672,31 +681,31 @@ SELECT_COND;</code></pre>
                         </div>
                     </div>
 
-                <!-- 预测数据表格 -->
-                <div class="card mb-6">
-                    <h3 class="text-md font-medium text-gray-800 mb-3">AI预测数据及评分(每日15:00之后更新)</h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-sm">
-                            <thead>
-                                <tr class="bg-gray-50">
-                                    <th class="px-4 py-3 text-left font-bold text-gray-600 rounded-l-lg">日期</th>
-                                    <th class="px-4 py-3 text-center font-bold text-gray-600">当日最高分</th>
-                                    <th class="px-4 py-3 text-center font-bold text-gray-600">Deepseek</th>
-                                    <th class="px-4 py-3 text-center font-bold text-gray-600">GPT</th>
-                                    <th class="px-4 py-3 text-center font-bold text-gray-600">Grok</th>
-                                    <th class="px-4 py-3 text-center font-bold text-gray-600">Gemini</th>
-                                    <th class="px-4 py-3 text-center font-bold text-gray-600">豆包</th>
-                                    <th class="px-4 py-3 text-center font-bold text-gray-600 rounded-r-lg">元宝</th>
-                                </tr>
-                            </thead>
-                            <tbody id="ai-predictions-table-body">
-                                <tr>
-                                    <td colspan="8" class="px-4 py-8 text-center text-gray-500">暂无AI预测数据</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- 预测数据表格 -->
+                    <div class="card mb-6">
+                        <h3 class="text-md font-medium text-gray-800 mb-3">AI预测数据及评分(每日15:00之后更新)</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="px-4 py-3 text-left font-bold text-gray-600 rounded-l-lg">日期</th>
+                                        <th class="px-4 py-3 text-center font-bold text-gray-600">当日最高分</th>
+                                        <th class="px-4 py-3 text-center font-bold text-gray-600">Deepseek</th>
+                                        <th class="px-4 py-3 text-center font-bold text-gray-600">GPT</th>
+                                        <th class="px-4 py-3 text-center font-bold text-gray-600">Grok</th>
+                                        <th class="px-4 py-3 text-center font-bold text-gray-600">Gemini</th>
+                                        <th class="px-4 py-3 text-center font-bold text-gray-600">豆包</th>
+                                        <th class="px-4 py-3 text-center font-bold text-gray-600 rounded-r-lg">元宝</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ai-predictions-table-body">
+                                    <tr>
+                                        <td colspan="8" class="px-4 py-8 text-center text-gray-500">暂无AI预测数据</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
 
                     <!-- 分数计算公式 -->
                     <div class="mb-6 bg-gray-50 rounded-lg p-4">
@@ -705,7 +714,8 @@ SELECT_COND;</code></pre>
                             <h4 class="font-medium mt-3 mb-2">1. 单项得分公式 (Sᵢ)</h4>
                             <p class="mb-2">对于第 i 个指标，我们计算其准确度：</p>
                             <div class="bg-white p-3 rounded-lg overflow-x-auto mb-3">
-                                <pre class="text-sm text-gray-700">Sᵢ = max(0, 1 - |Pᵢ - Aᵢ| / max(Aᵢ, Pᵢ, ε)) × 100</pre>
+                                <pre
+                                    class="text-sm text-gray-700">Sᵢ = max(0, 1 - |Pᵢ - Aᵢ| / max(Aᵢ, Pᵢ, ε)) × 100</pre>
                             </div>
                             <ul class="list-disc list-inside space-y-1 ml-4">
                                 <li><strong>Pᵢ</strong>：预测值 (Predicted)</li>
@@ -713,7 +723,7 @@ SELECT_COND;</code></pre>
                                 <li><strong>ε</strong>：防零常数（取5）。防止真实值和预测值都极小（例如跌停家数真实为0，预测为1）时分母为0或分数波动过大</li>
                                 <li><strong>解释</strong>：使用了"对称误差"的逻辑。无论预测偏大还是偏小，得分都在 0 到 100 之间</li>
                             </ul>
-                            
+
                             <h4 class="font-medium mt-4 mb-2">2. 总分公式 (Total Score)</h4>
                             <p class="mb-2">将5个指标加权求和：</p>
                             <div class="bg-white p-3 rounded-lg overflow-x-auto mb-3">
@@ -723,251 +733,301 @@ SELECT_COND;</code></pre>
                                 <li><strong>Weightᵢ</strong>：权重。每个指标权重占20% (0.2)</li>
                                 <li><strong>指标</strong>：涨幅≥3%、跌幅≤-3%、涨停家数、跌停家数、成交量</li>
                             </ul>
-                            
+
                             <h4 class="font-medium mt-4 mb-2">3. 评分标准</h4>
                             <ul class="list-disc list-inside space-y-1 ml-4">
                                 <li>绿色：≥80分（优秀）</li>
                                 <li>黄色：≥60分（良好）</li>
-                                <li>红色：<60分（待改进）</li>
+                                <li>红色：<60分（待改进）< /li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- AI预测数据录入模态窗口 -->
-                <div id="ai-prediction-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-                    <div class="bg-white rounded-xl shadow-lg w-full max-w-5xl max-h-[90vh] overflow-y-auto">
-                        <!-- 模态窗口头部 -->
-                        <div class="bg-primary text-white px-6 py-4 flex justify-between items-center">
-                            <h3 class="text-lg font-semibold">录入预测数据</h3>
-                            <button id="close-ai-prediction-modal" class="text-white hover:text-gray-200">
-                                <i class="fa fa-times text-xl"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- 模态窗口内容 -->
-                        <div class="p-6">
-                            <form id="ai-prediction-form" class="space-y-4">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div>
-                                        <label for="ai-prediction-date" class="label">日期</label>
-                                        <input type="date" id="ai-prediction-date" class="input-field" required>
-                                    </div>
-                                </div>
-                                
-                                <!-- AI预测数据录入 -->
-                                <div class="space-y-4">
-                                    <h4 class="text-sm font-medium text-gray-700">AI模型预测数据</h4>
+                    <div id="ai-prediction-modal"
+                        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                        <div class="bg-white rounded-xl shadow-lg w-full max-w-5xl max-h-[90vh] overflow-y-auto">
+                            <!-- 模态窗口头部 -->
+                            <div class="bg-primary text-white px-6 py-4 flex justify-between items-center">
+                                <h3 class="text-lg font-semibold">录入预测数据</h3>
+                                <button id="close-ai-prediction-modal" class="text-white hover:text-gray-200">
+                                    <i class="fa fa-times text-xl"></i>
+                                </button>
+                            </div>
+
+                            <!-- 模态窗口内容 -->
+                            <div class="p-6">
+                                <form id="ai-prediction-form" class="space-y-4">
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <!-- Deepseek -->
-                                        <div class="bg-gray-50 rounded-lg p-4">
-                                            <h5 class="font-medium text-gray-800 mb-2">Deepseek</h5>
-                                            <div class="space-y-2">
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
-                                                        <input type="number" class="input-field" id="deepseek-up" min="0" step="1">
+                                        <div>
+                                            <label for="ai-prediction-date" class="label">日期</label>
+                                            <input type="date" id="ai-prediction-date" class="input-field" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- AI预测数据录入 -->
+                                    <div class="space-y-4">
+                                        <h4 class="text-sm font-medium text-gray-700">AI模型预测数据</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <!-- Deepseek -->
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="font-medium text-gray-800 mb-2">Deepseek</h5>
+                                                <div class="space-y-2">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                            <input type="number" class="input-field" id="deepseek-up"
+                                                                min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                            <input type="number" class="input-field" id="deepseek-down"
+                                                                min="0" step="1">
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
-                                                        <input type="number" class="input-field" id="deepseek-down" min="0" step="1">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="deepseek-limit-up" min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="deepseek-limit-down" min="0" step="1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                            <input type="number" class="input-field"
+                                                                id="deepseek-volume" min="0" step="0.01">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
-                                                        <input type="number" class="input-field" id="deepseek-limit-up" min="0" step="1">
+                                            </div>
+
+                                            <!-- GPT -->
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="font-medium text-gray-800 mb-2">GPT</h5>
+                                                <div class="space-y-2">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                            <input type="number" class="input-field" id="gpt-up" min="0"
+                                                                step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                            <input type="number" class="input-field" id="gpt-down"
+                                                                min="0" step="1">
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
-                                                        <input type="number" class="input-field" id="deepseek-limit-down" min="0" step="1">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                            <input type="number" class="input-field" id="gpt-limit-up"
+                                                                min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                            <input type="number" class="input-field" id="gpt-limit-down"
+                                                                min="0" step="1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                            <input type="number" class="input-field" id="gpt-volume"
+                                                                min="0" step="0.01">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                        <input type="number" class="input-field" id="deepseek-volume" min="0" step="0.01">
+                                            </div>
+
+                                            <!-- Grok -->
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="font-medium text-gray-800 mb-2">Grok</h5>
+                                                <div class="space-y-2">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                            <input type="number" class="input-field" id="grok-up"
+                                                                min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                            <input type="number" class="input-field" id="grok-down"
+                                                                min="0" step="1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                            <input type="number" class="input-field" id="grok-limit-up"
+                                                                min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="grok-limit-down" min="0" step="1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                            <input type="number" class="input-field" id="grok-volume"
+                                                                min="0" step="0.01">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <!-- GPT -->
-                                        <div class="bg-gray-50 rounded-lg p-4">
-                                            <h5 class="font-medium text-gray-800 mb-2">GPT</h5>
-                                            <div class="space-y-2">
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
-                                                        <input type="number" class="input-field" id="gpt-up" min="0" step="1">
+
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <!-- Gemini -->
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="font-medium text-gray-800 mb-2">Gemini</h5>
+                                                <div class="space-y-2">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                            <input type="number" class="input-field" id="gemini-up"
+                                                                min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                            <input type="number" class="input-field" id="gemini-down"
+                                                                min="0" step="1">
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
-                                                        <input type="number" class="input-field" id="gpt-down" min="0" step="1">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="gemini-limit-up" min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="gemini-limit-down" min="0" step="1">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
-                                                        <input type="number" class="input-field" id="gpt-limit-up" min="0" step="1">
-                                                    </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
-                                                        <input type="number" class="input-field" id="gpt-limit-down" min="0" step="1">
-                                                    </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                        <input type="number" class="input-field" id="gpt-volume" min="0" step="0.01">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                            <input type="number" class="input-field" id="gemini-volume"
+                                                                min="0" step="0.01">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <!-- Grok -->
-                                        <div class="bg-gray-50 rounded-lg p-4">
-                                            <h5 class="font-medium text-gray-800 mb-2">Grok</h5>
-                                            <div class="space-y-2">
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
-                                                        <input type="number" class="input-field" id="grok-up" min="0" step="1">
+
+                                            <!-- 豆包 -->
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="font-medium text-gray-800 mb-2">豆包</h5>
+                                                <div class="space-y-2">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                            <input type="number" class="input-field" id="doubao-up"
+                                                                min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                            <input type="number" class="input-field" id="doubao-down"
+                                                                min="0" step="1">
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
-                                                        <input type="number" class="input-field" id="grok-down" min="0" step="1">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="doubao-limit-up" min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="doubao-limit-down" min="0" step="1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                            <input type="number" class="input-field" id="doubao-volume"
+                                                                min="0" step="0.01">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
-                                                        <input type="number" class="input-field" id="grok-limit-up" min="0" step="1">
+                                            </div>
+
+                                            <!-- 元宝 -->
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="font-medium text-gray-800 mb-2">元宝</h5>
+                                                <div class="space-y-2">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
+                                                            <input type="number" class="input-field" id="yuanbao-up"
+                                                                min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
+                                                            <input type="number" class="input-field" id="yuanbao-down"
+                                                                min="0" step="1">
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
-                                                        <input type="number" class="input-field" id="grok-limit-down" min="0" step="1">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="yuanbao-limit-up" min="0" step="1">
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
+                                                            <input type="number" class="input-field"
+                                                                id="yuanbao-limit-down" min="0" step="1">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                        <input type="number" class="input-field" id="grok-volume" min="0" step="0.01">
+                                                    <div class="grid grid-cols-2 gap-2">
+                                                        <div>
+                                                            <label
+                                                                class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
+                                                            <input type="number" class="input-field" id="yuanbao-volume"
+                                                                min="0" step="0.01">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <!-- Gemini -->
-                                        <div class="bg-gray-50 rounded-lg p-4">
-                                            <h5 class="font-medium text-gray-800 mb-2">Gemini</h5>
-                                            <div class="space-y-2">
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
-                                                        <input type="number" class="input-field" id="gemini-up" min="0" step="1">
-                                                    </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
-                                                        <input type="number" class="input-field" id="gemini-down" min="0" step="1">
-                                                    </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
-                                                        <input type="number" class="input-field" id="gemini-limit-up" min="0" step="1">
-                                                    </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
-                                                        <input type="number" class="input-field" id="gemini-limit-down" min="0" step="1">
-                                                    </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                        <input type="number" class="input-field" id="gemini-volume" min="0" step="0.01">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- 豆包 -->
-                                        <div class="bg-gray-50 rounded-lg p-4">
-                                            <h5 class="font-medium text-gray-800 mb-2">豆包</h5>
-                                            <div class="space-y-2">
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
-                                                        <input type="number" class="input-field" id="doubao-up" min="0" step="1">
-                                                    </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
-                                                        <input type="number" class="input-field" id="doubao-down" min="0" step="1">
-                                                    </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
-                                                        <input type="number" class="input-field" id="doubao-limit-up" min="0" step="1">
-                                                    </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
-                                                        <input type="number" class="input-field" id="doubao-limit-down" min="0" step="1">
-                                                    </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                        <input type="number" class="input-field" id="doubao-volume" min="0" step="0.01">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- 元宝 -->
-                                        <div class="bg-gray-50 rounded-lg p-4">
-                                            <h5 class="font-medium text-gray-800 mb-2">元宝</h5>
-                                            <div class="space-y-2">
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨幅≥3%</label>
-                                                        <input type="number" class="input-field" id="yuanbao-up" min="0" step="1">
-                                                    </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌幅≤-3%</label>
-                                                        <input type="number" class="input-field" id="yuanbao-down" min="0" step="1">
-                                                    </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">涨停家数</label>
-                                                        <input type="number" class="input-field" id="yuanbao-limit-up" min="0" step="1">
-                                                    </div>
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">跌停家数</label>
-                                                        <input type="number" class="input-field" id="yuanbao-limit-down" min="0" step="1">
-                                                    </div>
-                                                </div>
-                                                <div class="grid grid-cols-2 gap-2">
-                                                    <div>
-                                                        <label class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                        <input type="number" class="input-field" id="yuanbao-volume" min="0" step="0.01">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                    <div class="flex justify-end space-x-2">
+                                        <button type="button" id="cancel-ai-prediction"
+                                            class="btn btn-outline">取消</button>
+                                        <button type="submit" class="btn btn-primary">保存预测数据</button>
                                     </div>
-                                </div>
-                                
-                                <div class="flex justify-end space-x-2">
-                                    <button type="button" id="cancel-ai-prediction" class="btn btn-outline">取消</button>
-                                    <button type="submit" class="btn btn-primary">保存预测数据</button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
             </main>
 
 
@@ -1079,12 +1139,12 @@ SELECT_COND;</code></pre>
         // 侧边栏伸缩功能
         const sidebar = document.getElementById('sidebar');
         const toggleBtn = document.getElementById('toggle-sidebar');
-        
+
         toggleBtn.addEventListener('click', () => {
             // 切换侧边栏宽度
             sidebar.classList.toggle('w-64');
             sidebar.classList.toggle('w-20');
-            
+
             // 切换图标
             const icon = toggleBtn.querySelector('i');
             if (icon.classList.contains('fa-angle-double-left')) {
@@ -1094,13 +1154,13 @@ SELECT_COND;</code></pre>
                 icon.classList.remove('fa-angle-double-right');
                 icon.classList.add('fa-angle-double-left');
             }
-            
+
             // 切换导航文本显示
             const navTexts = sidebar.querySelectorAll('.nav-link span');
             navTexts.forEach(text => {
                 text.classList.toggle('hidden');
             });
-            
+
             // 切换标题文本显示
             const title = sidebar.querySelector('h1');
             title.classList.toggle('hidden');
@@ -1123,7 +1183,7 @@ SELECT_COND;</code></pre>
         // 计算AI预测分数
         function calculateAIScore(predictedData, actualData) {
             if (!actualData) return 0;
-            
+
             // 权重数组，每个指标的权重占20%
             const weights = {
                 'upStockCount': 0.2,
@@ -1132,12 +1192,12 @@ SELECT_COND;</code></pre>
                 'limitDownCount': 0.2,
                 'volume': 0.2
             };
-            
+
             // 防零常数，取5（防止真实值和预测值都极小时分母为0或分数波动过大）
             const epsilon = 5;
-            
+
             let totalScore = 0;
-            
+
             // 计算每个字段的相似度得分
             const fields = [
                 'upStockCount',
@@ -1146,43 +1206,43 @@ SELECT_COND;</code></pre>
                 'limitDownCount',
                 'volume'
             ];
-            
+
             fields.forEach(field => {
                 const predicted = parseFloat(predictedData[field]) || 0;
                 const actual = parseFloat(actualData[field]) || 0;
-                
+
                 // 单项得分公式：Si = max(0, 1 - |Pi - Ai| / max(Ai, Pi, ε)) × 100
                 const absoluteError = Math.abs(predicted - actual);
                 const maxValue = Math.max(actual, predicted, epsilon);
                 const fieldScore = Math.max(0, 1 - (absoluteError / maxValue)) * 100;
-                
+
                 // 加权总分：Total Score = Σ(Wi × Si)
                 totalScore += weights[field] * fieldScore;
             });
-            
+
             // 返回最终得分，保留两位小数
             return Math.round(totalScore * 100) / 100;
         }
-        
+
         // 计算并更新所有AI预测数据的分数
         function updateAIPredictionScores() {
             // 遍历所有预测数据
             aiPredictionsData = aiPredictionsData.map(item => {
                 const actualData = getActualData(item.date);
-                
+
                 // 为每个模型计算分数
                 const scores = {};
                 aiModels.forEach(model => {
                     scores[model] = calculateAIScore(item[model], actualData);
                 });
-                
+
                 // 将分数添加到预测数据对象中
                 return {
                     ...item,
                     scores: scores
                 };
             });
-            
+
             // 保存到本地存储
             localStorage.setItem('aiPredictionsData', JSON.stringify(aiPredictionsData));
         }
@@ -1196,7 +1256,7 @@ SELECT_COND;</code></pre>
         function saveAIPrediction(prediction) {
             // 检查是否已存在该日期的预测数据
             const existingIndex = aiPredictionsData.findIndex(item => item.date === prediction.date);
-            
+
             if (existingIndex > -1) {
                 // 更新现有数据
                 aiPredictionsData[existingIndex] = prediction;
@@ -1204,10 +1264,10 @@ SELECT_COND;</code></pre>
                 // 添加新数据
                 aiPredictionsData.push(prediction);
             }
-            
+
             // 计算并更新所有预测数据的分数
             updateAIPredictionScores();
-            
+
             // 更新表格
             renderAIPredictionsTable();
         }
@@ -1215,18 +1275,18 @@ SELECT_COND;</code></pre>
         // 渲染AI预测数据表格
         function renderAIPredictionsTable() {
             const tableBody = document.getElementById('ai-predictions-table-body');
-            
+
             if (aiPredictionsData.length === 0) {
                 tableBody.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-500">暂无AI预测数据</td></tr>';
                 return;
             }
-            
+
             // 按日期倒序排序
             const sortedData = [...aiPredictionsData].sort((a, b) => new Date(b.date) - new Date(a.date));
-            
+
             tableBody.innerHTML = sortedData.map(item => {
                 const actualData = getActualData(item.date);
-                
+
                 // 计算每个模型的分数并找出最高分
                 const modelScores = aiModels.map(model => {
                     // 优先使用预存的分数，如果没有则重新计算
@@ -1237,7 +1297,7 @@ SELECT_COND;</code></pre>
                         score: aiScore
                     };
                 });
-                
+
                 // 找出最高分模型
                 let highestScoreModel = { name: '-', score: 0 };
                 modelScores.forEach(scoreItem => {
@@ -1245,7 +1305,7 @@ SELECT_COND;</code></pre>
                         highestScoreModel = scoreItem;
                     }
                 });
-                
+
                 return `
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                         <td class="px-4 py-3 text-gray-800">${formatDate(item.date)}</td>
@@ -1254,13 +1314,13 @@ SELECT_COND;</code></pre>
                             <div class="text-xs text-gray-500">${highestScoreModel.score}分</div>
                         </td>
                         ${modelScores.map(item => {
-                            return `
+                    return `
                                 <td class="px-4 py-3 text-center">
                                     <div class="font-medium ${item.score >= 80 ? 'text-green-600' : item.score >= 60 ? 'text-yellow-600' : 'text-red-600'}">${item.score}</div>
                                     <div class="text-xs text-gray-500">分</div>
                                 </td>
                             `;
-                        }).join('')}
+                }).join('')}
                     </tr>
                 `;
             }).join('');
@@ -1271,23 +1331,23 @@ SELECT_COND;</code></pre>
         const aiPredictionModal = document.getElementById('ai-prediction-modal');
         const closeAIPredictionModalBtn = document.getElementById('close-ai-prediction-modal');
         const cancelAIPredictionBtn = document.getElementById('cancel-ai-prediction');
-        
+
         addAIPredictionBtn.addEventListener('click', () => {
             aiPredictionModal.classList.remove('hidden');
         });
-        
+
         // 关闭模态窗口
         function closeAIPredictionModal() {
             aiPredictionModal.classList.add('hidden');
             document.getElementById('ai-prediction-form').reset();
         }
-        
+
         // 点击关闭按钮关闭模态窗口
         closeAIPredictionModalBtn.addEventListener('click', closeAIPredictionModal);
-        
+
         // 点击取消按钮关闭模态窗口
         cancelAIPredictionBtn.addEventListener('click', closeAIPredictionModal);
-        
+
         // 点击模态窗口外部关闭模态窗口
         aiPredictionModal.addEventListener('click', (e) => {
             if (e.target === aiPredictionModal) {
@@ -1297,12 +1357,12 @@ SELECT_COND;</code></pre>
 
         // 处理AI预测数据表单提交
         const aiPredictionForm = document.getElementById('ai-prediction-form');
-        
+
         aiPredictionForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const date = document.getElementById('ai-prediction-date').value;
-            
+
             // 收集各AI模型的预测数据
             const predictionData = {
                 date,
@@ -1349,14 +1409,14 @@ SELECT_COND;</code></pre>
                     volume: document.getElementById('yuanbao-volume').value
                 }
             };
-            
+
             // 保存预测数据
             saveAIPrediction(predictionData);
-            
+
             // 清空表单并关闭模态窗口
             aiPredictionForm.reset();
             aiPredictionModal.classList.add('hidden');
-            
+
             showMessage('AI预测数据保存成功！', 'success');
         });
 
@@ -1364,10 +1424,10 @@ SELECT_COND;</code></pre>
         function updateCurrentDayData() {
             // 获取今天的日期，格式为YYYY-MM-DD
             const today = new Date().toISOString().split('T')[0];
-            
+
             // 从chartData中查找今天的实际数据（chartData已包含data.js中的数据）
             const todayData = chartData.find(item => item.date === today);
-            
+
             if (todayData) {
                 // 如果找到今天的数据，显示今天的数据
                 document.getElementById('current-day-date').textContent = formatDate(todayData.date);
@@ -1380,7 +1440,7 @@ SELECT_COND;</code></pre>
                 // 如果没有找到今天的数据，显示最新的数据
                 const sortedChartData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
                 const latestData = sortedChartData[0];
-                
+
                 if (latestData) {
                     document.getElementById('current-day-date').textContent = formatDate(latestData.date) + ' (最新)';
                     document.getElementById('current-day-up').textContent = latestData.upStockCount;
@@ -1395,24 +1455,24 @@ SELECT_COND;</code></pre>
         // 导航切换功能
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
-        
+
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                
+
                 // 移除所有激活状态
                 navLinks.forEach(l => l.classList.remove('active', 'bg-blue-50', 'text-primary'));
                 pages.forEach(p => p.classList.add('hidden'));
-                
+
                 // 添加激活状态
                 link.classList.add('active', 'bg-blue-50', 'text-primary');
-                
+
                 // 显示对应页面
                 const targetId = link.getAttribute('href').substring(1);
                 const targetPage = document.getElementById(targetId);
                 if (targetPage) {
                     targetPage.classList.remove('hidden');
-                    
+
                     // 如果是AI预测页面，渲染表格并更新当前日数据
                     if (targetId === 'ai-prediction-page') {
                         renderAIPredictionsTable();
@@ -1446,15 +1506,15 @@ SELECT_COND;</code></pre>
         // 导入AI预测数据
         const importAIPredictionsBtn = document.getElementById('import-ai-predictions-btn');
         const aiPredictionsFileInput = document.getElementById('ai-predictions-file-input');
-        
+
         importAIPredictionsBtn.addEventListener('click', () => {
             aiPredictionsFileInput.click();
         });
-        
+
         aiPredictionsFileInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) return;
-            
+
             if (!file.name.endsWith('.json')) {
                 showMessage('请选择JSON格式的文件！', 'warning');
                 return;
@@ -1510,7 +1570,7 @@ SELECT_COND;</code></pre>
                 }
             };
             reader.readAsText(file);
-            
+
             // 清空文件输入
             e.target.value = '';
         });
@@ -2002,7 +2062,7 @@ SELECT_COND;</code></pre>
 
             if (filteredStockResults.length === 0) {
                 const message = stockResultsData.length === 0 ? '暂无选股结果数据' : '该日期暂无选股结果';
-                tableBody.innerHTML = `<tr><td colspan="8" class="px-4 py-8 text-center text-gray-500">${message}</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="9" class="px-4 py-8 text-center text-gray-500">${message}</td></tr>`;
                 return;
             }
 
@@ -2023,8 +2083,13 @@ SELECT_COND;</code></pre>
                     case 'prevClose':
                     case 'prevHigh':
                     case 'open':
+                    case 'close':
                         valueA = a[stockResultsSortConfig.column];
                         valueB = b[stockResultsSortConfig.column];
+                        break;
+                    case 'dailyChangeRatio':
+                        valueA = (a.close - a.prevClose) / a.prevClose;
+                        valueB = (b.close - b.prevClose) / b.prevClose;
                         break;
                     case 'gapUpRatio':
                         valueA = (a.open - a.prevClose) / a.prevClose;
@@ -2040,9 +2105,14 @@ SELECT_COND;</code></pre>
                     return valueA > valueB ? -1 : valueA < valueB ? 1 : 0;
                 }
             });
-
+            filteredStockResults = sortedData
             tableBody.innerHTML = sortedData.map((item, index) => {
                 const gapUpRatio = (item.open - item.prevClose) / item.prevClose;
+                // 计算今日涨跌幅
+                const dailyChange = null == item.close ? 0 : item.close - item.prevClose;
+                const dailyChangeRatio = dailyChange === 0 ? 0 : dailyChange / item.prevClose;
+                // 计算开盘买入对比
+                const openBuyCloseRatio = null == item.close ? 0 : (item.open - item.close) / item.close;
                 // 原高亮条件：高开比例在9.90~10.09之间并且股票代码以60或00开头
                 const condition1 = gapUpRatio >= 0.099 && gapUpRatio <= 0.1015 && (item.stockCode.startsWith('60') || item.stockCode.startsWith('00'));
                 // 新增高亮条件：高开比例在19.90~20.10之间并且股票代码以30或68开头
@@ -2059,6 +2129,9 @@ SELECT_COND;</code></pre>
                     <td class="px-4 py-3 text-right">${item.prevHigh.toFixed(2)}</td>
                     <td class="px-4 py-3 text-right">${item.open.toFixed(2)}</td>
                     <td class="px-4 py-3 text-right font-bold">${(gapUpRatio * 100).toFixed(2)}%</td>
+                    <td class="px-4 py-3 text-right">${null == item.close ? 0 : item.close.toFixed(2)}</td>
+                    <td class="px-4 py-3 text-right font-bold ${dailyChangeRatio > 0 ? 'text-chart-up' : 'text-chart-down'}">${(dailyChangeRatio * 100).toFixed(2)}%</td>
+                    <td class="px-4 py-3 text-right font-bold ${openBuyCloseRatio > 1 ? 'text-chart-up' : 'text-chart-down'}">${(openBuyCloseRatio * 100).toFixed(2)}%</td>
                     <td class="px-4 py-3 text-center">
                         <div class="flex justify-center space-x-2">
                             <button class="edit-stock-btn p-1 text-blue-600 hover:text-blue-800" data-index="${index}">
@@ -2076,6 +2149,7 @@ SELECT_COND;</code></pre>
             document.querySelectorAll('.edit-stock-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const index = parseInt(btn.dataset.index);
+                    console.log("index", index)
                     editStockResult(index);
                 });
             });
@@ -2148,6 +2222,10 @@ SELECT_COND;</code></pre>
                             <div>
                                 <label for="stock-form-open" class="label">今日开盘价</label>
                                 <input type="number" id="stock-form-open" step="0.01" min="0" class="input-field" placeholder="例如: 10.90" value="${isEdit ? stockData.open : ''}" required>
+                            </div>
+                            <div>
+                                <label for="stock-form-close" class="label">今日收盘价</label>
+                                <input type="number" id="stock-form-close" step="0.01" min="0" class="input-field" placeholder="例如: 11.20" value="${isEdit ? (stockData.close || '') : ''}" required>
                             </div>
                             <div class="pt-2 flex justify-end space-x-3">
                                 <button type="button" id="cancel-stock-form" class="btn btn-outline">取消</button>
@@ -2374,9 +2452,10 @@ SELECT_COND;</code></pre>
             const prevClose = parseFloat(document.getElementById('stock-form-prev-close').value);
             const prevHigh = parseFloat(document.getElementById('stock-form-prev-high').value);
             const open = parseFloat(document.getElementById('stock-form-open').value);
+            const close = parseFloat(document.getElementById('stock-form-close').value);
 
             // 验证输入
-            if (!date || !stockCode || !stockName || isNaN(prevClose) || isNaN(prevHigh) || isNaN(open)) {
+            if (!date || !stockCode || !stockName || isNaN(prevClose) || isNaN(prevHigh) || isNaN(open) || isNaN(close)) {
                 showMessage('请填写所有必填字段！', 'warning');
                 return;
             }
@@ -2397,7 +2476,8 @@ SELECT_COND;</code></pre>
                 stockName,
                 prevClose,
                 prevHigh,
-                open
+                open,
+                close
             };
 
             // 检查是否已存在相同日期和股票代码的记录
@@ -2523,7 +2603,10 @@ SELECT_COND;</code></pre>
                 'prevClose': '昨日收盘价',
                 'prevHigh': '昨日最高价',
                 'open': '今日开盘价',
-                'gapUpRatio': '跳空高开比例'
+                'gapUpRatio': '跳空高开比例',
+                'close': '今日收盘价',
+                'dailyChangeRatio': '今日涨跌幅',
+                'openBuyCloseRatio': '开盘买入对比'
             };
 
             // 查找当前排序列的表头元素
