@@ -1,5 +1,5 @@
 // 每日涨跌幅数据
-const dailyChangeRateData = [
+const dailyChangeRateData =[
   {
     "date": "2025-10-23",
     "value": 1.19,
@@ -346,15 +346,24 @@ const dailyChangeRateData = [
     "date": "2025-12-16",
     "value": 0.24,
     "upStockCount": 297,
-    "limitUpCount": 46,
     "downStockCount": 1258,
+    "limitUpCount": 46,
     "limitDownCount": 36,
     "volume": 17241.73
+  },
+  {
+    "date": "2025-12-17",
+    "value": 2.51,
+    "upStockCount": 653,
+    "limitUpCount": 57,
+    "downStockCount": 260,
+    "limitDownCount": 25,
+    "volume": 18111.46
   }
 ]
 
 // 选股结果数据
-const stockResultsData = [
+const stockResultsData =[
   {
     "date": "2025-12-09",
     "stockCode": "000977",
@@ -580,6 +589,24 @@ const stockResultsData = [
     "prevHigh": 40.57,
     "open": 42.32,
     "close": 40.79
+  },
+  {
+    "date": "2025-12-17",
+    "stockCode": "002536",
+    "stockName": "飞龙股份",
+    "prevClose": 25.08,
+    "prevHigh": 25.39,
+    "open": 27.58,
+    "close": 27.59
+  },
+  {
+    "date": "2025-12-17",
+    "stockCode": "002969",
+    "stockName": "嘉美包装",
+    "prevClose": 4.56,
+    "prevHigh": 4.65,
+    "open": 5.02,
+    "close": 5.02
   }
 ]
 
@@ -733,6 +760,59 @@ const aiData = [
       "limitUpCount": "43",
       "limitDownCount": "22",
       "volume": "17532.45"
+    },
+    "scores": {
+      "deepseek": 79.2,
+      "gpt": 73.55,
+      "grok": 79.24,
+      "gemini": 75.35,
+      "doubao": 64.41,
+      "yuanbao": 63.44
+    }
+  },
+  {
+    "date": "2025-12-18",
+    "deepseek": {
+      "upStockCount": "580",
+      "downStockCount": "320",
+      "limitUpCount": "52",
+      "limitDownCount": "18",
+      "volume": "18500"
+    },
+    "gpt": {
+      "upStockCount": "520",
+      "downStockCount": "380",
+      "limitUpCount": "60",
+      "limitDownCount": "22",
+      "volume": "18000"
+    },
+    "grok": {
+      "upStockCount": "580",
+      "downStockCount": "380",
+      "limitUpCount": "68",
+      "limitDownCount": "18",
+      "volume": "18800"
+    },
+    "gemini": {
+      "upStockCount": "480",
+      "downStockCount": "380",
+      "limitUpCount": "62",
+      "limitDownCount": "18",
+      "volume": "17500"
+    },
+    "doubao": {
+      "upStockCount": "590",
+      "downStockCount": "320",
+      "limitUpCount": "56",
+      "limitDownCount": "27",
+      "volume": "18650"
+    },
+    "yuanbao": {
+      "upStockCount": "543",
+      "downStockCount": "300",
+      "limitUpCount": "41",
+      "limitDownCount": "32",
+      "volume": "18150.2"
     },
     "scores": {
       "deepseek": 0,
