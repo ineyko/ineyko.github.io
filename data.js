@@ -1,5 +1,5 @@
 // 每日涨跌幅数据
-const dailyChangeRateData =[
+const dailyChangeRateData = [
   {
     "date": "2025-10-23",
     "value": 1.19,
@@ -355,15 +355,24 @@ const dailyChangeRateData =[
     "date": "2025-12-17",
     "value": 2.51,
     "upStockCount": 653,
-    "limitUpCount": 57,
     "downStockCount": 260,
+    "limitUpCount": 57,
     "limitDownCount": 25,
     "volume": 18111.46
+  },
+  {
+    "date": "2025-12-18",
+    "value": 1.43,
+    "upStockCount": 477,
+    "limitUpCount": 73,
+    "downStockCount": 333,
+    "limitDownCount": 8,
+    "volume": 16554.83
   }
 ]
 
 // 选股结果数据
-const stockResultsData =[
+const stockResultsData = [
   {
     "date": "2025-12-09",
     "stockCode": "000977",
@@ -607,6 +616,51 @@ const stockResultsData =[
     "prevHigh": 4.65,
     "open": 5.02,
     "close": 5.02
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301421",
+    "stockName": "波长光电",
+    "prevClose": 112.29,
+    "prevHigh": 114.3,
+    "open": 119,
+    "close": 0
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301392",
+    "stockName": "汇成真空",
+    "prevClose": 140.91,
+    "prevHigh": 142.5,
+    "open": 147,
+    "close": 0
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "601198",
+    "stockName": "东兴证券",
+    "prevClose": 13.13,
+    "prevHigh": 13.6,
+    "open": 14.44,
+    "close": 14.44
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301133",
+    "stockName": "金钟股份",
+    "prevClose": 33.88,
+    "prevHigh": 33.94,
+    "open": 35.68,
+    "close": 0
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301408",
+    "stockName": "华人健康",
+    "prevClose": 18.2,
+    "prevHigh": 19.31,
+    "open": 20.35,
+    "close": 21.84
   }
 ]
 
@@ -813,6 +867,59 @@ const aiData = [
       "limitUpCount": "41",
       "limitDownCount": "32",
       "volume": "18150.2"
+    },
+    "scores": {
+      "deepseek": 76.7,
+      "gpt": 77.98,
+      "grok": 79.11,
+      "gemini": 82.2,
+      "doubao": 74.41,
+      "yuanbao": 70.06
+    }
+  },
+  {
+    "date": "2025-12-19",
+    "deepseek": {
+      "upStockCount": "520",
+      "downStockCount": "280",
+      "limitUpCount": "68",
+      "limitDownCount": "10",
+      "volume": "17300"
+    },
+    "gpt": {
+      "upStockCount": "420",
+      "downStockCount": "430",
+      "limitUpCount": "60",
+      "limitDownCount": "14",
+      "volume": "16000"
+    },
+    "grok": {
+      "upStockCount": "420",
+      "downStockCount": "390",
+      "limitUpCount": "62",
+      "limitDownCount": "12",
+      "volume": "16200"
+    },
+    "gemini": {
+      "upStockCount": "320",
+      "downStockCount": "580",
+      "limitUpCount": "55",
+      "limitDownCount": "15",
+      "volume": "17100"
+    },
+    "doubao": {
+      "upStockCount": "445",
+      "downStockCount": "360",
+      "limitUpCount": "71",
+      "limitDownCount": "9",
+      "volume": "17200"
+    },
+    "yuanbao": {
+      "upStockCount": "492",
+      "downStockCount": "328",
+      "limitUpCount": "68",
+      "limitDownCount": "12",
+      "volume": "16872.4"
     },
     "scores": {
       "deepseek": 0,
