@@ -624,7 +624,7 @@ const stockResultsData = [
     "prevClose": 112.29,
     "prevHigh": 114.3,
     "open": 119,
-    "close": 0
+    "close": 106.41
   },
   {
     "date": "2025-12-18",
@@ -633,7 +633,7 @@ const stockResultsData = [
     "prevClose": 140.91,
     "prevHigh": 142.5,
     "open": 147,
-    "close": 0
+    "close": 137.12
   },
   {
     "date": "2025-12-18",
@@ -651,7 +651,7 @@ const stockResultsData = [
     "prevClose": 33.88,
     "prevHigh": 33.94,
     "open": 35.68,
-    "close": 0
+    "close": 37.2
   },
   {
     "date": "2025-12-18",
