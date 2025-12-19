@@ -364,10 +364,19 @@ const dailyChangeRateData = [
     "date": "2025-12-18",
     "value": 1.43,
     "upStockCount": 477,
-    "limitUpCount": 73,
     "downStockCount": 333,
+    "limitUpCount": 73,
     "limitDownCount": 8,
     "volume": 16554.83
+  },
+  {
+    "date": "2025-12-19",
+    "value": 7.38,
+    "upStockCount": 886,
+    "limitUpCount": 82,
+    "downStockCount": 120,
+    "limitDownCount": 6,
+    "volume": 17259.15
   }
 ]
 
@@ -661,6 +670,15 @@ const stockResultsData = [
     "prevHigh": 19.31,
     "open": 20.35,
     "close": 21.84
+  },
+  {
+    "date": "2025-12-19",
+    "stockCode": "603977",
+    "stockName": "国泰集团",
+    "prevClose": 12.92,
+    "prevHigh": 13.28,
+    "open": 13.56,
+    "close": 14.21
   }
 ]
 
@@ -920,6 +938,59 @@ const aiData = [
       "limitUpCount": "68",
       "limitDownCount": "12",
       "volume": "16872.4"
+    },
+    "scores": {
+      "deepseek": 68.85,
+      "gpt": 56.81,
+      "grok": 59.53,
+      "gemini": 52.59,
+      "doubao": 67.29,
+      "yuanbao": 64.56
+    }
+  },
+  {
+    "date": "2025-12-22",
+    "deepseek": {
+      "upStockCount": "620",
+      "downStockCount": "240",
+      "limitUpCount": "70",
+      "limitDownCount": "12",
+      "volume": "17800"
+    },
+    "gpt": {
+      "upStockCount": "680",
+      "downStockCount": "260",
+      "limitUpCount": "78",
+      "limitDownCount": "12",
+      "volume": "17800"
+    },
+    "grok": {
+      "upStockCount": "620",
+      "downStockCount": "280",
+      "limitUpCount": "75",
+      "limitDownCount": "10",
+      "volume": "17800"
+    },
+    "gemini": {
+      "upStockCount": "520",
+      "downStockCount": "340",
+      "limitUpCount": "78",
+      "limitDownCount": "11",
+      "volume": "19200"
+    },
+    "doubao": {
+      "upStockCount": "445",
+      "downStockCount": "360",
+      "limitUpCount": "71",
+      "limitDownCount": "9",
+      "volume": "17200"
+    },
+    "yuanbao": {
+      "upStockCount": "683",
+      "downStockCount": "247",
+      "limitUpCount": "59",
+      "limitDownCount": "14",
+      "volume": "17189.2"
     },
     "scores": {
       "deepseek": 0,

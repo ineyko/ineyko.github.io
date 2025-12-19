@@ -803,9 +803,22 @@ SELECT_COND;</code></pre>
                                                         <div>
                                                             <label
                                                                 class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                            <input type="number" class="input-field"
-                                                                id="deepseek-volume" min="0" step="0.01">
+                                                            <input type="number" class="input-field" id="deepseek-volume"
+                                                                min="0" step="0.01">
                                                         </div>
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
+                                                        <input type="text" class="input-field" id="deepseek-summary" placeholder="请输入一句话预测">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
+                                                        <select class="input-field" id="deepseek-trend">
+                                                            <option value="">请选择</option>
+                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
+                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -848,6 +861,19 @@ SELECT_COND;</code></pre>
                                                                 min="0" step="0.01">
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
+                                                        <input type="text" class="input-field" id="gpt-summary" placeholder="请输入一句话预测">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
+                                                        <select class="input-field" id="gpt-trend">
+                                                            <option value="">请选择</option>
+                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
+                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -888,6 +914,19 @@ SELECT_COND;</code></pre>
                                                             <input type="number" class="input-field" id="grok-volume"
                                                                 min="0" step="0.01">
                                                         </div>
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
+                                                        <input type="text" class="input-field" id="grok-summary" placeholder="请输入一句话预测">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
+                                                        <select class="input-field" id="grok-trend">
+                                                            <option value="">请选择</option>
+                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
+                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -932,6 +971,19 @@ SELECT_COND;</code></pre>
                                                                 min="0" step="0.01">
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
+                                                        <input type="text" class="input-field" id="gemini-summary" placeholder="请输入一句话预测">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
+                                                        <select class="input-field" id="gemini-trend">
+                                                            <option value="">请选择</option>
+                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
+                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -973,6 +1025,19 @@ SELECT_COND;</code></pre>
                                                                 min="0" step="0.01">
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
+                                                        <input type="text" class="input-field" id="doubao-summary" placeholder="请输入一句话预测">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
+                                                        <select class="input-field" id="doubao-trend">
+                                                            <option value="">请选择</option>
+                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
+                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -1013,6 +1078,19 @@ SELECT_COND;</code></pre>
                                                             <input type="number" class="input-field" id="yuanbao-volume"
                                                                 min="0" step="0.01">
                                                         </div>
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
+                                                        <input type="text" class="input-field" id="yuanbao-summary" placeholder="请输入一句话预测">
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
+                                                        <select class="input-field" id="yuanbao-trend">
+                                                            <option value="">请选择</option>
+                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
+                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1326,6 +1404,8 @@ SELECT_COND;</code></pre>
                     predictionDetails += `<div>涨停家数：</div><div>${prediction.limitUpCount || '-'}</div>`;
                     predictionDetails += `<div>跌停家数：</div><div>${prediction.limitDownCount || '-'}</div>`;
                     predictionDetails += `<div>成交量(亿元)：</div><div>${prediction.volume || '-'}</div>`;
+                    predictionDetails += `<div>一句话预测：</div><div class="col-span-1 break-words">${prediction.summary || '-'}</div>`;
+                    predictionDetails += `<div>涨跌态度：</div><div class="${prediction.trend === 'up' ? 'text-red-500 font-medium' : prediction.trend === 'down' ? 'text-green-500 font-medium' : 'text-gray-500'}">${prediction.trend === 'up' ? '📈 上涨' : prediction.trend === 'down' ? '📉 下跌' : prediction.trend === 'neutral' ? '➖ 中性' : '-'}</div>`;
 
                     // 如果有实际数据，添加对比
                     if (actualData) {
@@ -1348,6 +1428,10 @@ SELECT_COND;</code></pre>
                         <td class="px-4 py-3 text-center cursor-pointer hover:bg-gray-50 transition-colors" data-prediction-details='${JSON.stringify({ modelName: aiModelNames[model], date: formatDate(item.date), predictionDetails: predictionDetails, model: model, dateStr: item.date })}'>
                             <div class="font-medium ${score >= 80 ? 'text-green-600' : score >= 60 ? 'text-yellow-600' : 'text-red-600'}">${score}</div>
                             <div class="text-xs text-gray-500">分</div>
+                            <div class="mt-1 flex items-center justify-center ${prediction.trend === 'up' ? 'text-red-500' : prediction.trend === 'down' ? 'text-green-500' : 'text-gray-500'}">
+                                <span class="text-sm">${prediction.trend === 'up' ? '📈' : prediction.trend === 'down' ? '📉' : prediction.trend === 'neutral' ? '➖' : ''}</span>
+                                <span class="text-xs ml-1">${prediction.trend === 'up' ? '上涨' : prediction.trend === 'down' ? '下跌' : prediction.trend === 'neutral' ? '中性' : ''}</span>
+                            </div>
                         </td>
                     `;
                 }).join('')}
@@ -1455,42 +1539,54 @@ SELECT_COND;</code></pre>
                     downStockCount: document.getElementById('deepseek-down').value,
                     limitUpCount: document.getElementById('deepseek-limit-up').value,
                     limitDownCount: document.getElementById('deepseek-limit-down').value,
-                    volume: document.getElementById('deepseek-volume').value
+                    volume: document.getElementById('deepseek-volume').value,
+                    summary: document.getElementById('deepseek-summary').value,
+                    trend: document.getElementById('deepseek-trend').value
                 },
                 gpt: {
                     upStockCount: document.getElementById('gpt-up').value,
                     downStockCount: document.getElementById('gpt-down').value,
                     limitUpCount: document.getElementById('gpt-limit-up').value,
                     limitDownCount: document.getElementById('gpt-limit-down').value,
-                    volume: document.getElementById('gpt-volume').value
+                    volume: document.getElementById('gpt-volume').value,
+                    summary: document.getElementById('gpt-summary').value,
+                    trend: document.getElementById('gpt-trend').value
                 },
                 grok: {
                     upStockCount: document.getElementById('grok-up').value,
                     downStockCount: document.getElementById('grok-down').value,
                     limitUpCount: document.getElementById('grok-limit-up').value,
                     limitDownCount: document.getElementById('grok-limit-down').value,
-                    volume: document.getElementById('grok-volume').value
+                    volume: document.getElementById('grok-volume').value,
+                    summary: document.getElementById('grok-summary').value,
+                    trend: document.getElementById('grok-trend').value
                 },
                 gemini: {
                     upStockCount: document.getElementById('gemini-up').value,
                     downStockCount: document.getElementById('gemini-down').value,
                     limitUpCount: document.getElementById('gemini-limit-up').value,
                     limitDownCount: document.getElementById('gemini-limit-down').value,
-                    volume: document.getElementById('gemini-volume').value
+                    volume: document.getElementById('gemini-volume').value,
+                    summary: document.getElementById('gemini-summary').value,
+                    trend: document.getElementById('gemini-trend').value
                 },
                 doubao: {
                     upStockCount: document.getElementById('doubao-up').value,
                     downStockCount: document.getElementById('doubao-down').value,
                     limitUpCount: document.getElementById('doubao-limit-up').value,
                     limitDownCount: document.getElementById('doubao-limit-down').value,
-                    volume: document.getElementById('doubao-volume').value
+                    volume: document.getElementById('doubao-volume').value,
+                    summary: document.getElementById('doubao-summary').value,
+                    trend: document.getElementById('doubao-trend').value
                 },
                 yuanbao: {
                     upStockCount: document.getElementById('yuanbao-up').value,
                     downStockCount: document.getElementById('yuanbao-down').value,
                     limitUpCount: document.getElementById('yuanbao-limit-up').value,
                     limitDownCount: document.getElementById('yuanbao-limit-down').value,
-                    volume: document.getElementById('yuanbao-volume').value
+                    volume: document.getElementById('yuanbao-volume').value,
+                    summary: document.getElementById('yuanbao-summary').value,
+                    trend: document.getElementById('yuanbao-trend').value
                 }
             };
 
