@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日涨跌幅比例图</title>
+    <title>A股市场分析工具</title>
     <!-- 引入Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入Font Awesome -->
@@ -16,13 +16,14 @@
     <!-- 引入ElementUI JS -->
     <script src="https://cdn.jsdelivr.net/npm/element-ui@2.15.14/lib/index.js"></script>
     <!-- 引入Chart.js核心库 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- 引入时间处理库（Chart.js时间轴依赖） -->
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <!-- 引入Chart.js时间轴插件 -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.1/dist/chartjs-adapter-moment.min.js"></script>
     <!-- 引入Chart.js缩放/拖动插件 -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom/dist/chartjs-plugin-zoom.min.js"></script>
     <!-- 引入数据文件 -->
     <script src="data.js"></script>
 
@@ -260,148 +261,185 @@
 
             <!-- 主要内容区域 -->
             <main id="chart-page" class="page flex-grow px-6 py-6 overflow-y-auto">
+                <!-- 图表操作按钮区域 -->
+                <div class="mb-6">
+                    <div class="flex space-x-3 py-2">
+                        <button id="add-data-btn" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            <span>添加涨跌幅数据</span>
+                        </button>
+                        <button id="import-btn" class="btn btn-success">
+                            <i class="fa fa-upload"></i>
+                            <span>导入</span>
+                        </button>
+                        <button id="export-btn" class="btn btn-outline">
+                            <i class="fa fa-download"></i>
+                            <span>导出</span>
+                        </button>
+                        <!-- <button id="clear-btn" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                            <span>清空</span>
+                        </button> -->
+                        <input type="file" id="file-input" accept=".json">
+                    </div>
+                </div>
+
                 <!-- 图表卡片 -->
                 <div class="card mb-6">
                     <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-lg font-semibold text-gray-800">涨跌幅趋势分析（每日15:00~15:10更新）</h2>
-                        <div class="flex items-center space-x-2">
-                            <button id="reset-zoom" class="btn btn-outline text-sm py-1 px-3">
-                                <i class="fa fa-search-minus"></i>
-                                <span>重置缩放</span>
-                            </button>
-                        </div>
+                        <h2 class="text-lg font-semibold text-gray-800">涨跌幅趋势分析</h2>
                     </div>
                     <div class="chart-container">
                         <canvas id="chart"></canvas>
                     </div>
-                    <div class="mt-4 text-sm text-gray-500 flex items-center justify-center">
-                        <i class="fa fa-info-circle mr-2"></i>
-                        <span>提示：使用鼠标滚轮或触控板可缩放图表，按住拖动可平移查看历史数据</span>
+                </div>
+
+                <!-- 短线连板情绪图卡片 -->
+                <div class="card mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800">短线连板情绪图</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chart-2"></canvas>
                     </div>
                 </div>
 
-                <!-- 数据输入和操作区域 -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- 数据输入卡片 -->
-                    <div class="lg:col-span-2 card">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            添加涨跌幅数据
-                        </h2>
-                        <p class="text-sm text-gray-600 mb-4">
-                            输入每日涨跌数据，系统将自动计算涨跌幅比例（计算公式：当日涨幅 >= 3% / 当日跌幅 <= -3%） </p>
 
-                                <form id="stock-form" class="space-y-4">
-                                    <!-- 日期输入 -->
-                                    <div class="mb-4">
-                                        <label for="stock-date-input" class="label">日期</label>
-                                        <input type="date" id="stock-date-input" class="input-field" placeholder="选择日期">
-                                    </div>
 
-                                    <!-- 涨幅相关数据 -->
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div>
-                                            <label for="up-stock-input" class="label flex items-center">
-                                                <span class="inline-block w-3 h-3 rounded-full bg-chart-up mr-2"></span>
-                                                涨幅>=3%的股票数量
-                                            </label>
-                                            <input type="number" id="up-stock-input" min="0" class="input-field"
-                                                placeholder="例如: 1200">
+                <!-- 添加涨跌幅数据弹窗 -->
+                <div id="add-data-modal"
+                    class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                    <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl max-h-[95vh] overflow-y-auto p-0">
+                        <!-- 弹窗头部 -->
+                        <div class="bg-primary text-white px-4 py-3 flex justify-between items-center rounded-t-lg">
+                            <h3 class="text-lg font-semibold">添加涨跌幅数据</h3>
+                            <button id="close-add-data-modal" class="text-white hover:text-gray-200">
+                                <i class="fa fa-times text-xl"></i>
+                            </button>
+                        </div>
+
+                        <!-- 弹窗内容 -->
+                        <div class="p-5">
+                            <p class="text-sm text-gray-600 mb-4">
+                                输入每日涨跌数据，系统将自动计算涨跌幅比例（计算公式：当日涨幅 >= 3% / 当日跌幅 <= -3%） </p>
+
+                                    <form id="stock-form" class="space-y-4">
+                                        <!-- 日期输入 -->
+                                        <div class="mb-3">
+                                            <label for="stock-date-input" class="label">日期</label>
+                                            <input type="date" id="stock-date-input" class="input-field w-full"
+                                                placeholder="选择日期">
                                         </div>
+
+                                        <!-- 涨幅相关数据 -->
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div>
+                                                <label for="up-stock-input" class="label flex items-center">
+                                                    <span
+                                                        class="inline-block w-3 h-3 rounded-full bg-chart-up mr-2"></span>
+                                                    涨幅>=3%
+                                                </label>
+                                                <input type="number" id="up-stock-input" min="0" class="input-field"
+                                                    placeholder="例如: 1200">
+                                            </div>
+                                            <div>
+                                                <label for="limit-up-input" class="label flex items-center">
+                                                    <span
+                                                        class="inline-block w-3 h-3 rounded-full bg-chart-limit-up mr-2"></span>
+                                                    涨停家数
+                                                </label>
+                                                <input type="number" id="limit-up-input" min="0" class="input-field"
+                                                    placeholder="例如: 150">
+                                            </div>
+                                        </div>
+
+                                        <!-- 跌幅相关数据 -->
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div>
+                                                <label for="down-stock-input" class="label flex items-center">
+                                                    <span
+                                                        class="inline-block w-3 h-3 rounded-full bg-chart-down mr-2"></span>
+                                                    跌幅<=-3% </label>
+                                                        <input type="number" id="down-stock-input" min="0"
+                                                            class="input-field" placeholder="例如: 800">
+                                            </div>
+                                            <div>
+                                                <label for="limit-down-input" class="label flex items-center">
+                                                    <span
+                                                        class="inline-block w-3 h-3 rounded-full bg-chart-limit-down mr-2"></span>
+                                                    跌停家数
+                                                </label>
+                                                <input type="number" id="limit-down-input" min="0" class="input-field"
+                                                    placeholder="例如: 50">
+                                            </div>
+                                        </div>
+
+                                        <!-- 成交量数据 -->
                                         <div>
-                                            <label for="limit-up-input" class="label flex items-center">
+                                            <label for="volume-input" class="label flex items-center">
                                                 <span
-                                                    class="inline-block w-3 h-3 rounded-full bg-chart-limit-up mr-2"></span>
-                                                涨停家数
+                                                    class="inline-block w-3 h-3 rounded-full bg-purple-500 mr-2"></span>
+                                                成交量(亿元)
                                             </label>
-                                            <input type="number" id="limit-up-input" min="0" class="input-field"
-                                                placeholder="例如: 150">
+                                            <input type="number" id="volume-input" min="0" step="0.01"
+                                                class="input-field" placeholder="例如: 8500.50">
                                         </div>
-                                    </div>
 
-                                    <!-- 跌幅相关数据 -->
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <!-- 最高连板数量数据 -->
                                         <div>
-                                            <label for="down-stock-input" class="label flex items-center">
+                                            <label for="max-consecutive-input" class="label flex items-center">
                                                 <span
-                                                    class="inline-block w-3 h-3 rounded-full bg-chart-down mr-2"></span>
-                                                跌幅<=-3%的股票数量 </label>
-                                                    <input type="number" id="down-stock-input" min="0"
-                                                        class="input-field" placeholder="例如: 800">
-                                        </div>
-                                        <div>
-                                            <label for="limit-down-input" class="label flex items-center">
-                                                <span
-                                                    class="inline-block w-3 h-3 rounded-full bg-chart-limit-down mr-2"></span>
-                                                跌停家数
+                                                    class="inline-block w-3 h-3 rounded-full bg-orange-500 mr-2"></span>
+                                                最高连板数量
                                             </label>
-                                            <input type="number" id="limit-down-input" min="0" class="input-field"
-                                                placeholder="例如: 50">
+                                            <input type="number" id="max-consecutive-input" min="0" class="input-field"
+                                                placeholder="例如: 5">
                                         </div>
-                                    </div>
 
-                                    <!-- 成交量数据 -->
-                                    <div>
-                                        <label for="volume-input" class="label flex items-center">
-                                            <span class="inline-block w-3 h-3 rounded-full bg-purple-500 mr-2"></span>
-                                            全市场成交量(亿元)
-                                        </label>
-                                        <input type="number" id="volume-input" min="0" step="0.01" class="input-field"
-                                            placeholder="例如: 8500.50">
-                                    </div>
+                                        <!-- 涨停封板率数据 -->
+                                        <div>
+                                            <label for="limit-up-rate-input" class="label flex items-center">
+                                                <span class="inline-block w-3 h-3 rounded-full bg-red-500 mr-2"></span>
+                                                涨停封板率 (%)
+                                            </label>
+                                            <input type="number" id="limit-up-rate-input" min="0" max="100" step="0.1"
+                                                class="input-field" placeholder="例如: 90.5">
+                                        </div>
 
-                                    <!-- 提交按钮 -->
-                                    <div class="pt-2">
-                                        <button type="submit" id="add-stock-btn"
-                                            class="btn btn-primary w-full md:w-auto">
-                                            <i class="fa fa-save"></i>
-                                            <span>保存数据</span>
-                                        </button>
-                                    </div>
-                                </form>
-                    </div>
+                                        <!-- 赚钱效应数据 -->
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div>
+                                                <label for="positive-stock-input" class="label flex items-center">
+                                                    <span
+                                                        class="inline-block w-3 h-3 rounded-full bg-green-500 mr-2"></span>
+                                                    涨幅≥0%（排除ST）
+                                                </label>
+                                                <input type="number" id="positive-stock-input" min="0"
+                                                    class="input-field" placeholder="例如: 3000">
+                                            </div>
+                                            <div>
+                                                <label for="total-stock-input" class="label flex items-center">
+                                                    <span
+                                                        class="inline-block w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
+                                                    所有股票（排除ST）
+                                                </label>
+                                                <input type="number" id="total-stock-input" min="0" class="input-field"
+                                                    placeholder="例如: 5000">
+                                            </div>
+                                        </div>
 
-                    <!-- 操作卡片 -->
-                    <div class="card">
-                        <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            数据管理
-                        </h2>
-
-                        <div class="space-y-4">
-                            <!-- 数据统计 -->
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <h3 class="text-sm font-medium text-gray-700 mb-3">数据统计</h3>
-                                <div class="space-y-2">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">记录总数</span>
-                                        <span id="total-records" class="font-semibold">0</span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">最新记录</span>
-                                        <span id="latest-record" class="font-semibold">-</span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-sm text-gray-600">最新涨跌幅比例</span>
-                                        <span id="average-ratio" class="font-semibold">-</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 操作按钮 -->
-                            <div class="space-y-3">
-                                <button id="export-btn" class="btn btn-outline w-full">
-                                    <i class="fa fa-download"></i>
-                                    <span>导出JSON数据</span>
-                                </button>
-                                <button id="import-btn" class="btn btn-success w-full">
-                                    <i class="fa fa-upload"></i>
-                                    <span>导入JSON数据</span>
-                                </button>
-                                <input type="file" id="file-input" accept=".json">
-                                <button id="clear-btn" class="btn btn-danger w-full">
-                                    <i class="fa fa-trash"></i>
-                                    <span>清空所有数据</span>
-                                </button>
-                            </div>
+                                        <!-- 提交按钮 -->
+                                        <div class="pt-2 flex justify-end space-x-2">
+                                            <button type="button" id="cancel-add-data-btn" class="btn btn-outline">
+                                                <i class="fa fa-times"></i>
+                                                <span>取消</span>
+                                            </button>
+                                            <button type="submit" id="add-stock-btn" class="btn btn-primary">
+                                                <i class="fa fa-save"></i>
+                                                <span>保存</span>
+                                            </button>
+                                        </div>
+                                    </form>
                         </div>
                     </div>
                 </div>
@@ -428,7 +466,12 @@
                                     <th class="px-4 py-3 text-right font-medium text-gray-600">涨停</th>
                                     <th class="px-4 py-3 text-right font-medium text-gray-600">跌幅≤-3%</th>
                                     <th class="px-4 py-3 text-right font-medium text-gray-600">跌停</th>
-                                    <th class="px-4 py-3 text-right font-medium text-gray-600 rounded-r-lg">比例</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">比例</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">最高连板</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">涨停封板率(%)</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">赚钱效应(%)</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">涨幅≥0%（排除ST）</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600 rounded-r-lg">所有股票（排除ST）</th>
                                 </tr>
                             </thead>
                             <tbody id="data-table-body">
@@ -463,7 +506,7 @@
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                         <div class="flex items-center gap-4">
                             <h2 class="text-lg font-semibold text-gray-800 flex items-center">
-                                选股结果展示（每日09:30~10:00更新）
+                                选股结果展示
                             </h2>
                             <!-- <div class="relative">
                                 <input type="date" id="left-date-picker"
@@ -683,7 +726,7 @@ SELECT_COND;</code></pre>
 
                     <!-- 预测数据表格 -->
                     <div class="card mb-6">
-                        <h3 class="text-md font-medium text-gray-800 mb-3">AI预测数据及评分(每日15:00之后更新)</h3>
+                        <h3 class="text-md font-medium text-gray-800 mb-3">AI预测数据及评分</h3>
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm">
                                 <thead>
@@ -803,21 +846,26 @@ SELECT_COND;</code></pre>
                                                         <div>
                                                             <label
                                                                 class="text-xs text-gray-600 block mb-1">成交量(亿元)</label>
-                                                            <input type="number" class="input-field" id="deepseek-volume"
-                                                                min="0" step="0.01">
+                                                            <input type="number" class="input-field"
+                                                                id="deepseek-volume" min="0" step="0.01">
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
-                                                        <input type="text" class="input-field" id="deepseek-summary" placeholder="请输入一句话预测">
+                                                        <input type="text" class="input-field" id="deepseek-summary"
+                                                            placeholder="请输入一句话预测">
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
                                                         <select class="input-field" id="deepseek-trend">
                                                             <option value="">请选择</option>
-                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
-                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
-                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                            <option value="up">上涨 <i
+                                                                    class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i
+                                                                    class="fa fa-arrow-down text-green-500"></i>
+                                                            </option>
+                                                            <option value="neutral">中性 <i
+                                                                    class="fa fa-minus text-gray-500"></i></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -863,15 +911,20 @@ SELECT_COND;</code></pre>
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
-                                                        <input type="text" class="input-field" id="gpt-summary" placeholder="请输入一句话预测">
+                                                        <input type="text" class="input-field" id="gpt-summary"
+                                                            placeholder="请输入一句话预测">
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
                                                         <select class="input-field" id="gpt-trend">
                                                             <option value="">请选择</option>
-                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
-                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
-                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                            <option value="up">上涨 <i
+                                                                    class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i
+                                                                    class="fa fa-arrow-down text-green-500"></i>
+                                                            </option>
+                                                            <option value="neutral">中性 <i
+                                                                    class="fa fa-minus text-gray-500"></i></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -917,15 +970,20 @@ SELECT_COND;</code></pre>
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
-                                                        <input type="text" class="input-field" id="grok-summary" placeholder="请输入一句话预测">
+                                                        <input type="text" class="input-field" id="grok-summary"
+                                                            placeholder="请输入一句话预测">
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
                                                         <select class="input-field" id="grok-trend">
                                                             <option value="">请选择</option>
-                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
-                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
-                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                            <option value="up">上涨 <i
+                                                                    class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i
+                                                                    class="fa fa-arrow-down text-green-500"></i>
+                                                            </option>
+                                                            <option value="neutral">中性 <i
+                                                                    class="fa fa-minus text-gray-500"></i></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -973,15 +1031,20 @@ SELECT_COND;</code></pre>
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
-                                                        <input type="text" class="input-field" id="gemini-summary" placeholder="请输入一句话预测">
+                                                        <input type="text" class="input-field" id="gemini-summary"
+                                                            placeholder="请输入一句话预测">
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
                                                         <select class="input-field" id="gemini-trend">
                                                             <option value="">请选择</option>
-                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
-                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
-                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                            <option value="up">上涨 <i
+                                                                    class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i
+                                                                    class="fa fa-arrow-down text-green-500"></i>
+                                                            </option>
+                                                            <option value="neutral">中性 <i
+                                                                    class="fa fa-minus text-gray-500"></i></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1027,15 +1090,20 @@ SELECT_COND;</code></pre>
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
-                                                        <input type="text" class="input-field" id="doubao-summary" placeholder="请输入一句话预测">
+                                                        <input type="text" class="input-field" id="doubao-summary"
+                                                            placeholder="请输入一句话预测">
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
                                                         <select class="input-field" id="doubao-trend">
                                                             <option value="">请选择</option>
-                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
-                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
-                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                            <option value="up">上涨 <i
+                                                                    class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i
+                                                                    class="fa fa-arrow-down text-green-500"></i>
+                                                            </option>
+                                                            <option value="neutral">中性 <i
+                                                                    class="fa fa-minus text-gray-500"></i></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1081,15 +1149,20 @@ SELECT_COND;</code></pre>
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">一句话预测</label>
-                                                        <input type="text" class="input-field" id="yuanbao-summary" placeholder="请输入一句话预测">
+                                                        <input type="text" class="input-field" id="yuanbao-summary"
+                                                            placeholder="请输入一句话预测">
                                                     </div>
                                                     <div>
                                                         <label class="text-xs text-gray-600 block mb-1">涨跌态度</label>
                                                         <select class="input-field" id="yuanbao-trend">
                                                             <option value="">请选择</option>
-                                                            <option value="up">上涨 <i class="fa fa-arrow-up text-red-500"></i></option>
-                                                            <option value="down">下跌 <i class="fa fa-arrow-down text-green-500"></i></option>
-                                                            <option value="neutral">中性 <i class="fa fa-minus text-gray-500"></i></option>
+                                                            <option value="up">上涨 <i
+                                                                    class="fa fa-arrow-up text-red-500"></i></option>
+                                                            <option value="down">下跌 <i
+                                                                    class="fa fa-arrow-down text-green-500"></i>
+                                                            </option>
+                                                            <option value="neutral">中性 <i
+                                                                    class="fa fa-minus text-gray-500"></i></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1170,6 +1243,7 @@ SELECT_COND;</code></pre>
     <script>
         // 全局变量
         let chartInstance = null;
+        let chartInstance2 = null; // 短线连板情绪图实例
         // 使用data.js中定义的每日涨跌幅数据
         let chartData = dailyChangeRateData;
         // 确保数据格式正确
@@ -1181,6 +1255,13 @@ SELECT_COND;</code></pre>
             limitUpCount: item.limitUpCount || 0,
             limitDownCount: item.limitDownCount || 0,
             volume: item.volume || 0,
+            maxConsecutive: item.maxConsecutive || 0,
+            // 涨停封板率相关字段
+            limitUpRate: item.limitUpRate || 0, // 涨停封板率
+            // 赚钱效应相关字段
+            positiveStockCount: item.positiveStockCount || 0, // 所有涨幅>=0%的股票数量
+            totalStockCount: item.totalStockCount || 0, // 所有股票数量
+            profitEffect: item.profitEffect || 0, // 赚钱效应 = positiveStockCount / totalStockCount
         }));
 
         // 当前页码和每页记录数
@@ -1797,6 +1878,11 @@ SELECT_COND;</code></pre>
             const downStockInput = document.getElementById('down-stock-input');
             const limitDownInput = document.getElementById('limit-down-input');
             const volumeInput = document.getElementById('volume-input');
+            const maxConsecutiveInput = document.getElementById('max-consecutive-input');
+            // 新增字段的输入元素
+            const limitUpRateInput = document.getElementById('limit-up-rate-input');
+            const positiveStockInput = document.getElementById('positive-stock-input');
+            const totalStockInput = document.getElementById('total-stock-input');
 
             const date = dateInput.value.trim();
 
@@ -1806,6 +1892,11 @@ SELECT_COND;</code></pre>
             const downStockInputValue = downStockInput.value.trim();
             const limitDownInputValue = limitDownInput.value.trim();
             const volumeInputValue = volumeInput.value.trim();
+            const maxConsecutiveInputValue = maxConsecutiveInput.value.trim();
+            // 新增字段的输入值
+            const limitUpRateInputValue = limitUpRateInput.value.trim();
+            const positiveStockInputValue = positiveStockInput.value.trim();
+            const totalStockInputValue = totalStockInput.value.trim();
 
             if (!date) {
                 showMessage('请选择日期！', 'warning');
@@ -1815,7 +1906,10 @@ SELECT_COND;</code></pre>
 
             // 查找现有数据
             const existingIndex = chartData.findIndex(item => item.date === date);
-            let upStockCount, limitUpCount, downStockCount, limitDownCount, volume;
+            let upStockCount, limitUpCount, downStockCount, limitDownCount, volume, maxConsecutive;
+            // 新增字段的变量
+            let limitUpRate, positiveStockCount, totalStockCount;
+            let profitEffect;
 
             if (existingIndex > -1) {
                 // 有现有数据，使用现有值作为默认值
@@ -1824,6 +1918,11 @@ SELECT_COND;</code></pre>
                 downStockCount = chartData[existingIndex].downStockCount || 0;
                 limitDownCount = chartData[existingIndex].limitDownCount || 0;
                 volume = chartData[existingIndex].volume || 0;
+                maxConsecutive = chartData[existingIndex].maxConsecutive || 0;
+                // 新增字段的默认值
+                limitUpRate = chartData[existingIndex].limitUpRate || 0;
+                positiveStockCount = chartData[existingIndex].positiveStockCount || 0;
+                totalStockCount = chartData[existingIndex].totalStockCount || 0;
 
                 // 只更新用户输入的字段
                 if (upStockInputValue !== '') {
@@ -1867,6 +1966,39 @@ SELECT_COND;</code></pre>
                     }
                 } else {
                     volume = 0;
+                }
+                if (maxConsecutiveInputValue !== '') {
+                    maxConsecutive = parseInt(maxConsecutiveInputValue);
+                    if (maxConsecutive < 0) {
+                        showMessage('最高连板数量不能为负数！', 'warning');
+                        maxConsecutiveInput.focus();
+                        return;
+                    }
+                }
+                // 新增字段的更新逻辑
+                if (limitUpRateInputValue !== '') {
+                    limitUpRate = parseFloat(limitUpRateInputValue) / 100; // 转换为小数
+                    if (limitUpRate < 0 || limitUpRate > 1) {
+                        showMessage('涨停封板率必须在0-100之间！', 'warning');
+                        limitUpRateInput.focus();
+                        return;
+                    }
+                }
+                if (positiveStockInputValue !== '') {
+                    positiveStockCount = parseInt(positiveStockInputValue);
+                    if (positiveStockCount < 0) {
+                        showMessage('涨幅>=0%股票数量不能为负数！', 'warning');
+                        positiveStockInput.focus();
+                        return;
+                    }
+                }
+                if (totalStockInputValue !== '') {
+                    totalStockCount = parseInt(totalStockInputValue);
+                    if (totalStockCount < 0) {
+                        showMessage('所有股票数量不能为负数！', 'warning');
+                        totalStockInput.focus();
+                        return;
+                    }
                 }
             } else {
                 // 没有现有数据，使用用户输入的值，如果未输入则使用0
@@ -1921,6 +2053,49 @@ SELECT_COND;</code></pre>
                 } else {
                     volume = 0;
                 }
+
+                if (maxConsecutiveInputValue !== '') {
+                    maxConsecutive = parseInt(maxConsecutiveInputValue);
+                    if (maxConsecutive < 0) {
+                        showMessage('最高连板数量不能为负数！', 'warning');
+                        maxConsecutiveInput.focus();
+                        return;
+                    }
+                } else {
+                    maxConsecutive = 0;
+                }
+
+                // 新增字段的默认值处理
+                if (limitUpRateInputValue !== '') {
+                    limitUpRate = parseFloat(limitUpRateInputValue) / 100; // 转换为小数
+                    if (limitUpRate < 0 || limitUpRate > 1) {
+                        showMessage('涨停封板率必须在0-100之间！', 'warning');
+                        limitUpRateInput.focus();
+                        return;
+                    }
+                } else {
+                    limitUpRate = 0;
+                }
+                if (positiveStockInputValue !== '') {
+                    positiveStockCount = parseInt(positiveStockInputValue);
+                    if (positiveStockCount < 0) {
+                        showMessage('涨幅>=0%股票数量不能为负数！', 'warning');
+                        positiveStockInput.focus();
+                        return;
+                    }
+                } else {
+                    positiveStockCount = 0;
+                }
+                if (totalStockInputValue !== '') {
+                    totalStockCount = parseInt(totalStockInputValue);
+                    if (totalStockCount < 0) {
+                        showMessage('所有股票数量不能为负数！', 'warning');
+                        totalStockInput.focus();
+                        return;
+                    }
+                } else {
+                    totalStockCount = 0;
+                }
             }
 
             // 验证逻辑：涨停家数不能大于涨幅股票数量
@@ -1935,9 +2110,17 @@ SELECT_COND;</code></pre>
                 limitDownInput.focus();
                 return;
             }
+            // 验证逻辑：涨幅>=0%股票数量不能大于所有股票数量
+            if (positiveStockCount > totalStockCount) {
+                showMessage('涨幅>=0%股票数量不能大于所有股票数量！', 'warning');
+                positiveStockInput.focus();
+                return;
+            }
 
             // 计算涨跌幅比例
             const calculatedValue = calculateChangeRate(upStockCount, downStockCount);
+            // 计算赚钱效应
+            profitEffect = totalStockCount > 0 ? (positiveStockCount / totalStockCount) : 0;
 
             if (existingIndex > -1) {
                 // 更新现有数据
@@ -1946,7 +2129,13 @@ SELECT_COND;</code></pre>
                 chartData[existingIndex].downStockCount = downStockCount;
                 chartData[existingIndex].limitDownCount = limitDownCount;
                 chartData[existingIndex].volume = volume;
+                chartData[existingIndex].maxConsecutive = maxConsecutive;
                 chartData[existingIndex].value = calculatedValue;
+                // 更新新增字段
+                chartData[existingIndex].limitUpRate = limitUpRate;
+                chartData[existingIndex].positiveStockCount = positiveStockCount;
+                chartData[existingIndex].totalStockCount = totalStockCount;
+                chartData[existingIndex].profitEffect = profitEffect;
                 showMessage(`日期 ${formatDate(date)} 的涨跌幅数据已更新，涨跌幅比例为 ${calculatedValue}！`, 'success');
             } else {
                 // 添加新数据
@@ -1957,10 +2146,19 @@ SELECT_COND;</code></pre>
                     limitUpCount,
                     downStockCount,
                     limitDownCount,
-                    volume
+                    volume,
+                    maxConsecutive,
+                    // 新增字段
+                    limitUpRate,
+                    positiveStockCount,
+                    totalStockCount,
+                    profitEffect
                 });
                 showMessage(`涨跌幅数据添加成功，涨跌幅比例为 ${calculatedValue}！`, 'success');
             }
+
+            // 关闭弹窗
+            closeAddDataModal();
 
             // 保存并更新图表
             chartData.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -1977,10 +2175,16 @@ SELECT_COND;</code></pre>
             downStockInput.value = '';
             limitDownInput.value = '';
             volumeInput.value = '';
+            maxConsecutiveInput.value = '';
+            // 清空新增字段的输入框
+            limitUpRateInput.value = '';
+            positiveStockInput.value = '';
+            totalStockInput.value = '';
             dateInput.focus();
 
             // 更新UI
             initChart();
+            initChart2();
             updateTable();
             updateStats();
         }
@@ -2043,7 +2247,15 @@ SELECT_COND;</code></pre>
                         downStockCount: item.downStockCount !== undefined ? parseInt(item.downStockCount) : 0,
                         limitUpCount: item.limitUpCount !== undefined ? parseInt(item.limitUpCount) : 0,
                         limitDownCount: item.limitDownCount !== undefined ? parseInt(item.limitDownCount) : 0,
-                        volume: item.volume !== undefined ? parseFloat(item.volume) : 0
+                        volume: item.volume !== undefined ? parseFloat(item.volume) : 0,
+                        // 新增字段
+                        maxConsecutive: item.maxConsecutive !== undefined ? parseInt(item.maxConsecutive) : 0,
+                        // 涨停封板率相关字段（直接使用）
+                        limitUpRate: item.limitUpRate !== undefined ? parseFloat(item.limitUpRate) : 0,
+                        // 赚钱效应相关字段
+                        positiveStockCount: item.positiveStockCount !== undefined ? parseInt(item.positiveStockCount) : 0,
+                        totalStockCount: item.totalStockCount !== undefined ? parseInt(item.totalStockCount) : 0,
+                        profitEffect: item.profitEffect !== undefined ? parseFloat(item.profitEffect) : 0
                     }));
 
                     if (validData.length === 0) {
@@ -2071,6 +2283,7 @@ SELECT_COND;</code></pre>
 
                     // 更新UI
                     initChart();
+                    initChart2();
                     updateTable();
                     updateStats();
 
@@ -2083,29 +2296,30 @@ SELECT_COND;</code></pre>
             reader.readAsText(file);
         }
 
-        /**
-         * 清空所有数据
-         */
-        function clearAllData() {
-            if (chartData.length === 0) {
-                showMessage('暂无数据可清空！', 'info');
-                return;
-            }
+        // /**
+        //  * 清空所有数据
+        //  */
+        // function clearAllData() {
+        //     if (chartData.length === 0) {
+        //         showMessage('暂无数据可清空！', 'info');
+        //         return;
+        //     }
 
-            if (confirm('确定要清空所有数据吗？此操作不可恢复！')) {
-                chartData = [];
-                filteredData = [];
-                currentPage = 1;
-                localStorage.removeItem('dailyChangeRateData');
+        //     if (confirm('确定要清空所有数据吗？此操作不可恢复！')) {
+        //         chartData = [];
+        //         filteredData = [];
+        //         currentPage = 1;
+        //         localStorage.removeItem('dailyChangeRateData');
 
-                // 更新UI
-                initChart();
-                updateTable();
-                updateStats();
+        //         // 更新UI
+        //         initChart();
+        //         initChart2();
+        //         updateTable();
+        //         updateStats();
 
-                showMessage('所有数据已清空！', 'success');
-            }
-        }
+        //         showMessage('所有数据已清空！', 'success');
+        //     }
+        // }
 
         /**
          * 更新数据表格
@@ -2136,7 +2350,7 @@ SELECT_COND;</code></pre>
 
             // 更新表格内容
             if (pageData.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="6" class="px-4 py-8 text-center text-gray-500">暂无数据</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="11" class="px-4 py-8 text-center text-gray-500">暂无数据</td></tr>';
             } else {
                 tableBody.innerHTML = pageData.map(item => `
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -2146,6 +2360,11 @@ SELECT_COND;</code></pre>
                         <td class="px-4 py-3 text-right text-gray-800">${item.downStockCount}</td>
                         <td class="px-4 py-3 text-right text-chart-limit-down font-medium">${item.limitDownCount}</td>
                         <td class="px-4 py-3 text-right font-semibold">${item.value}</td>
+                        <td class="px-4 py-3 text-right text-orange-600 font-medium">${item.maxConsecutive || 0}</td>
+                        <td class="px-4 py-3 text-right text-red-600">${((item.limitUpRate || 0) * 100).toFixed(2)}</td>
+                        <td class="px-4 py-3 text-right text-green-600 font-medium">${((item.profitEffect || 0) * 100).toFixed(2)}</td>
+                        <td class="px-4 py-3 text-right text-gray-800">${item.positiveStockCount || 0}</td>
+                        <td class="px-4 py-3 text-right text-gray-800">${item.totalStockCount || 0}</td>
                     </tr>
                 `).join('');
             }
@@ -2159,22 +2378,23 @@ SELECT_COND;</code></pre>
             const latestRecord = document.getElementById('latest-record');
             const averageRatio = document.getElementById('average-ratio');
 
-            totalRecords.textContent = chartData.length;
+            // 只有当元素存在时才更新它们
+            if (totalRecords) {
+                totalRecords.textContent = chartData.length;
 
-            if (chartData.length === 0) {
-                latestRecord.textContent = '-';
-                averageRatio.textContent = '-';
-                return;
+                if (chartData.length === 0) {
+                    if (latestRecord) latestRecord.textContent = '-';
+                    if (averageRatio) averageRatio.textContent = '-';
+                    return;
+                }
+
+                // 获取最新记录
+                const sortedData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
+                if (latestRecord) latestRecord.textContent = formatDate(sortedData[0].date);
+
+                // 计算最新涨跌幅比例
+                if (averageRatio) averageRatio.textContent = sortedData[0].value.toFixed(2);
             }
-
-            // 获取最新记录
-            const sortedData = [...chartData].sort((a, b) => new Date(b.date) - new Date(a.date));
-            latestRecord.textContent = formatDate(sortedData[0].date);
-
-            // 计算最新涨跌幅比例
-            // const sum = chartData.reduce((acc, item) => acc + item.value, 0);
-            // const avg = sum / chartData.length;
-            averageRatio.textContent = sortedData[0].value.toFixed(2);
         }
 
         /**
@@ -3024,14 +3244,14 @@ SELECT_COND;`;
             });
 
             // 清空按钮
-            document.getElementById('clear-btn').addEventListener('click', clearAllData);
+            // document.getElementById('clear-btn').addEventListener('click', clearAllData);
 
-            // 重置缩放按钮
-            document.getElementById('reset-zoom').addEventListener('click', () => {
-                if (chartInstance) {
-                    chartInstance.resetZoom();
-                }
-            });
+            // // 重置缩放按钮
+            // document.getElementById('reset-zoom').addEventListener('click', () => {
+            //     if (chartInstance) {
+            //         chartInstance.resetZoom();
+            //     }
+            // });
 
             // 搜索输入
             document.getElementById('search-input').addEventListener('input', (e) => {
@@ -3223,6 +3443,7 @@ SELECT_COND;`;
             });
 
             // 创建图表
+            let delayed;
             chartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -3330,6 +3551,7 @@ SELECT_COND;`;
                         zoom: {
                             pan: {
                                 enabled: true,
+                                mode: 'x'
                             },
                             zoom: {
                                 wheel: {
@@ -3383,13 +3605,15 @@ SELECT_COND;`;
                                 autoSkip: true,
                                 maxTicksLimit: 10,
                                 font: {
-                                    size: 12
+                                    size: 14
                                 }
                             },
                             grid: {
                                 display: true,
                                 color: 'rgba(0,0,0,0.05)'
-                            }
+                            },
+                            min: allSortedData.length - 21,
+                            max: allSortedData.length - 1
                         },
                         y: {
                             // 左侧Y轴：股票数量
@@ -3521,6 +3745,237 @@ SELECT_COND;`;
         }
 
         /**
+         * 初始化短线连板情绪图
+         */
+        function initChart2() {
+            const ctx2 = document.getElementById('chart-2').getContext('2d');
+
+            // 获取所有排序后的数据
+            const allSortedData = getSortedData();
+            const labels = allSortedData.map(item => item.date);
+            const maxConsecutiveData = allSortedData.map(item => item.maxConsecutive);
+            // 获取新增指标的数据
+            const limitUpRateData = allSortedData.map(item => item.limitUpRate); // 涨停封板率
+            const profitEffectData = allSortedData.map(item => item.profitEffect); // 赚钱效应
+
+            console.log("limitUpRateData:", limitUpRateData);
+            // 销毁已有图表实例
+            if (chartInstance2) {
+                chartInstance2.destroy();
+            }
+
+            // 创建图表，混合使用柱状图和折线图
+            chartInstance2 = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: '最高连板数量',
+                            data: maxConsecutiveData,
+                            type: 'bar',
+                            borderColor: '#ff7f50', // 珊瑚色
+                            backgroundColor: 'rgba(255, 127, 80, 0.5)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.2,
+                            pointBackgroundColor: '#ff7f50',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            yAxisID: 'y' // 使用左侧第一个Y轴
+                        },
+                        {
+                            label: '涨停封板率',
+                            data: limitUpRateData,
+                            // type: 'bar',
+                            backgroundColor: '#f23645', // 红色（涨幅主色）
+                            borderColor: '#f23645',
+                            borderWidth: 1,
+                            yAxisID: 'y1', // 使用左侧第二个Y轴
+                            order: -1 // 线图在最顶层
+                        },
+                        {
+                            label: '赚钱效应',
+                            data: profitEffectData,
+                            type: 'line',
+                            borderColor: '#1e3a8a', // 深蓝色
+                            backgroundColor: 'rgba(30, 58, 138, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.2,
+                            pointBackgroundColor: '#1e3a8a',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            yAxisID: 'y2', // 使用右侧Y轴
+                            order: -2 // 线图在最顶层
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        // 为不同指标设置不同的显示格式
+                                        if (label.includes('涨停封板率')) {
+                                            label += (context.parsed.y * 100).toFixed(2) + '%';
+                                        } else if (label.includes('赚钱效应')) {
+                                            label += (context.parsed.y * 100).toFixed(2) + '%';
+                                        } else {
+                                            label += context.parsed.y;
+                                        }
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                        zoom: {
+                            zoom: {
+                                wheel: {
+                                    enabled: true,
+                                },
+                                pinch: {
+                                    enabled: true
+                                },
+                                mode: 'xy',
+                            },
+                            pan: {
+                                enabled: true,
+                                mode: 'xy',
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'category',
+                            ticks: {
+                                maxRotation: 0,
+                                autoSkip: true,
+                                maxTicksLimit: 10,
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: 'rgba(0,0,0,0.05)'
+                            },
+                            min: allSortedData.length - 21,
+                            max: allSortedData.length - 1
+                        },
+                        y: {
+                            // 左侧Y轴1：最高连板数量
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '最高连板数量',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: 'rgba(0,0,0,0.05)'
+                            },
+                            ticks: {
+                                stepSize: 1,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        y1: {
+                            // 左侧Y轴2：涨停封板率
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '涨停封板率',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false // 不绘制网格线，避免与其他Y轴冲突
+                            },
+                            ticks: {
+                                callback: function (value) {
+                                    return (value * 100).toFixed(0) + '%'; // 显示为百分比
+                                },
+                                font: {
+                                    size: 11
+                                },
+                                color: 'rgba(255, 99, 132, 1)' // 与对应数据集颜色一致
+                            },
+                            min: 0,
+                            max: 1
+                        },
+                        y2: {
+                            // 右侧Y轴：赚钱效应
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '赚钱效应',
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false // 不绘制网格线，避免与其他Y轴冲突
+                            },
+                            ticks: {
+                                callback: function (value) {
+                                    return (value * 100).toFixed(0) + '%'; // 显示为百分比
+                                },
+                                font: {
+                                    size: 11
+                                },
+                                color: '#4bc0c0' // 与对应数据集颜色一致
+                            },
+                            min: 0,
+                            max: 1
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        /**
          * 初始化
          */
         function init() {
@@ -3545,6 +4000,7 @@ SELECT_COND;`;
 
             // 初始化图表
             initChart();
+            initChart2();
 
             // 初始化表格
             updateTable();
@@ -3562,6 +4018,37 @@ SELECT_COND;`;
                 }, 1000);
             }
         }
+
+        // 处理添加涨跌幅数据弹窗
+        const addDataModal = document.getElementById('add-data-modal');
+        const addDataBtn = document.getElementById('add-data-btn');
+        const closeAddDataModalBtn = document.getElementById('close-add-data-modal');
+        const cancelAddDataBtn = document.getElementById('cancel-add-data-btn');
+        const stockForm = document.getElementById('stock-form');
+
+        // 显示弹窗
+        addDataBtn.addEventListener('click', () => {
+            addDataModal.classList.remove('hidden');
+        });
+
+        // 隐藏弹窗
+        function closeAddDataModal() {
+            addDataModal.classList.add('hidden');
+            stockForm.reset();
+        }
+
+        // 点击关闭按钮隐藏弹窗
+        closeAddDataModalBtn.addEventListener('click', closeAddDataModal);
+
+        // 点击取消按钮隐藏弹窗
+        cancelAddDataBtn.addEventListener('click', closeAddDataModal);
+
+        // 点击弹窗外部隐藏弹窗
+        addDataModal.addEventListener('click', (e) => {
+            if (e.target === addDataModal) {
+                closeAddDataModal();
+            }
+        });
 
         // 页面加载完成后初始化
         window.addEventListener('DOMContentLoaded', () => {

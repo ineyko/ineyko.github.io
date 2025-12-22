@@ -7,7 +7,12 @@ const dailyChangeRateData = [
     "downStockCount": 363,
     "limitUpCount": 72,
     "limitDownCount": 9,
-    "volume": 16439.1
+    "volume": 16439.1,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-10-24",
@@ -16,7 +21,12 @@ const dailyChangeRateData = [
     "downStockCount": 230,
     "limitUpCount": 71,
     "limitDownCount": 10,
-    "volume": 19742.09
+    "volume": 19742.09,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-10-27",
@@ -25,7 +35,12 @@ const dailyChangeRateData = [
     "downStockCount": 202,
     "limitUpCount": 63,
     "limitDownCount": 15,
-    "volume": 23401.32
+    "volume": 23401.32,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-10-28",
@@ -34,7 +49,12 @@ const dailyChangeRateData = [
     "downStockCount": 330,
     "limitUpCount": 71,
     "limitDownCount": 10,
-    "volume": 21478.6
+    "volume": 21478.6,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-10-29",
@@ -43,7 +63,12 @@ const dailyChangeRateData = [
     "downStockCount": 285,
     "limitUpCount": 66,
     "limitDownCount": 10,
-    "volume": 22560.3
+    "volume": 22560.3,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-10-30",
@@ -52,7 +77,12 @@ const dailyChangeRateData = [
     "downStockCount": 885,
     "limitUpCount": 61,
     "limitDownCount": 10,
-    "volume": 24216.77
+    "volume": 24216.77,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-10-31",
@@ -61,7 +91,12 @@ const dailyChangeRateData = [
     "downStockCount": 361,
     "limitUpCount": 76,
     "limitDownCount": 17,
-    "volume": 23177.92
+    "volume": 23177.92,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-03",
@@ -70,7 +105,12 @@ const dailyChangeRateData = [
     "downStockCount": 274,
     "limitUpCount": 90,
     "limitDownCount": 11,
-    "volume": 21071.31
+    "volume": 21071.31,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-04",
@@ -79,7 +119,12 @@ const dailyChangeRateData = [
     "downStockCount": 676,
     "limitUpCount": 67,
     "limitDownCount": 8,
-    "volume": 19157.58
+    "volume": 19157.58,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-05",
@@ -88,7 +133,12 @@ const dailyChangeRateData = [
     "downStockCount": 152,
     "limitUpCount": 83,
     "limitDownCount": 7,
-    "volume": 18723.41
+    "volume": 18723.41,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-06",
@@ -97,7 +147,12 @@ const dailyChangeRateData = [
     "downStockCount": 244,
     "limitUpCount": 72,
     "limitDownCount": 17,
-    "volume": 20552.48
+    "volume": 20552.48,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-07",
@@ -106,7 +161,12 @@ const dailyChangeRateData = [
     "downStockCount": 384,
     "limitUpCount": 63,
     "limitDownCount": 8,
-    "volume": 19990.53
+    "volume": 19990.53,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-10",
@@ -115,7 +175,12 @@ const dailyChangeRateData = [
     "downStockCount": 286,
     "limitUpCount": 92,
     "limitDownCount": 10,
-    "volume": 21744.54
+    "volume": 21744.54,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-11",
@@ -124,7 +189,12 @@ const dailyChangeRateData = [
     "downStockCount": 273,
     "limitUpCount": 82,
     "limitDownCount": 6,
-    "volume": 19935.86
+    "volume": 19935.86,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-12",
@@ -133,7 +203,12 @@ const dailyChangeRateData = [
     "downStockCount": 493,
     "limitUpCount": 77,
     "limitDownCount": 10,
-    "volume": 19450.34
+    "volume": 19450.34,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-13",
@@ -142,7 +217,12 @@ const dailyChangeRateData = [
     "downStockCount": 78,
     "limitUpCount": 104,
     "limitDownCount": 0,
-    "volume": 20419.62
+    "volume": 20419.62,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-14",
@@ -151,7 +231,12 @@ const dailyChangeRateData = [
     "downStockCount": 611,
     "limitUpCount": 89,
     "limitDownCount": 9,
-    "volume": 19580.79
+    "volume": 19580.79,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-17",
@@ -160,7 +245,12 @@ const dailyChangeRateData = [
     "downStockCount": 346,
     "limitUpCount": 100,
     "limitDownCount": 10,
-    "volume": 19107.91
+    "volume": 19107.91,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-18",
@@ -169,7 +259,12 @@ const dailyChangeRateData = [
     "downStockCount": 892,
     "limitUpCount": 62,
     "limitDownCount": 36,
-    "volume": 19260.68
+    "volume": 19260.68,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-19",
@@ -178,7 +273,12 @@ const dailyChangeRateData = [
     "downStockCount": 928,
     "limitUpCount": 64,
     "limitDownCount": 33,
-    "volume": 17259.08
+    "volume": 17259.08,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-20",
@@ -187,7 +287,12 @@ const dailyChangeRateData = [
     "downStockCount": 587,
     "limitUpCount": 49,
     "limitDownCount": 20,
-    "volume": 17081.89
+    "volume": 17081.89,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-21",
@@ -196,7 +301,12 @@ const dailyChangeRateData = [
     "downStockCount": 3756,
     "limitUpCount": 33,
     "limitDownCount": 99,
-    "volume": 19656.61
+    "volume": 19656.61,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-24",
@@ -205,7 +315,12 @@ const dailyChangeRateData = [
     "downStockCount": 211,
     "limitUpCount": 79,
     "limitDownCount": 34,
-    "volume": 17277.74
+    "volume": 17277.74,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-25",
@@ -214,7 +329,12 @@ const dailyChangeRateData = [
     "downStockCount": 73,
     "limitUpCount": 95,
     "limitDownCount": 5,
-    "volume": 18121.47
+    "volume": 18121.47,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-26",
@@ -223,7 +343,12 @@ const dailyChangeRateData = [
     "downStockCount": 338,
     "limitUpCount": 76,
     "limitDownCount": 6,
-    "volume": 17833.46
+    "volume": 17833.46,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-27",
@@ -232,7 +357,12 @@ const dailyChangeRateData = [
     "downStockCount": 263,
     "limitUpCount": 63,
     "limitDownCount": 14,
-    "volume": 17097.94
+    "volume": 17097.94,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-11-28",
@@ -241,7 +371,12 @@ const dailyChangeRateData = [
     "downStockCount": 100,
     "limitUpCount": 81,
     "limitDownCount": 6,
-    "volume": 15857.96
+    "volume": 15857.96,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-01",
@@ -250,7 +385,12 @@ const dailyChangeRateData = [
     "downStockCount": 206,
     "limitUpCount": 76,
     "limitDownCount": 7,
-    "volume": 18739.38
+    "volume": 18739.38,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-02",
@@ -259,7 +399,12 @@ const dailyChangeRateData = [
     "downStockCount": 341,
     "limitUpCount": 54,
     "limitDownCount": 7,
-    "volume": 15934.3
+    "volume": 15934.3,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-03",
@@ -268,7 +413,12 @@ const dailyChangeRateData = [
     "downStockCount": 595,
     "limitUpCount": 54,
     "limitDownCount": 14,
-    "volume": 16699.62
+    "volume": 16699.62,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-04",
@@ -277,7 +427,12 @@ const dailyChangeRateData = [
     "downStockCount": 614,
     "limitUpCount": 39,
     "limitDownCount": 26,
-    "volume": 15489.6
+    "volume": 15489.6,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-05",
@@ -286,7 +441,12 @@ const dailyChangeRateData = [
     "downStockCount": 109,
     "limitUpCount": 80,
     "limitDownCount": 12,
-    "volume": 17257.71
+    "volume": 17257.71,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-08",
@@ -295,7 +455,12 @@ const dailyChangeRateData = [
     "downStockCount": 88,
     "limitUpCount": 78,
     "limitDownCount": 8,
-    "volume": 20366.46
+    "volume": 20366.46,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-09",
@@ -304,7 +469,12 @@ const dailyChangeRateData = [
     "downStockCount": 446,
     "limitUpCount": 54,
     "limitDownCount": 12,
-    "volume": 19039.53
+    "volume": 19039.53,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-10",
@@ -313,7 +483,12 @@ const dailyChangeRateData = [
     "downStockCount": 253,
     "limitUpCount": 60,
     "limitDownCount": 11,
-    "volume": 17785.05
+    "volume": 17785.05,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-11",
@@ -322,7 +497,12 @@ const dailyChangeRateData = [
     "downStockCount": 1088,
     "limitUpCount": 38,
     "limitDownCount": 29,
-    "volume": 18571.13
+    "volume": 18571.13,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-12",
@@ -331,7 +511,12 @@ const dailyChangeRateData = [
     "downStockCount": 336,
     "limitUpCount": 83,
     "limitDownCount": 26,
-    "volume": 20922.06
+    "volume": 20922.06,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-15",
@@ -340,7 +525,12 @@ const dailyChangeRateData = [
     "downStockCount": 512,
     "limitUpCount": 65,
     "limitDownCount": 24,
-    "volume": 17734.39
+    "volume": 17734.39,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
   },
   {
     "date": "2025-12-16",
@@ -349,7 +539,12 @@ const dailyChangeRateData = [
     "downStockCount": 1258,
     "limitUpCount": 46,
     "limitDownCount": 36,
-    "volume": 17241.73
+    "volume": 17241.73,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.69,
+    "positiveStockCount": 872,
+    "totalStockCount": 5149,
+    "profitEffect": 0.16935
   },
   {
     "date": "2025-12-17",
@@ -358,7 +553,12 @@ const dailyChangeRateData = [
     "downStockCount": 260,
     "limitUpCount": 57,
     "limitDownCount": 25,
-    "volume": 18111.46
+    "volume": 18111.46,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.71,
+    "positiveStockCount": 3480,
+    "totalStockCount": 5159,
+    "profitEffect": 0.6745
   },
   {
     "date": "2025-12-18",
@@ -367,16 +567,40 @@ const dailyChangeRateData = [
     "downStockCount": 333,
     "limitUpCount": 73,
     "limitDownCount": 8,
-    "volume": 16554.83
+    "volume": 16554.83,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 2748,
+    "totalStockCount": 5162,
+    "profitEffect": 0.5323
   },
   {
     "date": "2025-12-19",
     "value": 7.38,
     "upStockCount": 886,
-    "limitUpCount": 82,
     "downStockCount": 120,
+    "limitUpCount": 82,
     "limitDownCount": 6,
-    "volume": 17259.15
+    "volume": 17259.15,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 4239,
+    "totalStockCount": 5161,
+    "profitEffect": 0.8213
+  },
+  {
+    "date": "2025-12-22",
+    "value": 4.24,
+    "upStockCount": 700,
+    "limitUpCount": 105,
+    "downStockCount": 165,
+    "limitDownCount": 8,
+    "volume": 18619.4,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.68,
+    "positiveStockCount": 2836,
+    "totalStockCount": 5159,
+    "profitEffect": 0.5497189377786392
   }
 ]
 
@@ -679,6 +903,42 @@ const stockResultsData = [
     "prevHigh": 13.28,
     "open": 13.56,
     "close": 14.21
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "002810",
+    "stockName": "山东赫达",
+    "prevClose": 13.22,
+    "prevHigh": 13.4,
+    "open": 14.08,
+    "close": 14.54
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "000625",
+    "stockName": "长安汽车",
+    "prevClose": 11.75,
+    "prevHigh": 11.84,
+    "open": 12.12,
+    "close": 12.05
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "002917",
+    "stockName": "金奥博",
+    "prevClose": 13.14,
+    "prevHigh": 13.22,
+    "open": 13.5,
+    "close": 13.35
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "600178",
+    "stockName": "东安动力",
+    "prevClose": 11.77,
+    "prevHigh": 11.8,
+    "open": 12.29,
+    "close": 12.02
   }
 ]
 
@@ -991,6 +1251,71 @@ const aiData = [
       "limitUpCount": "59",
       "limitDownCount": "14",
       "volume": "17189.2"
+    },
+    "scores": {
+      "deepseek": 77.25,
+      "gpt": 79.43,
+      "grok": 78.91,
+      "gemini": 73.36,
+      "doubao": 71.66,
+      "yuanbao": 74.01
+    }
+  },
+  {
+    "date": "2025-12-23",
+    "deepseek": {
+      "upStockCount": "580",
+      "downStockCount": "210",
+      "limitUpCount": "85",
+      "limitDownCount": "12",
+      "volume": "18500",
+      "summary": "市场预计延续分化整理，上涨动能减弱但结构性机会仍存，成交量温和收缩",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "600",
+      "downStockCount": "260",
+      "limitUpCount": "92",
+      "limitDownCount": "14",
+      "volume": "18200",
+      "summary": "情绪降温后的结构性延续日",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "580",
+      "downStockCount": "260",
+      "limitUpCount": "85",
+      "limitDownCount": "12",
+      "volume": "18200",
+      "summary": "高开后震荡分化，普涨力度减弱，赚钱效应回落但整体仍偏强运行",
+      "trend": "neutral"
+    },
+    "gemini": {
+      "upStockCount": "420",
+      "downStockCount": "310",
+      "limitUpCount": "72",
+      "limitDownCount": "16",
+      "volume": "17800",
+      "summary": "市场将由“百股涨停”的狂热转向“去弱留强”的惨烈分化，短线投机情绪面临见顶回落的风险",
+      "trend": "neutral"
+    },
+    "doubao": {
+      "upStockCount": "650",
+      "downStockCount": "180",
+      "limitUpCount": "95",
+      "limitDownCount": "7",
+      "volume": "18200",
+      "summary": "跌停数量维持低位，涨停情绪仍较活跃，整体赚钱效应保持中性偏积极",
+      "trend": "up"
+    },
+    "yuanbao": {
+      "upStockCount": "683",
+      "downStockCount": "178",
+      "limitUpCount": "97",
+      "limitDownCount": "9",
+      "volume": "18842.3",
+      "summary": "市场将延续震荡上行趋势，短期资金活跃度维持高位，但需警惕连板高度触顶后的获利回吐压力",
+      "trend": "neutral"
     },
     "scores": {
       "deepseek": 0,
