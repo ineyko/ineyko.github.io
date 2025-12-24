@@ -362,7 +362,7 @@ const dailyChangeRateData = [
     "limitUpRate": 0.61,
     "positiveStockCount": 2790,
     "totalStockCount": 5434,
-    "profitEffect": 0.5134339344865661
+    "profitEffect": 0.513433934486566
   },
   {
     "date": "2025-11-28",
@@ -387,7 +387,7 @@ const dailyChangeRateData = [
     "limitDownCount": 7,
     "volume": 18739.38,
     "maxConsecutive": 6,
-    "limitUpRate": 0.70,
+    "limitUpRate": 0.7,
     "positiveStockCount": 3398,
     "totalStockCount": 5432,
     "profitEffect": 0.6255522827687776
@@ -558,7 +558,7 @@ const dailyChangeRateData = [
     "limitUpRate": 0.71,
     "positiveStockCount": 3626,
     "totalStockCount": 5446,
-    "profitEffect": 0.6658097686375321
+    "profitEffect": 0.665809768637532
   },
   {
     "date": "2025-12-18",
@@ -606,8 +606,8 @@ const dailyChangeRateData = [
     "date": "2025-12-23",
     "value": 0.81,
     "upStockCount": 399,
-    "limitUpCount": 68,
     "downStockCount": 495,
+    "limitUpCount": 68,
     "limitDownCount": 15,
     "volume": 18998.41,
     "maxConsecutive": 8,
@@ -615,6 +615,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1512,
     "totalStockCount": 5449,
     "profitEffect": 0.27748210680858876
+  },
+  {
+    "date": "2025-12-24",
+    "value": 9.29,
+    "upStockCount": 799,
+    "limitUpCount": 86,
+    "downStockCount": 86,
+    "limitDownCount": 6,
+    "volume": 18802.68,
+    "maxConsecutive": 9,
+    "limitUpRate": 0.78,
+    "positiveStockCount": 4128,
+    "totalStockCount": 5451,
+    "profitEffect": 0.7572922399559714
   }
 ]
 
@@ -980,6 +994,33 @@ const stockResultsData = [
     "prevHigh": 28.85,
     "open": 29.74,
     "close": 28.22
+  },
+  {
+    "date": "2025-12-24",
+    "stockCode": "002324",
+    "stockName": "普利特",
+    "prevClose": 13.11,
+    "prevHigh": 13.21,
+    "open": 13.51,
+    "close": 14.42
+  },
+  {
+    "date": "2025-12-24",
+    "stockCode": "600962",
+    "stockName": "国投中鲁",
+    "prevClose": 21.3,
+    "prevHigh": 21.78,
+    "open": 23.08,
+    "close": 23.43
+  },
+  {
+    "date": "2025-12-24",
+    "stockCode": "300351",
+    "stockName": "永贵电器",
+    "prevClose": 17.36,
+    "prevHigh": 17.5,
+    "open": 18.4,
+    "close": 18.63
   }
 ]
 
@@ -1421,6 +1462,71 @@ const aiData = [
       "limitDownCount": "18",
       "volume": "18214.7",
       "summary": "市场延续弱势震荡格局，短期资金避险情绪升温，但跌停潮未扩散显示局部流动性支撑仍在",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 56.04,
+      "gpt": 55.42,
+      "grok": 62.44,
+      "gemini": 43.86,
+      "doubao": 53.01,
+      "yuanbao": 48.31
+    }
+  },
+  {
+    "date": "2025-12-25",
+    "deepseek": {
+      "upStockCount": "650",
+      "downStockCount": "180",
+      "limitUpCount": "75",
+      "limitDownCount": "10",
+      "volume": "18500",
+      "summary": "市场预计在强反弹后进入分化整理，上涨家数减少但结构性机会仍在，整体情绪保持活跃",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "690",
+      "downStockCount": "200",
+      "limitUpCount": "82",
+      "limitDownCount": "12",
+      "volume": "19000",
+      "summary": "强反包后的分化确认日，赚钱效应仍在，但难度明显上升。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "650",
+      "downStockCount": "220",
+      "limitUpCount": "80",
+      "limitDownCount": "9",
+      "volume": "19200",
+      "summary": "高开冲高后震荡分化，普涨力度快速衰减，热点结构性延续但整体赚钱效应明显减弱。",
+      "trend": "neutral"
+    },
+    "gemini": {
+      "upStockCount": "450",
+      "downStockCount": "320",
+      "limitUpCount": "85",
+      "limitDownCount": "12",
+      "volume": "19100",
+      "summary": "市场将由“缩量普涨”转为“放量震荡”，重点博弈 10 板高度的突围与高位股的分歧。",
+      "trend": "neutral"
+    },
+    "doubao": {
+      "upStockCount": "550",
+      "downStockCount": "300",
+      "limitUpCount": "70",
+      "limitDownCount": "10",
+      "volume": "18500",
+      "summary": "强势反弹中有所回落，上涨股票数量减少、下跌股票数量增加，涨跌幅比例收窄，整体呈现震荡调整态势",
+      "trend": "neutral"
+    },
+    "yuanbao": {
+      "upStockCount": "648",
+      "downStockCount": "147",
+      "limitUpCount": "82",
+      "limitDownCount": "7",
+      "volume": "18473.2",
+      "summary": "市场冲高动能衰减，连板高度触顶后资金分歧加大，短期需警惕获利盘集中兑现引发的震荡风险。",
       "trend": "neutral"
     },
     "scores": {
