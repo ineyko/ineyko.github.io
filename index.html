@@ -412,7 +412,7 @@
                                                 <label for="positive-stock-input" class="label flex items-center">
                                                     <span
                                                         class="inline-block w-3 h-3 rounded-full bg-green-500 mr-2"></span>
-                                                    涨幅≥0%（排除ST）
+                                                    涨幅≥0%
                                                 </label>
                                                 <input type="number" id="positive-stock-input" min="0"
                                                     class="input-field" placeholder="例如: 3000">
@@ -421,7 +421,7 @@
                                                 <label for="total-stock-input" class="label flex items-center">
                                                     <span
                                                         class="inline-block w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
-                                                    所有股票（排除ST）
+                                                    所有股票
                                                 </label>
                                                 <input type="number" id="total-stock-input" min="0" class="input-field"
                                                     placeholder="例如: 5000">
@@ -470,8 +470,8 @@
                                     <th class="px-4 py-3 text-right font-medium text-gray-600">最高连板</th>
                                     <th class="px-4 py-3 text-right font-medium text-gray-600">涨停封板率(%)</th>
                                     <th class="px-4 py-3 text-right font-medium text-gray-600">赚钱效应(%)</th>
-                                    <th class="px-4 py-3 text-right font-medium text-gray-600">涨幅≥0%（排除ST）</th>
-                                    <th class="px-4 py-3 text-right font-medium text-gray-600 rounded-r-lg">所有股票（排除ST）</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600">涨幅≥0%</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-600 rounded-r-lg">所有股票</th>
                                 </tr>
                             </thead>
                             <tbody id="data-table-body">
@@ -727,6 +727,8 @@ SELECT_COND;</code></pre>
                     <!-- 预测数据表格 -->
                     <div class="card mb-6">
                         <h3 class="text-md font-medium text-gray-800 mb-3">AI预测数据及评分</h3>
+                        <!-- 统计信息 -->
+                        <div id="ai-predictions-stats" class="mb-3"></div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm">
                                 <thead>
@@ -748,6 +750,8 @@ SELECT_COND;</code></pre>
                                 </tbody>
                             </table>
                         </div>
+                        <!-- 分页控件 -->
+                        <div id="ai-predictions-pagination" class="mt-4"></div>
                     </div>
 
                     <!-- 分数计算公式 -->
@@ -1432,18 +1436,107 @@ SELECT_COND;</code></pre>
         }
 
         // 渲染AI预测数据表格
+        // 全局变量：每页显示数量
+        const pageSize = 10;
+
         function renderAIPredictionsTable() {
             const tableBody = document.getElementById('ai-predictions-table-body');
 
             if (aiPredictionsData.length === 0) {
                 tableBody.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-500">暂无AI预测数据</td></tr>';
+                // 清空统计信息
+                const statsContainer = document.getElementById('ai-predictions-stats');
+                if (statsContainer) {
+                    statsContainer.innerHTML = '';
+                }
                 return;
             }
 
             // 按日期倒序排序
             const sortedData = [...aiPredictionsData].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-            tableBody.innerHTML = sortedData.map(item => {
+            // 统计每个模型获得最高分的次数
+            const highestScoreCounts = {};
+            aiModels.forEach(model => {
+                highestScoreCounts[model] = 0;
+            });
+
+            // 计算每个模型的最高分次数
+            sortedData.forEach(item => {
+                const actualData = getActualData(item.date);
+                const modelScores = aiModels.map(model => {
+                    let aiScore = item.scores?.[model] || calculateAIScore(item[model], actualData);
+                    return {
+                        model: model,
+                        name: aiModelNames[model],
+                        score: aiScore
+                    };
+                });
+
+                // 找出最高分模型
+                let highestScoreModel = { name: '-', score: 0 };
+                modelScores.forEach(scoreItem => {
+                    if (scoreItem.score > highestScoreModel.score) {
+                        highestScoreModel = scoreItem;
+                    }
+                });
+
+                // 统计最高分次数
+                if (highestScoreModel.score > 0) {
+                    highestScoreCounts[highestScoreModel.model]++;
+                }
+            });
+
+            // 找出获得最高得分次数最多的模型
+            let topModel = null;
+            let topCount = 0;
+            Object.entries(highestScoreCounts).forEach(([model, count]) => {
+                if (count > topCount) {
+                    topCount = count;
+                    topModel = model;
+                }
+            });
+
+            // 显示统计结果
+            const statsContainer = document.getElementById('ai-predictions-stats');
+            if (statsContainer) {
+                let statsHtml = '';
+                
+                if (topModel) {
+                    statsHtml += `<p class="text-sm text-gray-700 mb-3">🏆 获得最高得分次数最多的AI模型：<span class="font-medium text-blue-600">${aiModelNames[topModel]}</span>（共${topCount}次）</p>`;
+                } else {
+                    statsHtml += '<p class="text-sm text-gray-700 mb-3">暂无最高得分统计数据</p>';
+                }
+                
+                // 添加总数据条数
+                statsHtml += `<p class="text-sm text-gray-700 mb-3">📊 AI预测数据及评分总数据条数：<span class="font-medium text-gray-800">${sortedData.length}</span>条</p>`;
+                
+                // 添加各个AI模型获得最高得分的次数
+                statsHtml += '<p class="text-sm text-gray-700 mb-2">🏅 各AI模型获得最高得分次数：</p>';
+                statsHtml += '<div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-3">';
+                
+                aiModels.forEach(model => {
+                    const count = highestScoreCounts[model] || 0;
+                    statsHtml += `
+                        <div class="flex items-center justify-between px-3 py-1 bg-gray-50 rounded-md">
+                            <span class="text-sm text-gray-700">${aiModelNames[model]}：</span>
+                            <span class="font-medium text-gray-800">${count}次</span>
+                        </div>
+                    `;
+                });
+                
+                statsHtml += '</div>';
+                
+                statsContainer.innerHTML = statsHtml;
+            }
+
+            // 分页逻辑
+            const totalPages = Math.ceil(sortedData.length / pageSize);
+            const startIndex = (currentPage - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const currentPageData = sortedData.slice(startIndex, endIndex);
+
+            tableBody.innerHTML = currentPageData.map(item => {
                 const actualData = getActualData(item.date);
 
                 // 计算每个模型的分数并找出最高分
@@ -1524,6 +1617,64 @@ SELECT_COND;</code></pre>
             document.querySelectorAll('td[data-prediction-details]').forEach(td => {
                 td.addEventListener('click', showPredictionDetails);
             });
+
+            // 渲染分页控件
+            renderPagination(sortedData.length);
+        }
+
+        // 渲染分页控件
+        function renderPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / pageSize);
+            const paginationContainer = document.getElementById('ai-predictions-pagination');
+            
+            if (!paginationContainer) return;
+            
+            let paginationHtml = '';
+            
+            if (totalPages > 1) {
+                paginationHtml = `
+                    <div class="flex justify-center items-center space-x-2 mt-4">
+                        <button class="px-3 py-1 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}" onclick="changePage(1)" ${currentPage === 1 ? 'disabled' : ''}>
+                            首页
+                        </button>
+                        <button class="px-3 py-1 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                            上一页
+                        </button>
+                `;
+                
+                // 显示页码
+                const startPage = Math.max(1, currentPage - 2);
+                const endPage = Math.min(totalPages, currentPage + 2);
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    paginationHtml += `
+                        <button class="px-3 py-1 bg-${i === currentPage ? 'blue-500 text-white' : 'white border border-gray-300 text-gray-700'} rounded-md text-sm font-medium hover:bg-${i === currentPage ? 'blue-600' : 'gray-50'} transition-colors" onclick="changePage(${i})">
+                            ${i}
+                        </button>
+                    `;
+                }
+                
+                paginationHtml += `
+                        <button class="px-3 py-1 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                            下一页
+                        </button>
+                        <button class="px-3 py-1 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}" onclick="changePage(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}>
+                            末页
+                        </button>
+                        <span class="text-sm text-gray-600 ml-4">
+                            第 ${currentPage} 页 / 共 ${totalPages} 页 (${totalItems} 条数据)
+                        </span>
+                    </div>
+                `;
+            }
+            
+            paginationContainer.innerHTML = paginationHtml;
+        }
+
+        // 切换页码
+        function changePage(page) {
+            currentPage = page;
+            renderAIPredictionsTable();
         }
 
         // AI预测结果弹窗处理
@@ -2296,31 +2447,6 @@ SELECT_COND;</code></pre>
             reader.readAsText(file);
         }
 
-        // /**
-        //  * 清空所有数据
-        //  */
-        // function clearAllData() {
-        //     if (chartData.length === 0) {
-        //         showMessage('暂无数据可清空！', 'info');
-        //         return;
-        //     }
-
-        //     if (confirm('确定要清空所有数据吗？此操作不可恢复！')) {
-        //         chartData = [];
-        //         filteredData = [];
-        //         currentPage = 1;
-        //         localStorage.removeItem('dailyChangeRateData');
-
-        //         // 更新UI
-        //         initChart();
-        //         initChart2();
-        //         updateTable();
-        //         updateStats();
-
-        //         showMessage('所有数据已清空！', 'success');
-        //     }
-        // }
-
         /**
          * 更新数据表格
          */
@@ -2549,7 +2675,6 @@ SELECT_COND;</code></pre>
             document.querySelectorAll('.edit-stock-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const index = parseInt(btn.dataset.index);
-                    console.log("index", index)
                     editStockResult(index);
                 });
             });
@@ -3243,16 +3368,6 @@ SELECT_COND;`;
                 }
             });
 
-            // 清空按钮
-            // document.getElementById('clear-btn').addEventListener('click', clearAllData);
-
-            // // 重置缩放按钮
-            // document.getElementById('reset-zoom').addEventListener('click', () => {
-            //     if (chartInstance) {
-            //         chartInstance.resetZoom();
-            //     }
-            // });
-
             // 搜索输入
             document.getElementById('search-input').addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
@@ -3757,8 +3872,6 @@ SELECT_COND;`;
             // 获取新增指标的数据
             const limitUpRateData = allSortedData.map(item => item.limitUpRate); // 涨停封板率
             const profitEffectData = allSortedData.map(item => item.profitEffect); // 赚钱效应
-
-            console.log("limitUpRateData:", limitUpRateData);
             // 销毁已有图表实例
             if (chartInstance2) {
                 chartInstance2.destroy();
@@ -3860,11 +3973,11 @@ SELECT_COND;`;
                                 pinch: {
                                     enabled: true
                                 },
-                                mode: 'xy',
+                                mode: 'x',
                             },
                             pan: {
                                 enabled: true,
-                                mode: 'xy',
+                                mode: 'x',
                             }
                         }
                     },

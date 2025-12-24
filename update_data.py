@@ -41,13 +41,6 @@ def update_data_js(data_js_path, json_path1, json_path2, json_path3):
     with open(data_js_path, 'w', encoding='utf-8') as f:
         bytes_written = f.write(new_content)
     print(f"成功写入文件，写入了 {bytes_written} 字节")
-    
-    # 立即读取文件，验证是否写入成功
-    with open(data_js_path, 'r', encoding='utf-8') as f:
-        verify_content = f.read()
-    print(f"写入后立即读取的内容前100个字符: {verify_content[:100]}")
-    
-    print(f"成功更新data.js文件，替换了三个变量的数据")
     print(f"dailyChangeRateData 来自: {json_path1}")
     print(f"stockResultsData 来自: {json_path2}")
     print(f"aiData 来自: {json_path3}")
