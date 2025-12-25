@@ -620,8 +620,8 @@ const dailyChangeRateData = [
     "date": "2025-12-24",
     "value": 9.29,
     "upStockCount": 799,
-    "limitUpCount": 86,
     "downStockCount": 86,
+    "limitUpCount": 86,
     "limitDownCount": 6,
     "volume": 18802.68,
     "maxConsecutive": 9,
@@ -629,6 +629,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4128,
     "totalStockCount": 5451,
     "profitEffect": 0.7572922399559714
+  },
+  {
+    "date": "2025-12-25",
+    "value": 6.3,
+    "upStockCount": 731,
+    "limitUpCount": 93,
+    "downStockCount": 116,
+    "limitDownCount": 2,
+    "volume": 19245.23,
+    "maxConsecutive": 10,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 3773,
+    "totalStockCount": 5454,
+    "profitEffect": 0.6917858452511918
   }
 ]
 
@@ -1021,6 +1035,42 @@ const stockResultsData = [
     "prevHigh": 17.5,
     "open": 18.4,
     "close": 18.63
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "000582",
+    "stockName": "北部湾港",
+    "prevClose": 9.75,
+    "prevHigh": 9.96,
+    "open": 10.56,
+    "close": 10.17
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "000532",
+    "stockName": "华金资本",
+    "prevClose": 16.04,
+    "prevHigh": 16.39,
+    "open": 17,
+    "close": 16.76
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "300900",
+    "stockName": "广联航空",
+    "prevClose": 26.01,
+    "prevHigh": 26.39,
+    "open": 28.58,
+    "close": 31.21
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "300553",
+    "stockName": "集智股份",
+    "prevClose": 38.14,
+    "prevHigh": 28.25,
+    "open": 39.4,
+    "close": 40.98
   }
 ]
 
@@ -1527,6 +1577,71 @@ const aiData = [
       "limitDownCount": "7",
       "volume": "18473.2",
       "summary": "市场冲高动能衰减，连板高度触顶后资金分歧加大，短期需警惕获利盘集中兑现引发的震荡风险。",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 70.03,
+      "gpt": 71.19,
+      "grok": 69.93,
+      "gemini": 61.02,
+      "doubao": 61.06,
+      "yuanbao": 76.06
+    }
+  },
+  {
+    "date": "2025-12-26",
+    "deepseek": {
+      "upStockCount": "620",
+      "downStockCount": "140",
+      "limitUpCount": "78",
+      "limitDownCount": "8",
+      "volume": "19000",
+      "summary": "市场预计进入高位震荡分化阶段，连板股情绪可能松动，但整体赚钱效应仍存，属于强势整理",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "650",
+      "downStockCount": "200",
+      "limitUpCount": "88",
+      "limitDownCount": "9",
+      "volume": "19300",
+      "summary": "进入强势周期后段的“高位分化日”，赚钱效应仍在，但不再适合无差别进攻",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "580",
+      "downStockCount": "260",
+      "limitUpCount": "85",
+      "limitDownCount": "8",
+      "volume": "19500",
+      "summary": "高开冲高后震荡分化，普涨力度继续衰减，热点结构性表现但整体赚钱效应明显回落，呈现节前典型的获利了结格局。",
+      "trend": "neutral"
+    },
+    "gemini": {
+      "upStockCount": "450",
+      "downStockCount": "350",
+      "limitUpCount": "75",
+      "limitDownCount": "15",
+      "volume": "19800",
+      "summary": "市场将面临高标高度板的极限博弈，普涨行情结束，进入周五惯性的获利了结与剧烈分化期。",
+      "trend": "down"
+    },
+    "doubao": {
+      "upStockCount": "680",
+      "downStockCount": "150",
+      "limitUpCount": "95",
+      "limitDownCount": "3",
+      "volume": "19500",
+      "summary": "延续小幅调整态势，上涨股票数量仍多于下跌股票，但整体力度较前一日有所减弱，成交量略有放大，市场情绪保持偏积极但热度小幅降温",
+      "trend": "up"
+    },
+    "yuanbao": {
+      "upStockCount": "623",
+      "downStockCount": "189",
+      "limitUpCount": "89",
+      "limitDownCount": "5",
+      "volume": "19512.7",
+      "summary": "市场在创出连板高度新高后进入筹码交换阶段，短期资金获利了结意愿增强，但结构性热点仍有望维持局部活跃。",
       "trend": "neutral"
     },
     "scores": {
