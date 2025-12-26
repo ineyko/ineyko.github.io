@@ -634,8 +634,8 @@ const dailyChangeRateData = [
     "date": "2025-12-25",
     "value": 6.3,
     "upStockCount": 731,
-    "limitUpCount": 93,
     "downStockCount": 116,
+    "limitUpCount": 93,
     "limitDownCount": 2,
     "volume": 19245.23,
     "maxConsecutive": 10,
@@ -643,6 +643,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3773,
     "totalStockCount": 5454,
     "profitEffect": 0.6917858452511918
+  },
+  {
+    "date": "2025-12-26",
+    "value": 2.71,
+    "upStockCount": 532,
+    "limitUpCount": 92,
+    "downStockCount": 196,
+    "limitDownCount": 3,
+    "volume": 21601.91,
+    "maxConsecutive": 11,
+    "limitUpRate": 0.81,
+    "positiveStockCount": 1866,
+    "totalStockCount": 5453,
+    "profitEffect": 0.3421969558041445
   }
 ]
 
@@ -1071,6 +1085,42 @@ const stockResultsData = [
     "prevHigh": 28.25,
     "open": 39.4,
     "close": 40.98
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "301079",
+    "stockName": "邵阳液压",
+    "prevClose": 30.47,
+    "prevHigh": 31.52,
+    "open": 33.65,
+    "close": 31.87
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "002759",
+    "stockName": "天际股份",
+    "prevClose": 45,
+    "prevHigh": 46.33,
+    "open": 49.5,
+    "close": 49.5
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "002192",
+    "stockName": "融捷股份",
+    "prevClose": 52.68,
+    "prevHigh": 53.18,
+    "open": 54.65,
+    "close": 55.46
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "600215",
+    "stockName": "派斯林",
+    "prevClose": 7.03,
+    "prevHigh": 7.06,
+    "open": 7.33,
+    "close": 7.13
   }
 ]
 
@@ -1642,6 +1692,71 @@ const aiData = [
       "limitDownCount": "5",
       "volume": "19512.7",
       "summary": "市场在创出连板高度新高后进入筹码交换阶段，短期资金获利了结意愿增强，但结构性热点仍有望维持局部活跃。",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 73.49,
+      "gpt": 79.64,
+      "grok": 77.45,
+      "gemini": 66.75,
+      "doubao": 88.38,
+      "yuanbao": 85.78
+    }
+  },
+  {
+    "date": "2025-12-29",
+    "deepseek": {
+      "upStockCount": "500",
+      "downStockCount": "220",
+      "limitUpCount": "85",
+      "limitDownCount": "5",
+      "volume": "21000",
+      "summary": "市场预计延续小幅调整，涨停情绪仍在但赚钱效应减弱，整体呈现震荡整理格局。",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "480",
+      "downStockCount": "360",
+      "limitUpCount": "85",
+      "limitDownCount": "5",
+      "volume": "20500",
+      "summary": "大盘更可能进入高位换手、热点分化的阶段，强势股仍活跃但整体赚钱效应回落至中等偏上水平。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "680",
+      "downStockCount": "180",
+      "limitUpCount": "90",
+      "limitDownCount": "8",
+      "volume": "20500",
+      "summary": "市场预计将出现温和反弹，赚钱效应显著修复，但分歧仍存。",
+      "trend": "up"
+    },
+    "gemini": {
+      "upStockCount": "380",
+      "downStockCount": "450",
+      "limitUpCount": "75",
+      "limitDownCount": "12",
+      "volume": "20800",
+      "summary": "市场处于高位连板情绪极值后的退潮期，量价背离预示分化加剧，需警惕高位抱团股瓦解带来的波动。",
+      "trend": "down"
+    },
+    "doubao": {
+      "upStockCount": "450",
+      "downStockCount": "250",
+      "limitUpCount": "85",
+      "limitDownCount": "5",
+      "volume": "20000",
+      "summary": "市场延续近期调整态势，上涨股票数量继续减少，下跌股票数量有所增加，成交量较前一日略有回落，整体赚钱效应较弱。",
+      "trend": "down"
+    },
+    "yuanbao": {
+      "upStockCount": "583",
+      "downStockCount": "182",
+      "limitUpCount": "89",
+      "limitDownCount": "4",
+      "volume": "21897.4",
+      "summary": "结合量能萎缩（昨日2.16万亿→预测2.05万亿），预计明日呈现探底回升走势。",
       "trend": "neutral"
     },
     "scores": {
