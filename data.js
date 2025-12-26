@@ -150,9 +150,9 @@ const dailyChangeRateData = [
     "volume": 20552.48,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 2880,
+    "totalStockCount": 5434,
+    "profitEffect": 0.5299963194700037
   },
   {
     "date": "2025-11-07",
@@ -164,9 +164,9 @@ const dailyChangeRateData = [
     "volume": 19990.53,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 2101,
+    "totalStockCount": 5436,
+    "profitEffect": 0.3864974245768948
   },
   {
     "date": "2025-11-10",
@@ -178,9 +178,9 @@ const dailyChangeRateData = [
     "volume": 21744.54,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 3376,
+    "totalStockCount": 5439,
+    "profitEffect": 0.6207023349880493
   },
   {
     "date": "2025-11-11",
@@ -192,9 +192,9 @@ const dailyChangeRateData = [
     "volume": 19935.86,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 2785,
+    "totalStockCount": 5439,
+    "profitEffect": 0.5120426548997978
   },
   {
     "date": "2025-11-12",
@@ -206,9 +206,9 @@ const dailyChangeRateData = [
     "volume": 19450.34,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 1758,
+    "totalStockCount": 5441,
+    "profitEffect": 0.3231023708877045
   },
   {
     "date": "2025-11-13",
@@ -220,9 +220,9 @@ const dailyChangeRateData = [
     "volume": 20419.62,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 3952,
+    "totalStockCount": 5440,
+    "profitEffect": 0.7264705882352941
   },
   {
     "date": "2025-11-14",
@@ -234,9 +234,9 @@ const dailyChangeRateData = [
     "volume": 19580.79,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 1961,
+    "totalStockCount": 5438,
+    "profitEffect": 0.3606105185730048
   },
   {
     "date": "2025-11-17",
@@ -248,9 +248,9 @@ const dailyChangeRateData = [
     "volume": 19107.91,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 2584,
+    "totalStockCount": 5437,
+    "profitEffect": 0.4752620930660291
   },
   {
     "date": "2025-11-18",
@@ -262,9 +262,9 @@ const dailyChangeRateData = [
     "volume": 19260.68,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 1277,
+    "totalStockCount": 5440,
+    "profitEffect": 0.2347426470588235
   },
   {
     "date": "2025-11-19",
@@ -276,9 +276,9 @@ const dailyChangeRateData = [
     "volume": 17259.08,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 1200,
+    "totalStockCount": 5442,
+    "profitEffect": 0.2205071664829107
   },
   {
     "date": "2025-11-20",
@@ -290,9 +290,9 @@ const dailyChangeRateData = [
     "volume": 17081.89,
     "maxConsecutive": 0,
     "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "positiveStockCount": 1453,
+    "totalStockCount": 5441,
+    "profitEffect": 0.2670464988053667
   },
   {
     "date": "2025-11-21",
@@ -302,11 +302,11 @@ const dailyChangeRateData = [
     "limitUpCount": 33,
     "limitDownCount": 99,
     "volume": 19656.61,
-    "maxConsecutive": 0,
-    "limitUpRate": 0,
-    "positiveStockCount": 0,
-    "totalStockCount": 0,
-    "profitEffect": 0
+    "maxConsecutive": 6,
+    "limitUpRate": 0.58,
+    "positiveStockCount": 354,
+    "totalStockCount": 5444,
+    "profitEffect": 0.065025716385011
   },
   {
     "date": "2025-11-24",
