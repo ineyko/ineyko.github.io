@@ -648,8 +648,8 @@ const dailyChangeRateData = [
     "date": "2025-12-26",
     "value": 2.71,
     "upStockCount": 532,
-    "limitUpCount": 92,
     "downStockCount": 196,
+    "limitUpCount": 92,
     "limitDownCount": 3,
     "volume": 21601.91,
     "maxConsecutive": 11,
@@ -657,6 +657,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1866,
     "totalStockCount": 5453,
     "profitEffect": 0.3421969558041445
+  },
+  {
+    "date": "2025-12-29",
+    "value": 1.2,
+    "upStockCount": 519,
+    "limitUpCount": 87,
+    "downStockCount": 434,
+    "limitDownCount": 25,
+    "volume": 21393.38,
+    "maxConsecutive": 12,
+    "limitUpRate": 0.74,
+    "positiveStockCount": 1995,
+    "totalStockCount": 5455,
+    "profitEffect": 0.36571952337305225
   }
 ]
 
@@ -1121,6 +1135,123 @@ const stockResultsData = [
     "prevHigh": 7.06,
     "open": 7.33,
     "close": 7.13
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "600531",
+    "stockName": "豫光金铅",
+    "prevClose": 11.8,
+    "prevHigh": 11.87,
+    "open": 12.2,
+    "close": 12.24
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "000630",
+    "stockName": "铜陵有色",
+    "prevClose": 5.93,
+    "prevHigh": 5.98,
+    "open": 6.11,
+    "close": 5.73
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "003027",
+    "stockName": "同兴科技",
+    "prevClose": 22.45,
+    "prevHigh": 22.68,
+    "open": 24.7,
+    "close": 23.15
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002261",
+    "stockName": "拓维信息",
+    "prevClose": 30.7,
+    "prevHigh": 31.08,
+    "open": 31.88,
+    "close": 33.77
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002324",
+    "stockName": "普利特",
+    "prevClose": 14.81,
+    "prevHigh": 15,
+    "open": 15.66,
+    "close": 15.42
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002843",
+    "stockName": "泰嘉股份",
+    "prevClose": 20.12,
+    "prevHigh": 20.41,
+    "open": 21,
+    "close": 20.73
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002716",
+    "stockName": "湖南白银",
+    "prevClose": 6.79,
+    "prevHigh": 6.9,
+    "open": 7.2,
+    "close": 7.28
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "603186",
+    "stockName": "华正新材",
+    "prevClose": 47.01,
+    "prevHigh": 47.96,
+    "open": 49.21,
+    "close": 50.69
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "601212",
+    "stockName": "白银有色",
+    "prevClose": 5.87,
+    "prevHigh": 6,
+    "open": 6.2,
+    "close": 6.24
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002866",
+    "stockName": "传艺科技",
+    "prevClose": 17.96,
+    "prevHigh": 18.46,
+    "open": 19.6,
+    "close": 18.85
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002272",
+    "stockName": "川润股份",
+    "prevClose": 16.25,
+    "prevHigh": 16.9,
+    "open": 17.88,
+    "close": 17.88
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "300699",
+    "stockName": "光威复材",
+    "prevClose": 34.87,
+    "prevHigh": 36.66,
+    "open": 38.3,
+    "close": 40.05
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "300489",
+    "stockName": "光智科技",
+    "prevClose": 52.19,
+    "prevHigh": 53.98,
+    "open": 55.8,
+    "close": 52.18
   }
 ]
 
@@ -1757,6 +1888,71 @@ const aiData = [
       "limitDownCount": "4",
       "volume": "21897.4",
       "summary": "结合量能萎缩（昨日2.16万亿→预测2.05万亿），预计明日呈现探底回升走势。",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 72.58,
+      "gpt": 77.79,
+      "grok": 68.46,
+      "gemini": 80.22,
+      "doubao": 71.1,
+      "yuanbao": 68.48
+    }
+  },
+  {
+    "date": "2025-12-30",
+    "deepseek": {
+      "upStockCount": "500",
+      "downStockCount": "420",
+      "limitUpCount": "82",
+      "limitDownCount": "22",
+      "volume": "21000",
+      "summary": "市场预计延续分化震荡，连板高度拓展但整体情绪降温，赚钱效应维持偏低水平。",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "480",
+      "downStockCount": "430",
+      "limitUpCount": "78",
+      "limitDownCount": "20",
+      "volume": "20500",
+      "summary": "高位情绪的延续消化日，强势连板继续抬高度，但市场整体仍处于分化震荡状态，赚钱效应低位企稳而非反转。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "480",
+      "downStockCount": "420",
+      "limitUpCount": "82",
+      "limitDownCount": "18",
+      "volume": "20500",
+      "summary": "市场预计继续高位分歧震荡，赚钱效应弱修复但难普涨",
+      "trend": "neutral"
+    },
+    "gemini": {
+      "upStockCount": "480",
+      "downStockCount": "260",
+      "limitUpCount": "78",
+      "limitDownCount": "15",
+      "volume": "19500",
+      "summary": "市场处于高位连板抱团随时崩瓦解的边缘，普跌后的情绪修复将伴随量能萎缩而显得犹豫。",
+      "trend": "neutral"
+    },
+    "doubao": {
+      "upStockCount": "470",
+      "downStockCount": "480",
+      "limitUpCount": "84",
+      "limitDownCount": "22",
+      "volume": "21200.5",
+      "summary": "涨跌幅股票数量比例延续小幅下降趋势，上涨股票数量略减，下跌股票数量增速放缓，涨停和跌停数量波动较小，成交量基本持平，市场情绪整体趋于平稳。",
+      "trend": "neutral"
+    },
+    "yuanbao": {
+      "upStockCount": "519",
+      "downStockCount": "434",
+      "limitUpCount": "87",
+      "limitDownCount": "25",
+      "volume": "21393.38",
+      "summary": "建议关注年报预增（高送转预期）和农业板块（政策催化）的防御机会，仓位控制在5成以内。",
       "trend": "neutral"
     },
     "scores": {
