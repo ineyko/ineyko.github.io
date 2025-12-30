@@ -662,8 +662,8 @@ const dailyChangeRateData = [
     "date": "2025-12-29",
     "value": 1.2,
     "upStockCount": 519,
-    "limitUpCount": 87,
     "downStockCount": 434,
+    "limitUpCount": 87,
     "limitDownCount": 25,
     "volume": 21393.38,
     "maxConsecutive": 12,
@@ -671,6 +671,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1995,
     "totalStockCount": 5455,
     "profitEffect": 0.36571952337305225
+  },
+  {
+    "date": "2025-12-30",
+    "value": 1.29,
+    "upStockCount": 489,
+    "limitUpCount": 66,
+    "downStockCount": 380,
+    "limitDownCount": 19,
+    "volume": 21426.19,
+    "maxConsecutive": 10,
+    "limitUpRate": 0.67,
+    "positiveStockCount": 1840,
+    "totalStockCount": 5457,
+    "profitEffect": 0.3371816016126077
   }
 ]
 
@@ -1252,6 +1266,15 @@ const stockResultsData = [
     "prevHigh": 53.98,
     "open": 55.8,
     "close": 52.18
+  },
+  {
+    "date": "2025-12-30",
+    "stockCode": "003041",
+    "stockName": "真爱美家",
+    "prevClose": 46.55,
+    "prevHigh": 48,
+    "open": 49.5,
+    "close": 48.84
   }
 ]
 
@@ -1953,6 +1976,71 @@ const aiData = [
       "limitDownCount": "25",
       "volume": "21393.38",
       "summary": "建议关注年报预增（高送转预期）和农业板块（政策催化）的防御机会，仓位控制在5成以内。",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 90.63,
+      "gpt": 92.36,
+      "grok": 91.91,
+      "gemini": 84.23,
+      "doubao": 87.83,
+      "yuanbao": 86.7
+    }
+  },
+  {
+    "date": "2025-12-31",
+    "deepseek": {
+      "upStockCount": "470",
+      "downStockCount": "390",
+      "limitUpCount": "65",
+      "limitDownCount": "15",
+      "volume": "21000",
+      "summary": "市场预计延续年末震荡整理，赚钱效应仍弱，但抛压减缓，整体呈现平淡收官特征。",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "450",
+      "downStockCount": "420",
+      "limitUpCount": "58",
+      "limitDownCount": "15",
+      "volume": "20000",
+      "summary": "年末资金收敛下的情绪钝化日，市场维持弱平衡状态，既无系统性杀跌，也缺乏新的上涨扩散动力。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "420",
+      "downStockCount": "420",
+      "limitUpCount": "58",
+      "limitDownCount": "22",
+      "volume": "18500",
+      "summary": "市场预计在节前资金谨慎影响下继续弱势震荡，赚钱效应进一步回落。",
+      "trend": "neutral"
+    },
+    "gemini": {
+      "upStockCount": "550",
+      "downStockCount": "180",
+      "limitUpCount": "85",
+      "limitDownCount": "8",
+      "volume": "18500",
+      "summary": "市场将依托“月底必阳”的规律和跨年题材的余热完成年度红盘收官，高位妖股震荡加剧但普惠性修复可期。",
+      "trend": "up"
+    },
+    "doubao": {
+      "upStockCount": "475",
+      "downStockCount": "340",
+      "limitUpCount": "70",
+      "limitDownCount": "15",
+      "volume": "21500",
+      "summary": "整体呈现小幅波动态势，涨跌力量趋于均衡，极端行情概率较低，市场情绪以谨慎观望为主。",
+      "trend": "neutral"
+    },
+    "yuanbao": {
+      "upStockCount": "470",
+      "downStockCount": "350",
+      "limitUpCount": "60",
+      "limitDownCount": "15",
+      "volume": "21000",
+      "summary": "重点配置黄金股（避险属性）和光伏设备（装机量超预期），规避st板块及次新股。",
       "trend": "neutral"
     },
     "scores": {
