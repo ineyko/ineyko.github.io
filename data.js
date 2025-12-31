@@ -676,8 +676,8 @@ const dailyChangeRateData = [
     "date": "2025-12-30",
     "value": 1.29,
     "upStockCount": 489,
-    "limitUpCount": 66,
     "downStockCount": 380,
+    "limitUpCount": 66,
     "limitDownCount": 19,
     "volume": 21426.19,
     "maxConsecutive": 10,
@@ -685,6 +685,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1840,
     "totalStockCount": 5457,
     "profitEffect": 0.3371816016126077
+  },
+  {
+    "date": "2025-12-31",
+    "value": 1.5,
+    "upStockCount": 495,
+    "limitUpCount": 63,
+    "downStockCount": 331,
+    "limitDownCount": 12,
+    "volume": 20452.35,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 2474,
+    "totalStockCount": 5458,
+    "profitEffect": 0.4532795895932576
   }
 ]
 
@@ -1275,6 +1289,42 @@ const stockResultsData = [
     "prevHigh": 48,
     "open": 49.5,
     "close": 48.84
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "301101",
+    "stockName": "明月镜片",
+    "prevClose": 39.99,
+    "prevHigh": 40.21,
+    "open": 41.92,
+    "close": 41.43
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "002943",
+    "stockName": "宇晶股份",
+    "prevClose": 37.38,
+    "prevHigh": 37.8,
+    "open": 39.23,
+    "close": 39.6
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "301383",
+    "stockName": "天键股份",
+    "prevClose": 35.26,
+    "prevHigh": 35.95,
+    "open": 37.17,
+    "close": 35.64
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "300695",
+    "stockName": "兆丰股份",
+    "prevClose": 93.69,
+    "prevHigh": 95.5,
+    "open": 98.5,
+    "close": 100.06
   }
 ]
 
@@ -2042,6 +2092,71 @@ const aiData = [
       "volume": "21000",
       "summary": "重点配置黄金股（避险属性）和光伏设备（装机量超预期），规避st板块及次新股。",
       "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 90.83,
+      "gpt": 87.91,
+      "grok": 80.14,
+      "gemini": 75.12,
+      "doubao": 91.69,
+      "yuanbao": 92.43
+    }
+  },
+  {
+    "date": "2026-01-05",
+    "deepseek": {
+      "upStockCount": "520",
+      "downStockCount": "300",
+      "limitUpCount": "70",
+      "limitDownCount": "10",
+      "volume": "21800",
+      "summary": "市场预计在新年首个交易日延续温和修复，赚钱效应进一步改善，但整体反弹力度仍受量能制约，呈现结构性回暖格局。",
+      "trend": "up"
+    },
+    "gpt": {
+      "upStockCount": "430",
+      "downStockCount": "390",
+      "limitUpCount": "58",
+      "limitDownCount": "18",
+      "volume": "19500",
+      "summary": "A 股处于年末情绪退潮后的再平衡阶段，整体呈现中性偏弱的结构性震荡特征。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "680",
+      "downStockCount": "200",
+      "limitUpCount": "85",
+      "limitDownCount": "10",
+      "volume": "19500",
+      "summary": "市场预计在开门红预期下出现温和普涨，成长主线领涨，赚钱效应显著提升。",
+      "trend": "up"
+    },
+    "gemini": {
+      "upStockCount": "520",
+      "downStockCount": "310",
+      "limitUpCount": "58",
+      "limitDownCount": "18",
+      "volume": "21500",
+      "summary": "市场正处于跨年妖股崩塌后的情绪出清期，节后首日虽有资金回流支撑指数，但由于缺乏核心领涨主线，将呈现明显的“指数红、个股分化”格局。",
+      "trend": "neutral"
+    },
+    "doubao": {
+      "upStockCount": "520",
+      "downStockCount": "300",
+      "limitUpCount": "65",
+      "limitDownCount": "10",
+      "volume": "20800",
+      "summary": "市场延续年末回暖趋势，上涨股票数量增加，下跌及跌停股进一步减少，市场情绪平稳向好。",
+      "trend": "up"
+    },
+    "yuanbao": {
+      "upStockCount": "520",
+      "downStockCount": "300",
+      "limitUpCount": "70",
+      "limitDownCount": "10",
+      "volume": "20000",
+      "summary": "市场在元旦后迎来开门红，成交量温和放大，热点板块轮动，赚钱效应显著，整体呈现上涨趋势。",
+      "trend": "up"
     },
     "scores": {
       "deepseek": 0,
