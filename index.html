@@ -1501,20 +1501,20 @@ SELECT_COND;</code></pre>
             const statsContainer = document.getElementById('ai-predictions-stats');
             if (statsContainer) {
                 let statsHtml = '';
-                
+
                 if (topModel) {
                     statsHtml += `<p class="text-sm text-gray-700 mb-3">🏆 获得最高得分次数最多的AI模型：<span class="font-medium text-blue-600">${aiModelNames[topModel]}</span>（共${topCount}次）</p>`;
                 } else {
                     statsHtml += '<p class="text-sm text-gray-700 mb-3">暂无最高得分统计数据</p>';
                 }
-                
+
                 // 添加总数据条数
                 statsHtml += `<p class="text-sm text-gray-700 mb-3">📊 AI预测数据及评分总数据条数：<span class="font-medium text-gray-800">${sortedData.length}</span>条</p>`;
-                
+
                 // 添加各个AI模型获得最高得分的次数
                 statsHtml += '<p class="text-sm text-gray-700 mb-2">🏅 各AI模型获得最高得分次数：</p>';
                 statsHtml += '<div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-3">';
-                
+
                 aiModels.forEach(model => {
                     const count = highestScoreCounts[model] || 0;
                     statsHtml += `
@@ -1524,9 +1524,9 @@ SELECT_COND;</code></pre>
                         </div>
                     `;
                 });
-                
+
                 statsHtml += '</div>';
-                
+
                 statsContainer.innerHTML = statsHtml;
             }
 
@@ -1626,11 +1626,11 @@ SELECT_COND;</code></pre>
         function renderPagination(totalItems) {
             const totalPages = Math.ceil(totalItems / pageSize);
             const paginationContainer = document.getElementById('ai-predictions-pagination');
-            
+
             if (!paginationContainer) return;
-            
+
             let paginationHtml = '';
-            
+
             if (totalPages > 1) {
                 paginationHtml = `
                     <div class="flex justify-center items-center space-x-2 mt-4">
@@ -1641,11 +1641,11 @@ SELECT_COND;</code></pre>
                             上一页
                         </button>
                 `;
-                
+
                 // 显示页码
                 const startPage = Math.max(1, currentPage - 2);
                 const endPage = Math.min(totalPages, currentPage + 2);
-                
+
                 for (let i = startPage; i <= endPage; i++) {
                     paginationHtml += `
                         <button class="px-3 py-1 bg-${i === currentPage ? 'blue-500 text-white' : 'white border border-gray-300 text-gray-700'} rounded-md text-sm font-medium hover:bg-${i === currentPage ? 'blue-600' : 'gray-50'} transition-colors" onclick="changePage(${i})">
@@ -1653,7 +1653,7 @@ SELECT_COND;</code></pre>
                         </button>
                     `;
                 }
-                
+
                 paginationHtml += `
                         <button class="px-3 py-1 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
                             下一页
@@ -1667,7 +1667,7 @@ SELECT_COND;</code></pre>
                     </div>
                 `;
             }
-            
+
             paginationContainer.innerHTML = paginationHtml;
         }
 
@@ -1908,7 +1908,12 @@ SELECT_COND;</code></pre>
 
             const a = document.createElement('a');
             a.href = url;
-            a.download = `AI预测数据_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
+            date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const exportDate = `${year}-${month}-${day}`;
+            a.download = `AI预测数据_${exportDate}.json`;
             a.click();
 
             URL.revokeObjectURL(url);
@@ -2355,7 +2360,12 @@ SELECT_COND;</code></pre>
 
             const a = document.createElement('a');
             a.href = url;
-            a.download = `每日涨跌幅数据_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
+            date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const exportDate = `${year}-${month}-${day}`;
+            a.download = `每日涨跌幅数据_${exportDate}.json`;
             a.click();
 
             URL.revokeObjectURL(url);
@@ -3083,7 +3093,12 @@ SELECT_COND;</code></pre>
 
             const a = document.createElement('a');
             a.href = url;
-            a.download = `选股结果数据_${new Date().toLocaleDateString().replace(/\//g, '-')}.json`;
+            date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const exportDate = `${year}-${month}-${day}`;
+            a.download = `选股结果数据_${exportDate}.json`;
             a.click();
 
             URL.revokeObjectURL(url);

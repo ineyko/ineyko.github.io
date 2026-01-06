@@ -690,8 +690,8 @@ const dailyChangeRateData = [
     "date": "2025-12-31",
     "value": 1.5,
     "upStockCount": 495,
-    "limitUpCount": 63,
     "downStockCount": 331,
+    "limitUpCount": 63,
     "limitDownCount": 12,
     "volume": 20452.35,
     "maxConsecutive": 6,
@@ -699,6 +699,34 @@ const dailyChangeRateData = [
     "positiveStockCount": 2474,
     "totalStockCount": 5458,
     "profitEffect": 0.4532795895932576
+  },
+  {
+    "date": "2026-01-05",
+    "value": 7.45,
+    "upStockCount": 1289,
+    "limitUpCount": 127,
+    "downStockCount": 173,
+    "limitDownCount": 12,
+    "volume": 25463.47,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.8,
+    "positiveStockCount": 4185,
+    "totalStockCount": 5457,
+    "profitEffect": 0.7669048927982408
+  },
+  {
+    "date": "2026-01-06",
+    "value": 8.34,
+    "upStockCount": 951,
+    "limitUpCount": 143,
+    "downStockCount": 114,
+    "limitDownCount": 2,
+    "volume": 28065.75,
+    "maxConsecutive": 13,
+    "limitUpRate": 0.82,
+    "positiveStockCount": 4108,
+    "totalStockCount": 5459,
+    "profitEffect": 0.7525187763326616
   }
 ]
 
@@ -1325,6 +1353,159 @@ const stockResultsData = [
     "prevHigh": 95.5,
     "open": 98.5,
     "close": 100.06
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300986",
+    "stockName": "志特新材",
+    "prevClose": 11.18,
+    "prevHigh": 11.33,
+    "open": 12.31,
+    "close": 13.42
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300955",
+    "stockName": "嘉亨家化",
+    "prevClose": 41.51,
+    "prevHigh": 43.45,
+    "open": 49.81,
+    "close": 45.13
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300894",
+    "stockName": "火星人",
+    "prevClose": 11.79,
+    "prevHigh": 12.1,
+    "open": 12.99,
+    "close": 12.5
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300337",
+    "stockName": "银邦股份",
+    "prevClose": 15.51,
+    "prevHigh": 15.99,
+    "open": 16.68,
+    "close": 16.2
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002202",
+    "stockName": "金风科技",
+    "prevClose": 20.4,
+    "prevHigh": 20.88,
+    "open": 22.44,
+    "close": 21.82
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "603859",
+    "stockName": "能科科技",
+    "prevClose": 42.05,
+    "prevHigh": 42.79,
+    "open": 43.98,
+    "close": 44.22
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "001339",
+    "stockName": "智微智能",
+    "prevClose": 51.11,
+    "prevHigh": 52,
+    "open": 53.2,
+    "close": 53.13
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002324",
+    "stockName": "普利特",
+    "prevClose": 15.99,
+    "prevHigh": 16.24,
+    "open": 16.7,
+    "close": 17.59
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "601600",
+    "stockName": "中国铝业",
+    "prevClose": 12.22,
+    "prevHigh": 12.38,
+    "open": 12.72,
+    "close": 13.02
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002195",
+    "stockName": "岩山科技",
+    "prevClose": 7.09,
+    "prevHigh": 7.18,
+    "open": 7.8,
+    "close": 7.8
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002709",
+    "stockName": "天赐材料",
+    "prevClose": 46.33,
+    "prevHigh": 46.83,
+    "open": 48.6,
+    "close": 48.04
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "600562",
+    "stockName": "国睿科技",
+    "prevClose": 28.26,
+    "prevHigh": 28.49,
+    "open": 29.5,
+    "close": 28.88
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "000933",
+    "stockName": "神火股份",
+    "prevClose": 27.47,
+    "prevHigh": 27.68,
+    "open": 28.55,
+    "close": 28.47
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "603014",
+    "stockName": "威高血净",
+    "prevClose": 41.49,
+    "prevHigh": 41.5,
+    "open": 43.55,
+    "close": 41.98
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "301606",
+    "stockName": "绿联科技",
+    "prevClose": 60.71,
+    "prevHigh": 61.12,
+    "open": 65,
+    "close": 63.45
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "301099",
+    "stockName": "雅创电子",
+    "prevClose": 45.3,
+    "prevHigh": 45.39,
+    "open": 47.7,
+    "close": 48.86
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "600589",
+    "stockName": "大位科技",
+    "prevClose": 7.39,
+    "prevHigh": 7.49,
+    "open": 7.97,
+    "close": 7.98
   }
 ]
 
@@ -2157,6 +2338,136 @@ const aiData = [
       "volume": "20000",
       "summary": "市场在元旦后迎来开门红，成交量温和放大，热点板块轮动，赚钱效应显著，整体呈现上涨趋势。",
       "trend": "up"
+    },
+    "scores": {
+      "deepseek": 64.41,
+      "gpt": 53.33,
+      "grok": 73.22,
+      "gemini": 58.58,
+      "doubao": 62.84,
+      "yuanbao": 63
+    }
+  },
+  {
+    "date": "2026-01-06",
+    "deepseek": {
+      "upStockCount": "850",
+      "downStockCount": "200",
+      "limitUpCount": "95",
+      "limitDownCount": "10",
+      "volume": "24000",
+      "summary": "市场预计在强势爆发后进入分化整理，但赚钱效应与涨停情绪仍将保持高位，呈现“强势休整”格局。",
+      "trend": "up"
+    },
+    "gpt": {
+      "upStockCount": "760",
+      "downStockCount": "240",
+      "limitUpCount": "85",
+      "limitDownCount": "18",
+      "volume": "22000",
+      "summary": "节后情绪爆发后的首次分化降温日，市场由全面普涨转向结构性行情。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "920",
+      "downStockCount": "210",
+      "limitUpCount": "112",
+      "limitDownCount": "11",
+      "volume": "23800",
+      "summary": "市场预计在政策利好和情绪惯性下延续普涨，但分歧渐增，赚钱效应高位回落。",
+      "trend": "up"
+    },
+    "gemini": {
+      "upStockCount": "450",
+      "downStockCount": "520",
+      "limitUpCount": "85",
+      "limitDownCount": "15",
+      "volume": "23800",
+      "summary": "市场在经历了开门红的疯狂宣泄后，1月6日将迎来放量分化，高位个股面临获利了结压力，整体呈现“指数震荡、个股分歧”态势。",
+      "trend": "neutral"
+    },
+    "doubao": {
+      "upStockCount": "950",
+      "downStockCount": "220",
+      "limitUpCount": "105",
+      "limitDownCount": "10",
+      "volume": "24500",
+      "summary": "核心做多指标（上涨家数、涨停数、value）从峰值小幅回调，但成交量仍高位、跌停数维持低位，叠加春节前红包行情和外资流入预期，整体赚钱效应仍处于高位。",
+      "trend": "up"
+    },
+    "yuanbao": {
+      "upStockCount": "980",
+      "downStockCount": "250",
+      "limitUpCount": "110",
+      "limitDownCount": "18",
+      "volume": "23000",
+      "summary": "关注年报预增标的（如新冠药物、消费电子）。",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 63.67,
+      "gpt": 55.27,
+      "grok": 66.47,
+      "gemini": 45.36,
+      "doubao": 66.49,
+      "yuanbao": 62.53
+    }
+  },
+  {
+    "date": "2026-01-07",
+    "deepseek": {
+      "upStockCount": "800",
+      "downStockCount": "140",
+      "limitUpCount": "110",
+      "limitDownCount": "5",
+      "volume": "26000",
+      "summary": "市场预计在连续亢奋后进入分化加剧阶段，涨停家数与成交量略有收敛，但龙头标杆效应与赚钱效应仍将维持高位，呈现“强势震荡”格局。",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "780",
+      "downStockCount": "220",
+      "limitUpCount": "105",
+      "limitDownCount": "7",
+      "volume": "25800",
+      "summary": "大概率处于高位情绪分歧阶段，整体仍偏强，但赚钱效应与一致性明显回落。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "900",
+      "downStockCount": "140",
+      "limitUpCount": "138",
+      "limitDownCount": "5",
+      "volume": "27500",
+      "summary": "市场预计在政策刺激和全球积极情绪下延续普涨，但高位后分歧渐现。",
+      "trend": "up"
+    },
+    "gemini": {
+      "upStockCount": "380",
+      "downStockCount": "650",
+      "limitUpCount": "78",
+      "limitDownCount": "22",
+      "volume": "22500",
+      "summary": "市场在妖王复牌带动的最后狂欢中步入分歧，整体呈现“高标屹立、万股调整”的割裂格局，短线进入高风险博弈区。",
+      "trend": "down"
+    },
+    "doubao": {
+      "upStockCount": "880",
+      "downStockCount": "95",
+      "limitUpCount": "135",
+      "limitDownCount": "1",
+      "volume": "27500",
+      "summary": "市场多头情绪延续，涨跌数量比例维持高位，涨幅≥3% 个股仍占绝对优势，跌停个股近乎绝迹，成交量维持高位，仅部分资金获利了结导致涨停数、上涨个股数小幅回落，整体赚钱效应仍处高位。",
+      "trend": "up"
+    },
+    "yuanbao": {
+      "upStockCount": "680",
+      "downStockCount": "220",
+      "limitUpCount": "105",
+      "limitDownCount": "8",
+      "volume": "26500",
+      "summary": "建议减持高位题材股至半仓以内，关注年报预增标的（如新冠药物、消费电子）。若午盘后成交量跌破2.5万亿，需警惕系统性风险。",
+      "trend": "neutral"
     },
     "scores": {
       "deepseek": 0,
