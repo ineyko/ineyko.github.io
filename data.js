@@ -704,8 +704,8 @@ const dailyChangeRateData = [
     "date": "2026-01-05",
     "value": 7.45,
     "upStockCount": 1289,
-    "limitUpCount": 127,
     "downStockCount": 173,
+    "limitUpCount": 127,
     "limitDownCount": 12,
     "volume": 25463.47,
     "maxConsecutive": 7,
@@ -718,8 +718,8 @@ const dailyChangeRateData = [
     "date": "2026-01-06",
     "value": 8.34,
     "upStockCount": 951,
-    "limitUpCount": 143,
     "downStockCount": 114,
+    "limitUpCount": 143,
     "limitDownCount": 2,
     "volume": 28065.75,
     "maxConsecutive": 13,
@@ -727,6 +727,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4108,
     "totalStockCount": 5459,
     "profitEffect": 0.7525187763326616
+  },
+  {
+    "date": "2026-01-07",
+    "value": 2.74,
+    "upStockCount": 731,
+    "limitUpCount": 97,
+    "downStockCount": 267,
+    "limitDownCount": 7,
+    "volume": 28542.2,
+    "maxConsecutive": 14,
+    "limitUpRate": 0.65,
+    "positiveStockCount": 2173,
+    "totalStockCount": 5460,
+    "profitEffect": 0.39798534798534796
   }
 ]
 
@@ -1506,6 +1520,141 @@ const stockResultsData = [
     "prevHigh": 7.49,
     "open": 7.97,
     "close": 7.98
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "301611",
+    "stockName": "珂玛科技",
+    "prevClose": 99.81,
+    "prevHigh": 100.88,
+    "open": 109,
+    "close": 109.34
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "300806",
+    "stockName": "斯迪克",
+    "prevClose": 31.13,
+    "prevHigh": 31.52,
+    "open": 32.5,
+    "close": 35.17
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "300748",
+    "stockName": "金力永磁",
+    "prevClose": 35.51,
+    "prevHigh": 35.62,
+    "open": 36.86,
+    "close": 36.51
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "300576",
+    "stockName": "容大感光",
+    "prevClose": 40.61,
+    "prevHigh": 40.83,
+    "open": 43,
+    "close": 44.57
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "003020",
+    "stockName": "立方制药",
+    "prevClose": 27.53,
+    "prevHigh": 27.6,
+    "open": 28.85,
+    "close": 27.57
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002409",
+    "stockName": "雅克科技",
+    "prevClose": 82.03,
+    "prevHigh": 84.43,
+    "open": 87.01,
+    "close": 88.63
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "001309",
+    "stockName": "德明利",
+    "prevClose": 255.48,
+    "prevHigh": 261,
+    "open": 279.98,
+    "close": 250
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002582",
+    "stockName": "好想你",
+    "prevClose": 11.76,
+    "prevHigh": 11.97,
+    "open": 12.94,
+    "close": 11.26
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "600667",
+    "stockName": "太极实业",
+    "prevClose": 8.58,
+    "prevHigh": 8.7,
+    "open": 8.89,
+    "close": 8.56
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "000021",
+    "stockName": "深科技",
+    "prevClose": 26.89,
+    "prevHigh": 27.2,
+    "open": 27.91,
+    "close": 26.75
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002654",
+    "stockName": "万润科技",
+    "prevClose": 15.08,
+    "prevHigh": 15.25,
+    "open": 15.58,
+    "close": 15.28
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "600637",
+    "stockName": "东方明珠",
+    "prevClose": 10.01,
+    "prevHigh": 10.1,
+    "open": 10.54,
+    "close": 11.01
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002319",
+    "stockName": "乐通股份",
+    "prevClose": 13.09,
+    "prevHigh": 13.18,
+    "open": 13.61,
+    "close": 12.82
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "001298",
+    "stockName": "好上好",
+    "prevClose": 30.71,
+    "prevHigh": 30.87,
+    "open": 31.58,
+    "close": 30.63
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002340",
+    "stockName": "格林美",
+    "prevClose": 8.64,
+    "prevHigh": 8.68,
+    "open": 8.87,
+    "close": 9.33
   }
 ]
 
@@ -2467,6 +2616,71 @@ const aiData = [
       "limitDownCount": "8",
       "volume": "26500",
       "summary": "建议减持高位题材股至半仓以内，关注年报预增标的（如新冠药物、消费电子）。若午盘后成交量跌破2.5万亿，需警惕系统性风险。",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 78.9,
+      "gpt": 91.78,
+      "grok": 74.34,
+      "gemini": 56.82,
+      "doubao": 60.23,
+      "yuanbao": 89.63
+    }
+  },
+  {
+    "date": "2026-01-08",
+    "deepseek": {
+      "upStockCount": "600",
+      "downStockCount": "280",
+      "limitUpCount": "80",
+      "limitDownCount": "8",
+      "volume": "27500",
+      "summary": "市场预计延续调整格局，赚钱效应维持低位，但成交量保持活跃且龙头标杆未倒，呈现“放量震荡、消化浮筹”的特征。",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "780",
+      "downStockCount": "240",
+      "limitUpCount": "95",
+      "limitDownCount": "6",
+      "volume": "28000",
+      "summary": "“情绪退潮后的技术性修复日”，指数与情绪均偏震荡。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "820",
+      "downStockCount": "220",
+      "limitUpCount": "115",
+      "limitDownCount": "9",
+      "volume": "27200",
+      "summary": "市场预计在美联储宽松和政策刺激下温和反弹，赚钱效应修复但力度有限。",
+      "trend": "up"
+    },
+    "gemini": {
+      "upStockCount": "310",
+      "downStockCount": "920",
+      "limitUpCount": "58",
+      "limitDownCount": "35",
+      "volume": "20800",
+      "summary": "市场处于“4000点高位钝化”与“外围政策靴子落地前”的共振期，妖王见顶风险加剧，预计 8 日会出现较明显的个股普跌与情绪退潮。",
+      "trend": "down"
+    },
+    "doubao": {
+      "upStockCount": "620",
+      "downStockCount": "380",
+      "limitUpCount": "85",
+      "limitDownCount": "12",
+      "volume": "27800",
+      "summary": "市场资金分歧进一步加大，连板情绪小幅降温，涨停封板率持续走低，赚钱效应延续回落。",
+      "trend": "neutral"
+    },
+    "yuanbao": {
+      "upStockCount": "580",
+      "downStockCount": "320",
+      "limitUpCount": "100",
+      "limitDownCount": "15",
+      "volume": "27000",
+      "summary": "市场在极致情绪释放后进入技术性休整，短期需消化获利筹码，但春季躁动核心逻辑（流动性宽松+政策预期）尚未破坏。",
       "trend": "neutral"
     },
     "scores": {
