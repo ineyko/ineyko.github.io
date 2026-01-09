@@ -732,8 +732,8 @@ const dailyChangeRateData = [
     "date": "2026-01-07",
     "value": 2.74,
     "upStockCount": 731,
-    "limitUpCount": 97,
     "downStockCount": 267,
+    "limitUpCount": 97,
     "limitDownCount": 7,
     "volume": 28542.2,
     "maxConsecutive": 14,
@@ -741,6 +741,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2173,
     "totalStockCount": 5460,
     "profitEffect": 0.39798534798534796
+  },
+  {
+    "date": "2026-01-08",
+    "value": 4.53,
+    "upStockCount": 896,
+    "limitUpCount": 111,
+    "downStockCount": 198,
+    "limitDownCount": 6,
+    "volume": 28003.85,
+    "maxConsecutive": 10,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 3731,
+    "totalStockCount": 5459,
+    "profitEffect": 0.6834585088844111
   }
 ]
 
@@ -1655,6 +1669,60 @@ const stockResultsData = [
     "prevHigh": 8.68,
     "open": 8.87,
     "close": 9.33
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "301556",
+    "stockName": "托普云农",
+    "prevClose": 104.26,
+    "prevHigh": 105.33,
+    "open": 109.03,
+    "close": 112.08
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "002971",
+    "stockName": "和远气体",
+    "prevClose": 30.57,
+    "prevHigh": 31.76,
+    "open": 33.63,
+    "close": 33.63
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "600477",
+    "stockName": "杭萧钢构",
+    "prevClose": 2.97,
+    "prevHigh": 3.11,
+    "open": 3.27,
+    "close": 3.27
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "000880",
+    "stockName": "潍柴重机",
+    "prevClose": 29.53,
+    "prevHigh": 30.19,
+    "open": 31.03,
+    "close": 30.7
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "603588",
+    "stockName": "高能环境",
+    "prevClose": 8.28,
+    "prevHigh": 8.39,
+    "open": 8.6,
+    "close": 9.08
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "603590",
+    "stockName": "康辰药业",
+    "prevClose": 41.88,
+    "prevHigh": 42.36,
+    "open": 43.98,
+    "close": 44.39
   }
 ]
 
@@ -2681,6 +2749,71 @@ const aiData = [
       "limitDownCount": "15",
       "volume": "27000",
       "summary": "市场在极致情绪释放后进入技术性休整，短期需消化获利筹码，但春季躁动核心逻辑（流动性宽松+政策预期）尚未破坏。",
+      "trend": "neutral"
+    },
+    "scores": {
+      "deepseek": 76.59,
+      "gpt": 91.03,
+      "grok": 88.37,
+      "gemini": 39.96,
+      "doubao": 69.43,
+      "yuanbao": 70.62
+    }
+  },
+  {
+    "date": "2026-01-09",
+    "deepseek": {
+      "upStockCount": "820",
+      "downStockCount": "220",
+      "limitUpCount": "98",
+      "limitDownCount": "7",
+      "volume": "27500",
+      "summary": "市场预计在快速反弹后进入震荡整固，赚钱效应小幅回落，但成交量保持活跃，呈现“高位盘整、消化浮筹”的格局。",
+      "trend": "neutral"
+    },
+    "gpt": {
+      "upStockCount": "780",
+      "downStockCount": "420",
+      "limitUpCount": "95",
+      "limitDownCount": "15",
+      "volume": "28000",
+      "summary": "情绪主升已过，修复完成后进入高位震荡期，市场由“做多一致”转向“结构性博弈”。",
+      "trend": "neutral"
+    },
+    "grok": {
+      "upStockCount": "910",
+      "downStockCount": "180",
+      "limitUpCount": "120",
+      "limitDownCount": "7",
+      "volume": "28200",
+      "summary": "市场预计在美联储宽松预期和春节前躁动下延续温和普涨，赚钱效应进一步修复但成交分歧仍存。",
+      "trend": "up"
+    },
+    "gemini": {
+      "upStockCount": "850",
+      "downStockCount": "230",
+      "limitUpCount": "105",
+      "limitDownCount": "8",
+      "volume": "27500",
+      "summary": "市场将延续2.8万亿级别的活跃成交，呈现“权重搭台、题材唱戏”后的高位良性分歧，赚钱效应虽微幅回落但依然具备极强的参与价值。",
+      "trend": "up"
+    },
+    "doubao": {
+      "upStockCount": "820",
+      "downStockCount": "220",
+      "limitUpCount": "105",
+      "limitDownCount": "5",
+      "volume": "27500",
+      "summary": "延续强势震荡格局，涨幅≥3% 家数维持高位、下跌家数小幅增加但无恐慌，涨停数保持百股以上，成交量高位震荡，整体赚钱效应进一步修复。",
+      "trend": "up"
+    },
+    "yuanbao": {
+      "upStockCount": "927",
+      "downStockCount": "184",
+      "limitUpCount": "115",
+      "limitDownCount": "18",
+      "volume": "27982.4",
+      "summary": "市场正处于年末资金调仓与年初布局的过渡期。",
       "trend": "neutral"
     },
     "scores": {
