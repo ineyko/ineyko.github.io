@@ -2650,7 +2650,7 @@ SELECT_COND;</code></pre>
                 // 计算开盘买入对比
                 const openBuyCloseRatio = null == item.close ? 0 : (item.close - item.open) / item.open;
                 // 原高亮条件：高开比例在9.90~10.09之间并且股票代码以60或00开头
-                const condition1 = gapUpRatio >= 0.098 && gapUpRatio <= 0.1015 && (item.stockCode.startsWith('60') || item.stockCode.startsWith('00'));
+                const condition1 = gapUpRatio >= 0.099 && gapUpRatio <= 0.1015 && (item.stockCode.startsWith('60') || item.stockCode.startsWith('00'));
                 // 新增高亮条件：高开比例在19.90~20.10之间并且股票代码以30或68开头
                 const condition2 = gapUpRatio >= 0.198 && gapUpRatio <= 0.2015 && (item.stockCode.startsWith('30') || item.stockCode.startsWith('68'));
                 // 是否需要高亮整行
