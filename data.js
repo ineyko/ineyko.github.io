@@ -1,3 +1,2234 @@
-const dailyChangeRateData=[{"date":"2025-10-23","value":1.19,"upStockCount":433,"downStockCount":363,"limitUpCount":72,"limitDownCount":9,"volume":16439.1,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-10-24","value":3.63,"upStockCount":836,"downStockCount":230,"limitUpCount":71,"limitDownCount":10,"volume":19742.09,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-10-27","value":3.42,"upStockCount":690,"downStockCount":202,"limitUpCount":63,"limitDownCount":15,"volume":23401.32,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-10-28","value":1.51,"upStockCount":497,"downStockCount":330,"limitUpCount":71,"limitDownCount":10,"volume":21478.6,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-10-29","value":3.15,"upStockCount":897,"downStockCount":285,"limitUpCount":66,"limitDownCount":10,"volume":22560.3,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-10-30","value":0.38,"upStockCount":340,"downStockCount":885,"limitUpCount":61,"limitDownCount":10,"volume":24216.77,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-10-31","value":2.25,"upStockCount":814,"downStockCount":361,"limitUpCount":76,"limitDownCount":17,"volume":23177.92,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-11-03","value":2.58,"upStockCount":706,"downStockCount":274,"limitUpCount":90,"limitDownCount":11,"volume":21071.31,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-11-04","value":0.48,"upStockCount":323,"downStockCount":676,"limitUpCount":67,"limitDownCount":8,"volume":19157.58,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-11-05","value":4.05,"upStockCount":615,"downStockCount":152,"limitUpCount":83,"limitDownCount":7,"volume":18723.41,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":0,"totalStockCount":0,"profitEffect":0},{"date":"2025-11-06","value":2.61,"upStockCount":637,"downStockCount":244,"limitUpCount":72,"limitDownCount":17,"volume":20552.48,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":2880,"totalStockCount":5434,"profitEffect":0.5299963194700037},{"date":"2025-11-07","value":1.18,"upStockCount":452,"downStockCount":384,"limitUpCount":63,"limitDownCount":8,"volume":19990.53,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":2101,"totalStockCount":5436,"profitEffect":0.3864974245768948},{"date":"2025-11-10","value":2.56,"upStockCount":732,"downStockCount":286,"limitUpCount":92,"limitDownCount":10,"volume":21744.54,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":3376,"totalStockCount":5439,"profitEffect":0.6207023349880493},{"date":"2025-11-11","value":1.87,"upStockCount":510,"downStockCount":273,"limitUpCount":82,"limitDownCount":6,"volume":19935.86,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":2785,"totalStockCount":5439,"profitEffect":0.5120426548997978},{"date":"2025-11-12","value":0.88,"upStockCount":434,"downStockCount":493,"limitUpCount":77,"limitDownCount":10,"volume":19450.34,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":1758,"totalStockCount":5441,"profitEffect":0.3231023708877045},{"date":"2025-11-13","value":10.13,"upStockCount":790,"downStockCount":78,"limitUpCount":104,"limitDownCount":0,"volume":20419.62,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":3952,"totalStockCount":5440,"profitEffect":0.7264705882352941},{"date":"2025-11-14","value":0.73,"upStockCount":449,"downStockCount":611,"limitUpCount":89,"limitDownCount":9,"volume":19580.79,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":1961,"totalStockCount":5438,"profitEffect":0.3606105185730048},{"date":"2025-11-17","value":1.76,"upStockCount":609,"downStockCount":346,"limitUpCount":100,"limitDownCount":10,"volume":19107.91,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":2584,"totalStockCount":5437,"profitEffect":0.4752620930660291},{"date":"2025-11-18","value":0.36,"upStockCount":317,"downStockCount":892,"limitUpCount":62,"limitDownCount":36,"volume":19260.68,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":1277,"totalStockCount":5440,"profitEffect":0.2347426470588235},{"date":"2025-11-19","value":0.38,"upStockCount":356,"downStockCount":928,"limitUpCount":64,"limitDownCount":33,"volume":17259.08,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":1200,"totalStockCount":5442,"profitEffect":0.2205071664829107},{"date":"2025-11-20","value":0.5,"upStockCount":295,"downStockCount":587,"limitUpCount":49,"limitDownCount":20,"volume":17081.89,"maxConsecutive":0,"limitUpRate":0,"positiveStockCount":1453,"totalStockCount":5441,"profitEffect":0.2670464988053667},{"date":"2025-11-21","value":0.04,"upStockCount":144,"downStockCount":3756,"limitUpCount":33,"limitDownCount":99,"volume":19656.61,"maxConsecutive":6,"limitUpRate":0.58,"positiveStockCount":354,"totalStockCount":5444,"profitEffect":0.065025716385011},{"date":"2025-11-24","value":5.28,"upStockCount":1115,"downStockCount":211,"limitUpCount":79,"limitDownCount":34,"volume":17277.74,"maxConsecutive":7,"limitUpRate":0.77,"positiveStockCount":4228,"totalStockCount":5440,"profitEffect":0.7772058823529412},{"date":"2025-11-25","value":11.58,"upStockCount":845,"downStockCount":73,"limitUpCount":95,"limitDownCount":5,"volume":18121.47,"maxConsecutive":5,"limitUpRate":0.75,"positiveStockCount":4300,"totalStockCount":5438,"profitEffect":0.7907318867230599},{"date":"2025-11-26","value":1.22,"upStockCount":413,"downStockCount":338,"limitUpCount":76,"limitDownCount":6,"volume":17833.46,"maxConsecutive":5,"limitUpRate":0.75,"positiveStockCount":1692,"totalStockCount":5434,"profitEffect":0.3113728376886272},{"date":"2025-11-27","value":1.73,"upStockCount":455,"downStockCount":263,"limitUpCount":63,"limitDownCount":14,"volume":17097.94,"maxConsecutive":4,"limitUpRate":0.61,"positiveStockCount":2790,"totalStockCount":5434,"profitEffect":0.513433934486566},{"date":"2025-11-28","value":7.23,"upStockCount":723,"downStockCount":100,"limitUpCount":81,"limitDownCount":6,"volume":15857.96,"maxConsecutive":5,"limitUpRate":0.72,"positiveStockCount":4122,"totalStockCount":5433,"profitEffect":0.7586968525676422},{"date":"2025-12-01","value":3.34,"upStockCount":688,"downStockCount":206,"limitUpCount":76,"limitDownCount":7,"volume":18739.38,"maxConsecutive":6,"limitUpRate":0.7,"positiveStockCount":3398,"totalStockCount":5432,"profitEffect":0.6255522827687776},{"date":"2025-12-02","value":0.93,"upStockCount":318,"downStockCount":341,"limitUpCount":54,"limitDownCount":7,"volume":15934.3,"maxConsecutive":7,"limitUpRate":0.71,"positiveStockCount":1544,"totalStockCount":5436,"profitEffect":0.2840323767476085},{"date":"2025-12-03","value":0.51,"upStockCount":302,"downStockCount":595,"limitUpCount":54,"limitDownCount":14,"volume":16699.62,"maxConsecutive":6,"limitUpRate":0.66,"positiveStockCount":1443,"totalStockCount":5442,"profitEffect":0.2651598676957001},{"date":"2025-12-04","value":0.49,"upStockCount":299,"downStockCount":614,"limitUpCount":39,"limitDownCount":26,"volume":15489.6,"maxConsecutive":4,"limitUpRate":0.59,"positiveStockCount":1455,"totalStockCount":5440,"profitEffect":0.2674632352941176},{"date":"2025-12-05","value":6.92,"upStockCount":754,"downStockCount":109,"limitUpCount":80,"limitDownCount":12,"volume":17257.71,"maxConsecutive":4,"limitUpRate":0.78,"positiveStockCount":4387,"totalStockCount":5438,"profitEffect":0.8067304155939684},{"date":"2025-12-08","value":8.18,"upStockCount":720,"downStockCount":88,"limitUpCount":78,"limitDownCount":8,"volume":20366.46,"maxConsecutive":5,"limitUpRate":0.73,"positiveStockCount":3409,"totalStockCount":5440,"profitEffect":0.6266544117647059},{"date":"2025-12-09","value":0.79,"upStockCount":351,"downStockCount":446,"limitUpCount":54,"limitDownCount":12,"volume":19039.53,"maxConsecutive":6,"limitUpRate":0.7,"positiveStockCount":1308,"totalStockCount":5441,"profitEffect":0.2403969858481897},{"date":"2025-12-10","value":1.79,"upStockCount":452,"downStockCount":253,"limitUpCount":60,"limitDownCount":11,"volume":17785.05,"maxConsecutive":6,"limitUpRate":0.67,"positiveStockCount":2435,"totalStockCount":5438,"profitEffect":0.4477749172489886},{"date":"2025-12-11","value":0.31,"upStockCount":341,"downStockCount":1088,"limitUpCount":38,"limitDownCount":29,"volume":18571.13,"maxConsecutive":5,"limitUpRate":0.56,"positiveStockCount":1032,"totalStockCount":5442,"profitEffect":0.1896361631753032},{"date":"2025-12-12","value":1.88,"upStockCount":630,"downStockCount":336,"limitUpCount":83,"limitDownCount":26,"volume":20922.06,"maxConsecutive":5,"limitUpRate":0.87,"positiveStockCount":2683,"totalStockCount":5444,"profitEffect":0.4928361498897869},{"date":"2025-12-15","value":0.91,"upStockCount":464,"downStockCount":512,"limitUpCount":65,"limitDownCount":24,"volume":17734.39,"maxConsecutive":6,"limitUpRate":0.63,"positiveStockCount":2314,"totalStockCount":5443,"profitEffect":0.4251331986037112},{"date":"2025-12-16","value":0.24,"upStockCount":297,"downStockCount":1258,"limitUpCount":46,"limitDownCount":36,"volume":17241.73,"maxConsecutive":4,"limitUpRate":0.69,"positiveStockCount":1091,"totalStockCount":5445,"profitEffect":0.2003673094582185},{"date":"2025-12-17","value":2.51,"upStockCount":653,"downStockCount":260,"limitUpCount":57,"limitDownCount":25,"volume":18111.46,"maxConsecutive":5,"limitUpRate":0.71,"positiveStockCount":3626,"totalStockCount":5446,"profitEffect":0.665809768637532},{"date":"2025-12-18","value":1.43,"upStockCount":477,"downStockCount":333,"limitUpCount":73,"limitDownCount":8,"volume":16554.83,"maxConsecutive":6,"limitUpRate":0.76,"positiveStockCount":2845,"totalStockCount":5449,"profitEffect":0.5221141493852083},{"date":"2025-12-19","value":7.38,"upStockCount":886,"downStockCount":120,"limitUpCount":82,"limitDownCount":6,"volume":17259.15,"maxConsecutive":6,"limitUpRate":0.76,"positiveStockCount":4477,"totalStockCount":5448,"profitEffect":0.821769456681351},{"date":"2025-12-22","value":4.24,"upStockCount":700,"downStockCount":165,"limitUpCount":105,"limitDownCount":8,"volume":18619.4,"maxConsecutive":7,"limitUpRate":0.68,"positiveStockCount":2984,"totalStockCount":5444,"profitEffect":0.5481263776634827},{"date":"2025-12-23","value":0.81,"upStockCount":399,"downStockCount":495,"limitUpCount":68,"limitDownCount":15,"volume":18998.41,"maxConsecutive":8,"limitUpRate":0.72,"positiveStockCount":1512,"totalStockCount":5449,"profitEffect":0.27748210680858876},{"date":"2025-12-24","value":9.29,"upStockCount":799,"downStockCount":86,"limitUpCount":86,"limitDownCount":6,"volume":18802.68,"maxConsecutive":9,"limitUpRate":0.78,"positiveStockCount":4128,"totalStockCount":5451,"profitEffect":0.7572922399559714},{"date":"2025-12-25","value":6.3,"upStockCount":731,"downStockCount":116,"limitUpCount":93,"limitDownCount":2,"volume":19245.23,"maxConsecutive":10,"limitUpRate":0.76,"positiveStockCount":3773,"totalStockCount":5454,"profitEffect":0.6917858452511918},{"date":"2025-12-26","value":2.71,"upStockCount":532,"downStockCount":196,"limitUpCount":92,"limitDownCount":3,"volume":21601.91,"maxConsecutive":11,"limitUpRate":0.81,"positiveStockCount":1866,"totalStockCount":5453,"profitEffect":0.3421969558041445},{"date":"2025-12-29","value":1.2,"upStockCount":519,"downStockCount":434,"limitUpCount":87,"limitDownCount":25,"volume":21393.38,"maxConsecutive":12,"limitUpRate":0.74,"positiveStockCount":1995,"totalStockCount":5455,"profitEffect":0.36571952337305225},{"date":"2025-12-30","value":1.29,"upStockCount":489,"downStockCount":380,"limitUpCount":66,"limitDownCount":19,"volume":21426.19,"maxConsecutive":10,"limitUpRate":0.67,"positiveStockCount":1840,"totalStockCount":5457,"profitEffect":0.3371816016126077},{"date":"2025-12-31","value":1.5,"upStockCount":495,"downStockCount":331,"limitUpCount":63,"limitDownCount":12,"volume":20452.35,"maxConsecutive":6,"limitUpRate":0.76,"positiveStockCount":2474,"totalStockCount":5458,"profitEffect":0.4532795895932576},{"date":"2026-01-05","value":7.45,"upStockCount":1289,"downStockCount":173,"limitUpCount":127,"limitDownCount":12,"volume":25463.47,"maxConsecutive":7,"limitUpRate":0.8,"positiveStockCount":4185,"totalStockCount":5457,"profitEffect":0.7669048927982408},{"date":"2026-01-06","value":8.34,"upStockCount":951,"downStockCount":114,"limitUpCount":143,"limitDownCount":2,"volume":28065.75,"maxConsecutive":13,"limitUpRate":0.82,"positiveStockCount":4108,"totalStockCount":5459,"profitEffect":0.7525187763326616},{"date":"2026-01-07","value":2.74,"upStockCount":731,"downStockCount":267,"limitUpCount":97,"limitDownCount":7,"volume":28542.2,"maxConsecutive":14,"limitUpRate":0.65,"positiveStockCount":2173,"totalStockCount":5460,"profitEffect":0.39798534798534796},{"date":"2026-01-08","value":4.53,"upStockCount":896,"downStockCount":198,"limitUpCount":111,"limitDownCount":6,"volume":28003.85,"maxConsecutive":10,"limitUpRate":0.76,"positiveStockCount":3731,"totalStockCount":5459,"profitEffect":0.6834585088844111},{"date":"2026-01-09","value":9.06,"upStockCount":997,"downStockCount":110,"limitUpCount":109,"limitDownCount":1,"volume":31227.67,"maxConsecutive":11,"limitUpRate":0.67,"positiveStockCount":3920,"totalStockCount":5459,"profitEffect":0.7180802344751787},{"date":"2026-01-12","value":11.87,"upStockCount":1733,"downStockCount":146,"limitUpCount":201,"limitDownCount":9,"volume":36014.5,"maxConsecutive":12,"limitUpRate":0.8,"positiveStockCount":4144,"totalStockCount":5461,"profitEffect":0.7588353781358725},{"date":"2026-01-13","value":0.38,"upStockCount":504,"limitUpCount":75,"downStockCount":1342,"limitDownCount":56,"volume":36510.65,"maxConsecutive":13,"limitUpRate":0.53,"positiveStockCount":1622,"totalStockCount":5452,"profitEffect":0.297505502567865}];
-const stockResultsData=[{"date":"2025-12-09","stockCode":"000977","stockName":"浪潮信息","prevClose":62.69,"prevHigh":64.3,"open":66},{"date":"2025-12-09","stockCode":"001287","stockName":"中电港","prevClose":22.89,"prevHigh":23.07,"open":24.38},{"date":"2025-12-10","stockCode":"603101","stockName":"汇嘉时代","prevClose":9.63,"prevHigh":9.78,"open":10.59},{"date":"2025-12-10","stockCode":"600196","stockName":"复星医药","prevClose":27.45,"prevHigh":27.77,"open":28.45},{"date":"2025-12-10","stockCode":"605376","stockName":"博迁新材","prevClose":53.95,"prevHigh":54.78,"open":55.58},{"date":"2025-12-10","stockCode":"603681","stockName":"永冠新材","prevClose":19.22,"prevHigh":19.54,"open":19.94},{"date":"2025-12-10","stockCode":"603518","stockName":"锦泓集团","prevClose":10.25,"prevHigh":10.35,"open":10.58},{"date":"2025-12-10","stockCode":"601086","stockName":"国芳集团","prevClose":10.55,"prevHigh":10.7,"open":10.88},{"date":"2025-12-10","stockCode":"300567","stockName":"精测电子","prevClose":72.77,"prevHigh":73.43,"open":74.99},{"date":"2025-12-10","stockCode":"002251","stockName":"步步高","prevClose":5.23,"prevHigh":5.33,"open":5.66},{"date":"2025-12-10","stockCode":"000759","stockName":"中百集团","prevClose":7.72,"prevHigh":7.85,"open":8.02},{"date":"2025-12-11","stockCode":"603135","stockName":"中重科技","prevClose":9.48,"prevHigh":9.53,"open":9.86},{"date":"2025-12-11","stockCode":"600156","stockName":"华升股份","prevClose":9.05,"prevHigh":9.38,"open":9.96},{"date":"2025-12-11","stockCode":"002838","stockName":"道恩股份","prevClose":25.58,"prevHigh":25.68,"open":26},{"date":"2025-12-11","stockCode":"000700","stockName":"模塑科技","prevClose":11.08,"prevHigh":11.28,"open":11.59},{"date":"2025-12-12","stockCode":"002256","stockName":"兆新股份","prevClose":3.55,"prevHigh":3.62,"open":3.91},{"date":"2025-12-12","stockCode":"600416","stockName":"湘电股份","prevClose":14.19,"prevHigh":14.39,"open":14.57},{"date":"2025-12-15","stockCode":"300423","stockName":"昇辉科技","prevClose":8.55,"prevHigh":8.74,"open":8.84},{"date":"2025-12-15","stockCode":"300141","stockName":"和顺电气","prevClose":12.17,"prevHigh":12.32,"open":12.45},{"date":"2025-12-15","stockCode":"300138","stockName":"晨光生物","prevClose":12.68,"prevHigh":12.82,"open":12.98},{"date":"2025-12-15","stockCode":"002389","stockName":"航天彩虹","prevClose":22.76,"prevHigh":23.13,"open":23.4},{"date":"2025-12-15","stockCode":"301548","stockName":"崇德科技","prevClose":53,"prevHigh":54,"open":54.6},{"date":"2025-12-15","stockCode":"301232","stockName":"飞沃科技","prevClose":109.5,"prevHigh":110.81,"open":112.28},{"date":"2025-12-15","stockCode":"300118","stockName":"东方日升","prevClose":11.14,"prevHigh":11.45,"open":12.18},{"date":"2025-12-15","stockCode":"301306","stockName":"西测测试","prevClose":78.65,"prevHigh":80,"open":83.33},{"date":"2025-12-15","stockCode":"603058","stockName":"永吉分股","prevClose":9.2,"prevHigh":9.59,"open":10.12},{"date":"2025-12-16","stockCode":"600686","stockName":"金龙汽车","prevClose":17.21,"prevHigh":17.75,"open":18,"close":16.1},{"date":"2025-12-16","stockCode":"300698","stockName":"万马科技","prevClose":39.69,"prevHigh":40.57,"open":42.32,"close":40.79},{"date":"2025-12-17","stockCode":"002536","stockName":"飞龙股份","prevClose":25.08,"prevHigh":25.39,"open":27.58,"close":27.59},{"date":"2025-12-17","stockCode":"002969","stockName":"嘉美包装","prevClose":4.56,"prevHigh":4.65,"open":5.02,"close":5.02},{"date":"2025-12-18","stockCode":"301421","stockName":"波长光电","prevClose":112.29,"prevHigh":114.3,"open":119,"close":106.41},{"date":"2025-12-18","stockCode":"301392","stockName":"汇成真空","prevClose":140.91,"prevHigh":142.5,"open":147,"close":137.12},{"date":"2025-12-18","stockCode":"601198","stockName":"东兴证券","prevClose":13.13,"prevHigh":13.6,"open":14.44,"close":14.44},{"date":"2025-12-18","stockCode":"301133","stockName":"金钟股份","prevClose":33.88,"prevHigh":33.94,"open":35.68,"close":37.2},{"date":"2025-12-18","stockCode":"301408","stockName":"华人健康","prevClose":18.2,"prevHigh":19.31,"open":20.35,"close":21.84},{"date":"2025-12-19","stockCode":"603977","stockName":"国泰集团","prevClose":12.92,"prevHigh":13.28,"open":13.56,"close":14.21},{"date":"2025-12-22","stockCode":"002810","stockName":"山东赫达","prevClose":13.22,"prevHigh":13.4,"open":14.08,"close":14.54},{"date":"2025-12-22","stockCode":"000625","stockName":"长安汽车","prevClose":11.75,"prevHigh":11.84,"open":12.12,"close":12.05},{"date":"2025-12-22","stockCode":"002917","stockName":"金奥博","prevClose":13.14,"prevHigh":13.22,"open":13.5,"close":13.35},{"date":"2025-12-22","stockCode":"600178","stockName":"东安动力","prevClose":11.77,"prevHigh":11.8,"open":12.29,"close":12.02},{"date":"2025-12-23","stockCode":"003029","stockName":"吉大正元","prevClose":26.87,"prevHigh":27.22,"open":29.56,"close":27.37},{"date":"2025-12-23","stockCode":"603076","stockName":"乐惠国际","prevClose":23.86,"prevHigh":24.15,"open":24.81,"close":24.01},{"date":"2025-12-23","stockCode":"600882","stockName":"妙可蓝多","prevClose":28.53,"prevHigh":28.85,"open":29.74,"close":28.22},{"date":"2025-12-24","stockCode":"002324","stockName":"普利特","prevClose":13.11,"prevHigh":13.21,"open":13.51,"close":14.42},{"date":"2025-12-24","stockCode":"600962","stockName":"国投中鲁","prevClose":21.3,"prevHigh":21.78,"open":23.08,"close":23.43},{"date":"2025-12-24","stockCode":"300351","stockName":"永贵电器","prevClose":17.36,"prevHigh":17.5,"open":18.4,"close":18.63},{"date":"2025-12-25","stockCode":"000582","stockName":"北部湾港","prevClose":9.75,"prevHigh":9.96,"open":10.56,"close":10.17},{"date":"2025-12-25","stockCode":"000532","stockName":"华金资本","prevClose":16.04,"prevHigh":16.39,"open":17,"close":16.76},{"date":"2025-12-25","stockCode":"300900","stockName":"广联航空","prevClose":26.01,"prevHigh":26.39,"open":28.58,"close":31.21},{"date":"2025-12-25","stockCode":"300553","stockName":"集智股份","prevClose":38.14,"prevHigh":28.25,"open":39.4,"close":40.98},{"date":"2025-12-26","stockCode":"301079","stockName":"邵阳液压","prevClose":30.47,"prevHigh":31.52,"open":33.65,"close":31.87},{"date":"2025-12-26","stockCode":"002759","stockName":"天际股份","prevClose":45,"prevHigh":46.33,"open":49.5,"close":49.5},{"date":"2025-12-26","stockCode":"002192","stockName":"融捷股份","prevClose":52.68,"prevHigh":53.18,"open":54.65,"close":55.46},{"date":"2025-12-26","stockCode":"600215","stockName":"派斯林","prevClose":7.03,"prevHigh":7.06,"open":7.33,"close":7.13},{"date":"2025-12-29","stockCode":"600531","stockName":"豫光金铅","prevClose":11.8,"prevHigh":11.87,"open":12.2,"close":12.24},{"date":"2025-12-29","stockCode":"000630","stockName":"铜陵有色","prevClose":5.93,"prevHigh":5.98,"open":6.11,"close":5.73},{"date":"2025-12-29","stockCode":"003027","stockName":"同兴科技","prevClose":22.45,"prevHigh":22.68,"open":24.7,"close":23.15},{"date":"2025-12-29","stockCode":"002261","stockName":"拓维信息","prevClose":30.7,"prevHigh":31.08,"open":31.88,"close":33.77},{"date":"2025-12-29","stockCode":"002324","stockName":"普利特","prevClose":14.81,"prevHigh":15,"open":15.66,"close":15.42},{"date":"2025-12-29","stockCode":"002843","stockName":"泰嘉股份","prevClose":20.12,"prevHigh":20.41,"open":21,"close":20.73},{"date":"2025-12-29","stockCode":"002716","stockName":"湖南白银","prevClose":6.79,"prevHigh":6.9,"open":7.2,"close":7.28},{"date":"2025-12-29","stockCode":"603186","stockName":"华正新材","prevClose":47.01,"prevHigh":47.96,"open":49.21,"close":50.69},{"date":"2025-12-29","stockCode":"601212","stockName":"白银有色","prevClose":5.87,"prevHigh":6,"open":6.2,"close":6.24},{"date":"2025-12-29","stockCode":"002866","stockName":"传艺科技","prevClose":17.96,"prevHigh":18.46,"open":19.6,"close":18.85},{"date":"2025-12-29","stockCode":"002272","stockName":"川润股份","prevClose":16.25,"prevHigh":16.9,"open":17.88,"close":17.88},{"date":"2025-12-29","stockCode":"300699","stockName":"光威复材","prevClose":34.87,"prevHigh":36.66,"open":38.3,"close":40.05},{"date":"2025-12-29","stockCode":"300489","stockName":"光智科技","prevClose":52.19,"prevHigh":53.98,"open":55.8,"close":52.18},{"date":"2025-12-30","stockCode":"003041","stockName":"真爱美家","prevClose":46.55,"prevHigh":48,"open":49.5,"close":48.84},{"date":"2025-12-31","stockCode":"301101","stockName":"明月镜片","prevClose":39.99,"prevHigh":40.21,"open":41.92,"close":41.43},{"date":"2025-12-31","stockCode":"002943","stockName":"宇晶股份","prevClose":37.38,"prevHigh":37.8,"open":39.23,"close":39.6},{"date":"2025-12-31","stockCode":"301383","stockName":"天键股份","prevClose":35.26,"prevHigh":35.95,"open":37.17,"close":35.64},{"date":"2025-12-31","stockCode":"300695","stockName":"兆丰股份","prevClose":93.69,"prevHigh":95.5,"open":98.5,"close":100.06},{"date":"2026-01-05","stockCode":"300986","stockName":"志特新材","prevClose":11.18,"prevHigh":11.33,"open":12.31,"close":13.42},{"date":"2026-01-05","stockCode":"300955","stockName":"嘉亨家化","prevClose":41.51,"prevHigh":43.45,"open":49.81,"close":45.13},{"date":"2026-01-05","stockCode":"300894","stockName":"火星人","prevClose":11.79,"prevHigh":12.1,"open":12.99,"close":12.5},{"date":"2026-01-05","stockCode":"300337","stockName":"银邦股份","prevClose":15.51,"prevHigh":15.99,"open":16.68,"close":16.2},{"date":"2026-01-05","stockCode":"002202","stockName":"金风科技","prevClose":20.4,"prevHigh":20.88,"open":22.44,"close":21.82},{"date":"2026-01-05","stockCode":"603859","stockName":"能科科技","prevClose":42.05,"prevHigh":42.79,"open":43.98,"close":44.22},{"date":"2026-01-05","stockCode":"001339","stockName":"智微智能","prevClose":51.11,"prevHigh":52,"open":53.2,"close":53.13},{"date":"2026-01-05","stockCode":"002324","stockName":"普利特","prevClose":15.99,"prevHigh":16.24,"open":16.7,"close":17.59},{"date":"2026-01-05","stockCode":"601600","stockName":"中国铝业","prevClose":12.22,"prevHigh":12.38,"open":12.72,"close":13.02},{"date":"2026-01-05","stockCode":"002195","stockName":"岩山科技","prevClose":7.09,"prevHigh":7.18,"open":7.8,"close":7.8},{"date":"2026-01-05","stockCode":"002709","stockName":"天赐材料","prevClose":46.33,"prevHigh":46.83,"open":48.6,"close":48.04},{"date":"2026-01-05","stockCode":"600562","stockName":"国睿科技","prevClose":28.26,"prevHigh":28.49,"open":29.5,"close":28.88},{"date":"2026-01-05","stockCode":"000933","stockName":"神火股份","prevClose":27.47,"prevHigh":27.68,"open":28.55,"close":28.47},{"date":"2026-01-06","stockCode":"603014","stockName":"威高血净","prevClose":41.49,"prevHigh":41.5,"open":43.55,"close":41.98},{"date":"2026-01-06","stockCode":"301606","stockName":"绿联科技","prevClose":60.71,"prevHigh":61.12,"open":65,"close":63.45},{"date":"2026-01-06","stockCode":"301099","stockName":"雅创电子","prevClose":45.3,"prevHigh":45.39,"open":47.7,"close":48.86},{"date":"2026-01-06","stockCode":"600589","stockName":"大位科技","prevClose":7.39,"prevHigh":7.49,"open":7.97,"close":7.98},{"date":"2026-01-07","stockCode":"301611","stockName":"珂玛科技","prevClose":99.81,"prevHigh":100.88,"open":109,"close":109.34},{"date":"2026-01-07","stockCode":"300806","stockName":"斯迪克","prevClose":31.13,"prevHigh":31.52,"open":32.5,"close":35.17},{"date":"2026-01-07","stockCode":"300748","stockName":"金力永磁","prevClose":35.51,"prevHigh":35.62,"open":36.86,"close":36.51},{"date":"2026-01-07","stockCode":"300576","stockName":"容大感光","prevClose":40.61,"prevHigh":40.83,"open":43,"close":44.57},{"date":"2026-01-07","stockCode":"003020","stockName":"立方制药","prevClose":27.53,"prevHigh":27.6,"open":28.85,"close":27.57},{"date":"2026-01-07","stockCode":"002409","stockName":"雅克科技","prevClose":82.03,"prevHigh":84.43,"open":87.01,"close":88.63},{"date":"2026-01-07","stockCode":"001309","stockName":"德明利","prevClose":255.48,"prevHigh":261,"open":279.98,"close":250},{"date":"2026-01-07","stockCode":"002582","stockName":"好想你","prevClose":11.76,"prevHigh":11.97,"open":12.94,"close":11.26},{"date":"2026-01-07","stockCode":"600667","stockName":"太极实业","prevClose":8.58,"prevHigh":8.7,"open":8.89,"close":8.56},{"date":"2026-01-07","stockCode":"000021","stockName":"深科技","prevClose":26.89,"prevHigh":27.2,"open":27.91,"close":26.75},{"date":"2026-01-07","stockCode":"002654","stockName":"万润科技","prevClose":15.08,"prevHigh":15.25,"open":15.58,"close":15.28},{"date":"2026-01-07","stockCode":"600637","stockName":"东方明珠","prevClose":10.01,"prevHigh":10.1,"open":10.54,"close":11.01},{"date":"2026-01-07","stockCode":"002319","stockName":"乐通股份","prevClose":13.09,"prevHigh":13.18,"open":13.61,"close":12.82},{"date":"2026-01-07","stockCode":"001298","stockName":"好上好","prevClose":30.71,"prevHigh":30.87,"open":31.58,"close":30.63},{"date":"2026-01-07","stockCode":"002340","stockName":"格林美","prevClose":8.64,"prevHigh":8.68,"open":8.87,"close":9.33},{"date":"2026-01-08","stockCode":"301556","stockName":"托普云农","prevClose":104.26,"prevHigh":105.33,"open":109.03,"close":112.08},{"date":"2026-01-08","stockCode":"002971","stockName":"和远气体","prevClose":30.57,"prevHigh":31.76,"open":33.63,"close":33.63},{"date":"2026-01-08","stockCode":"600477","stockName":"杭萧钢构","prevClose":2.97,"prevHigh":3.11,"open":3.27,"close":3.27},{"date":"2026-01-08","stockCode":"000880","stockName":"潍柴重机","prevClose":29.53,"prevHigh":30.19,"open":31.03,"close":30.7},{"date":"2026-01-08","stockCode":"603588","stockName":"高能环境","prevClose":8.28,"prevHigh":8.39,"open":8.6,"close":9.08},{"date":"2026-01-08","stockCode":"603590","stockName":"康辰药业","prevClose":41.88,"prevHigh":42.36,"open":43.98,"close":44.39},{"date":"2026-01-09","stockCode":"300747","stockName":"锐科激光","prevClose":32,"prevHigh":32.35,"open":34.52,"close":33.91},{"date":"2026-01-09","stockCode":"300072","stockName":"海新能科","prevClose":4.95,"prevHigh":5.08,"open":5.27,"close":5.29},{"date":"2026-01-09","stockCode":"300051","stockName":"琏升科技","prevClose":7.23,"prevHigh":7.48,"open":7.81,"close":8.68},{"date":"2026-01-09","stockCode":"601615","stockName":"明阳智能","prevClose":16.75,"prevHigh":17.3,"open":18.42,"close":17.89},{"date":"2026-01-09","stockCode":"000987","stockName":"越秀资本","prevClose":9.21,"prevHigh":9.49,"open":10.13,"close":10.13},{"date":"2026-01-09","stockCode":"600151","stockName":"航天机电","prevClose":20.35,"prevHigh":20.78,"open":21.5,"close":20.72},{"date":"2026-01-09","stockCode":"603159","stockName":"上海亚虹","prevClose":26.47,"prevHigh":26.98,"open":27.75,"close":26.46},{"date":"2026-01-09","stockCode":"600871","stockName":"石化油服","prevClose":2.2,"prevHigh":2.22,"open":2.29,"close":2.33},{"date":"2026-01-09","stockCode":"600571","stockName":"信雅达","prevClose":16.01,"prevHigh":16.13,"open":16.5,"close":16.61},{"date":"2026-01-09","stockCode":"002911","stockName":"佛燃能源","prevClose":12.28,"prevHigh":12.36,"open":12.83,"close":12.44},{"date":"2026-01-09","stockCode":"000531","stockName":"穗恒运A","prevClose":6.65,"prevHigh":6.68,"open":6.92,"close":6.87},{"date":"2026-01-09","stockCode":"000852","stockName":"石化机械","prevClose":7.45,"prevHigh":7.48,"open":7.99,"close":7.75},{"date":"2026-01-09","stockCode":"600703","stockName":"三安光电","prevClose":14.87,"prevHigh":14.92,"open":15.29,"close":15.39},{"date":"2026-01-09","stockCode":"000554","stockName":"泰山石油","prevClose":6.61,"prevHigh":6.63,"open":6.94,"close":6.81},{"date":"2026-01-12","stockCode":"300045","stockName":"华力创通","prevClose":31.18,"prevHigh":31.59,"open":32.99,"close":37.42},{"date":"2026-01-12","stockCode":"300058","stockName":"蓝色光标","prevClose":17.18,"prevHigh":17.44,"open":17.98,"close":20.62},{"date":"2026-01-12","stockCode":"300071","stockName":"福石控股","prevClose":7.44,"prevHigh":7.51,"open":7.8,"close":8.93},{"date":"2026-01-12","stockCode":"300229","stockName":"拓尔思","prevClose":22.03,"prevHigh":22.12,"open":23.01,"close":26.44},{"date":"2026-01-12","stockCode":"300248","stockName":"新开普","prevClose":12.92,"prevHigh":12.94,"open":13.46,"close":15.2},{"date":"2026-01-12","stockCode":"300253","stockName":"卫宁健康","prevClose":10.81,"prevHigh":10.97,"open":11.52,"close":12.97},{"date":"2026-01-12","stockCode":"300349","stockName":"金卡智能","prevClose":16.57,"prevHigh":16.67,"open":17.35,"close":19.88},{"date":"2026-01-12","stockCode":"300364","stockName":"中文在线","prevClose":29.15,"prevHigh":29.28,"open":30.96,"close":34.98},{"date":"2026-01-12","stockCode":"300454","stockName":"深信服","prevClose":133.4,"prevHigh":134,"open":139.9,"close":152},{"date":"2026-01-12","stockCode":"300491","stockName":"通合科技","prevClose":28.23,"prevHigh":28.73,"open":29.9,"close":28.7},{"date":"2026-01-12","stockCode":"300550","stockName":"和仁科技","prevClose":15.4,"prevHigh":15.49,"open":15.96,"close":15.88},{"date":"2026-01-12","stockCode":"300592","stockName":"华凯易佰","prevClose":12.15,"prevHigh":12.51,"open":12.99,"close":13.22},{"date":"2026-01-12","stockCode":"300612","stockName":"宣亚国际","prevClose":20.34,"prevHigh":20.61,"open":21.36,"close":23.06},{"date":"2026-01-12","stockCode":"300725","stockName":"药石科技","prevClose":43.35,"prevHigh":43.67,"open":45.03,"close":45.52},{"date":"2026-01-12","stockCode":"300785","stockName":"值得买","prevClose":52.2,"prevHigh":54.58,"open":58.82,"close":62.64},{"date":"2026-01-12","stockCode":"000803","stockName":"山高环能","prevClose":8.19,"prevHigh":8.61,"open":9,"close":9.01},{"date":"2026-01-12","stockCode":"600498","stockName":"烽火通信","prevClose":38.93,"prevHigh":40.45,"open":42.3,"close":42.82},{"date":"2026-01-12","stockCode":"600118","stockName":"中国卫星","prevClose":106.05,"prevHigh":109,"open":112,"close":116.66},{"date":"2026-01-12","stockCode":"600850","stockName":"电科数字","prevClose":32.77,"prevHigh":33.54,"open":34.96,"close":35.38},{"date":"2026-01-12","stockCode":"600345","stockName":"长江通信","prevClose":39.97,"prevHigh":40.79,"open":41.68,"close":41.98},{"date":"2026-01-12","stockCode":"603918","stockName":"金桥信息","prevClose":18.09,"prevHigh":18.35,"open":18.81,"close":19.28},{"date":"2026-01-12","stockCode":"600259","stockName":"中稀有色","prevClose":64.22,"prevHigh":64.97,"open":66.6,"close":70.64},{"date":"2026-01-12","stockCode":"600489","stockName":"中金黄金","prevClose":24.93,"prevHigh":25.15,"open":25.7,"close":25.02},{"date":"2026-01-12","stockCode":"002555","stockName":"三七互娱","prevClose":27.29,"prevHigh":27.49,"open":28.39,"close":29.76},{"date":"2026-01-12","stockCode":"002379","stockName":"宏创控股","prevClose":27.7,"prevHigh":27.88,"open":30.47,"close":28.37},{"date":"2026-01-12","stockCode":"600825","stockName":"新华传媒","prevClose":6.91,"prevHigh":6.95,"open":7.09,"close":7.29},{"date":"2026-01-12","stockCode":"603000","stockName":"人民网","prevClose":21.05,"prevHigh":21.17,"open":23.16,"close":23.16},{"date":"2026-01-12","stockCode":"601858","stockName":"中国科传","prevClose":19.52,"prevHigh":19.63,"open":20.1,"close":21.47},{"date":"2026-01-12","stockCode":"000612","stockName":"焦作万方","prevClose":12.1,"prevHigh":12.16,"open":12.44,"close":13.31},{"date":"2026-01-12","stockCode":"002230","stockName":"科大讯飞","prevClose":55.6,"prevHigh":55.85,"open":57.5,"close":59.6},{"date":"2026-01-12","stockCode":"603078","stockName":"江化微","prevClose":19.47,"prevHigh":19.55,"open":20,"close":21.42},{"date":"2026-01-12","stockCode":"603888","stockName":"新华网","prevClose":22.24,"prevHigh":22.31,"open":24.46,"close":24.46},{"date":"2026-01-12","stockCode":"002881","stockName":"美格智能","prevClose":46.7,"prevHigh":46.8,"open":48.55,"close":51.37},{"date":"2026-01-13","stockCode":"002179","stockName":"中航光电","prevClose":40.58,"prevHigh":40.97,"open":41.94,"close":38.18},{"date":"2026-01-13","stockCode":"600570","stockName":"恒生电子","prevClose":33.42,"prevHigh":33.64,"open":34.39,"close":32.89}];
-const aiData=[{"date":"2025-12-15","deepseek":{"upStockCount":"620","downStockCount":"320","limitUpCount":"88","limitDownCount":"16","volume":"20500"},"gpt":{"upStockCount":"520","downStockCount":"405","limitUpCount":"48","limitDownCount":"18","volume":"18300"},"grok":{"upStockCount":"812","downStockCount":"178","limitUpCount":"96","limitDownCount":"14","volume":"21780"},"gemini":{"upStockCount":"450","downStockCount":"350","limitUpCount":"70","limitDownCount":"20","volume":"18500"},"doubao":{"upStockCount":"520","downStockCount":"350","limitUpCount":"65","limitDownCount":"18","volume":"19500"},"yuanbao":{"upStockCount":"","downStockCount":"","limitUpCount":"","limitDownCount":"","volume":""},"scores":{"deepseek":72.88,"gpt":82.82,"grok":59.88,"gemini":87.48,"doubao":84.71,"yuanbao":0}},{"date":"2025-12-16","deepseek":{"upStockCount":"560","downStockCount":"438","limitUpCount":"75","limitDownCount":"19","volume":"18500"},"gpt":{"upStockCount":"561","downStockCount":"340","limitUpCount":"72","limitDownCount":"16","volume":"18650"},"grok":{"upStockCount":"580","downStockCount":"420","limitUpCount":"75","limitDownCount":"15","volume":"19500"},"gemini":{"upStockCount":"750","downStockCount":"850","limitUpCount":"70","limitDownCount":"8","volume":"18500"},"doubao":{"upStockCount":"428","downStockCount":"576","limitUpCount":"59","limitDownCount":"22","volume":"18650.2"},"yuanbao":{"upStockCount":"720","downStockCount":"420","limitUpCount":"95","limitDownCount":"22","volume":"20500"},"scores":{"deepseek":59.03,"gpt":56.15,"grok":55.2,"gemini":57.66,"doubao":69.34,"yuanbao":53.65}},{"date":"2025-12-17","deepseek":{"upStockCount":"520","downStockCount":"480","limitUpCount":"62","limitDownCount":"18","volume":"17800"},"gpt":{"upStockCount":"420","downStockCount":"620","limitUpCount":"52","limitDownCount":"18","volume":"17800"},"grok":{"upStockCount":"580","downStockCount":"420","limitUpCount":"72","limitDownCount":"18","volume":"19200"},"gemini":{"upStockCount":"420","downStockCount":"380","limitUpCount":"52","limitDownCount":"15","volume":"16800"},"doubao":{"upStockCount":"320","downStockCount":"750","limitUpCount":"55","limitDownCount":"12","volume":"17000"},"yuanbao":{"upStockCount":"215","downStockCount":"1082","limitUpCount":"43","limitDownCount":"22","volume":"17532.45"},"scores":{"deepseek":79.2,"gpt":73.55,"grok":79.24,"gemini":75.35,"doubao":64.41,"yuanbao":63.44}},{"date":"2025-12-18","deepseek":{"upStockCount":"580","downStockCount":"320","limitUpCount":"52","limitDownCount":"18","volume":"18500"},"gpt":{"upStockCount":"520","downStockCount":"380","limitUpCount":"60","limitDownCount":"22","volume":"18000"},"grok":{"upStockCount":"580","downStockCount":"380","limitUpCount":"68","limitDownCount":"18","volume":"18800"},"gemini":{"upStockCount":"480","downStockCount":"380","limitUpCount":"62","limitDownCount":"18","volume":"17500"},"doubao":{"upStockCount":"590","downStockCount":"320","limitUpCount":"56","limitDownCount":"27","volume":"18650"},"yuanbao":{"upStockCount":"543","downStockCount":"300","limitUpCount":"41","limitDownCount":"32","volume":"18150.2"},"scores":{"deepseek":76.7,"gpt":77.98,"grok":79.11,"gemini":82.2,"doubao":74.41,"yuanbao":70.06}},{"date":"2025-12-19","deepseek":{"upStockCount":"520","downStockCount":"280","limitUpCount":"68","limitDownCount":"10","volume":"17300"},"gpt":{"upStockCount":"420","downStockCount":"430","limitUpCount":"60","limitDownCount":"14","volume":"16000"},"grok":{"upStockCount":"420","downStockCount":"390","limitUpCount":"62","limitDownCount":"12","volume":"16200"},"gemini":{"upStockCount":"320","downStockCount":"580","limitUpCount":"55","limitDownCount":"15","volume":"17100"},"doubao":{"upStockCount":"445","downStockCount":"360","limitUpCount":"71","limitDownCount":"9","volume":"17200"},"yuanbao":{"upStockCount":"492","downStockCount":"328","limitUpCount":"68","limitDownCount":"12","volume":"16872.4"},"scores":{"deepseek":68.85,"gpt":56.81,"grok":59.53,"gemini":52.59,"doubao":67.29,"yuanbao":64.56}},{"date":"2025-12-22","deepseek":{"upStockCount":"620","downStockCount":"240","limitUpCount":"70","limitDownCount":"12","volume":"17800"},"gpt":{"upStockCount":"680","downStockCount":"260","limitUpCount":"78","limitDownCount":"12","volume":"17800"},"grok":{"upStockCount":"620","downStockCount":"280","limitUpCount":"75","limitDownCount":"10","volume":"17800"},"gemini":{"upStockCount":"520","downStockCount":"340","limitUpCount":"78","limitDownCount":"11","volume":"19200"},"doubao":{"upStockCount":"445","downStockCount":"360","limitUpCount":"71","limitDownCount":"9","volume":"17200"},"yuanbao":{"upStockCount":"683","downStockCount":"247","limitUpCount":"59","limitDownCount":"14","volume":"17189.2"},"scores":{"deepseek":77.25,"gpt":79.43,"grok":78.91,"gemini":73.36,"doubao":71.66,"yuanbao":74.01}},{"date":"2025-12-23","deepseek":{"upStockCount":"580","downStockCount":"210","limitUpCount":"85","limitDownCount":"12","volume":"18500","summary":"市场预计延续分化整理，上涨动能减弱但结构性机会仍存，成交量温和收缩","trend":"neutral"},"gpt":{"upStockCount":"600","downStockCount":"260","limitUpCount":"92","limitDownCount":"14","volume":"18200","summary":"情绪降温后的结构性延续日","trend":"neutral"},"grok":{"upStockCount":"580","downStockCount":"260","limitUpCount":"85","limitDownCount":"12","volume":"18200","summary":"高开后震荡分化，普涨力度减弱，赚钱效应回落但整体仍偏强运行","trend":"neutral"},"gemini":{"upStockCount":"420","downStockCount":"310","limitUpCount":"72","limitDownCount":"16","volume":"17800","summary":"市场将由“百股涨停”的狂热转向“去弱留强”的惨烈分化，短线投机情绪面临见顶回落的风险","trend":"neutral"},"doubao":{"upStockCount":"650","downStockCount":"180","limitUpCount":"95","limitDownCount":"7","volume":"18200","summary":"跌停数量维持低位，涨停情绪仍较活跃，整体赚钱效应保持中性偏积极","trend":"up"},"yuanbao":{"upStockCount":"683","downStockCount":"178","limitUpCount":"97","limitDownCount":"9","volume":"18842.3","summary":"市场将延续震荡上行趋势，短期资金活跃度维持高位，但需警惕连板高度触顶后的获利回吐压力","trend":"neutral"},"scores":{"deepseek":73.72,"gpt":76.41,"grok":75.42,"gemini":87.9,"doubao":62.36,"yuanbao":64.73}},{"date":"2025-12-24","deepseek":{"upStockCount":"420","downStockCount":"350","limitUpCount":"60","limitDownCount":"18","volume":"18800","summary":"市场预计延续弱势震荡格局，局部投机降温，整体赚钱效应有限，情绪修复需要时间","trend":"down"},"gpt":{"upStockCount":"390","downStockCount":"460","limitUpCount":"62","limitDownCount":"16","volume":"18800","summary":"高度仍在博弈，但多数股票已经不再好赚钱","trend":"neutral"},"grok":{"upStockCount":"480","downStockCount":"420","limitUpCount":"72","limitDownCount":"12","volume":"19200","summary":"弱势震荡小幅修复，分化仍存，整体赚钱效应偏低，难现普涨","trend":"neutral"},"gemini":{"upStockCount":"240","downStockCount":"850","limitUpCount":"58","limitDownCount":"45","volume":"18500","summary":"市场将进入极其惨烈的“妖股杀跌”与“情绪退潮”共振期，短线投机将经历一次大洗牌","trend":"down"},"doubao":{"upStockCount":"355","downStockCount":"520","limitUpCount":"62","limitDownCount":"18","volume":"18550","summary":"上涨股票数量继续减少，下跌股票数量小幅增加，涨停股减少、跌停股略增，成交量基本持平","trend":"down"},"yuanbao":{"upStockCount":"289","downStockCount":"584","limitUpCount":"52","limitDownCount":"18","volume":"18214.7","summary":"市场延续弱势震荡格局，短期资金避险情绪升温，但跌停潮未扩散显示局部流动性支撑仍在","trend":"neutral"},"scores":{"deepseek":56.04,"gpt":55.42,"grok":62.44,"gemini":43.86,"doubao":53.01,"yuanbao":48.31}},{"date":"2025-12-25","deepseek":{"upStockCount":"650","downStockCount":"180","limitUpCount":"75","limitDownCount":"10","volume":"18500","summary":"市场预计在强反弹后进入分化整理，上涨家数减少但结构性机会仍在，整体情绪保持活跃","trend":"neutral"},"gpt":{"upStockCount":"690","downStockCount":"200","limitUpCount":"82","limitDownCount":"12","volume":"19000","summary":"强反包后的分化确认日，赚钱效应仍在，但难度明显上升。","trend":"neutral"},"grok":{"upStockCount":"650","downStockCount":"220","limitUpCount":"80","limitDownCount":"9","volume":"19200","summary":"高开冲高后震荡分化，普涨力度快速衰减，热点结构性延续但整体赚钱效应明显减弱。","trend":"neutral"},"gemini":{"upStockCount":"450","downStockCount":"320","limitUpCount":"85","limitDownCount":"12","volume":"19100","summary":"市场将由“缩量普涨”转为“放量震荡”，重点博弈 10 板高度的突围与高位股的分歧。","trend":"neutral"},"doubao":{"upStockCount":"550","downStockCount":"300","limitUpCount":"70","limitDownCount":"10","volume":"18500","summary":"强势反弹中有所回落，上涨股票数量减少、下跌股票数量增加，涨跌幅比例收窄，整体呈现震荡调整态势","trend":"neutral"},"yuanbao":{"upStockCount":"648","downStockCount":"147","limitUpCount":"82","limitDownCount":"7","volume":"18473.2","summary":"市场冲高动能衰减，连板高度触顶后资金分歧加大，短期需警惕获利盘集中兑现引发的震荡风险。","trend":"neutral"},"scores":{"deepseek":70.03,"gpt":71.19,"grok":69.93,"gemini":61.02,"doubao":61.06,"yuanbao":76.06}},{"date":"2025-12-26","deepseek":{"upStockCount":"620","downStockCount":"140","limitUpCount":"78","limitDownCount":"8","volume":"19000","summary":"市场预计进入高位震荡分化阶段，连板股情绪可能松动，但整体赚钱效应仍存，属于强势整理","trend":"neutral"},"gpt":{"upStockCount":"650","downStockCount":"200","limitUpCount":"88","limitDownCount":"9","volume":"19300","summary":"进入强势周期后段的“高位分化日”，赚钱效应仍在，但不再适合无差别进攻","trend":"neutral"},"grok":{"upStockCount":"580","downStockCount":"260","limitUpCount":"85","limitDownCount":"8","volume":"19500","summary":"高开冲高后震荡分化，普涨力度继续衰减，热点结构性表现但整体赚钱效应明显回落，呈现节前典型的获利了结格局。","trend":"neutral"},"gemini":{"upStockCount":"450","downStockCount":"350","limitUpCount":"75","limitDownCount":"15","volume":"19800","summary":"市场将面临高标高度板的极限博弈，普涨行情结束，进入周五惯性的获利了结与剧烈分化期。","trend":"down"},"doubao":{"upStockCount":"680","downStockCount":"150","limitUpCount":"95","limitDownCount":"3","volume":"19500","summary":"延续小幅调整态势，上涨股票数量仍多于下跌股票，但整体力度较前一日有所减弱，成交量略有放大，市场情绪保持偏积极但热度小幅降温","trend":"up"},"yuanbao":{"upStockCount":"623","downStockCount":"189","limitUpCount":"89","limitDownCount":"5","volume":"19512.7","summary":"市场在创出连板高度新高后进入筹码交换阶段，短期资金获利了结意愿增强，但结构性热点仍有望维持局部活跃。","trend":"neutral"},"scores":{"deepseek":73.49,"gpt":79.64,"grok":77.45,"gemini":66.75,"doubao":88.38,"yuanbao":85.78}},{"date":"2025-12-29","deepseek":{"upStockCount":"500","downStockCount":"220","limitUpCount":"85","limitDownCount":"5","volume":"21000","summary":"市场预计延续小幅调整，涨停情绪仍在但赚钱效应减弱，整体呈现震荡整理格局。","trend":"neutral"},"gpt":{"upStockCount":"480","downStockCount":"360","limitUpCount":"85","limitDownCount":"5","volume":"20500","summary":"大盘更可能进入高位换手、热点分化的阶段，强势股仍活跃但整体赚钱效应回落至中等偏上水平。","trend":"neutral"},"grok":{"upStockCount":"680","downStockCount":"180","limitUpCount":"90","limitDownCount":"8","volume":"20500","summary":"市场预计将出现温和反弹，赚钱效应显著修复，但分歧仍存。","trend":"up"},"gemini":{"upStockCount":"380","downStockCount":"450","limitUpCount":"75","limitDownCount":"12","volume":"20800","summary":"市场处于高位连板情绪极值后的退潮期，量价背离预示分化加剧，需警惕高位抱团股瓦解带来的波动。","trend":"down"},"doubao":{"upStockCount":"450","downStockCount":"250","limitUpCount":"85","limitDownCount":"5","volume":"20000","summary":"市场延续近期调整态势，上涨股票数量继续减少，下跌股票数量有所增加，成交量较前一日略有回落，整体赚钱效应较弱。","trend":"down"},"yuanbao":{"upStockCount":"583","downStockCount":"182","limitUpCount":"89","limitDownCount":"4","volume":"21897.4","summary":"结合量能萎缩（昨日2.16万亿→预测2.05万亿），预计明日呈现探底回升走势。","trend":"neutral"},"scores":{"deepseek":72.58,"gpt":77.79,"grok":68.46,"gemini":80.22,"doubao":71.1,"yuanbao":68.48}},{"date":"2025-12-30","deepseek":{"upStockCount":"500","downStockCount":"420","limitUpCount":"82","limitDownCount":"22","volume":"21000","summary":"市场预计延续分化震荡，连板高度拓展但整体情绪降温，赚钱效应维持偏低水平。","trend":"neutral"},"gpt":{"upStockCount":"480","downStockCount":"430","limitUpCount":"78","limitDownCount":"20","volume":"20500","summary":"高位情绪的延续消化日，强势连板继续抬高度，但市场整体仍处于分化震荡状态，赚钱效应低位企稳而非反转。","trend":"neutral"},"grok":{"upStockCount":"480","downStockCount":"420","limitUpCount":"82","limitDownCount":"18","volume":"20500","summary":"市场预计继续高位分歧震荡，赚钱效应弱修复但难普涨","trend":"neutral"},"gemini":{"upStockCount":"480","downStockCount":"260","limitUpCount":"78","limitDownCount":"15","volume":"19500","summary":"市场处于高位连板抱团随时崩瓦解的边缘，普跌后的情绪修复将伴随量能萎缩而显得犹豫。","trend":"neutral"},"doubao":{"upStockCount":"470","downStockCount":"480","limitUpCount":"84","limitDownCount":"22","volume":"21200.5","summary":"涨跌幅股票数量比例延续小幅下降趋势，上涨股票数量略减，下跌股票数量增速放缓，涨停和跌停数量波动较小，成交量基本持平，市场情绪整体趋于平稳。","trend":"neutral"},"yuanbao":{"upStockCount":"519","downStockCount":"434","limitUpCount":"87","limitDownCount":"25","volume":"21393.38","summary":"建议关注年报预增（高送转预期）和农业板块（政策催化）的防御机会，仓位控制在5成以内。","trend":"neutral"},"scores":{"deepseek":90.63,"gpt":92.36,"grok":91.91,"gemini":84.23,"doubao":87.83,"yuanbao":86.7}},{"date":"2025-12-31","deepseek":{"upStockCount":"470","downStockCount":"390","limitUpCount":"65","limitDownCount":"15","volume":"21000","summary":"市场预计延续年末震荡整理，赚钱效应仍弱，但抛压减缓，整体呈现平淡收官特征。","trend":"neutral"},"gpt":{"upStockCount":"450","downStockCount":"420","limitUpCount":"58","limitDownCount":"15","volume":"20000","summary":"年末资金收敛下的情绪钝化日，市场维持弱平衡状态，既无系统性杀跌，也缺乏新的上涨扩散动力。","trend":"neutral"},"grok":{"upStockCount":"420","downStockCount":"420","limitUpCount":"58","limitDownCount":"22","volume":"18500","summary":"市场预计在节前资金谨慎影响下继续弱势震荡，赚钱效应进一步回落。","trend":"neutral"},"gemini":{"upStockCount":"550","downStockCount":"180","limitUpCount":"85","limitDownCount":"8","volume":"18500","summary":"市场将依托“月底必阳”的规律和跨年题材的余热完成年度红盘收官，高位妖股震荡加剧但普惠性修复可期。","trend":"up"},"doubao":{"upStockCount":"475","downStockCount":"340","limitUpCount":"70","limitDownCount":"15","volume":"21500","summary":"整体呈现小幅波动态势，涨跌力量趋于均衡，极端行情概率较低，市场情绪以谨慎观望为主。","trend":"neutral"},"yuanbao":{"upStockCount":"470","downStockCount":"350","limitUpCount":"60","limitDownCount":"15","volume":"21000","summary":"重点配置黄金股（避险属性）和光伏设备（装机量超预期），规避st板块及次新股。","trend":"neutral"},"scores":{"deepseek":90.83,"gpt":87.91,"grok":80.14,"gemini":75.12,"doubao":91.69,"yuanbao":92.43}},{"date":"2026-01-05","deepseek":{"upStockCount":"520","downStockCount":"300","limitUpCount":"70","limitDownCount":"10","volume":"21800","summary":"市场预计在新年首个交易日延续温和修复，赚钱效应进一步改善，但整体反弹力度仍受量能制约，呈现结构性回暖格局。","trend":"up"},"gpt":{"upStockCount":"430","downStockCount":"390","limitUpCount":"58","limitDownCount":"18","volume":"19500","summary":"A 股处于年末情绪退潮后的再平衡阶段，整体呈现中性偏弱的结构性震荡特征。","trend":"neutral"},"grok":{"upStockCount":"680","downStockCount":"200","limitUpCount":"85","limitDownCount":"10","volume":"19500","summary":"市场预计在开门红预期下出现温和普涨，成长主线领涨，赚钱效应显著提升。","trend":"up"},"gemini":{"upStockCount":"520","downStockCount":"310","limitUpCount":"58","limitDownCount":"18","volume":"21500","summary":"市场正处于跨年妖股崩塌后的情绪出清期，节后首日虽有资金回流支撑指数，但由于缺乏核心领涨主线，将呈现明显的“指数红、个股分化”格局。","trend":"neutral"},"doubao":{"upStockCount":"520","downStockCount":"300","limitUpCount":"65","limitDownCount":"10","volume":"20800","summary":"市场延续年末回暖趋势，上涨股票数量增加，下跌及跌停股进一步减少，市场情绪平稳向好。","trend":"up"},"yuanbao":{"upStockCount":"520","downStockCount":"300","limitUpCount":"70","limitDownCount":"10","volume":"20000","summary":"市场在元旦后迎来开门红，成交量温和放大，热点板块轮动，赚钱效应显著，整体呈现上涨趋势。","trend":"up"},"scores":{"deepseek":64.41,"gpt":53.33,"grok":73.22,"gemini":58.58,"doubao":62.84,"yuanbao":63}},{"date":"2026-01-06","deepseek":{"upStockCount":"850","downStockCount":"200","limitUpCount":"95","limitDownCount":"10","volume":"24000","summary":"市场预计在强势爆发后进入分化整理，但赚钱效应与涨停情绪仍将保持高位，呈现“强势休整”格局。","trend":"up"},"gpt":{"upStockCount":"760","downStockCount":"240","limitUpCount":"85","limitDownCount":"18","volume":"22000","summary":"节后情绪爆发后的首次分化降温日，市场由全面普涨转向结构性行情。","trend":"neutral"},"grok":{"upStockCount":"920","downStockCount":"210","limitUpCount":"112","limitDownCount":"11","volume":"23800","summary":"市场预计在政策利好和情绪惯性下延续普涨，但分歧渐增，赚钱效应高位回落。","trend":"up"},"gemini":{"upStockCount":"450","downStockCount":"520","limitUpCount":"85","limitDownCount":"15","volume":"23800","summary":"市场在经历了开门红的疯狂宣泄后，1月6日将迎来放量分化，高位个股面临获利了结压力，整体呈现“指数震荡、个股分歧”态势。","trend":"neutral"},"doubao":{"upStockCount":"950","downStockCount":"220","limitUpCount":"105","limitDownCount":"10","volume":"24500","summary":"核心做多指标（上涨家数、涨停数、value）从峰值小幅回调，但成交量仍高位、跌停数维持低位，叠加春节前红包行情和外资流入预期，整体赚钱效应仍处于高位。","trend":"up"},"yuanbao":{"upStockCount":"980","downStockCount":"250","limitUpCount":"110","limitDownCount":"18","volume":"23000","summary":"关注年报预增标的（如新冠药物、消费电子）。","trend":"neutral"},"scores":{"deepseek":63.67,"gpt":55.27,"grok":66.47,"gemini":45.36,"doubao":66.49,"yuanbao":62.53}},{"date":"2026-01-07","deepseek":{"upStockCount":"800","downStockCount":"140","limitUpCount":"110","limitDownCount":"5","volume":"26000","summary":"市场预计在连续亢奋后进入分化加剧阶段，涨停家数与成交量略有收敛，但龙头标杆效应与赚钱效应仍将维持高位，呈现“强势震荡”格局。","trend":"neutral"},"gpt":{"upStockCount":"780","downStockCount":"220","limitUpCount":"105","limitDownCount":"7","volume":"25800","summary":"大概率处于高位情绪分歧阶段，整体仍偏强，但赚钱效应与一致性明显回落。","trend":"neutral"},"grok":{"upStockCount":"900","downStockCount":"140","limitUpCount":"138","limitDownCount":"5","volume":"27500","summary":"市场预计在政策刺激和全球积极情绪下延续普涨，但高位后分歧渐现。","trend":"up"},"gemini":{"upStockCount":"380","downStockCount":"650","limitUpCount":"78","limitDownCount":"22","volume":"22500","summary":"市场在妖王复牌带动的最后狂欢中步入分歧，整体呈现“高标屹立、万股调整”的割裂格局，短线进入高风险博弈区。","trend":"down"},"doubao":{"upStockCount":"880","downStockCount":"95","limitUpCount":"135","limitDownCount":"1","volume":"27500","summary":"市场多头情绪延续，涨跌数量比例维持高位，涨幅≥3% 个股仍占绝对优势，跌停个股近乎绝迹，成交量维持高位，仅部分资金获利了结导致涨停数、上涨个股数小幅回落，整体赚钱效应仍处高位。","trend":"up"},"yuanbao":{"upStockCount":"680","downStockCount":"220","limitUpCount":"105","limitDownCount":"8","volume":"26500","summary":"建议减持高位题材股至半仓以内，关注年报预增标的（如新冠药物、消费电子）。若午盘后成交量跌破2.5万亿，需警惕系统性风险。","trend":"neutral"},"scores":{"deepseek":78.9,"gpt":91.78,"grok":74.34,"gemini":56.82,"doubao":60.23,"yuanbao":89.63}},{"date":"2026-01-08","deepseek":{"upStockCount":"600","downStockCount":"280","limitUpCount":"80","limitDownCount":"8","volume":"27500","summary":"市场预计延续调整格局，赚钱效应维持低位，但成交量保持活跃且龙头标杆未倒，呈现“放量震荡、消化浮筹”的特征。","trend":"neutral"},"gpt":{"upStockCount":"780","downStockCount":"240","limitUpCount":"95","limitDownCount":"6","volume":"28000","summary":"“情绪退潮后的技术性修复日”，指数与情绪均偏震荡。","trend":"neutral"},"grok":{"upStockCount":"820","downStockCount":"220","limitUpCount":"115","limitDownCount":"9","volume":"27200","summary":"市场预计在美联储宽松和政策刺激下温和反弹，赚钱效应修复但力度有限。","trend":"up"},"gemini":{"upStockCount":"310","downStockCount":"920","limitUpCount":"58","limitDownCount":"35","volume":"20800","summary":"市场处于“4000点高位钝化”与“外围政策靴子落地前”的共振期，妖王见顶风险加剧，预计 8 日会出现较明显的个股普跌与情绪退潮。","trend":"down"},"doubao":{"upStockCount":"620","downStockCount":"380","limitUpCount":"85","limitDownCount":"12","volume":"27800","summary":"市场资金分歧进一步加大，连板情绪小幅降温，涨停封板率持续走低，赚钱效应延续回落。","trend":"neutral"},"yuanbao":{"upStockCount":"580","downStockCount":"320","limitUpCount":"100","limitDownCount":"15","volume":"27000","summary":"市场在极致情绪释放后进入技术性休整，短期需消化获利筹码，但春季躁动核心逻辑（流动性宽松+政策预期）尚未破坏。","trend":"neutral"},"scores":{"deepseek":76.59,"gpt":91.03,"grok":88.37,"gemini":39.96,"doubao":69.43,"yuanbao":70.62}},{"date":"2026-01-09","deepseek":{"upStockCount":"820","downStockCount":"220","limitUpCount":"98","limitDownCount":"7","volume":"27500","summary":"市场预计在快速反弹后进入震荡整固，赚钱效应小幅回落，但成交量保持活跃，呈现“高位盘整、消化浮筹”的格局。","trend":"neutral"},"gpt":{"upStockCount":"780","downStockCount":"420","limitUpCount":"95","limitDownCount":"15","volume":"28000","summary":"情绪主升已过，修复完成后进入高位震荡期，市场由“做多一致”转向“结构性博弈”。","trend":"neutral"},"grok":{"upStockCount":"910","downStockCount":"180","limitUpCount":"120","limitDownCount":"7","volume":"28200","summary":"市场预计在美联储宽松预期和春节前躁动下延续温和普涨，赚钱效应进一步修复但成交分歧仍存。","trend":"up"},"gemini":{"upStockCount":"850","downStockCount":"230","limitUpCount":"105","limitDownCount":"8","volume":"27500","summary":"市场将延续2.8万亿级别的活跃成交，呈现“权重搭台、题材唱戏”后的高位良性分歧，赚钱效应虽微幅回落但依然具备极强的参与价值。","trend":"up"},"doubao":{"upStockCount":"820","downStockCount":"220","limitUpCount":"105","limitDownCount":"5","volume":"27500","summary":"延续强势震荡格局，涨幅≥3% 家数维持高位、下跌家数小幅增加但无恐慌，涨停数保持百股以上，成交量高位震荡，整体赚钱效应进一步修复。","trend":"up"},"yuanbao":{"upStockCount":"927","downStockCount":"184","limitUpCount":"115","limitDownCount":"18","volume":"27982.4","summary":"市场正处于年末资金调仓与年初布局的过渡期。","trend":"neutral"},"scores":{"deepseek":64.9,"gpt":57.58,"grok":69.56,"gemini":66,"doubao":67.33,"yuanbao":68.54}},{"date":"2026-01-12","deepseek":{"upStockCount":"870","downStockCount":"140","limitUpCount":"98","limitDownCount":"7","volume":"29500","summary":"量价温和放大，情绪延续回暖，涨停效应活跃，预计市场震荡上行。","trend":"up"},"gpt":{"upStockCount":"770","downStockCount":"210","limitUpCount":"88","limitDownCount":"4","volume":"30200","summary":"“高位情绪消化日”，整体回落但结构仍强，不支持趋势性转跌。","trend":"neutral"},"grok":{"upStockCount":"950","downStockCount":"160","limitUpCount":"118","limitDownCount":"8","volume":"29800","summary":"市场预计在美联储宽松预期和春季躁动下维持高位普涨，量价齐升但分歧渐显。","trend":"up"},"gemini":{"upStockCount":"850","downStockCount":"180","limitUpCount":"95","limitDownCount":"5","volume":"29500","summary":"市场在天量普涨后进入高位震荡分化期，领涨龙头将继续试探天花板，而绩差股将面临短线回踩。","trend":"up"},"doubao":{"upStockCount":"980","downStockCount":"130","limitUpCount":"105","limitDownCount":"2","volume":"30500","summary":"市场仍处于春节前红包行情的强势区间，量能维持高位、下跌动能极弱，涨幅≥3% 个股数和涨停数保持高位，仅短期冲高后略有分化，整体偏暖。","trend":"up"},"yuanbao":{"upStockCount":"932","downStockCount":"168","limitUpCount":"102","limitDownCount":"0","volume":"30174.2","summary":"市场短期面临情绪高点回调压力，但中期春季躁动逻辑未破坏。","trend":"neutral"},"scores":{"deepseek":70.91,"gpt":57.21,"grok":75.28,"gemini":62.98,"doubao":60.95,"yuanbao":55.04}},{"date":"2026-01-13","deepseek":{"upStockCount":"850","downStockCount":"280","limitUpCount":"120","limitDownCount":"15","volume":"32000","summary":"市场在连续大涨后进入分化整理阶段，整体仍维持向上趋势，赚钱效应略有回落但依然强劲。","trend":"up"},"gpt":{"upStockCount":"900","downStockCount":"320","limitUpCount":"120","limitDownCount":"15","volume":"31000","summary":"在情绪与成交量同时达到阶段极值后，2026年1月13日更可能进入高位分歧与降温阶段，市场仍有结构性机会，但追高风险显著上升。","trend":"neutral"},"grok":{"upStockCount":"1400","downStockCount":"150","limitUpCount":"170","limitDownCount":"5","volume":"35000","summary":"市场将继续保持强势上涨态势，但受高位情绪过热和潜在春节前资金分流影响，可能伴随小幅震荡调整。","trend":"up"},"gemini":{"upStockCount":"1250","downStockCount":"280","limitUpCount":"165","limitDownCount":"12","volume":"37200","summary":"市场在3.6万亿巨量驱动下进入亢奋高潮期，1月13日预计将呈现“巨量分歧、高位震荡”的态势，涨势趋于缓和但局部赚钱效应依然强劲。","trend":"up"},"doubao":{"upStockCount":"1550","downStockCount":"130","limitUpCount":"180","limitDownCount":"8","volume":"34500","summary":"2026 年 1 月 13 日 A 股市场延续强势格局，涨幅≥3% 股票数、涨停数虽较前一日小幅回落但仍处高位，下跌股票数、跌停数维持低位，成交量小幅缩量但仍在高位，整体赚钱效应显著。","trend":"up"},"yuanbao":{"upStockCount":"1587","downStockCount":"234","limitUpCount":"189","limitDownCount":"12","volume":"34287.6","summary":"市场处于强势震荡期，赚钱效应维持高位但波动加剧。建议关注年报预增>50%标的，规避连板高度超10的题材股。中性偏多态度，持仓宜保留5-8成仓位应对日内波动。","trend":"neutral"},"scores":{"deepseek":51.42,"gpt":50.81,"grok":39.22,"gemini":45.24,"doubao":38.53,"yuanbao":40.84}},{"date":"2026-01-14","deepseek":{"upStockCount":"650","downStockCount":"950","limitUpCount":"85","limitDownCount":"55","volume":"36000","summary":"市场将出现小幅技术性修复，但整体仍处于情绪回调与震荡整理阶段，难改短期调整态势。","trend":"neutral"},"gpt":{"upStockCount":"800","downStockCount":"900","limitUpCount":"90","limitDownCount":"40","volume":"35000","summary":"高位情绪崩塌后的技术性修复日，属于“可反弹、但不可追高”的结构行情。","trend":"neutral"},"grok":{"upStockCount":"738","downStockCount":"877","limitUpCount":"97","limitDownCount":"36","volume":"34285.21","summary":"市场从高位回调延续、成交量维持高位但赚钱效应减弱、接近春节假期可能加剧谨慎情绪。","trend":"down"},"gemini":{"upStockCount":"650","downStockCount":"850","limitUpCount":"85","limitDownCount":"30","volume":"34000","summary":"市场在经历1月13日的放量暴跌分歧后，14日将呈现缩量震荡、情绪小幅修复但重心下移的走势，属于典型的大跌后“余震”期。","trend":"neutral"},"doubao":{"upStockCount":"480","downStockCount":"1150","limitUpCount":"70","limitDownCount":"45","volume":"34800","summary":"2026 年 1 月 14 日 A 股市场情绪延续退潮态势，涨幅≥3% 股票数量小幅修复、跌幅≤-3% 股票数量略有下降，量能小幅回落，整体仍处于节前资金避险主导的弱势格局。","trend":"down"},"yuanbao":{"upStockCount":"550","downStockCount":"1300","limitUpCount":"65","limitDownCount":"60","volume":"35000","summary":"尽管存在技术性修复可能，但节前流动性收缩、业绩预告密集披露（1月15日前创业板强制预披）等因素形成压制，预计沪指围绕3220-3250区间震荡整理。关注数字经济（信创/数据要素）和政策扶持的新基建板块结构性机会。","trend":"neutral"},"scores":{"deepseek":0,"gpt":0,"grok":0,"gemini":0,"doubao":0,"yuanbao":0}}];
+// 每日涨跌幅数据
+const dailyChangeRateData = [
+  {
+    "date": "2025-10-23",
+    "value": 1.19,
+    "upStockCount": 433,
+    "downStockCount": 363,
+    "limitUpCount": 72,
+    "limitDownCount": 9,
+    "volume": 16439.1,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-10-24",
+    "value": 3.63,
+    "upStockCount": 836,
+    "downStockCount": 230,
+    "limitUpCount": 71,
+    "limitDownCount": 10,
+    "volume": 19742.09,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-10-27",
+    "value": 3.42,
+    "upStockCount": 690,
+    "downStockCount": 202,
+    "limitUpCount": 63,
+    "limitDownCount": 15,
+    "volume": 23401.32,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-10-28",
+    "value": 1.51,
+    "upStockCount": 497,
+    "downStockCount": 330,
+    "limitUpCount": 71,
+    "limitDownCount": 10,
+    "volume": 21478.6,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-10-29",
+    "value": 3.15,
+    "upStockCount": 897,
+    "downStockCount": 285,
+    "limitUpCount": 66,
+    "limitDownCount": 10,
+    "volume": 22560.3,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-10-30",
+    "value": 0.38,
+    "upStockCount": 340,
+    "downStockCount": 885,
+    "limitUpCount": 61,
+    "limitDownCount": 10,
+    "volume": 24216.77,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-10-31",
+    "value": 2.25,
+    "upStockCount": 814,
+    "downStockCount": 361,
+    "limitUpCount": 76,
+    "limitDownCount": 17,
+    "volume": 23177.92,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-11-03",
+    "value": 2.58,
+    "upStockCount": 706,
+    "downStockCount": 274,
+    "limitUpCount": 90,
+    "limitDownCount": 11,
+    "volume": 21071.31,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-11-04",
+    "value": 0.48,
+    "upStockCount": 323,
+    "downStockCount": 676,
+    "limitUpCount": 67,
+    "limitDownCount": 8,
+    "volume": 19157.58,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-11-05",
+    "value": 4.05,
+    "upStockCount": 615,
+    "downStockCount": 152,
+    "limitUpCount": 83,
+    "limitDownCount": 7,
+    "volume": 18723.41,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 0,
+    "totalStockCount": 0,
+    "profitEffect": 0
+  },
+  {
+    "date": "2025-11-06",
+    "value": 2.61,
+    "upStockCount": 637,
+    "downStockCount": 244,
+    "limitUpCount": 72,
+    "limitDownCount": 17,
+    "volume": 20552.48,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 2880,
+    "totalStockCount": 5434,
+    "profitEffect": 0.5299963194700037
+  },
+  {
+    "date": "2025-11-07",
+    "value": 1.18,
+    "upStockCount": 452,
+    "downStockCount": 384,
+    "limitUpCount": 63,
+    "limitDownCount": 8,
+    "volume": 19990.53,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 2101,
+    "totalStockCount": 5436,
+    "profitEffect": 0.3864974245768948
+  },
+  {
+    "date": "2025-11-10",
+    "value": 2.56,
+    "upStockCount": 732,
+    "downStockCount": 286,
+    "limitUpCount": 92,
+    "limitDownCount": 10,
+    "volume": 21744.54,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 3376,
+    "totalStockCount": 5439,
+    "profitEffect": 0.6207023349880493
+  },
+  {
+    "date": "2025-11-11",
+    "value": 1.87,
+    "upStockCount": 510,
+    "downStockCount": 273,
+    "limitUpCount": 82,
+    "limitDownCount": 6,
+    "volume": 19935.86,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 2785,
+    "totalStockCount": 5439,
+    "profitEffect": 0.5120426548997978
+  },
+  {
+    "date": "2025-11-12",
+    "value": 0.88,
+    "upStockCount": 434,
+    "downStockCount": 493,
+    "limitUpCount": 77,
+    "limitDownCount": 10,
+    "volume": 19450.34,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 1758,
+    "totalStockCount": 5441,
+    "profitEffect": 0.3231023708877045
+  },
+  {
+    "date": "2025-11-13",
+    "value": 10.13,
+    "upStockCount": 790,
+    "downStockCount": 78,
+    "limitUpCount": 104,
+    "limitDownCount": 0,
+    "volume": 20419.62,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 3952,
+    "totalStockCount": 5440,
+    "profitEffect": 0.7264705882352941
+  },
+  {
+    "date": "2025-11-14",
+    "value": 0.73,
+    "upStockCount": 449,
+    "downStockCount": 611,
+    "limitUpCount": 89,
+    "limitDownCount": 9,
+    "volume": 19580.79,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 1961,
+    "totalStockCount": 5438,
+    "profitEffect": 0.3606105185730048
+  },
+  {
+    "date": "2025-11-17",
+    "value": 1.76,
+    "upStockCount": 609,
+    "downStockCount": 346,
+    "limitUpCount": 100,
+    "limitDownCount": 10,
+    "volume": 19107.91,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 2584,
+    "totalStockCount": 5437,
+    "profitEffect": 0.4752620930660291
+  },
+  {
+    "date": "2025-11-18",
+    "value": 0.36,
+    "upStockCount": 317,
+    "downStockCount": 892,
+    "limitUpCount": 62,
+    "limitDownCount": 36,
+    "volume": 19260.68,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 1277,
+    "totalStockCount": 5440,
+    "profitEffect": 0.2347426470588235
+  },
+  {
+    "date": "2025-11-19",
+    "value": 0.38,
+    "upStockCount": 356,
+    "downStockCount": 928,
+    "limitUpCount": 64,
+    "limitDownCount": 33,
+    "volume": 17259.08,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 1200,
+    "totalStockCount": 5442,
+    "profitEffect": 0.2205071664829107
+  },
+  {
+    "date": "2025-11-20",
+    "value": 0.5,
+    "upStockCount": 295,
+    "downStockCount": 587,
+    "limitUpCount": 49,
+    "limitDownCount": 20,
+    "volume": 17081.89,
+    "maxConsecutive": 0,
+    "limitUpRate": 0,
+    "positiveStockCount": 1453,
+    "totalStockCount": 5441,
+    "profitEffect": 0.2670464988053667
+  },
+  {
+    "date": "2025-11-21",
+    "value": 0.04,
+    "upStockCount": 144,
+    "downStockCount": 3756,
+    "limitUpCount": 33,
+    "limitDownCount": 99,
+    "volume": 19656.61,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.58,
+    "positiveStockCount": 354,
+    "totalStockCount": 5444,
+    "profitEffect": 0.065025716385011
+  },
+  {
+    "date": "2025-11-24",
+    "value": 5.28,
+    "upStockCount": 1115,
+    "downStockCount": 211,
+    "limitUpCount": 79,
+    "limitDownCount": 34,
+    "volume": 17277.74,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.77,
+    "positiveStockCount": 4228,
+    "totalStockCount": 5440,
+    "profitEffect": 0.7772058823529412
+  },
+  {
+    "date": "2025-11-25",
+    "value": 11.58,
+    "upStockCount": 845,
+    "downStockCount": 73,
+    "limitUpCount": 95,
+    "limitDownCount": 5,
+    "volume": 18121.47,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.75,
+    "positiveStockCount": 4300,
+    "totalStockCount": 5438,
+    "profitEffect": 0.7907318867230599
+  },
+  {
+    "date": "2025-11-26",
+    "value": 1.22,
+    "upStockCount": 413,
+    "downStockCount": 338,
+    "limitUpCount": 76,
+    "limitDownCount": 6,
+    "volume": 17833.46,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.75,
+    "positiveStockCount": 1692,
+    "totalStockCount": 5434,
+    "profitEffect": 0.3113728376886272
+  },
+  {
+    "date": "2025-11-27",
+    "value": 1.73,
+    "upStockCount": 455,
+    "downStockCount": 263,
+    "limitUpCount": 63,
+    "limitDownCount": 14,
+    "volume": 17097.94,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.61,
+    "positiveStockCount": 2790,
+    "totalStockCount": 5434,
+    "profitEffect": 0.513433934486566
+  },
+  {
+    "date": "2025-11-28",
+    "value": 7.23,
+    "upStockCount": 723,
+    "downStockCount": 100,
+    "limitUpCount": 81,
+    "limitDownCount": 6,
+    "volume": 15857.96,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.72,
+    "positiveStockCount": 4122,
+    "totalStockCount": 5433,
+    "profitEffect": 0.7586968525676422
+  },
+  {
+    "date": "2025-12-01",
+    "value": 3.34,
+    "upStockCount": 688,
+    "downStockCount": 206,
+    "limitUpCount": 76,
+    "limitDownCount": 7,
+    "volume": 18739.38,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.7,
+    "positiveStockCount": 3398,
+    "totalStockCount": 5432,
+    "profitEffect": 0.6255522827687776
+  },
+  {
+    "date": "2025-12-02",
+    "value": 0.93,
+    "upStockCount": 318,
+    "downStockCount": 341,
+    "limitUpCount": 54,
+    "limitDownCount": 7,
+    "volume": 15934.3,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.71,
+    "positiveStockCount": 1544,
+    "totalStockCount": 5436,
+    "profitEffect": 0.2840323767476085
+  },
+  {
+    "date": "2025-12-03",
+    "value": 0.51,
+    "upStockCount": 302,
+    "downStockCount": 595,
+    "limitUpCount": 54,
+    "limitDownCount": 14,
+    "volume": 16699.62,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.66,
+    "positiveStockCount": 1443,
+    "totalStockCount": 5442,
+    "profitEffect": 0.2651598676957001
+  },
+  {
+    "date": "2025-12-04",
+    "value": 0.49,
+    "upStockCount": 299,
+    "downStockCount": 614,
+    "limitUpCount": 39,
+    "limitDownCount": 26,
+    "volume": 15489.6,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.59,
+    "positiveStockCount": 1455,
+    "totalStockCount": 5440,
+    "profitEffect": 0.2674632352941176
+  },
+  {
+    "date": "2025-12-05",
+    "value": 6.92,
+    "upStockCount": 754,
+    "downStockCount": 109,
+    "limitUpCount": 80,
+    "limitDownCount": 12,
+    "volume": 17257.71,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.78,
+    "positiveStockCount": 4387,
+    "totalStockCount": 5438,
+    "profitEffect": 0.8067304155939684
+  },
+  {
+    "date": "2025-12-08",
+    "value": 8.18,
+    "upStockCount": 720,
+    "downStockCount": 88,
+    "limitUpCount": 78,
+    "limitDownCount": 8,
+    "volume": 20366.46,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.73,
+    "positiveStockCount": 3409,
+    "totalStockCount": 5440,
+    "profitEffect": 0.6266544117647059
+  },
+  {
+    "date": "2025-12-09",
+    "value": 0.79,
+    "upStockCount": 351,
+    "downStockCount": 446,
+    "limitUpCount": 54,
+    "limitDownCount": 12,
+    "volume": 19039.53,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.7,
+    "positiveStockCount": 1308,
+    "totalStockCount": 5441,
+    "profitEffect": 0.2403969858481897
+  },
+  {
+    "date": "2025-12-10",
+    "value": 1.79,
+    "upStockCount": 452,
+    "downStockCount": 253,
+    "limitUpCount": 60,
+    "limitDownCount": 11,
+    "volume": 17785.05,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.67,
+    "positiveStockCount": 2435,
+    "totalStockCount": 5438,
+    "profitEffect": 0.4477749172489886
+  },
+  {
+    "date": "2025-12-11",
+    "value": 0.31,
+    "upStockCount": 341,
+    "downStockCount": 1088,
+    "limitUpCount": 38,
+    "limitDownCount": 29,
+    "volume": 18571.13,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.56,
+    "positiveStockCount": 1032,
+    "totalStockCount": 5442,
+    "profitEffect": 0.1896361631753032
+  },
+  {
+    "date": "2025-12-12",
+    "value": 1.88,
+    "upStockCount": 630,
+    "downStockCount": 336,
+    "limitUpCount": 83,
+    "limitDownCount": 26,
+    "volume": 20922.06,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.87,
+    "positiveStockCount": 2683,
+    "totalStockCount": 5444,
+    "profitEffect": 0.4928361498897869
+  },
+  {
+    "date": "2025-12-15",
+    "value": 0.91,
+    "upStockCount": 464,
+    "downStockCount": 512,
+    "limitUpCount": 65,
+    "limitDownCount": 24,
+    "volume": 17734.39,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.63,
+    "positiveStockCount": 2314,
+    "totalStockCount": 5443,
+    "profitEffect": 0.4251331986037112
+  },
+  {
+    "date": "2025-12-16",
+    "value": 0.24,
+    "upStockCount": 297,
+    "downStockCount": 1258,
+    "limitUpCount": 46,
+    "limitDownCount": 36,
+    "volume": 17241.73,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.69,
+    "positiveStockCount": 1091,
+    "totalStockCount": 5445,
+    "profitEffect": 0.2003673094582185
+  },
+  {
+    "date": "2025-12-17",
+    "value": 2.51,
+    "upStockCount": 653,
+    "downStockCount": 260,
+    "limitUpCount": 57,
+    "limitDownCount": 25,
+    "volume": 18111.46,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.71,
+    "positiveStockCount": 3626,
+    "totalStockCount": 5446,
+    "profitEffect": 0.665809768637532
+  },
+  {
+    "date": "2025-12-18",
+    "value": 1.43,
+    "upStockCount": 477,
+    "downStockCount": 333,
+    "limitUpCount": 73,
+    "limitDownCount": 8,
+    "volume": 16554.83,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 2845,
+    "totalStockCount": 5449,
+    "profitEffect": 0.5221141493852083
+  },
+  {
+    "date": "2025-12-19",
+    "value": 7.38,
+    "upStockCount": 886,
+    "downStockCount": 120,
+    "limitUpCount": 82,
+    "limitDownCount": 6,
+    "volume": 17259.15,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 4477,
+    "totalStockCount": 5448,
+    "profitEffect": 0.821769456681351
+  },
+  {
+    "date": "2025-12-22",
+    "value": 4.24,
+    "upStockCount": 700,
+    "downStockCount": 165,
+    "limitUpCount": 105,
+    "limitDownCount": 8,
+    "volume": 18619.4,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.68,
+    "positiveStockCount": 2984,
+    "totalStockCount": 5444,
+    "profitEffect": 0.5481263776634827
+  },
+  {
+    "date": "2025-12-23",
+    "value": 0.81,
+    "upStockCount": 399,
+    "downStockCount": 495,
+    "limitUpCount": 68,
+    "limitDownCount": 15,
+    "volume": 18998.41,
+    "maxConsecutive": 8,
+    "limitUpRate": 0.72,
+    "positiveStockCount": 1512,
+    "totalStockCount": 5449,
+    "profitEffect": 0.27748210680858876
+  },
+  {
+    "date": "2025-12-24",
+    "value": 9.29,
+    "upStockCount": 799,
+    "downStockCount": 86,
+    "limitUpCount": 86,
+    "limitDownCount": 6,
+    "volume": 18802.68,
+    "maxConsecutive": 9,
+    "limitUpRate": 0.78,
+    "positiveStockCount": 4128,
+    "totalStockCount": 5451,
+    "profitEffect": 0.7572922399559714
+  },
+  {
+    "date": "2025-12-25",
+    "value": 6.3,
+    "upStockCount": 731,
+    "downStockCount": 116,
+    "limitUpCount": 93,
+    "limitDownCount": 2,
+    "volume": 19245.23,
+    "maxConsecutive": 10,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 3773,
+    "totalStockCount": 5454,
+    "profitEffect": 0.6917858452511918
+  },
+  {
+    "date": "2025-12-26",
+    "value": 2.71,
+    "upStockCount": 532,
+    "downStockCount": 196,
+    "limitUpCount": 92,
+    "limitDownCount": 3,
+    "volume": 21601.91,
+    "maxConsecutive": 11,
+    "limitUpRate": 0.81,
+    "positiveStockCount": 1866,
+    "totalStockCount": 5453,
+    "profitEffect": 0.3421969558041445
+  },
+  {
+    "date": "2025-12-29",
+    "value": 1.2,
+    "upStockCount": 519,
+    "downStockCount": 434,
+    "limitUpCount": 87,
+    "limitDownCount": 25,
+    "volume": 21393.38,
+    "maxConsecutive": 12,
+    "limitUpRate": 0.74,
+    "positiveStockCount": 1995,
+    "totalStockCount": 5455,
+    "profitEffect": 0.36571952337305225
+  },
+  {
+    "date": "2025-12-30",
+    "value": 1.29,
+    "upStockCount": 489,
+    "downStockCount": 380,
+    "limitUpCount": 66,
+    "limitDownCount": 19,
+    "volume": 21426.19,
+    "maxConsecutive": 10,
+    "limitUpRate": 0.67,
+    "positiveStockCount": 1840,
+    "totalStockCount": 5457,
+    "profitEffect": 0.3371816016126077
+  },
+  {
+    "date": "2025-12-31",
+    "value": 1.5,
+    "upStockCount": 495,
+    "downStockCount": 331,
+    "limitUpCount": 63,
+    "limitDownCount": 12,
+    "volume": 20452.35,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 2474,
+    "totalStockCount": 5458,
+    "profitEffect": 0.4532795895932576
+  },
+  {
+    "date": "2026-01-05",
+    "value": 7.45,
+    "upStockCount": 1289,
+    "downStockCount": 173,
+    "limitUpCount": 127,
+    "limitDownCount": 12,
+    "volume": 25463.47,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.8,
+    "positiveStockCount": 4185,
+    "totalStockCount": 5457,
+    "profitEffect": 0.7669048927982408
+  },
+  {
+    "date": "2026-01-06",
+    "value": 8.34,
+    "upStockCount": 951,
+    "downStockCount": 114,
+    "limitUpCount": 143,
+    "limitDownCount": 2,
+    "volume": 28065.75,
+    "maxConsecutive": 13,
+    "limitUpRate": 0.82,
+    "positiveStockCount": 4108,
+    "totalStockCount": 5459,
+    "profitEffect": 0.7525187763326616
+  },
+  {
+    "date": "2026-01-07",
+    "value": 2.74,
+    "upStockCount": 731,
+    "downStockCount": 267,
+    "limitUpCount": 97,
+    "limitDownCount": 7,
+    "volume": 28542.2,
+    "maxConsecutive": 14,
+    "limitUpRate": 0.65,
+    "positiveStockCount": 2173,
+    "totalStockCount": 5460,
+    "profitEffect": 0.39798534798534796
+  },
+  {
+    "date": "2026-01-08",
+    "value": 4.53,
+    "upStockCount": 896,
+    "downStockCount": 198,
+    "limitUpCount": 111,
+    "limitDownCount": 6,
+    "volume": 28003.85,
+    "maxConsecutive": 10,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 3731,
+    "totalStockCount": 5459,
+    "profitEffect": 0.6834585088844111
+  },
+  {
+    "date": "2026-01-09",
+    "value": 9.06,
+    "upStockCount": 997,
+    "downStockCount": 110,
+    "limitUpCount": 109,
+    "limitDownCount": 1,
+    "volume": 31227.67,
+    "maxConsecutive": 11,
+    "limitUpRate": 0.67,
+    "positiveStockCount": 3920,
+    "totalStockCount": 5459,
+    "profitEffect": 0.7180802344751787
+  },
+  {
+    "date": "2026-01-12",
+    "value": 11.87,
+    "upStockCount": 1733,
+    "downStockCount": 146,
+    "limitUpCount": 201,
+    "limitDownCount": 9,
+    "volume": 36014.5,
+    "maxConsecutive": 12,
+    "limitUpRate": 0.8,
+    "positiveStockCount": 4144,
+    "totalStockCount": 5461,
+    "profitEffect": 0.7588353781358725
+  },
+  {
+    "date": "2026-01-13",
+    "value": 0.38,
+    "upStockCount": 504,
+    "downStockCount": 1342,
+    "limitUpCount": 75,
+    "limitDownCount": 56,
+    "volume": 36510.65,
+    "maxConsecutive": 13,
+    "limitUpRate": 0.53,
+    "positiveStockCount": 1622,
+    "totalStockCount": 5452,
+    "profitEffect": 0.297505502567865
+  },
+  {
+    "date": "2026-01-14",
+    "value": 3.67,
+    "upStockCount": 887,
+    "limitUpCount": 110,
+    "downStockCount": 242,
+    "limitDownCount": 19,
+    "volume": 39414.84,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.63,
+    "positiveStockCount": 2747,
+    "totalStockCount": 5454,
+    "profitEffect": 0.5036670333700036
+  }
+]
+
+// 选股结果数据
+const stockResultsData = [
+  {
+    "date": "2025-12-09",
+    "stockCode": "000977",
+    "stockName": "浪潮信息",
+    "prevClose": 62.69,
+    "prevHigh": 64.3,
+    "open": 66
+  },
+  {
+    "date": "2025-12-09",
+    "stockCode": "001287",
+    "stockName": "中电港",
+    "prevClose": 22.89,
+    "prevHigh": 23.07,
+    "open": 24.38
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "603101",
+    "stockName": "汇嘉时代",
+    "prevClose": 9.63,
+    "prevHigh": 9.78,
+    "open": 10.59
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "600196",
+    "stockName": "复星医药",
+    "prevClose": 27.45,
+    "prevHigh": 27.77,
+    "open": 28.45
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "605376",
+    "stockName": "博迁新材",
+    "prevClose": 53.95,
+    "prevHigh": 54.78,
+    "open": 55.58
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "603681",
+    "stockName": "永冠新材",
+    "prevClose": 19.22,
+    "prevHigh": 19.54,
+    "open": 19.94
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "603518",
+    "stockName": "锦泓集团",
+    "prevClose": 10.25,
+    "prevHigh": 10.35,
+    "open": 10.58
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "601086",
+    "stockName": "国芳集团",
+    "prevClose": 10.55,
+    "prevHigh": 10.7,
+    "open": 10.88
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "300567",
+    "stockName": "精测电子",
+    "prevClose": 72.77,
+    "prevHigh": 73.43,
+    "open": 74.99
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "002251",
+    "stockName": "步步高",
+    "prevClose": 5.23,
+    "prevHigh": 5.33,
+    "open": 5.66
+  },
+  {
+    "date": "2025-12-10",
+    "stockCode": "000759",
+    "stockName": "中百集团",
+    "prevClose": 7.72,
+    "prevHigh": 7.85,
+    "open": 8.02
+  },
+  {
+    "date": "2025-12-11",
+    "stockCode": "603135",
+    "stockName": "中重科技",
+    "prevClose": 9.48,
+    "prevHigh": 9.53,
+    "open": 9.86
+  },
+  {
+    "date": "2025-12-11",
+    "stockCode": "600156",
+    "stockName": "华升股份",
+    "prevClose": 9.05,
+    "prevHigh": 9.38,
+    "open": 9.96
+  },
+  {
+    "date": "2025-12-11",
+    "stockCode": "002838",
+    "stockName": "道恩股份",
+    "prevClose": 25.58,
+    "prevHigh": 25.68,
+    "open": 26
+  },
+  {
+    "date": "2025-12-11",
+    "stockCode": "000700",
+    "stockName": "模塑科技",
+    "prevClose": 11.08,
+    "prevHigh": 11.28,
+    "open": 11.59
+  },
+  {
+    "date": "2025-12-12",
+    "stockCode": "002256",
+    "stockName": "兆新股份",
+    "prevClose": 3.55,
+    "prevHigh": 3.62,
+    "open": 3.91
+  },
+  {
+    "date": "2025-12-12",
+    "stockCode": "600416",
+    "stockName": "湘电股份",
+    "prevClose": 14.19,
+    "prevHigh": 14.39,
+    "open": 14.57
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300423",
+    "stockName": "昇辉科技",
+    "prevClose": 8.55,
+    "prevHigh": 8.74,
+    "open": 8.84
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300141",
+    "stockName": "和顺电气",
+    "prevClose": 12.17,
+    "prevHigh": 12.32,
+    "open": 12.45
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300138",
+    "stockName": "晨光生物",
+    "prevClose": 12.68,
+    "prevHigh": 12.82,
+    "open": 12.98
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "002389",
+    "stockName": "航天彩虹",
+    "prevClose": 22.76,
+    "prevHigh": 23.13,
+    "open": 23.4
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "301548",
+    "stockName": "崇德科技",
+    "prevClose": 53,
+    "prevHigh": 54,
+    "open": 54.6
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "301232",
+    "stockName": "飞沃科技",
+    "prevClose": 109.5,
+    "prevHigh": 110.81,
+    "open": 112.28
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "300118",
+    "stockName": "东方日升",
+    "prevClose": 11.14,
+    "prevHigh": 11.45,
+    "open": 12.18
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "301306",
+    "stockName": "西测测试",
+    "prevClose": 78.65,
+    "prevHigh": 80,
+    "open": 83.33
+  },
+  {
+    "date": "2025-12-15",
+    "stockCode": "603058",
+    "stockName": "永吉分股",
+    "prevClose": 9.2,
+    "prevHigh": 9.59,
+    "open": 10.12
+  },
+  {
+    "date": "2025-12-16",
+    "stockCode": "600686",
+    "stockName": "金龙汽车",
+    "prevClose": 17.21,
+    "prevHigh": 17.75,
+    "open": 18,
+    "close": 16.1
+  },
+  {
+    "date": "2025-12-16",
+    "stockCode": "300698",
+    "stockName": "万马科技",
+    "prevClose": 39.69,
+    "prevHigh": 40.57,
+    "open": 42.32,
+    "close": 40.79
+  },
+  {
+    "date": "2025-12-17",
+    "stockCode": "002536",
+    "stockName": "飞龙股份",
+    "prevClose": 25.08,
+    "prevHigh": 25.39,
+    "open": 27.58,
+    "close": 27.59
+  },
+  {
+    "date": "2025-12-17",
+    "stockCode": "002969",
+    "stockName": "嘉美包装",
+    "prevClose": 4.56,
+    "prevHigh": 4.65,
+    "open": 5.02,
+    "close": 5.02
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301421",
+    "stockName": "波长光电",
+    "prevClose": 112.29,
+    "prevHigh": 114.3,
+    "open": 119,
+    "close": 106.41
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301392",
+    "stockName": "汇成真空",
+    "prevClose": 140.91,
+    "prevHigh": 142.5,
+    "open": 147,
+    "close": 137.12
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "601198",
+    "stockName": "东兴证券",
+    "prevClose": 13.13,
+    "prevHigh": 13.6,
+    "open": 14.44,
+    "close": 14.44
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301133",
+    "stockName": "金钟股份",
+    "prevClose": 33.88,
+    "prevHigh": 33.94,
+    "open": 35.68,
+    "close": 37.2
+  },
+  {
+    "date": "2025-12-18",
+    "stockCode": "301408",
+    "stockName": "华人健康",
+    "prevClose": 18.2,
+    "prevHigh": 19.31,
+    "open": 20.35,
+    "close": 21.84
+  },
+  {
+    "date": "2025-12-19",
+    "stockCode": "603977",
+    "stockName": "国泰集团",
+    "prevClose": 12.92,
+    "prevHigh": 13.28,
+    "open": 13.56,
+    "close": 14.21
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "002810",
+    "stockName": "山东赫达",
+    "prevClose": 13.22,
+    "prevHigh": 13.4,
+    "open": 14.08,
+    "close": 14.54
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "000625",
+    "stockName": "长安汽车",
+    "prevClose": 11.75,
+    "prevHigh": 11.84,
+    "open": 12.12,
+    "close": 12.05
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "002917",
+    "stockName": "金奥博",
+    "prevClose": 13.14,
+    "prevHigh": 13.22,
+    "open": 13.5,
+    "close": 13.35
+  },
+  {
+    "date": "2025-12-22",
+    "stockCode": "600178",
+    "stockName": "东安动力",
+    "prevClose": 11.77,
+    "prevHigh": 11.8,
+    "open": 12.29,
+    "close": 12.02
+  },
+  {
+    "date": "2025-12-23",
+    "stockCode": "003029",
+    "stockName": "吉大正元",
+    "prevClose": 26.87,
+    "prevHigh": 27.22,
+    "open": 29.56,
+    "close": 27.37
+  },
+  {
+    "date": "2025-12-23",
+    "stockCode": "603076",
+    "stockName": "乐惠国际",
+    "prevClose": 23.86,
+    "prevHigh": 24.15,
+    "open": 24.81,
+    "close": 24.01
+  },
+  {
+    "date": "2025-12-23",
+    "stockCode": "600882",
+    "stockName": "妙可蓝多",
+    "prevClose": 28.53,
+    "prevHigh": 28.85,
+    "open": 29.74,
+    "close": 28.22
+  },
+  {
+    "date": "2025-12-24",
+    "stockCode": "002324",
+    "stockName": "普利特",
+    "prevClose": 13.11,
+    "prevHigh": 13.21,
+    "open": 13.51,
+    "close": 14.42
+  },
+  {
+    "date": "2025-12-24",
+    "stockCode": "600962",
+    "stockName": "国投中鲁",
+    "prevClose": 21.3,
+    "prevHigh": 21.78,
+    "open": 23.08,
+    "close": 23.43
+  },
+  {
+    "date": "2025-12-24",
+    "stockCode": "300351",
+    "stockName": "永贵电器",
+    "prevClose": 17.36,
+    "prevHigh": 17.5,
+    "open": 18.4,
+    "close": 18.63
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "000582",
+    "stockName": "北部湾港",
+    "prevClose": 9.75,
+    "prevHigh": 9.96,
+    "open": 10.56,
+    "close": 10.17
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "000532",
+    "stockName": "华金资本",
+    "prevClose": 16.04,
+    "prevHigh": 16.39,
+    "open": 17,
+    "close": 16.76
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "300900",
+    "stockName": "广联航空",
+    "prevClose": 26.01,
+    "prevHigh": 26.39,
+    "open": 28.58,
+    "close": 31.21
+  },
+  {
+    "date": "2025-12-25",
+    "stockCode": "300553",
+    "stockName": "集智股份",
+    "prevClose": 38.14,
+    "prevHigh": 28.25,
+    "open": 39.4,
+    "close": 40.98
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "301079",
+    "stockName": "邵阳液压",
+    "prevClose": 30.47,
+    "prevHigh": 31.52,
+    "open": 33.65,
+    "close": 31.87
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "002759",
+    "stockName": "天际股份",
+    "prevClose": 45,
+    "prevHigh": 46.33,
+    "open": 49.5,
+    "close": 49.5
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "002192",
+    "stockName": "融捷股份",
+    "prevClose": 52.68,
+    "prevHigh": 53.18,
+    "open": 54.65,
+    "close": 55.46
+  },
+  {
+    "date": "2025-12-26",
+    "stockCode": "600215",
+    "stockName": "派斯林",
+    "prevClose": 7.03,
+    "prevHigh": 7.06,
+    "open": 7.33,
+    "close": 7.13
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "600531",
+    "stockName": "豫光金铅",
+    "prevClose": 11.8,
+    "prevHigh": 11.87,
+    "open": 12.2,
+    "close": 12.24
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "000630",
+    "stockName": "铜陵有色",
+    "prevClose": 5.93,
+    "prevHigh": 5.98,
+    "open": 6.11,
+    "close": 5.73
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "003027",
+    "stockName": "同兴科技",
+    "prevClose": 22.45,
+    "prevHigh": 22.68,
+    "open": 24.7,
+    "close": 23.15
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002261",
+    "stockName": "拓维信息",
+    "prevClose": 30.7,
+    "prevHigh": 31.08,
+    "open": 31.88,
+    "close": 33.77
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002324",
+    "stockName": "普利特",
+    "prevClose": 14.81,
+    "prevHigh": 15,
+    "open": 15.66,
+    "close": 15.42
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002843",
+    "stockName": "泰嘉股份",
+    "prevClose": 20.12,
+    "prevHigh": 20.41,
+    "open": 21,
+    "close": 20.73
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002716",
+    "stockName": "湖南白银",
+    "prevClose": 6.79,
+    "prevHigh": 6.9,
+    "open": 7.2,
+    "close": 7.28
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "603186",
+    "stockName": "华正新材",
+    "prevClose": 47.01,
+    "prevHigh": 47.96,
+    "open": 49.21,
+    "close": 50.69
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "601212",
+    "stockName": "白银有色",
+    "prevClose": 5.87,
+    "prevHigh": 6,
+    "open": 6.2,
+    "close": 6.24
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002866",
+    "stockName": "传艺科技",
+    "prevClose": 17.96,
+    "prevHigh": 18.46,
+    "open": 19.6,
+    "close": 18.85
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "002272",
+    "stockName": "川润股份",
+    "prevClose": 16.25,
+    "prevHigh": 16.9,
+    "open": 17.88,
+    "close": 17.88
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "300699",
+    "stockName": "光威复材",
+    "prevClose": 34.87,
+    "prevHigh": 36.66,
+    "open": 38.3,
+    "close": 40.05
+  },
+  {
+    "date": "2025-12-29",
+    "stockCode": "300489",
+    "stockName": "光智科技",
+    "prevClose": 52.19,
+    "prevHigh": 53.98,
+    "open": 55.8,
+    "close": 52.18
+  },
+  {
+    "date": "2025-12-30",
+    "stockCode": "003041",
+    "stockName": "真爱美家",
+    "prevClose": 46.55,
+    "prevHigh": 48,
+    "open": 49.5,
+    "close": 48.84
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "301101",
+    "stockName": "明月镜片",
+    "prevClose": 39.99,
+    "prevHigh": 40.21,
+    "open": 41.92,
+    "close": 41.43
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "002943",
+    "stockName": "宇晶股份",
+    "prevClose": 37.38,
+    "prevHigh": 37.8,
+    "open": 39.23,
+    "close": 39.6
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "301383",
+    "stockName": "天键股份",
+    "prevClose": 35.26,
+    "prevHigh": 35.95,
+    "open": 37.17,
+    "close": 35.64
+  },
+  {
+    "date": "2025-12-31",
+    "stockCode": "300695",
+    "stockName": "兆丰股份",
+    "prevClose": 93.69,
+    "prevHigh": 95.5,
+    "open": 98.5,
+    "close": 100.06
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300986",
+    "stockName": "志特新材",
+    "prevClose": 11.18,
+    "prevHigh": 11.33,
+    "open": 12.31,
+    "close": 13.42
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300955",
+    "stockName": "嘉亨家化",
+    "prevClose": 41.51,
+    "prevHigh": 43.45,
+    "open": 49.81,
+    "close": 45.13
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300894",
+    "stockName": "火星人",
+    "prevClose": 11.79,
+    "prevHigh": 12.1,
+    "open": 12.99,
+    "close": 12.5
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "300337",
+    "stockName": "银邦股份",
+    "prevClose": 15.51,
+    "prevHigh": 15.99,
+    "open": 16.68,
+    "close": 16.2
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002202",
+    "stockName": "金风科技",
+    "prevClose": 20.4,
+    "prevHigh": 20.88,
+    "open": 22.44,
+    "close": 21.82
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "603859",
+    "stockName": "能科科技",
+    "prevClose": 42.05,
+    "prevHigh": 42.79,
+    "open": 43.98,
+    "close": 44.22
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "001339",
+    "stockName": "智微智能",
+    "prevClose": 51.11,
+    "prevHigh": 52,
+    "open": 53.2,
+    "close": 53.13
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002324",
+    "stockName": "普利特",
+    "prevClose": 15.99,
+    "prevHigh": 16.24,
+    "open": 16.7,
+    "close": 17.59
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "601600",
+    "stockName": "中国铝业",
+    "prevClose": 12.22,
+    "prevHigh": 12.38,
+    "open": 12.72,
+    "close": 13.02
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002195",
+    "stockName": "岩山科技",
+    "prevClose": 7.09,
+    "prevHigh": 7.18,
+    "open": 7.8,
+    "close": 7.8
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "002709",
+    "stockName": "天赐材料",
+    "prevClose": 46.33,
+    "prevHigh": 46.83,
+    "open": 48.6,
+    "close": 48.04
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "600562",
+    "stockName": "国睿科技",
+    "prevClose": 28.26,
+    "prevHigh": 28.49,
+    "open": 29.5,
+    "close": 28.88
+  },
+  {
+    "date": "2026-01-05",
+    "stockCode": "000933",
+    "stockName": "神火股份",
+    "prevClose": 27.47,
+    "prevHigh": 27.68,
+    "open": 28.55,
+    "close": 28.47
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "603014",
+    "stockName": "威高血净",
+    "prevClose": 41.49,
+    "prevHigh": 41.5,
+    "open": 43.55,
+    "close": 41.98
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "301606",
+    "stockName": "绿联科技",
+    "prevClose": 60.71,
+    "prevHigh": 61.12,
+    "open": 65,
+    "close": 63.45
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "301099",
+    "stockName": "雅创电子",
+    "prevClose": 45.3,
+    "prevHigh": 45.39,
+    "open": 47.7,
+    "close": 48.86
+  },
+  {
+    "date": "2026-01-06",
+    "stockCode": "600589",
+    "stockName": "大位科技",
+    "prevClose": 7.39,
+    "prevHigh": 7.49,
+    "open": 7.97,
+    "close": 7.98
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "301611",
+    "stockName": "珂玛科技",
+    "prevClose": 99.81,
+    "prevHigh": 100.88,
+    "open": 109,
+    "close": 109.34
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "300806",
+    "stockName": "斯迪克",
+    "prevClose": 31.13,
+    "prevHigh": 31.52,
+    "open": 32.5,
+    "close": 35.17
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "300748",
+    "stockName": "金力永磁",
+    "prevClose": 35.51,
+    "prevHigh": 35.62,
+    "open": 36.86,
+    "close": 36.51
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "300576",
+    "stockName": "容大感光",
+    "prevClose": 40.61,
+    "prevHigh": 40.83,
+    "open": 43,
+    "close": 44.57
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "003020",
+    "stockName": "立方制药",
+    "prevClose": 27.53,
+    "prevHigh": 27.6,
+    "open": 28.85,
+    "close": 27.57
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002409",
+    "stockName": "雅克科技",
+    "prevClose": 82.03,
+    "prevHigh": 84.43,
+    "open": 87.01,
+    "close": 88.63
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "001309",
+    "stockName": "德明利",
+    "prevClose": 255.48,
+    "prevHigh": 261,
+    "open": 279.98,
+    "close": 250
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002582",
+    "stockName": "好想你",
+    "prevClose": 11.76,
+    "prevHigh": 11.97,
+    "open": 12.94,
+    "close": 11.26
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "600667",
+    "stockName": "太极实业",
+    "prevClose": 8.58,
+    "prevHigh": 8.7,
+    "open": 8.89,
+    "close": 8.56
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "000021",
+    "stockName": "深科技",
+    "prevClose": 26.89,
+    "prevHigh": 27.2,
+    "open": 27.91,
+    "close": 26.75
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002654",
+    "stockName": "万润科技",
+    "prevClose": 15.08,
+    "prevHigh": 15.25,
+    "open": 15.58,
+    "close": 15.28
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "600637",
+    "stockName": "东方明珠",
+    "prevClose": 10.01,
+    "prevHigh": 10.1,
+    "open": 10.54,
+    "close": 11.01
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002319",
+    "stockName": "乐通股份",
+    "prevClose": 13.09,
+    "prevHigh": 13.18,
+    "open": 13.61,
+    "close": 12.82
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "001298",
+    "stockName": "好上好",
+    "prevClose": 30.71,
+    "prevHigh": 30.87,
+    "open": 31.58,
+    "close": 30.63
+  },
+  {
+    "date": "2026-01-07",
+    "stockCode": "002340",
+    "stockName": "格林美",
+    "prevClose": 8.64,
+    "prevHigh": 8.68,
+    "open": 8.87,
+    "close": 9.33
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "301556",
+    "stockName": "托普云农",
+    "prevClose": 104.26,
+    "prevHigh": 105.33,
+    "open": 109.03,
+    "close": 112.08
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "002971",
+    "stockName": "和远气体",
+    "prevClose": 30.57,
+    "prevHigh": 31.76,
+    "open": 33.63,
+    "close": 33.63
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "600477",
+    "stockName": "杭萧钢构",
+    "prevClose": 2.97,
+    "prevHigh": 3.11,
+    "open": 3.27,
+    "close": 3.27
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "000880",
+    "stockName": "潍柴重机",
+    "prevClose": 29.53,
+    "prevHigh": 30.19,
+    "open": 31.03,
+    "close": 30.7
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "603588",
+    "stockName": "高能环境",
+    "prevClose": 8.28,
+    "prevHigh": 8.39,
+    "open": 8.6,
+    "close": 9.08
+  },
+  {
+    "date": "2026-01-08",
+    "stockCode": "603590",
+    "stockName": "康辰药业",
+    "prevClose": 41.88,
+    "prevHigh": 42.36,
+    "open": 43.98,
+    "close": 44.39
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "300747",
+    "stockName": "锐科激光",
+    "prevClose": 32,
+    "prevHigh": 32.35,
+    "open": 34.52,
+    "close": 33.91
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "300072",
+    "stockName": "海新能科",
+    "prevClose": 4.95,
+    "prevHigh": 5.08,
+    "open": 5.27,
+    "close": 5.29
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "300051",
+    "stockName": "琏升科技",
+    "prevClose": 7.23,
+    "prevHigh": 7.48,
+    "open": 7.81,
+    "close": 8.68
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "601615",
+    "stockName": "明阳智能",
+    "prevClose": 16.75,
+    "prevHigh": 17.3,
+    "open": 18.42,
+    "close": 17.89
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "000987",
+    "stockName": "越秀资本",
+    "prevClose": 9.21,
+    "prevHigh": 9.49,
+    "open": 10.13,
+    "close": 10.13
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "600151",
+    "stockName": "航天机电",
+    "prevClose": 20.35,
+    "prevHigh": 20.78,
+    "open": 21.5,
+    "close": 20.72
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "603159",
+    "stockName": "上海亚虹",
+    "prevClose": 26.47,
+    "prevHigh": 26.98,
+    "open": 27.75,
+    "close": 26.46
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "600871",
+    "stockName": "石化油服",
+    "prevClose": 2.2,
+    "prevHigh": 2.22,
+    "open": 2.29,
+    "close": 2.33
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "600571",
+    "stockName": "信雅达",
+    "prevClose": 16.01,
+    "prevHigh": 16.13,
+    "open": 16.5,
+    "close": 16.61
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "002911",
+    "stockName": "佛燃能源",
+    "prevClose": 12.28,
+    "prevHigh": 12.36,
+    "open": 12.83,
+    "close": 12.44
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "000531",
+    "stockName": "穗恒运A",
+    "prevClose": 6.65,
+    "prevHigh": 6.68,
+    "open": 6.92,
+    "close": 6.87
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "000852",
+    "stockName": "石化机械",
+    "prevClose": 7.45,
+    "prevHigh": 7.48,
+    "open": 7.99,
+    "close": 7.75
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "600703",
+    "stockName": "三安光电",
+    "prevClose": 14.87,
+    "prevHigh": 14.92,
+    "open": 15.29,
+    "close": 15.39
+  },
+  {
+    "date": "2026-01-09",
+    "stockCode": "000554",
+    "stockName": "泰山石油",
+    "prevClose": 6.61,
+    "prevHigh": 6.63,
+    "open": 6.94,
+    "close": 6.81
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300045",
+    "stockName": "华力创通",
+    "prevClose": 31.18,
+    "prevHigh": 31.59,
+    "open": 32.99,
+    "close": 37.42
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300058",
+    "stockName": "蓝色光标",
+    "prevClose": 17.18,
+    "prevHigh": 17.44,
+    "open": 17.98,
+    "close": 20.62
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300071",
+    "stockName": "福石控股",
+    "prevClose": 7.44,
+    "prevHigh": 7.51,
+    "open": 7.8,
+    "close": 8.93
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300229",
+    "stockName": "拓尔思",
+    "prevClose": 22.03,
+    "prevHigh": 22.12,
+    "open": 23.01,
+    "close": 26.44
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300248",
+    "stockName": "新开普",
+    "prevClose": 12.92,
+    "prevHigh": 12.94,
+    "open": 13.46,
+    "close": 15.2
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300253",
+    "stockName": "卫宁健康",
+    "prevClose": 10.81,
+    "prevHigh": 10.97,
+    "open": 11.52,
+    "close": 12.97
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300349",
+    "stockName": "金卡智能",
+    "prevClose": 16.57,
+    "prevHigh": 16.67,
+    "open": 17.35,
+    "close": 19.88
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300364",
+    "stockName": "中文在线",
+    "prevClose": 29.15,
+    "prevHigh": 29.28,
+    "open": 30.96,
+    "close": 34.98
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300454",
+    "stockName": "深信服",
+    "prevClose": 133.4,
+    "prevHigh": 134,
+    "open": 139.9,
+    "close": 152
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300491",
+    "stockName": "通合科技",
+    "prevClose": 28.23,
+    "prevHigh": 28.73,
+    "open": 29.9,
+    "close": 28.7
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300550",
+    "stockName": "和仁科技",
+    "prevClose": 15.4,
+    "prevHigh": 15.49,
+    "open": 15.96,
+    "close": 15.88
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300592",
+    "stockName": "华凯易佰",
+    "prevClose": 12.15,
+    "prevHigh": 12.51,
+    "open": 12.99,
+    "close": 13.22
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300612",
+    "stockName": "宣亚国际",
+    "prevClose": 20.34,
+    "prevHigh": 20.61,
+    "open": 21.36,
+    "close": 23.06
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300725",
+    "stockName": "药石科技",
+    "prevClose": 43.35,
+    "prevHigh": 43.67,
+    "open": 45.03,
+    "close": 45.52
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "300785",
+    "stockName": "值得买",
+    "prevClose": 52.2,
+    "prevHigh": 54.58,
+    "open": 58.82,
+    "close": 62.64
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "000803",
+    "stockName": "山高环能",
+    "prevClose": 8.19,
+    "prevHigh": 8.61,
+    "open": 9,
+    "close": 9.01
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "600498",
+    "stockName": "烽火通信",
+    "prevClose": 38.93,
+    "prevHigh": 40.45,
+    "open": 42.3,
+    "close": 42.82
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "600118",
+    "stockName": "中国卫星",
+    "prevClose": 106.05,
+    "prevHigh": 109,
+    "open": 112,
+    "close": 116.66
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "600850",
+    "stockName": "电科数字",
+    "prevClose": 32.77,
+    "prevHigh": 33.54,
+    "open": 34.96,
+    "close": 35.38
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "600345",
+    "stockName": "长江通信",
+    "prevClose": 39.97,
+    "prevHigh": 40.79,
+    "open": 41.68,
+    "close": 41.98
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "603918",
+    "stockName": "金桥信息",
+    "prevClose": 18.09,
+    "prevHigh": 18.35,
+    "open": 18.81,
+    "close": 19.28
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "600259",
+    "stockName": "中稀有色",
+    "prevClose": 64.22,
+    "prevHigh": 64.97,
+    "open": 66.6,
+    "close": 70.64
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "600489",
+    "stockName": "中金黄金",
+    "prevClose": 24.93,
+    "prevHigh": 25.15,
+    "open": 25.7,
+    "close": 25.02
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "002555",
+    "stockName": "三七互娱",
+    "prevClose": 27.29,
+    "prevHigh": 27.49,
+    "open": 28.39,
+    "close": 29.76
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "002379",
+    "stockName": "宏创控股",
+    "prevClose": 27.7,
+    "prevHigh": 27.88,
+    "open": 30.47,
+    "close": 28.37
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "600825",
+    "stockName": "新华传媒",
+    "prevClose": 6.91,
+    "prevHigh": 6.95,
+    "open": 7.09,
+    "close": 7.29
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "603000",
+    "stockName": "人民网",
+    "prevClose": 21.05,
+    "prevHigh": 21.17,
+    "open": 23.16,
+    "close": 23.16
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "601858",
+    "stockName": "中国科传",
+    "prevClose": 19.52,
+    "prevHigh": 19.63,
+    "open": 20.1,
+    "close": 21.47
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "000612",
+    "stockName": "焦作万方",
+    "prevClose": 12.1,
+    "prevHigh": 12.16,
+    "open": 12.44,
+    "close": 13.31
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "002230",
+    "stockName": "科大讯飞",
+    "prevClose": 55.6,
+    "prevHigh": 55.85,
+    "open": 57.5,
+    "close": 59.6
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "603078",
+    "stockName": "江化微",
+    "prevClose": 19.47,
+    "prevHigh": 19.55,
+    "open": 20,
+    "close": 21.42
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "603888",
+    "stockName": "新华网",
+    "prevClose": 22.24,
+    "prevHigh": 22.31,
+    "open": 24.46,
+    "close": 24.46
+  },
+  {
+    "date": "2026-01-12",
+    "stockCode": "002881",
+    "stockName": "美格智能",
+    "prevClose": 46.7,
+    "prevHigh": 46.8,
+    "open": 48.55,
+    "close": 51.37
+  },
+  {
+    "date": "2026-01-13",
+    "stockCode": "002179",
+    "stockName": "中航光电",
+    "prevClose": 40.58,
+    "prevHigh": 40.97,
+    "open": 41.94,
+    "close": 38.18
+  },
+  {
+    "date": "2026-01-13",
+    "stockCode": "600570",
+    "stockName": "恒生电子",
+    "prevClose": 33.42,
+    "prevHigh": 33.64,
+    "open": 34.39,
+    "close": 32.89
+  },
+  {
+    "date": "2026-01-14",
+    "stockCode": "002153",
+    "stockName": "石基信息",
+    "prevClose": 13.34,
+    "prevHigh": 13.99,
+    "open": 14.67,
+    "close": 14.67
+  }
+]
+
