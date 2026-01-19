@@ -825,6 +825,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2371,
     "totalStockCount": 5460,
     "profitEffect": 0.43424908424908426
+  },
+  {
+    "date": "2026-01-19",
+    "value": 2.97,
+    "upStockCount": 994,
+    "limitUpCount": 103,
+    "downStockCount": 335,
+    "limitDownCount": 30,
+    "volume": 27084.27,
+    "maxConsecutive": 14,
+    "limitUpRate": 0.81,
+    "positiveStockCount": 3527,
+    "totalStockCount": 5461,
+    "profitEffect": 0.6458524079838858
   }
 ]
 
@@ -2369,6 +2383,69 @@ const stockResultsData = [
     "prevHigh": 20.13,
     "open": 21.86,
     "close": 20.69
+  },
+  {
+    "date": "2026-01-19",
+    "stockCode": "603286",
+    "stockName": "日盈电子",
+    "prevClose": 70.31,
+    "prevHigh": 73.3,
+    "open": 75.86,
+    "close": 77.34
+  },
+  {
+    "date": "2026-01-19",
+    "stockCode": "000636",
+    "stockName": "风华高科",
+    "prevClose": 18.84,
+    "prevHigh": 19.33,
+    "open": 19.8,
+    "close": 19.92
+  },
+  {
+    "date": "2026-01-19",
+    "stockCode": "605488",
+    "stockName": "福莱新材",
+    "prevClose": 39.11,
+    "prevHigh": 40.05,
+    "open": 40.91,
+    "close": 43.02
+  },
+  {
+    "date": "2026-01-19",
+    "stockCode": "600487",
+    "stockName": "亨通光电",
+    "prevClose": 25.63,
+    "prevHigh": 26,
+    "open": 26.91,
+    "close": 27.08
+  },
+  {
+    "date": "2026-01-19",
+    "stockCode": "300316",
+    "stockName": "晶盛机电",
+    "prevClose": 42.1,
+    "prevHigh": 42.5,
+    "open": 43.8,
+    "close": 42.5
+  },
+  {
+    "date": "2026-01-19",
+    "stockCode": "300916",
+    "stockName": "朗特智能",
+    "prevClose": 34.6,
+    "prevHigh": 34.88,
+    "open": 36.02,
+    "close": 35.53
+  },
+  {
+    "date": "2026-01-19",
+    "stockCode": "601869",
+    "stockName": "长飞光纤",
+    "prevClose": 114.4,
+    "prevHigh": 116.86,
+    "open": 124.79,
+    "close": 117.83
   }
 ]
 
