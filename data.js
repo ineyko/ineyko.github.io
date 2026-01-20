@@ -830,8 +830,8 @@ const dailyChangeRateData = [
     "date": "2026-01-19",
     "value": 2.97,
     "upStockCount": 994,
-    "limitUpCount": 103,
     "downStockCount": 335,
+    "limitUpCount": 103,
     "limitDownCount": 30,
     "volume": 27084.27,
     "maxConsecutive": 14,
@@ -839,6 +839,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3527,
     "totalStockCount": 5461,
     "profitEffect": 0.6458524079838858
+  },
+  {
+    "date": "2026-01-20",
+    "value": 0.6,
+    "upStockCount": 467,
+    "limitUpCount": 62,
+    "downStockCount": 776,
+    "limitDownCount": 23,
+    "volume": 27777.99,
+    "maxConsecutive": 15,
+    "limitUpRate": 0.78,
+    "positiveStockCount": 2233,
+    "totalStockCount": 5467,
+    "profitEffect": 0.4084507042253521
   }
 ]
 
@@ -2446,6 +2460,33 @@ const stockResultsData = [
     "prevHigh": 116.86,
     "open": 124.79,
     "close": 117.83
+  },
+  {
+    "date": "2026-01-20",
+    "stockCode": "603103",
+    "stockName": "横店影视",
+    "prevClose": 18.88,
+    "prevHigh": 19.16,
+    "open": 19.97,
+    "close": 18.92
+  },
+  {
+    "date": "2026-01-20",
+    "stockCode": "301358",
+    "stockName": "湖南裕能",
+    "prevClose": 62.88,
+    "prevHigh": 64.88,
+    "open": 66.88,
+    "close": 64.62
+  },
+  {
+    "date": "2026-01-20",
+    "stockCode": "300012",
+    "stockName": "华测检测",
+    "prevClose": 15.21,
+    "prevHigh": 15.36,
+    "open": 16.29,
+    "close": 16.41
   }
 ]
 
