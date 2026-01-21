@@ -844,8 +844,8 @@ const dailyChangeRateData = [
     "date": "2026-01-20",
     "value": 0.6,
     "upStockCount": 467,
-    "limitUpCount": 62,
     "downStockCount": 776,
+    "limitUpCount": 62,
     "limitDownCount": 23,
     "volume": 27777.99,
     "maxConsecutive": 15,
@@ -853,6 +853,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2233,
     "totalStockCount": 5467,
     "profitEffect": 0.4084507042253521
+  },
+  {
+    "date": "2026-01-21",
+    "value": 3.37,
+    "upStockCount": 805,
+    "limitUpCount": 88,
+    "downStockCount": 239,
+    "limitDownCount": 11,
+    "volume": 26007.01,
+    "maxConsecutive": 16,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 3096,
+    "totalStockCount": 5465,
+    "profitEffect": 0.5665141811527905
   }
 ]
 
@@ -2487,6 +2501,33 @@ const stockResultsData = [
     "prevHigh": 15.36,
     "open": 16.29,
     "close": 16.41
+  },
+  {
+    "date": "2026-01-21",
+    "stockCode": "300139",
+    "stockName": "晓程科技",
+    "prevClose": 40.95,
+    "prevHigh": 42.32,
+    "open": 42.1,
+    "close": 46.37
+  },
+  {
+    "date": "2026-01-21",
+    "stockCode": "600158",
+    "stockName": "中体产业",
+    "prevClose": 9.18,
+    "prevHigh": 9.25,
+    "open": 9.53,
+    "close": 9.71
+  },
+  {
+    "date": "2026-01-21",
+    "stockCode": "603566",
+    "stockName": "普莱柯",
+    "prevClose": 13.36,
+    "prevHigh": 13.47,
+    "open": 13.77,
+    "close": 13.78
   }
 ]
 
