@@ -858,8 +858,8 @@ const dailyChangeRateData = [
     "date": "2026-01-21",
     "value": 3.37,
     "upStockCount": 805,
-    "limitUpCount": 88,
     "downStockCount": 239,
+    "limitUpCount": 88,
     "limitDownCount": 11,
     "volume": 26007.01,
     "maxConsecutive": 16,
@@ -867,6 +867,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3096,
     "totalStockCount": 5465,
     "profitEffect": 0.5665141811527905
+  },
+  {
+    "date": "2026-01-22",
+    "value": 3.6,
+    "upStockCount": 771,
+    "limitUpCount": 92,
+    "downStockCount": 214,
+    "limitDownCount": 5,
+    "volume": 26917.33,
+    "maxConsecutive": 17,
+    "limitUpRate": 0.73,
+    "positiveStockCount": 3577,
+    "totalStockCount": 5466,
+    "profitEffect": 0.6544090742773508
   }
 ]
 
@@ -2528,6 +2542,51 @@ const stockResultsData = [
     "prevHigh": 13.47,
     "open": 13.77,
     "close": 13.78
+  },
+  {
+    "date": "2026-01-22",
+    "stockCode": "300480",
+    "stockName": "光力科技",
+    "prevClose": 21.09,
+    "prevHigh": 21.68,
+    "open": 22.92,
+    "close": 22.4
+  },
+  {
+    "date": "2026-01-22",
+    "stockCode": "002636",
+    "stockName": "金安国纪",
+    "prevClose": 21.18,
+    "prevHigh": 21.65,
+    "open": 23.3,
+    "close": 23.3
+  },
+  {
+    "date": "2026-01-22",
+    "stockCode": "002824",
+    "stockName": "和胜股份",
+    "prevClose": 22.12,
+    "prevHigh": 22.61,
+    "open": 23.44,
+    "close": 23.64
+  },
+  {
+    "date": "2026-01-22",
+    "stockCode": "001287",
+    "stockName": "中电港",
+    "prevClose": 26.26,
+    "prevHigh": 26.78,
+    "open": 27.5,
+    "close": 26.05
+  },
+  {
+    "date": "2026-01-22",
+    "stockCode": "603019",
+    "stockName": "中科曙光",
+    "prevClose": 98.23,
+    "prevHigh": 98.88,
+    "open": 101,
+    "close": 96.95
   }
 ]
 
