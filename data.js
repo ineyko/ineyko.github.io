@@ -872,8 +872,8 @@ const dailyChangeRateData = [
     "date": "2026-01-22",
     "value": 3.6,
     "upStockCount": 771,
-    "limitUpCount": 92,
     "downStockCount": 214,
+    "limitUpCount": 92,
     "limitDownCount": 5,
     "volume": 26917.33,
     "maxConsecutive": 17,
@@ -881,6 +881,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3577,
     "totalStockCount": 5466,
     "profitEffect": 0.6544090742773508
+  },
+  {
+    "date": "2026-01-23",
+    "value": 9.27,
+    "upStockCount": 1149,
+    "limitUpCount": 121,
+    "downStockCount": 124,
+    "limitDownCount": 2,
+    "volume": 30852.24,
+    "maxConsecutive": 18,
+    "limitUpRate": 0.85,
+    "positiveStockCount": 3941,
+    "totalStockCount": 5467,
+    "profitEffect": 0.7208706786171575
   }
 ]
 
@@ -2587,6 +2601,96 @@ const stockResultsData = [
     "prevHigh": 98.88,
     "open": 101,
     "close": 96.95
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "300751",
+    "stockName": "迈为股份",
+    "prevClose": 270.3,
+    "prevHigh": 273.6,
+    "open": 300.04,
+    "close": 324.36
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "000059",
+    "stockName": "华锦股份",
+    "prevClose": 5.71,
+    "prevHigh": 5.73,
+    "open": 5.92,
+    "close": 6.08
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "002408",
+    "stockName": "齐翔腾达",
+    "prevClose": 5.69,
+    "prevHigh": 5.84,
+    "open": 6.11,
+    "close": 6.09
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "600929",
+    "stockName": "雪天盐业",
+    "prevClose": 6.04,
+    "prevHigh": 6.18,
+    "open": 6.34,
+    "close": 6.1
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "600531",
+    "stockName": "豫光金铅",
+    "prevClose": 15.4,
+    "prevHigh": 15.69,
+    "open": 16.1,
+    "close": 16.94
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "001337",
+    "stockName": "四川黄金",
+    "prevClose": 45.66,
+    "prevHigh": 46.5,
+    "open": 47.7,
+    "close": 50.23
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "600489",
+    "stockName": "中金黄金",
+    "prevClose": 29.18,
+    "prevHigh": 29.65,
+    "open": 30.97,
+    "close": 30
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "600988",
+    "stockName": "赤峰黄金",
+    "prevClose": 37.33,
+    "prevHigh": 37.87,
+    "open": 38.68,
+    "close": 38.82
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "000065",
+    "stockName": "北方国际",
+    "prevClose": 12.96,
+    "prevHigh": 13.03,
+    "open": 13.3,
+    "close": 12.98
+  },
+  {
+    "date": "2026-01-23",
+    "stockCode": "002493",
+    "stockName": "荣盛石化",
+    "prevClose": 13.53,
+    "prevHigh": 13.59,
+    "open": 14.02,
+    "close": 13.72
   }
 ]
 
