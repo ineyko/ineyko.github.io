@@ -886,8 +886,8 @@ const dailyChangeRateData = [
     "date": "2026-01-23",
     "value": 9.27,
     "upStockCount": 1149,
-    "limitUpCount": 121,
     "downStockCount": 124,
+    "limitUpCount": 121,
     "limitDownCount": 2,
     "volume": 30852.24,
     "maxConsecutive": 18,
@@ -895,6 +895,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3941,
     "totalStockCount": 5467,
     "profitEffect": 0.7208706786171575
+  },
+  {
+    "date": "2026-01-26",
+    "value": 0.39,
+    "upStockCount": 547,
+    "limitUpCount": 77,
+    "downStockCount": 1407,
+    "limitDownCount": 40,
+    "volume": 32482.03,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.64,
+    "positiveStockCount": 1604,
+    "totalStockCount": 5463,
+    "profitEffect": 0.2936115687351272
   }
 ]
 
@@ -2691,6 +2705,222 @@ const stockResultsData = [
     "prevHigh": 13.59,
     "open": 14.02,
     "close": 13.72
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "603578",
+    "stockName": "三星新材",
+    "prevClose": 13.62,
+    "prevHigh": 13.78,
+    "open": 14.3,
+    "close": 14.98
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "603045",
+    "stockName": "福达合金",
+    "prevClose": 26.3,
+    "prevHigh": 26.5,
+    "open": 28.93,
+    "close": 28.93
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "301636",
+    "stockName": "泽润新能",
+    "prevClose": 59.96,
+    "prevHigh": 62.69,
+    "open": 65,
+    "close": 71.83
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "301207",
+    "stockName": "华兰疫苗",
+    "prevClose": 19.45,
+    "prevHigh": 19.7,
+    "open": 20.32,
+    "close": 23.34
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "301066",
+    "stockName": "万事利",
+    "prevClose": 20.96,
+    "prevHigh": 21.67,
+    "open": 22.51,
+    "close": 21.95
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300938",
+    "stockName": "信测标准",
+    "prevClose": 33.91,
+    "prevHigh": 34.58,
+    "open": 35.65,
+    "close": 30.18
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300846",
+    "stockName": "首都在线",
+    "prevClose": 24.73,
+    "prevHigh": 24.86,
+    "open": 26.52,
+    "close": 25.76
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300837",
+    "stockName": "浙矿股份",
+    "prevClose": 57.21,
+    "prevHigh": 58.51,
+    "open": 61.92,
+    "close": 66
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300772",
+    "stockName": "运达股份",
+    "prevClose": 20.3,
+    "prevHigh": 20.33,
+    "open": 21.51,
+    "close": 21.47
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300763",
+    "stockName": "锦浪科技",
+    "prevClose": 84.7,
+    "prevHigh": 85.5,
+    "open": 94.34,
+    "close": 85.54
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300695",
+    "stockName": "兆丰股份",
+    "prevClose": 92.4,
+    "prevHigh": 93.9,
+    "open": 97.93,
+    "close": 90.15
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300463",
+    "stockName": "迈克生物",
+    "prevClose": 11.83,
+    "prevHigh": 11.85,
+    "open": 13.2,
+    "close": 14.2
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300461",
+    "stockName": "田中精机",
+    "prevClose": 27.32,
+    "prevHigh": 27.68,
+    "open": 29.39,
+    "close": 32.32
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300450",
+    "stockName": "先导智能",
+    "prevClose": 63.15,
+    "prevHigh": 63.62,
+    "open": 66.93,
+    "close": 61.89
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "300263",
+    "stockName": "隆华科技",
+    "prevClose": 10.54,
+    "prevHigh": 10.68,
+    "open": 11.7,
+    "close": 10.61
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "002155",
+    "stockName": "湖南黄金",
+    "prevClose": 22.97,
+    "prevHigh": 23.05,
+    "open": 25.27,
+    "close": 25.27
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "002009",
+    "stockName": "天奇股份",
+    "prevClose": 23.74,
+    "prevHigh": 24.68,
+    "open": 26.11,
+    "close": 26.11
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "002534",
+    "stockName": "西子洁能",
+    "prevClose": 18.94,
+    "prevHigh": 19.39,
+    "open": 19.88,
+    "close": 18.87
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "600490",
+    "stockName": "鹏欣资源",
+    "prevClose": 9.55,
+    "prevHigh": 9.74,
+    "open": 10,
+    "close": 10.29
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "002237",
+    "stockName": "恒邦股份",
+    "prevClose": 17.2,
+    "prevHigh": 17.48,
+    "open": 18.3,
+    "close": 18.92
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "002860",
+    "stockName": "星帅尔",
+    "prevClose": 14.92,
+    "prevHigh": 15.1,
+    "open": 16.4,
+    "close": 14.94
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "605117",
+    "stockName": "德业股份",
+    "prevClose": 88.52,
+    "prevHigh": 89.44,
+    "open": 91.57,
+    "close": 93.93
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "600338",
+    "stockName": "西藏珠峰",
+    "prevClose": 20.98,
+    "prevHigh": 21.16,
+    "open": 21.88,
+    "close": 21.05
+  },
+  {
+    "date": "2026-01-26",
+    "stockCode": "603271",
+    "stockName": "永杰新材",
+    "prevClose": 42.85,
+    "prevHigh": 42.93,
+    "open": 47.14,
+    "close": 47.14
   }
 ]
 
