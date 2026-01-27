@@ -900,8 +900,8 @@ const dailyChangeRateData = [
     "date": "2026-01-26",
     "value": 0.39,
     "upStockCount": 547,
-    "limitUpCount": 77,
     "downStockCount": 1407,
+    "limitUpCount": 77,
     "limitDownCount": 40,
     "volume": 32482.03,
     "maxConsecutive": 5,
@@ -909,6 +909,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1604,
     "totalStockCount": 5463,
     "profitEffect": 0.2936115687351272
+  },
+  {
+    "date": "2026-01-27",
+    "value": 1.38,
+    "upStockCount": 596,
+    "limitUpCount": 59,
+    "downStockCount": 433,
+    "limitDownCount": 12,
+    "volume": 28949.81,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.75,
+    "positiveStockCount": 1928,
+    "totalStockCount": 5463,
+    "profitEffect": 0.35291964122277136
   }
 ]
 
@@ -2921,6 +2935,15 @@ const stockResultsData = [
     "prevHigh": 42.93,
     "open": 47.14,
     "close": 47.14
+  },
+  {
+    "date": "2026-01-27",
+    "stockCode": "300209",
+    "stockName": "有棵树",
+    "prevClose": 7.23,
+    "prevHigh": 7.27,
+    "open": 7.61,
+    "close": 7.26
   }
 ]
 
