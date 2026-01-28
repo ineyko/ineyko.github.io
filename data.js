@@ -914,8 +914,8 @@ const dailyChangeRateData = [
     "date": "2026-01-27",
     "value": 1.38,
     "upStockCount": 596,
-    "limitUpCount": 59,
     "downStockCount": 433,
+    "limitUpCount": 59,
     "limitDownCount": 12,
     "volume": 28949.81,
     "maxConsecutive": 6,
@@ -923,6 +923,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1928,
     "totalStockCount": 5463,
     "profitEffect": 0.35291964122277136
+  },
+  {
+    "date": "2026-01-28",
+    "value": 0.81,
+    "upStockCount": 610,
+    "limitUpCount": 84,
+    "downStockCount": 752,
+    "limitDownCount": 28,
+    "volume": 29654.1,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.75,
+    "positiveStockCount": 1739,
+    "totalStockCount": 5464,
+    "profitEffect": 0.3182650073206442
   }
 ]
 
@@ -2944,6 +2958,78 @@ const stockResultsData = [
     "prevHigh": 7.27,
     "open": 7.61,
     "close": 7.26
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "301071",
+    "stockName": "力量钻石",
+    "prevClose": 42.79,
+    "prevHigh": 43.8,
+    "open": 45.15,
+    "close": 43.13
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "301500",
+    "stockName": "飞南资源",
+    "prevClose": 17.59,
+    "prevHigh": 17.98,
+    "open": 18.53,
+    "close": 21.11
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "300661",
+    "stockName": "圣邦股份",
+    "prevClose": 77.07,
+    "prevHigh": 78.77,
+    "open": 80.92,
+    "close": 78.33
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "301606",
+    "stockName": "绿联科技",
+    "prevClose": 70,
+    "prevHigh": 72,
+    "open": 78,
+    "close": 76.52
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "300671",
+    "stockName": "富满微",
+    "prevClose": 51.27,
+    "prevHigh": 52.48,
+    "open": 54.25,
+    "close": 56
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "300509",
+    "stockName": "新美星",
+    "prevClose": 15.61,
+    "prevHigh": 16.08,
+    "open": 16.6,
+    "close": 14.97
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "300179",
+    "stockName": "四方达",
+    "prevClose": 22.2,
+    "prevHigh": 23.2,
+    "open": 24,
+    "close": 20.97
+  },
+  {
+    "date": "2026-01-28",
+    "stockCode": "600761",
+    "stockName": "安徽合力",
+    "prevClose": 22.92,
+    "prevHigh": 23.45,
+    "open": 23.93,
+    "close": 23.6
   }
 ]
 
