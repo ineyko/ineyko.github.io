@@ -928,8 +928,8 @@ const dailyChangeRateData = [
     "date": "2026-01-28",
     "value": 0.81,
     "upStockCount": 610,
-    "limitUpCount": 84,
     "downStockCount": 752,
+    "limitUpCount": 84,
     "limitDownCount": 28,
     "volume": 29654.1,
     "maxConsecutive": 7,
@@ -937,6 +937,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1739,
     "totalStockCount": 5464,
     "profitEffect": 0.3182650073206442
+  },
+  {
+    "date": "2026-01-29",
+    "value": 0.52,
+    "upStockCount": 534,
+    "limitUpCount": 86,
+    "downStockCount": 1022,
+    "limitDownCount": 35,
+    "volume": 32300.08,
+    "maxConsecutive": 8,
+    "limitUpRate": 0.71,
+    "positiveStockCount": 1803,
+    "totalStockCount": 5465,
+    "profitEffect": 0.32991765782250687
   }
 ]
 
@@ -3030,6 +3044,15 @@ const stockResultsData = [
     "prevHigh": 23.45,
     "open": 23.93,
     "close": 23.6
+  },
+  {
+    "date": "2026-01-29",
+    "stockCode": "305126",
+    "stockName": "国际复材",
+    "prevClose": 8.33,
+    "prevHigh": 8.56,
+    "open": 8.82,
+    "close": 8.66
   }
 ]
 
