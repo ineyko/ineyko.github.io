@@ -956,8 +956,8 @@ const dailyChangeRateData = [
     "date": "2026-01-30",
     "value": 0.68,
     "upStockCount": 549,
-    "limitUpCount": 57,
     "downStockCount": 812,
+    "limitUpCount": 57,
     "limitDownCount": 60,
     "volume": 28355.38,
     "maxConsecutive": 5,
@@ -965,6 +965,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2453,
     "totalStockCount": 5462,
     "profitEffect": 0.44910289271329185
+  },
+  {
+    "date": "2026-02-02",
+    "value": 0.12,
+    "upStockCount": 233,
+    "limitUpCount": 44,
+    "downStockCount": 1992,
+    "limitDownCount": 123,
+    "volume": 25847.65,
+    "maxConsecutive": 3,
+    "limitUpRate": 0.67,
+    "positiveStockCount": 771,
+    "totalStockCount": 5464,
+    "profitEffect": 0.14110541727672035
   }
 ]
 
@@ -3067,6 +3081,15 @@ const stockResultsData = [
     "prevHigh": 8.56,
     "open": 8.82,
     "close": 8.66
+  },
+  {
+    "date": "2026-02-02",
+    "stockCode": "300502",
+    "stockName": "新易盛",
+    "prevClose": 419.49,
+    "prevHigh": 425,
+    "open": 457.24,
+    "close": 439
   }
 ]
 
