@@ -970,8 +970,8 @@ const dailyChangeRateData = [
     "date": "2026-02-02",
     "value": 0.12,
     "upStockCount": 233,
-    "limitUpCount": 44,
     "downStockCount": 1992,
+    "limitUpCount": 44,
     "limitDownCount": 123,
     "volume": 25847.65,
     "maxConsecutive": 3,
@@ -979,6 +979,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 771,
     "totalStockCount": 5464,
     "profitEffect": 0.14110541727672035
+  },
+  {
+    "date": "2026-02-03",
+    "value": 18.26,
+    "upStockCount": 1570,
+    "limitUpCount": 83,
+    "downStockCount": 86,
+    "limitDownCount": 22,
+    "volume": 25442.32,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.79,
+    "positiveStockCount": 4856,
+    "totalStockCount": 5465,
+    "profitEffect": 0.8885635864592863
   }
 ]
 
@@ -3090,6 +3104,15 @@ const stockResultsData = [
     "prevHigh": 425,
     "open": 457.24,
     "close": 439
+  },
+  {
+    "date": "2026-02-03",
+    "stockCode": "600683",
+    "stockName": "京投发展",
+    "prevClose": 4.95,
+    "prevHigh": 5.14,
+    "open": 5.45,
+    "close": 5.45
   }
 ]
 
