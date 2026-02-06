@@ -1012,8 +1012,8 @@ const dailyChangeRateData = [
     "date": "2026-02-05",
     "value": 0.4,
     "upStockCount": 330,
-    "limitUpCount": 56,
     "downStockCount": 834,
+    "limitUpCount": 56,
     "limitDownCount": 23,
     "volume": 21762.2,
     "maxConsecutive": 4,
@@ -1021,6 +1021,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1618,
     "totalStockCount": 5467,
     "profitEffect": 0.29595756356319736
+  },
+  {
+    "date": "2026-02-06",
+    "value": 1.81,
+    "upStockCount": 496,
+    "limitUpCount": 61,
+    "downStockCount": 274,
+    "limitDownCount": 10,
+    "volume": 21457.19,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.68,
+    "positiveStockCount": 2749,
+    "totalStockCount": 5466,
+    "profitEffect": 0.5029271862422247
   }
 ]
 
@@ -3141,6 +3155,15 @@ const stockResultsData = [
     "prevHigh": 5.14,
     "open": 5.45,
     "close": 5.45
+  },
+  {
+    "date": "2026-02-06",
+    "stockCode": "002864",
+    "stockName": "盘龙药业",
+    "prevClose": 36.46,
+    "prevHigh": 36.9,
+    "open": 40.11,
+    "close": 37.25
   }
 ]
 
