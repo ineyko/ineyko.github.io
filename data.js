@@ -1026,8 +1026,8 @@ const dailyChangeRateData = [
     "date": "2026-02-06",
     "value": 1.81,
     "upStockCount": 496,
-    "limitUpCount": 61,
     "downStockCount": 274,
+    "limitUpCount": 61,
     "limitDownCount": 10,
     "volume": 21457.19,
     "maxConsecutive": 4,
@@ -1035,6 +1035,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2749,
     "totalStockCount": 5466,
     "profitEffect": 0.5029271862422247
+  },
+  {
+    "date": "2026-02-09",
+    "value": 13.9,
+    "upStockCount": 1098,
+    "limitUpCount": 96,
+    "downStockCount": 79,
+    "limitDownCount": 8,
+    "volume": 22494.73,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.77,
+    "positiveStockCount": 4612,
+    "totalStockCount": 5465,
+    "profitEffect": 0.8439158279963404
   }
 ]
 
@@ -3164,6 +3178,24 @@ const stockResultsData = [
     "prevHigh": 36.9,
     "open": 40.11,
     "close": 37.25
+  },
+  {
+    "date": "2026-02-09",
+    "stockCode": "300270",
+    "stockName": "中威电子",
+    "prevClose": 11.83,
+    "prevHigh": 12.04,
+    "open": 12.55,
+    "close": 12.38
+  },
+  {
+    "date": "2026-02-09",
+    "stockCode": "605377",
+    "stockName": "华旺科技",
+    "prevClose": 9.18,
+    "prevHigh": 9.25,
+    "open": 9.5,
+    "close": 9.07
   }
 ]
 
