@@ -1040,8 +1040,8 @@ const dailyChangeRateData = [
     "date": "2026-02-09",
     "value": 13.9,
     "upStockCount": 1098,
-    "limitUpCount": 96,
     "downStockCount": 79,
+    "limitUpCount": 96,
     "limitDownCount": 8,
     "volume": 22494.73,
     "maxConsecutive": 5,
@@ -1049,6 +1049,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4612,
     "totalStockCount": 5465,
     "profitEffect": 0.8439158279963404
+  },
+  {
+    "date": "2026-02-10",
+    "value": 1.71,
+    "upStockCount": 493,
+    "limitUpCount": 71,
+    "downStockCount": 288,
+    "limitDownCount": 10,
+    "volume": 21055.35,
+    "maxConsecutive": 3,
+    "limitUpRate": 0.88,
+    "positiveStockCount": 2195,
+    "totalStockCount": 5470,
+    "profitEffect": 0.4012797074954296
   }
 ]
 
@@ -3196,6 +3210,51 @@ const stockResultsData = [
     "prevHigh": 9.25,
     "open": 9.5,
     "close": 9.07
+  },
+  {
+    "date": "2026-02-10",
+    "stockCode": "002723",
+    "stockName": "小崧股份",
+    "prevClose": 9.6,
+    "prevHigh": 9.81,
+    "open": 10.56,
+    "close": 10.56
+  },
+  {
+    "date": "2026-02-10",
+    "stockCode": "000681",
+    "stockName": "视觉中国",
+    "prevClose": 27.72,
+    "prevHigh": 28.26,
+    "open": 29.6,
+    "close": 30.49
+  },
+  {
+    "date": "2026-02-10",
+    "stockCode": "301548",
+    "stockName": "崇德科技",
+    "prevClose": 75.55,
+    "prevHigh": 77.46,
+    "open": 80.01,
+    "close": 84.43
+  },
+  {
+    "date": "2026-02-10",
+    "stockCode": "601969",
+    "stockName": "海南矿业",
+    "prevClose": 12.61,
+    "prevHigh": 12.77,
+    "open": 13.87,
+    "close": 12.08
+  },
+  {
+    "date": "2026-02-10",
+    "stockCode": "300834",
+    "stockName": "星辉环材",
+    "prevClose": 26.4,
+    "prevHigh": 26.44,
+    "open": 27.19,
+    "close": 26.8
   }
 ]
 
