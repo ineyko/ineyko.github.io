@@ -1054,8 +1054,8 @@ const dailyChangeRateData = [
     "date": "2026-02-10",
     "value": 1.71,
     "upStockCount": 493,
-    "limitUpCount": 71,
     "downStockCount": 288,
+    "limitUpCount": 71,
     "limitDownCount": 10,
     "volume": 21055.35,
     "maxConsecutive": 3,
@@ -1063,6 +1063,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2195,
     "totalStockCount": 5470,
     "profitEffect": 0.4012797074954296
+  },
+  {
+    "date": "2026-02-11",
+    "value": 1.08,
+    "upStockCount": 373,
+    "limitUpCount": 60,
+    "downStockCount": 346,
+    "limitDownCount": 10,
+    "volume": 19842.52,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.75,
+    "positiveStockCount": 2050,
+    "totalStockCount": 5470,
+    "profitEffect": 0.37477148080438755
   }
 ]
 
@@ -3255,6 +3269,15 @@ const stockResultsData = [
     "prevHigh": 26.44,
     "open": 27.19,
     "close": 26.8
+  },
+  {
+    "date": "2026-02-11",
+    "stockCode": "001217",
+    "stockName": "华尔泰",
+    "prevClose": 15.14,
+    "prevHigh": 15.48,
+    "open": 16.35,
+    "close": 16.65
   }
 ]
 
