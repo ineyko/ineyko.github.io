@@ -1068,8 +1068,8 @@ const dailyChangeRateData = [
     "date": "2026-02-11",
     "value": 1.08,
     "upStockCount": 373,
-    "limitUpCount": 60,
     "downStockCount": 346,
+    "limitUpCount": 60,
     "limitDownCount": 10,
     "volume": 19842.52,
     "maxConsecutive": 4,
@@ -1077,6 +1077,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2050,
     "totalStockCount": 5470,
     "profitEffect": 0.37477148080438755
+  },
+  {
+    "date": "2026-02-12",
+    "value": 1.91,
+    "upStockCount": 564,
+    "limitUpCount": 69,
+    "downStockCount": 296,
+    "limitDownCount": 22,
+    "volume": 21417.38,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 2108,
+    "totalStockCount": 5476,
+    "profitEffect": 0.38495252008765524
   }
 ]
 
@@ -3278,6 +3292,60 @@ const stockResultsData = [
     "prevHigh": 15.48,
     "open": 16.35,
     "close": 16.65
+  },
+  {
+    "date": "2026-02-12",
+    "stockCode": "300846",
+    "stockName": "首都在线",
+    "prevClose": 28.13,
+    "prevHigh": 28.82,
+    "open": 29.98,
+    "close": 33.76
+  },
+  {
+    "date": "2026-02-12",
+    "stockCode": "300166",
+    "stockName": "东方国信",
+    "prevClose": 13.9,
+    "prevHigh": 14.49,
+    "open": 15,
+    "close": 15.31
+  },
+  {
+    "date": "2026-02-12",
+    "stockCode": "002615",
+    "stockName": "哈尔斯",
+    "prevClose": 8.91,
+    "prevHigh": 9.02,
+    "open": 9.79,
+    "close": 9.65
+  },
+  {
+    "date": "2026-02-12",
+    "stockCode": "002510",
+    "stockName": "天汽模",
+    "prevClose": 7.53,
+    "prevHigh": 7.57,
+    "open": 8.28,
+    "close": 7.73
+  },
+  {
+    "date": "2026-02-12",
+    "stockCode": "301595",
+    "stockName": "太力科技",
+    "prevClose": 54.24,
+    "prevHigh": 54.93,
+    "open": 58.72,
+    "close": 56.69
+  },
+  {
+    "date": "2026-02-12",
+    "stockCode": "000815",
+    "stockName": "美利云",
+    "prevClose": 15.03,
+    "prevHigh": 15.59,
+    "open": 16.53,
+    "close": 15.6
   }
 ]
 
