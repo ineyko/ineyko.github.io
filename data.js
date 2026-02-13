@@ -1082,8 +1082,8 @@ const dailyChangeRateData = [
     "date": "2026-02-12",
     "value": 1.91,
     "upStockCount": 564,
-    "limitUpCount": 69,
     "downStockCount": 296,
+    "limitUpCount": 69,
     "limitDownCount": 22,
     "volume": 21417.38,
     "maxConsecutive": 4,
@@ -1091,6 +1091,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2108,
     "totalStockCount": 5476,
     "profitEffect": 0.38495252008765524
+  },
+  {
+    "date": "2026-02-13",
+    "value": 0.56,
+    "upStockCount": 287,
+    "limitUpCount": 46,
+    "downStockCount": 510,
+    "limitDownCount": 16,
+    "volume": 19826.8,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.74,
+    "positiveStockCount": 1540,
+    "totalStockCount": 5474,
+    "profitEffect": 0.2813299232736573
   }
 ]
 
