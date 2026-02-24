@@ -1096,8 +1096,8 @@ const dailyChangeRateData = [
     "date": "2026-02-13",
     "value": 0.56,
     "upStockCount": 287,
-    "limitUpCount": 46,
     "downStockCount": 510,
+    "limitUpCount": 46,
     "limitDownCount": 16,
     "volume": 19826.8,
     "maxConsecutive": 5,
@@ -1105,6 +1105,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1540,
     "totalStockCount": 5474,
     "profitEffect": 0.2813299232736573
+  },
+  {
+    "date": "2026-02-24",
+    "value": 3.66,
+    "upStockCount": 1175,
+    "limitUpCount": 109,
+    "downStockCount": 321,
+    "limitDownCount": 21,
+    "volume": 22020.62,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.69,
+    "positiveStockCount": 4006,
+    "totalStockCount": 5474,
+    "profitEffect": 0.731823164048228
   }
 ]
 
@@ -3360,6 +3374,96 @@ const stockResultsData = [
     "prevHigh": 15.59,
     "open": 16.53,
     "close": 15.6
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "301580",
+    "stockName": "爱迪特",
+    "prevClose": 63.55,
+    "prevHigh": 65.14,
+    "open": 66.84,
+    "close": 69.52
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "301488",
+    "stockName": "豪恩汽电",
+    "prevClose": 154.1,
+    "prevHigh": 155.25,
+    "open": 158.86,
+    "close": 151.93
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "300718",
+    "stockName": "长盛轴承",
+    "prevClose": 82.81,
+    "prevHigh": 85,
+    "open": 86.83,
+    "close": 82.99
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "300552",
+    "stockName": "万集科技",
+    "prevClose": 34.02,
+    "prevHigh": 34.58,
+    "open": 35.43,
+    "close": 34.33
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "301008",
+    "stockName": "宏昌科技",
+    "prevClose": 37.24,
+    "prevHigh": 37.5,
+    "open": 39.3,
+    "close": 36.1
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "300296",
+    "stockName": "利亚德",
+    "prevClose": 7.26,
+    "prevHigh": 7.34,
+    "open": 8,
+    "close": 7.79
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "002716",
+    "stockName": "湖南白银",
+    "prevClose": 13.68,
+    "prevHigh": 14.05,
+    "open": 14.5,
+    "close": 15.05
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "002990",
+    "stockName": "盛视科技",
+    "prevClose": 28.06,
+    "prevHigh": 28.42,
+    "open": 29.2,
+    "close": 28.3
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "002896",
+    "stockName": "中大力德",
+    "prevClose": 86.19,
+    "prevHigh": 87.53,
+    "open": 90.78,
+    "close": 87.16
+  },
+  {
+    "date": "2026-02-24",
+    "stockCode": "000917",
+    "stockName": "电广传媒",
+    "prevClose": 11.53,
+    "prevHigh": 12.1,
+    "open": 12.68,
+    "close": 12.21
   }
 ]
 
