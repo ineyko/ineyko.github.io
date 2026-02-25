@@ -1110,8 +1110,8 @@ const dailyChangeRateData = [
     "date": "2026-02-24",
     "value": 3.66,
     "upStockCount": 1175,
-    "limitUpCount": 109,
     "downStockCount": 321,
+    "limitUpCount": 109,
     "limitDownCount": 21,
     "volume": 22020.62,
     "maxConsecutive": 4,
@@ -1119,6 +1119,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4006,
     "totalStockCount": 5474,
     "profitEffect": 0.731823164048228
+  },
+  {
+    "date": "2026-02-25",
+    "value": 7.28,
+    "upStockCount": 830,
+    "limitUpCount": 101,
+    "downStockCount": 114,
+    "limitDownCount": 4,
+    "volume": 24625.48,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.68,
+    "positiveStockCount": 3748,
+    "totalStockCount": 5471,
+    "profitEffect": 0.6850667154085176
   }
 ]
 
@@ -3464,6 +3478,42 @@ const stockResultsData = [
     "prevHigh": 12.1,
     "open": 12.68,
     "close": 12.21
+  },
+  {
+    "date": "2026-02-25",
+    "stockCode": "301217",
+    "stockName": "铜冠铜箔",
+    "prevClose": 44.95,
+    "prevHigh": 45.99,
+    "open": 47.01,
+    "close": 48.82
+  },
+  {
+    "date": "2026-02-25",
+    "stockCode": "300264",
+    "stockName": "佳创视讯",
+    "prevClose": 10.42,
+    "prevHigh": 10.64,
+    "open": 10.86,
+    "close": 10.82
+  },
+  {
+    "date": "2026-02-25",
+    "stockCode": "600416",
+    "stockName": "湘电股份",
+    "prevClose": 14.81,
+    "prevHigh": 15.1,
+    "open": 15.55,
+    "close": 14.84
+  },
+  {
+    "date": "2026-02-25",
+    "stockCode": "002725",
+    "stockName": "跃岭股份",
+    "prevClose": 15.91,
+    "prevHigh": 16.04,
+    "open": 17.5,
+    "close": 17.5
   }
 ]
 
