@@ -1124,8 +1124,8 @@ const dailyChangeRateData = [
     "date": "2026-02-25",
     "value": 7.28,
     "upStockCount": 830,
-    "limitUpCount": 101,
     "downStockCount": 114,
+    "limitUpCount": 101,
     "limitDownCount": 4,
     "volume": 24625.48,
     "maxConsecutive": 5,
@@ -1133,6 +1133,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3748,
     "totalStockCount": 5471,
     "profitEffect": 0.6850667154085176
+  },
+  {
+    "date": "2026-02-26",
+    "value": 2.94,
+    "upStockCount": 674,
+    "limitUpCount": 78,
+    "downStockCount": 229,
+    "limitDownCount": 5,
+    "volume": 25384.46,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.73,
+    "positiveStockCount": 2485,
+    "totalStockCount": 5471,
+    "profitEffect": 0.45421312374337414
   }
 ]
 
@@ -3514,6 +3528,123 @@ const stockResultsData = [
     "prevHigh": 16.04,
     "open": 17.5,
     "close": 17.5
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "600478",
+    "stockName": "科力远",
+    "prevClose": 7.4,
+    "prevHigh": 7.45,
+    "open": 8.1,
+    "close": 8.14
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "301175",
+    "stockName": "中科环保",
+    "prevClose": 6.48,
+    "prevHigh": 6.58,
+    "open": 6.81,
+    "close": 7.78
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "301152",
+    "stockName": "天力锂能",
+    "prevClose": 30.65,
+    "prevHigh": 30.8,
+    "open": 32.08,
+    "close": 30.13
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "300057",
+    "stockName": "万顺新材",
+    "prevClose": 6.09,
+    "prevHigh": 6.16,
+    "open": 6.51,
+    "close": 6.44
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "000546",
+    "stockName": "金圆股份",
+    "prevClose": 6.21,
+    "prevHigh": 6.34,
+    "open": 6.83,
+    "close": 6.83
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "300631",
+    "stockName": "久吾高科",
+    "prevClose": 30.52,
+    "prevHigh": 30.85,
+    "open": 33.5,
+    "close": 31.81
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "300390",
+    "stockName": "天华新能",
+    "prevClose": 52.81,
+    "prevHigh": 54,
+    "open": 56,
+    "close": 49.9
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "300107",
+    "stockName": "建新股份",
+    "prevClose": 9.13,
+    "prevHigh": 9.47,
+    "open": 9.91,
+    "close": 9.65
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "002756",
+    "stockName": "永兴材料",
+    "prevClose": 56.99,
+    "prevHigh": 58.2,
+    "open": 59.84,
+    "close": 59
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "002192",
+    "stockName": "融捷股份",
+    "prevClose": 56.26,
+    "prevHigh": 57.49,
+    "open": 60,
+    "close": 58.38
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "000762",
+    "stockName": "西藏矿业",
+    "prevClose": 29.63,
+    "prevHigh": 30.29,
+    "open": 30.93,
+    "close": 30.3
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "603399",
+    "stockName": "永杉锂业",
+    "prevClose": 11.71,
+    "prevHigh": 11.99,
+    "open": 12.59,
+    "close": 11.82
+  },
+  {
+    "date": "2026-02-26",
+    "stockCode": "002466",
+    "stockName": "天齐锂业",
+    "prevClose": 54.32,
+    "prevHigh": 55.7,
+    "open": 57.53,
+    "close": 56.04
   }
 ]
 
