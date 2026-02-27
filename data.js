@@ -1138,8 +1138,8 @@ const dailyChangeRateData = [
     "date": "2026-02-26",
     "value": 2.94,
     "upStockCount": 674,
-    "limitUpCount": 78,
     "downStockCount": 229,
+    "limitUpCount": 78,
     "limitDownCount": 5,
     "volume": 25384.46,
     "maxConsecutive": 6,
@@ -1147,6 +1147,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2485,
     "totalStockCount": 5471,
     "profitEffect": 0.45421312374337414
+  },
+  {
+    "date": "2026-02-27",
+    "value": 4.05,
+    "upStockCount": 700,
+    "limitUpCount": 91,
+    "downStockCount": 173,
+    "limitDownCount": 1,
+    "volume": 24880.23,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.83,
+    "positiveStockCount": 3271,
+    "totalStockCount": 5471,
+    "profitEffect": 0.597879729482727
   }
 ]
 
@@ -3645,6 +3659,15 @@ const stockResultsData = [
     "prevHigh": 55.7,
     "open": 57.53,
     "close": 56.04
+  },
+  {
+    "date": "2026-02-27",
+    "stockCode": "300848",
+    "stockName": "美瑞新材",
+    "prevClose": 17.17,
+    "prevHigh": 17.51,
+    "open": 18.21,
+    "close": 18.38
   }
 ]
 
