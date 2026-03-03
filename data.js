@@ -1152,8 +1152,8 @@ const dailyChangeRateData = [
     "date": "2026-02-27",
     "value": 4.05,
     "upStockCount": 700,
-    "limitUpCount": 91,
     "downStockCount": 173,
+    "limitUpCount": 91,
     "limitDownCount": 1,
     "volume": 24880.23,
     "maxConsecutive": 7,
@@ -1161,6 +1161,34 @@ const dailyChangeRateData = [
     "positiveStockCount": 3271,
     "totalStockCount": 5471,
     "profitEffect": 0.597879729482727
+  },
+  {
+    "date": "2026-03-02",
+    "value": 0.26,
+    "upStockCount": 566,
+    "limitUpCount": 94,
+    "downStockCount": 2192,
+    "limitDownCount": 21,
+    "volume": 30207.19,
+    "maxConsecutive": 3,
+    "limitUpRate": 0.79,
+    "positiveStockCount": 1142,
+    "totalStockCount": 5470,
+    "profitEffect": 0.20877513711151738
+  },
+  {
+    "date": "2026-03-03",
+    "value": 0.1,
+    "upStockCount": 325,
+    "limitUpCount": 85,
+    "downStockCount": 3141,
+    "limitDownCount": 82,
+    "volume": 31295.1,
+    "maxConsecutive": 3,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 643,
+    "totalStockCount": 5472,
+    "profitEffect": 0.11750730994152046
   }
 ]
 
@@ -3668,6 +3696,303 @@ const stockResultsData = [
     "prevHigh": 17.51,
     "open": 18.21,
     "close": 18.38
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "603798",
+    "stockName": "康普顿",
+    "prevClose": 16.38,
+    "prevHigh": 16.49,
+    "open": 17.01,
+    "close": 16.62
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "601898",
+    "stockName": "中煤能源",
+    "prevClose": 15.17,
+    "prevHigh": 15.35,
+    "open": 16,
+    "close": 16.55
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "601083",
+    "stockName": "锦江航运",
+    "prevClose": 12.53,
+    "prevHigh": 12.61,
+    "open": 12.99,
+    "close": 12.48
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "601069",
+    "stockName": "西部黄金",
+    "prevClose": 36.26,
+    "prevHigh": 36.9,
+    "open": 38.45,
+    "close": 39.89
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "601020",
+    "stockName": "华钰矿业",
+    "prevClose": 38.72,
+    "prevHigh": 39,
+    "open": 40.35,
+    "close": 40.7
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600961",
+    "stockName": "株冶集团",
+    "prevClose": 23.85,
+    "prevHigh": 24.09,
+    "open": 24.96,
+    "close": 26.01
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600367",
+    "stockName": "红星发展",
+    "prevClose": 21.41,
+    "prevHigh": 21.48,
+    "open": 23.55,
+    "close": 23.55
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "002221",
+    "stockName": "东华能源",
+    "prevClose": 8.58,
+    "prevHigh": 8.65,
+    "open": 8.95,
+    "close": 9.33
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "002109",
+    "stockName": "兴化股份",
+    "prevClose": 4.4,
+    "prevHigh": 4.59,
+    "open": 4.84,
+    "close": 4.84
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "000506",
+    "stockName": "招金黄金",
+    "prevClose": 20.3,
+    "prevHigh": 20.45,
+    "open": 21.12,
+    "close": 22.33
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "301357",
+    "stockName": "北方长龙",
+    "prevClose": 136.07,
+    "prevHigh": 139.7,
+    "open": 145,
+    "close": 148.14
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "300397",
+    "stockName": "天和防务",
+    "prevClose": 15.07,
+    "prevHigh": 15.32,
+    "open": 16,
+    "close": 15.25
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "300139",
+    "stockName": "晓程科技",
+    "prevClose": 66.48,
+    "prevHigh": 68.88,
+    "open": 71.97,
+    "close": 79.78
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600988",
+    "stockName": "赤峰黄金",
+    "prevClose": 39.92,
+    "prevHigh": 40.05,
+    "open": 41.5,
+    "close": 43.91
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "300048",
+    "stockName": "合康新能",
+    "prevClose": 7.6,
+    "prevHigh": 7.68,
+    "open": 8.05,
+    "close": 8.32
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600026",
+    "stockName": "中远海能",
+    "prevClose": 20.58,
+    "prevHigh": 21.28,
+    "open": 22.64,
+    "close": 22.64
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600227",
+    "stockName": "赤天化",
+    "prevClose": 2.88,
+    "prevHigh": 2.96,
+    "open": 3.16,
+    "close": 3.17
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600714",
+    "stockName": "金瑞矿业",
+    "prevClose": 17.96,
+    "prevHigh": 18.3,
+    "open": 19.76,
+    "close": 19.76
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600727",
+    "stockName": "鲁北化工",
+    "prevClose": 8.08,
+    "prevHigh": 8.2,
+    "open": 8.46,
+    "close": 8.16
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "002190",
+    "stockName": "成飞集成",
+    "prevClose": 36.52,
+    "prevHigh": 36.91,
+    "open": 37.95,
+    "close": 37.93
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "601606",
+    "stockName": "长城军工",
+    "prevClose": 46.08,
+    "prevHigh": 46.5,
+    "open": 50,
+    "close": 49.52
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "000751",
+    "stockName": "锌业股份",
+    "prevClose": 7.11,
+    "prevHigh": 7.17,
+    "open": 7.39,
+    "close": 7.68
+  },
+  {
+    "date": "2026-03-02",
+    "stockCode": "600803",
+    "stockName": "新奥股份",
+    "prevClose": 20.39,
+    "prevHigh": 20.47,
+    "open": 21,
+    "close": 21.86
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "603306",
+    "stockName": "华懋科技",
+    "prevClose": 88.36,
+    "prevHigh": 90.65,
+    "open": 95,
+    "close": 87.81
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "300658",
+    "stockName": "延江股份",
+    "prevClose": 24.51,
+    "prevHigh": 25.6,
+    "open": 27,
+    "close": 27.91
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "002957",
+    "stockName": "科瑞技术",
+    "prevClose": 28.79,
+    "prevHigh": 29.86,
+    "open": 31.65,
+    "close": 31.67
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "002384",
+    "stockName": "东山精密",
+    "prevClose": 91.03,
+    "prevHigh": 91.91,
+    "open": 95.57,
+    "close": 94.88
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "301626",
+    "stockName": "苏州天迈",
+    "prevClose": 227.19,
+    "prevHigh": 230.1,
+    "open": 235.69,
+    "close": 240.88
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "301362",
+    "stockName": "民爆光电",
+    "prevClose": 111.02,
+    "prevHigh": 115.19,
+    "open": 122.27,
+    "close": 113.86
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "300763",
+    "stockName": "锦浪科技",
+    "prevClose": 88.31,
+    "prevHigh": 89.5,
+    "open": 94.03,
+    "close": 93.01
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "300319",
+    "stockName": "麦捷科技",
+    "prevClose": 13.77,
+    "prevHigh": 14.07,
+    "open": 14.47,
+    "close": 14.23
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "600299",
+    "stockName": "安迪苏",
+    "prevClose": 11.66,
+    "prevHigh": 11.81,
+    "open": 12.1,
+    "close": 11.92
+  },
+  {
+    "date": "2026-03-03",
+    "stockCode": "600468",
+    "stockName": "百利电气",
+    "prevClose": 7.8,
+    "prevHigh": 7.86,
+    "open": 8.21,
+    "close": 7.46
   }
 ]
 
