@@ -1194,8 +1194,8 @@ const dailyChangeRateData = [
     "date": "2026-03-04",
     "value": 0.86,
     "upStockCount": 417,
-    "limitUpCount": 46,
     "downStockCount": 485,
+    "limitUpCount": 46,
     "limitDownCount": 21,
     "volume": 23657.54,
     "maxConsecutive": 4,
@@ -1203,6 +1203,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1745,
     "totalStockCount": 5474,
     "profitEffect": 0.31877968578735844
+  },
+  {
+    "date": "2026-03-05",
+    "value": 4.17,
+    "upStockCount": 893,
+    "limitUpCount": 79,
+    "downStockCount": 214,
+    "limitDownCount": 7,
+    "volume": 23900.38,
+    "maxConsecutive": 2,
+    "limitUpRate": 0.7,
+    "positiveStockCount": 4079,
+    "totalStockCount": 5476,
+    "profitEffect": 0.7448867786705624
   }
 ]
 
@@ -4007,6 +4021,42 @@ const stockResultsData = [
     "prevHigh": 7.86,
     "open": 8.21,
     "close": 7.46
+  },
+  {
+    "date": "2026-03-05",
+    "stockCode": "300708",
+    "stockName": "聚灿光电",
+    "prevClose": 10.43,
+    "prevHigh": 10.74,
+    "open": 11.34,
+    "close": 12.52
+  },
+  {
+    "date": "2026-03-05",
+    "stockCode": "001376",
+    "stockName": "百通能源",
+    "prevClose": 22.9,
+    "prevHigh": 23.4,
+    "open": 24.05,
+    "close": 22.23
+  },
+  {
+    "date": "2026-03-05",
+    "stockCode": "002556",
+    "stockName": "辉隆股份",
+    "prevClose": 6.81,
+    "prevHigh": 6.75,
+    "open": 6.98,
+    "close": 6.73
+  },
+  {
+    "date": "2026-03-05",
+    "stockCode": "600875",
+    "stockName": "东方电气",
+    "prevClose": 38.37,
+    "prevHigh": 38.7,
+    "open": 39.88,
+    "close": 42.21
   }
 ]
 
