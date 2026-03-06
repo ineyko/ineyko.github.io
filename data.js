@@ -1208,8 +1208,8 @@ const dailyChangeRateData = [
     "date": "2026-03-05",
     "value": 4.17,
     "upStockCount": 893,
-    "limitUpCount": 79,
     "downStockCount": 214,
+    "limitUpCount": 79,
     "limitDownCount": 7,
     "volume": 23900.38,
     "maxConsecutive": 2,
@@ -1217,6 +1217,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4079,
     "totalStockCount": 5476,
     "profitEffect": 0.7448867786705624
+  },
+  {
+    "date": "2026-03-06",
+    "value": 6.45,
+    "upStockCount": 1232,
+    "limitUpCount": 88,
+    "downStockCount": 191,
+    "limitDownCount": 5,
+    "volume": 22001.49,
+    "maxConsecutive": 3,
+    "limitUpRate": 0.75,
+    "positiveStockCount": 4260,
+    "totalStockCount": 5477,
+    "profitEffect": 0.7777980646339236
   }
 ]
 
@@ -4057,6 +4071,15 @@ const stockResultsData = [
     "prevHigh": 38.7,
     "open": 39.88,
     "close": 42.21
+  },
+  {
+    "date": "2026-03-06",
+    "stockCode": "601567",
+    "stockName": "三星医疗",
+    "prevClose": 26.74,
+    "prevHigh": 26.98,
+    "open": 29.41,
+    "close": 29.41
   }
 ]
 
