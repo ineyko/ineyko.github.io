@@ -1222,8 +1222,8 @@ const dailyChangeRateData = [
     "date": "2026-03-06",
     "value": 6.45,
     "upStockCount": 1232,
-    "limitUpCount": 88,
     "downStockCount": 191,
+    "limitUpCount": 88,
     "limitDownCount": 5,
     "volume": 22001.49,
     "maxConsecutive": 3,
@@ -1231,6 +1231,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4260,
     "totalStockCount": 5477,
     "profitEffect": 0.7777980646339236
+  },
+  {
+    "date": "2026-03-09",
+    "value": 0.57,
+    "upStockCount": 402,
+    "limitUpCount": 50,
+    "downStockCount": 706,
+    "limitDownCount": 9,
+    "volume": 26475.45,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.56,
+    "positiveStockCount": 1423,
+    "totalStockCount": 5481,
+    "profitEffect": 0.2596241561758803
   }
 ]
 
@@ -4080,6 +4094,186 @@ const stockResultsData = [
     "prevHigh": 26.98,
     "open": 29.41,
     "close": 29.41
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "301090",
+    "stockName": "华润材料",
+    "prevClose": 7.88,
+    "prevHigh": 8.1,
+    "open": 8.45,
+    "close": 8.06
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "300481",
+    "stockName": "濮阳惠成",
+    "prevClose": 18.13,
+    "prevHigh": 18.35,
+    "open": 19.16,
+    "close": 18.55
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "002408",
+    "stockName": "齐翔腾达",
+    "prevClose": 6.38,
+    "prevHigh": 6.44,
+    "open": 6.76,
+    "close": 6.33
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "000990",
+    "stockName": "诚志股份",
+    "prevClose": 8.93,
+    "prevHigh": 9.04,
+    "open": 9.45,
+    "close": 8.97
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "600339",
+    "stockName": "中游工程",
+    "prevClose": 4.65,
+    "prevHigh": 4.81,
+    "open": 5,
+    "close": 4.77
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "002490",
+    "stockName": "山东墨龙",
+    "prevClose": 13.2,
+    "prevHigh": 13.65,
+    "open": 14.52,
+    "close": 13.24
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "600426",
+    "stockName": "华鲁恒升",
+    "prevClose": 40.9,
+    "prevHigh": 42,
+    "open": 44,
+    "close": 39.16
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "603393",
+    "stockName": "新天然气",
+    "prevClose": 37.88,
+    "prevHigh": 38.82,
+    "open": 40,
+    "close": 39.05
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "002246",
+    "stockName": "北化股份",
+    "prevClose": 24.81,
+    "prevHigh": 25.38,
+    "open": 25.9,
+    "close": 24.78
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "600688",
+    "stockName": "上海石化",
+    "prevClose": 3.53,
+    "prevHigh": 3.6,
+    "open": 3.87,
+    "close": 3.54
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "002109",
+    "stockName": "兴化股份",
+    "prevClose": 4.64,
+    "prevHigh": 4.73,
+    "open": 4.9,
+    "close": 4.76
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "600989",
+    "stockName": "宝丰能源",
+    "prevClose": 28.63,
+    "prevHigh": 29.18,
+    "open": 31.49,
+    "close": 30.64
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "600256",
+    "stockName": "广汇能源",
+    "prevClose": 6.8,
+    "prevHigh": 6.93,
+    "open": 7.48,
+    "close": 7.09
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "000911",
+    "stockName": "广农糖业",
+    "prevClose": 6.9,
+    "prevHigh": 7.03,
+    "open": 7.2,
+    "close": 7.38
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "600803",
+    "stockName": "新奥股份",
+    "prevClose": 21.32,
+    "prevHigh": 21.68,
+    "open": 22.89,
+    "close": 21.8
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "600691",
+    "stockName": "潞化科技",
+    "prevClose": 3.62,
+    "prevHigh": 3.67,
+    "open": 3.81,
+    "close": 3.69
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "002828",
+    "stockName": "贝肯能源",
+    "prevClose": 14.79,
+    "prevHigh": 14.97,
+    "open": 16.26,
+    "close": 14.78
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "002986",
+    "stockName": "宇新股份",
+    "prevClose": 16.56,
+    "prevHigh": 16.74,
+    "open": 17.32,
+    "close": 17.67
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "000998",
+    "stockName": "隆平高科",
+    "prevClose": 10.45,
+    "prevHigh": 10.56,
+    "open": 10.8,
+    "close": 10.55
+  },
+  {
+    "date": "2026-03-09",
+    "stockCode": "002140",
+    "stockName": "东华科技",
+    "prevClose": 13.27,
+    "prevHigh": 13.35,
+    "open": 13.98,
+    "close": 13.95
   }
 ]
 
