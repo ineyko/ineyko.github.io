@@ -1236,8 +1236,8 @@ const dailyChangeRateData = [
     "date": "2026-03-09",
     "value": 0.57,
     "upStockCount": 402,
-    "limitUpCount": 50,
     "downStockCount": 706,
+    "limitUpCount": 50,
     "limitDownCount": 9,
     "volume": 26475.45,
     "maxConsecutive": 4,
@@ -1245,6 +1245,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1423,
     "totalStockCount": 5481,
     "profitEffect": 0.2596241561758803
+  },
+  {
+    "date": "2026-03-10",
+    "value": 7.49,
+    "upStockCount": 1295,
+    "limitUpCount": 71,
+    "downStockCount": 173,
+    "limitDownCount": 7,
+    "volume": 23978.88,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.71,
+    "positiveStockCount": 4536,
+    "totalStockCount": 5479,
+    "profitEffect": 0.8278883007848148
   }
 ]
 
@@ -4274,6 +4288,24 @@ const stockResultsData = [
     "prevHigh": 13.35,
     "open": 13.98,
     "close": 13.95
+  },
+  {
+    "date": "2026-03-10",
+    "stockCode": "000537",
+    "stockName": "绿发电力",
+    "prevClose": 9.4,
+    "prevHigh": 9.65,
+    "open": 10.34,
+    "close": 10.34
+  },
+  {
+    "date": "2026-03-10",
+    "stockCode": "301205",
+    "stockName": "联特科技",
+    "prevClose": 253.83,
+    "prevHigh": 260,
+    "open": 269,
+    "close": 259.02
   }
 ]
 
