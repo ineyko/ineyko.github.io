@@ -1264,8 +1264,8 @@ const dailyChangeRateData = [
     "date": "2026-03-11",
     "value": 1.84,
     "upStockCount": 491,
-    "limitUpCount": 67,
     "downStockCount": 267,
+    "limitUpCount": 67,
     "limitDownCount": 2,
     "volume": 25083.78,
     "maxConsecutive": 4,
@@ -1273,6 +1273,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2060,
     "totalStockCount": 5482,
     "profitEffect": 0.37577526450200655
+  },
+  {
+    "date": "2026-03-12",
+    "value": 0.66,
+    "upStockCount": 426,
+    "limitUpCount": 64,
+    "downStockCount": 649,
+    "limitDownCount": 6,
+    "volume": 24418.98,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.71,
+    "positiveStockCount": 1494,
+    "totalStockCount": 5482,
+    "profitEffect": 0.2725282743524261
   }
 ]
 
@@ -4320,6 +4334,60 @@ const stockResultsData = [
     "prevHigh": 260,
     "open": 269,
     "close": 259.02
+  },
+  {
+    "date": "2026-03-12",
+    "stockCode": "301511",
+    "stockName": "德福科技",
+    "prevClose": 39.4,
+    "prevHigh": 41,
+    "open": 42.41,
+    "close": 40.2
+  },
+  {
+    "date": "2026-03-12",
+    "stockCode": "300699",
+    "stockName": "光威复材",
+    "prevClose": 38.83,
+    "prevHigh": 40.03,
+    "open": 41,
+    "close": 41.57
+  },
+  {
+    "date": "2026-03-12",
+    "stockCode": "300243",
+    "stockName": "瑞丰高材",
+    "prevClose": 14.15,
+    "prevHigh": 14.48,
+    "open": 15.01,
+    "close": 15.04
+  },
+  {
+    "date": "2026-03-12",
+    "stockCode": "300092",
+    "stockName": "科新机电",
+    "prevClose": 17.99,
+    "prevHigh": 18.53,
+    "open": 20.01,
+    "close": 18.05
+  },
+  {
+    "date": "2026-03-12",
+    "stockCode": "000420",
+    "stockName": "吉林化纤",
+    "prevClose": 4.56,
+    "prevHigh": 4.62,
+    "open": 5.02,
+    "close": 5.02
+  },
+  {
+    "date": "2026-03-12",
+    "stockCode": "603113",
+    "stockName": "金能科技",
+    "prevClose": 7.68,
+    "prevHigh": 7.8,
+    "open": 8.1,
+    "close": 8.14
   }
 ]
 
