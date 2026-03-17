@@ -1306,8 +1306,8 @@ const dailyChangeRateData = [
     "date": "2026-03-16",
     "value": 1.12,
     "upStockCount": 542,
-    "limitUpCount": 60,
     "downStockCount": 484,
+    "limitUpCount": 60,
     "limitDownCount": 10,
     "volume": 23253.31,
     "maxConsecutive": 3,
@@ -1315,6 +1315,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2843,
     "totalStockCount": 5480,
     "profitEffect": 0.5187956204379562
+  },
+  {
+    "date": "2026-03-17",
+    "value": 0.16,
+    "upStockCount": 244,
+    "limitUpCount": 52,
+    "downStockCount": 1558,
+    "limitDownCount": 15,
+    "volume": 22078.61,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.7,
+    "positiveStockCount": 867,
+    "totalStockCount": 5478,
+    "profitEffect": 0.15826944140197152
   }
 ]
 
@@ -4416,6 +4430,33 @@ const stockResultsData = [
     "prevHigh": 7.8,
     "open": 8.1,
     "close": 8.14
+  },
+  {
+    "date": "2026-03-17",
+    "stockCode": "300563",
+    "stockName": "神宇股份",
+    "prevClose": 33.82,
+    "prevHigh": 34.07,
+    "open": 35.84,
+    "close": 34.55
+  },
+  {
+    "date": "2026-03-17",
+    "stockCode": "603977",
+    "stockName": "国泰集团",
+    "prevClose": 15.23,
+    "prevHigh": 15.35,
+    "open": 15.9,
+    "close": 16.2
+  },
+  {
+    "date": "2026-03-17",
+    "stockCode": "603773",
+    "stockName": "沃格光电",
+    "prevClose": 42.5,
+    "prevHigh": 43.29,
+    "open": 45.08,
+    "close": 38.26
   }
 ]
 
