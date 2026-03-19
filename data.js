@@ -1334,8 +1334,8 @@ const dailyChangeRateData = [
     "date": "2026-03-18",
     "value": 4.32,
     "upStockCount": 856,
-    "limitUpCount": 70,
     "downStockCount": 198,
+    "limitUpCount": 70,
     "limitDownCount": 14,
     "volume": 20460.64,
     "maxConsecutive": 5,
@@ -1343,6 +1343,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3554,
     "totalStockCount": 5479,
     "profitEffect": 0.648658514327432
+  },
+  {
+    "date": "2026-03-19",
+    "value": 0.09,
+    "upStockCount": 200,
+    "limitUpCount": 36,
+    "downStockCount": 2246,
+    "limitDownCount": 14,
+    "volume": 21109.69,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.74,
+    "positiveStockCount": 505,
+    "totalStockCount": 5479,
+    "profitEffect": 0.09217010403358276
   }
 ]
 
@@ -4471,6 +4485,15 @@ const stockResultsData = [
     "prevHigh": 43.29,
     "open": 45.08,
     "close": 38.26
+  },
+  {
+    "date": "2026-03-19",
+    "stockCode": "603353",
+    "stockName": "和顺石油",
+    "prevClose": 44.85,
+    "prevHigh": 47.8,
+    "open": 49,
+    "close": 44.66
   }
 ]
 
