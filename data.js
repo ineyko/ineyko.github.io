@@ -1357,6 +1357,34 @@ const dailyChangeRateData = [
     "positiveStockCount": 505,
     "totalStockCount": 5479,
     "profitEffect": 0.09217010403358276
+  },
+  {
+    "date": "2026-03-20",
+    "value": 0.11,
+    "upStockCount": 242,
+    "limitUpCount": 39,
+    "downStockCount": 2121,
+    "limitDownCount": 23,
+    "volume": 22868.59,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.55,
+    "positiveStockCount": 662,
+    "totalStockCount": 5481,
+    "profitEffect": 0.12078087940156906
+  },
+  {
+    "date": "2026-03-23",
+    "value": 0.04,
+    "upStockCount": 169,
+    "limitUpCount": 38,
+    "downStockCount": 4757,
+    "limitDownCount": 133,
+    "volume": 24315.47,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.65,
+    "positiveStockCount": 305,
+    "totalStockCount": 5483,
+    "profitEffect": 0.05562648185300018
   }
 ]
 
@@ -4494,6 +4522,24 @@ const stockResultsData = [
     "prevHigh": 47.8,
     "open": 49,
     "close": 44.66
+  },
+  {
+    "date": "2026-03-20",
+    "stockCode": "603803",
+    "stockName": "瑞斯康达",
+    "prevClose": 13.9,
+    "prevHigh": 14.44,
+    "open": 15.29,
+    "close": 13.28
+  },
+  {
+    "date": "2026-03-20",
+    "stockCode": "000423",
+    "stockName": "东阿阿胶",
+    "prevClose": 52.78,
+    "prevHigh": 53.2,
+    "open": 55.09,
+    "close": 56.02
   }
 ]
 
