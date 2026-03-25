@@ -1385,6 +1385,34 @@ const dailyChangeRateData = [
     "positiveStockCount": 305,
     "totalStockCount": 5483,
     "profitEffect": 0.05562648185300018
+  },
+  {
+    "date": "2026-03-24",
+    "value": 49.25,
+    "upStockCount": 3103,
+    "limitUpCount": 100,
+    "downStockCount": 63,
+    "limitDownCount": 8,
+    "volume": 20828.68,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.79,
+    "positiveStockCount": 5136,
+    "totalStockCount": 5481,
+    "profitEffect": 0.9370552818828681
+  },
+  {
+    "date": "2026-03-25",
+    "value": 16.3,
+    "upStockCount": 1255,
+    "limitUpCount": 105,
+    "downStockCount": 77,
+    "limitDownCount": 4,
+    "volume": 21798.3,
+    "maxConsecutive": 8,
+    "limitUpRate": 0.86,
+    "positiveStockCount": 4874,
+    "totalStockCount": 5482,
+    "profitEffect": 0.8890915724188252
   }
 ]
 
@@ -4540,6 +4568,24 @@ const stockResultsData = [
     "prevHigh": 53.2,
     "open": 55.09,
     "close": 56.02
+  },
+  {
+    "date": "2026-03-24",
+    "stockCode": "002840",
+    "stockName": "华统股份",
+    "prevClose": 10.72,
+    "prevHigh": 10.8,
+    "open": 11.11,
+    "close": 10.67
+  },
+  {
+    "date": "2026-03-25",
+    "stockCode": "603601",
+    "stockName": "再升科技",
+    "prevClose": 11.11,
+    "prevHigh": 11.49,
+    "open": 12.19,
+    "close": 12.22
   }
 ]
 
