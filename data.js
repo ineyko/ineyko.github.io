@@ -1413,6 +1413,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4874,
     "totalStockCount": 5482,
     "profitEffect": 0.8890915724188252
+  },
+  {
+    "date": "2026-03-26",
+    "value": 0.25,
+    "upStockCount": 274,
+    "limitUpCount": 51,
+    "downStockCount": 1102,
+    "limitDownCount": 13,
+    "volume": 19436.16,
+    "maxConsecutive": 3,
+    "limitUpRate": 0.68,
+    "positiveStockCount": 916,
+    "totalStockCount": 5481,
+    "profitEffect": 0.167122787812443
   }
 ]
 
@@ -4586,6 +4600,24 @@ const stockResultsData = [
     "prevHigh": 11.49,
     "open": 12.19,
     "close": 12.22
+  },
+  {
+    "date": "2026-03-26",
+    "stockCode": "300757",
+    "stockName": "罗博特科",
+    "prevClose": 365.23,
+    "prevHigh": 375.87,
+    "open": 400.02,
+    "close": 382.41
+  },
+  {
+    "date": "2026-03-26",
+    "stockCode": "000767",
+    "stockName": "晋控电力",
+    "prevClose": 4.21,
+    "prevHigh": 4.28,
+    "open": 4.46,
+    "close": 4.63
   }
 ]
 
