@@ -1432,8 +1432,8 @@ const dailyChangeRateData = [
     "date": "2026-03-27",
     "value": 7.23,
     "upStockCount": 961,
-    "limitUpCount": 93,
     "downStockCount": 133,
+    "limitUpCount": 93,
     "limitDownCount": 5,
     "volume": 18532.73,
     "maxConsecutive": 4,
@@ -1441,6 +1441,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 4337,
     "totalStockCount": 5478,
     "profitEffect": 0.7917123037604965
+  },
+  {
+    "date": "2026-03-30",
+    "value": 1.52,
+    "upStockCount": 552,
+    "limitUpCount": 76,
+    "downStockCount": 364,
+    "limitDownCount": 16,
+    "volume": 19158.94,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.78,
+    "positiveStockCount": 2867,
+    "totalStockCount": 5476,
+    "profitEffect": 0.5235573411249087
   }
 ]
 
@@ -4632,6 +4646,51 @@ const stockResultsData = [
     "prevHigh": 4.28,
     "open": 4.46,
     "close": 4.63
+  },
+  {
+    "date": "2026-03-30",
+    "stockCode": "601388",
+    "stockName": "怡球资源",
+    "prevClose": 3.58,
+    "prevHigh": 3.6,
+    "open": 3.94,
+    "close": 3.94
+  },
+  {
+    "date": "2026-03-30",
+    "stockCode": "002675",
+    "stockName": "东诚药业",
+    "prevClose": 13.16,
+    "prevHigh": 13.22,
+    "open": 14.48,
+    "close": 14.48
+  },
+  {
+    "date": "2026-03-30",
+    "stockCode": "000807",
+    "stockName": "云铝股份",
+    "prevClose": 28.73,
+    "prevHigh": 29.08,
+    "open": 31.02,
+    "close": 31.46
+  },
+  {
+    "date": "2026-03-30",
+    "stockCode": "000612",
+    "stockName": "焦作万方",
+    "prevClose": 11.69,
+    "prevHigh": 11.77,
+    "open": 12.22,
+    "close": 12.32
+  },
+  {
+    "date": "2026-03-30",
+    "stockCode": "002580",
+    "stockName": "圣阳股份",
+    "prevClose": 16.27,
+    "prevHigh": 16.88,
+    "open": 17.76,
+    "close": 16.01
   }
 ]
 
