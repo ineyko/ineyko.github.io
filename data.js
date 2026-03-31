@@ -1446,8 +1446,8 @@ const dailyChangeRateData = [
     "date": "2026-03-30",
     "value": 1.52,
     "upStockCount": 552,
-    "limitUpCount": 76,
     "downStockCount": 364,
+    "limitUpCount": 76,
     "limitDownCount": 16,
     "volume": 19158.94,
     "maxConsecutive": 5,
@@ -1455,6 +1455,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 2867,
     "totalStockCount": 5476,
     "profitEffect": 0.5235573411249087
+  },
+  {
+    "date": "2026-03-31",
+    "value": 0.25,
+    "upStockCount": 288,
+    "limitUpCount": 59,
+    "downStockCount": 1160,
+    "limitDownCount": 17,
+    "volume": 19926.51,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.76,
+    "positiveStockCount": 1011,
+    "totalStockCount": 5482,
+    "profitEffect": 0.18442174388909158
   }
 ]
 
@@ -4691,6 +4705,24 @@ const stockResultsData = [
     "prevHigh": 16.88,
     "open": 17.76,
     "close": 16.01
+  },
+  {
+    "date": "2026-03-31",
+    "stockCode": "002454",
+    "stockName": "松芝股份",
+    "prevClose": 8.4,
+    "prevHigh": 8.48,
+    "open": 9.08,
+    "close": 9.24
+  },
+  {
+    "date": "2026-03-31",
+    "stockCode": "600066",
+    "stockName": "宇通客车",
+    "prevClose": 32.6,
+    "prevHigh": 32.9,
+    "open": 35.86,
+    "close": 35.86
   }
 ]
 
