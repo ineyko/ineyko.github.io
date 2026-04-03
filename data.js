@@ -1474,8 +1474,8 @@ const dailyChangeRateData = [
     "date": "2026-04-01",
     "value": 6.36,
     "upStockCount": 1163,
-    "limitUpCount": 65,
     "downStockCount": 183,
+    "limitUpCount": 65,
     "limitDownCount": 14,
     "volume": 20125.16,
     "maxConsecutive": 4,
@@ -1488,8 +1488,8 @@ const dailyChangeRateData = [
     "date": "2026-04-02",
     "value": 0.22,
     "upStockCount": 269,
-    "limitUpCount": 32,
     "downStockCount": 1225,
+    "limitUpCount": 32,
     "limitDownCount": 16,
     "volume": 18429.94,
     "maxConsecutive": 5,
@@ -1497,6 +1497,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 1052,
     "totalStockCount": 5485,
     "profitEffect": 0.19179580674567
+  },
+  {
+    "date": "2026-04-03",
+    "value": 0.14,
+    "upStockCount": 262,
+    "limitUpCount": 38,
+    "downStockCount": 1939,
+    "limitDownCount": 41,
+    "volume": 16565.07,
+    "maxConsecutive": 6,
+    "limitUpRate": 0.75,
+    "positiveStockCount": 716,
+    "totalStockCount": 5486,
+    "profitEffect": 0.13051403572730588
   }
 ]
 
@@ -4814,6 +4828,15 @@ const stockResultsData = [
     "prevHigh": 6.09,
     "open": 6.49,
     "close": 6.49
+  },
+  {
+    "date": "2026-04-03",
+    "stockCode": "002957",
+    "stockName": "科瑞技术",
+    "prevClose": 29.18,
+    "prevHigh": 30.41,
+    "open": 31.2,
+    "close": 30.62
   }
 ]
 
