@@ -1460,8 +1460,8 @@ const dailyChangeRateData = [
     "date": "2026-03-31",
     "value": 0.25,
     "upStockCount": 288,
-    "limitUpCount": 59,
     "downStockCount": 1160,
+    "limitUpCount": 59,
     "limitDownCount": 17,
     "volume": 19926.51,
     "maxConsecutive": 4,
@@ -1469,6 +1469,34 @@ const dailyChangeRateData = [
     "positiveStockCount": 1011,
     "totalStockCount": 5482,
     "profitEffect": 0.18442174388909158
+  },
+  {
+    "date": "2026-04-01",
+    "value": 6.36,
+    "upStockCount": 1163,
+    "limitUpCount": 65,
+    "downStockCount": 183,
+    "limitDownCount": 14,
+    "volume": 20125.16,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.6,
+    "positiveStockCount": 4495,
+    "totalStockCount": 5485,
+    "profitEffect": 0.8195077484047402
+  },
+  {
+    "date": "2026-04-02",
+    "value": 0.22,
+    "upStockCount": 269,
+    "limitUpCount": 32,
+    "downStockCount": 1225,
+    "limitDownCount": 16,
+    "volume": 18429.94,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.6,
+    "positiveStockCount": 1052,
+    "totalStockCount": 5485,
+    "profitEffect": 0.19179580674567
   }
 ]
 
@@ -4723,6 +4751,69 @@ const stockResultsData = [
     "prevHigh": 32.9,
     "open": 35.86,
     "close": 35.86
+  },
+  {
+    "date": "2026-04-01",
+    "stockCode": "002051",
+    "stockName": "中工国际",
+    "prevClose": 8.96,
+    "prevHigh": 9.14,
+    "open": 9.86,
+    "close": 9.01
+  },
+  {
+    "date": "2026-04-01",
+    "stockCode": "000065",
+    "stockName": "北方国际",
+    "prevClose": 14.55,
+    "prevHigh": 14.96,
+    "open": 16.01,
+    "close": 14.57
+  },
+  {
+    "date": "2026-04-01",
+    "stockCode": "600711",
+    "stockName": "盛屯矿业",
+    "prevClose": 12.67,
+    "prevHigh": 13.13,
+    "open": 13.98,
+    "close": 13.54
+  },
+  {
+    "date": "2026-04-01",
+    "stockCode": "300374",
+    "stockName": "中铁装配",
+    "prevClose": 14.61,
+    "prevHigh": 14.93,
+    "open": 15.4,
+    "close": 14.59
+  },
+  {
+    "date": "2026-04-01",
+    "stockCode": "000928",
+    "stockName": "中钢国际",
+    "prevClose": 6.84,
+    "prevHigh": 6.95,
+    "open": 7.3,
+    "close": 6.77
+  },
+  {
+    "date": "2026-04-01",
+    "stockCode": "600249",
+    "stockName": "两面针",
+    "prevClose": 6.37,
+    "prevHigh": 6.5,
+    "open": 7.01,
+    "close": 7.01
+  },
+  {
+    "date": "2026-04-02",
+    "stockCode": "000950",
+    "stockName": "重药控股",
+    "prevClose": 5.9,
+    "prevHigh": 6.09,
+    "open": 6.49,
+    "close": 6.49
   }
 ]
 
