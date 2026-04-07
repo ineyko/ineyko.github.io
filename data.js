@@ -1502,8 +1502,8 @@ const dailyChangeRateData = [
     "date": "2026-04-03",
     "value": 0.14,
     "upStockCount": 262,
-    "limitUpCount": 38,
     "downStockCount": 1939,
+    "limitUpCount": 38,
     "limitDownCount": 41,
     "volume": 16565.07,
     "maxConsecutive": 6,
@@ -1511,6 +1511,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 716,
     "totalStockCount": 5486,
     "profitEffect": 0.13051403572730588
+  },
+  {
+    "date": "2026-04-07",
+    "value": 6.17,
+    "upStockCount": 1141,
+    "limitUpCount": 101,
+    "downStockCount": 185,
+    "limitDownCount": 18,
+    "volume": 16143.95,
+    "maxConsecutive": 7,
+    "limitUpRate": 0.78,
+    "positiveStockCount": 3977,
+    "totalStockCount": 5484,
+    "profitEffect": 0.725200583515682
   }
 ]
 
@@ -4837,6 +4851,24 @@ const stockResultsData = [
     "prevHigh": 30.41,
     "open": 31.2,
     "close": 30.62
+  },
+  {
+    "date": "2026-04-07",
+    "stockCode": "301630",
+    "stockName": "同宇新材",
+    "prevClose": 176.6,
+    "prevHigh": 179.28,
+    "open": 195.2,
+    "close": 211.92
+  },
+  {
+    "date": "2026-04-07",
+    "stockCode": "301251",
+    "stockName": "威尔高",
+    "prevClose": 57.66,
+    "prevHigh": 58.98,
+    "open": 63.56,
+    "close": 60.22
   }
 ]
 
