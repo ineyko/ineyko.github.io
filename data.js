@@ -1516,8 +1516,8 @@ const dailyChangeRateData = [
     "date": "2026-04-07",
     "value": 6.17,
     "upStockCount": 1141,
-    "limitUpCount": 101,
     "downStockCount": 185,
+    "limitUpCount": 101,
     "limitDownCount": 18,
     "volume": 16143.95,
     "maxConsecutive": 7,
@@ -1525,6 +1525,48 @@ const dailyChangeRateData = [
     "positiveStockCount": 3977,
     "totalStockCount": 5484,
     "profitEffect": 0.725200583515682
+  },
+  {
+    "date": "2026-04-08",
+    "value": 31.69,
+    "upStockCount": 3549,
+    "downStockCount": 112,
+    "limitUpCount": 135,
+    "limitDownCount": 12,
+    "volume": 24345.25,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.88,
+    "positiveStockCount": 5174,
+    "totalStockCount": 5490,
+    "profitEffect": 0.9424408014571949
+  },
+  {
+    "date": "2026-04-09",
+    "value": 0.49,
+    "upStockCount": 391,
+    "downStockCount": 804,
+    "limitUpCount": 61,
+    "limitDownCount": 13,
+    "volume": 21340.76,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.77,
+    "positiveStockCount": 1140,
+    "totalStockCount": 5491,
+    "profitEffect": 0.20761245674740483
+  },
+  {
+    "date": "2026-04-10",
+    "value": 3.62,
+    "upStockCount": 644,
+    "limitUpCount": 77,
+    "downStockCount": 178,
+    "limitDownCount": 12,
+    "volume": 23228.69,
+    "maxConsecutive": 4,
+    "limitUpRate": 0.68,
+    "positiveStockCount": 3977,
+    "totalStockCount": 5495,
+    "profitEffect": 0.7237488626023658
   }
 ]
 
@@ -4869,6 +4911,132 @@ const stockResultsData = [
     "prevHigh": 58.98,
     "open": 63.56,
     "close": 60.22
+  },
+  {
+    "date": "2026-04-08",
+    "stockCode": "600490",
+    "stockName": "鹏欣资源",
+    "prevClose": 7.8,
+    "prevHigh": 7.88,
+    "open": 8.12,
+    "close": 8.28
+  },
+  {
+    "date": "2026-04-08",
+    "stockCode": "002552",
+    "stockName": "宝鼎科技",
+    "prevClose": 16.55,
+    "prevHigh": 16.78,
+    "open": 17.3,
+    "close": 17.52
+  },
+  {
+    "date": "2026-04-08",
+    "stockCode": "000603",
+    "stockName": "盛达资源",
+    "prevClose": 39.04,
+    "prevHigh": 39.45,
+    "open": 41.31,
+    "close": 42.08
+  },
+  {
+    "date": "2026-04-08",
+    "stockCode": "301500",
+    "stockName": "飞南资源",
+    "prevClose": 21.49,
+    "prevHigh": 21.98,
+    "open": 22.84,
+    "close": 24.6
+  },
+  {
+    "date": "2026-04-09",
+    "stockCode": "603182",
+    "stockName": "嘉华股份",
+    "prevClose": 16.24,
+    "prevHigh": 16.43,
+    "open": 17.86,
+    "close": 17.35
+  },
+  {
+    "date": "2026-04-09",
+    "stockCode": "603112",
+    "stockName": "华翔股份",
+    "prevClose": 17.76,
+    "prevHigh": 17.77,
+    "open": 18.56,
+    "close": 19.01
+  },
+  {
+    "date": "2026-04-09",
+    "stockCode": "601677",
+    "stockName": "明泰铝业",
+    "prevClose": 16.24,
+    "prevHigh": 16.42,
+    "open": 17.1,
+    "close": 17.66
+  },
+  {
+    "date": "2026-04-09",
+    "stockCode": "600707",
+    "stockName": "彩虹股份",
+    "prevClose": 5.8,
+    "prevHigh": 5.82,
+    "open": 6.05,
+    "close": 6.38
+  },
+  {
+    "date": "2026-04-10",
+    "stockCode": "301369",
+    "stockName": "联动科技",
+    "prevClose": 143.99,
+    "prevHigh": 145.35,
+    "open": 155.58,
+    "close": 161.09
+  },
+  {
+    "date": "2026-04-10",
+    "stockCode": "301489",
+    "stockName": "思泉新材",
+    "prevClose": 185.12,
+    "prevHigh": 188,
+    "open": 192,
+    "close": 186.65
+  },
+  {
+    "date": "2026-04-10",
+    "stockCode": "300686",
+    "stockName": "智动力",
+    "prevClose": 18.13,
+    "prevHigh": 18.8,
+    "open": 19.37,
+    "close": 18.34
+  },
+  {
+    "date": "2026-04-10",
+    "stockCode": "300480",
+    "stockName": "光力科技",
+    "prevClose": 31.48,
+    "prevHigh": 32.3,
+    "open": 33,
+    "close": 33.43
+  },
+  {
+    "date": "2026-04-10",
+    "stockCode": "002428",
+    "stockName": "云南锗业",
+    "prevClose": 55.59,
+    "prevHigh": 56.7,
+    "open": 58.29,
+    "close": 56.79
+  },
+  {
+    "date": "2026-04-10",
+    "stockCode": "603889",
+    "stockName": "新澳股份",
+    "prevClose": 7.95,
+    "prevHigh": 8.06,
+    "open": 8.74,
+    "close": 8.75
   }
 ]
 
