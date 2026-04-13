@@ -1558,8 +1558,8 @@ const dailyChangeRateData = [
     "date": "2026-04-10",
     "value": 3.62,
     "upStockCount": 644,
-    "limitUpCount": 77,
     "downStockCount": 178,
+    "limitUpCount": 77,
     "limitDownCount": 12,
     "volume": 23228.69,
     "maxConsecutive": 4,
@@ -1567,6 +1567,20 @@ const dailyChangeRateData = [
     "positiveStockCount": 3977,
     "totalStockCount": 5495,
     "profitEffect": 0.7237488626023658
+  },
+  {
+    "date": "2026-04-13",
+    "value": 1.96,
+    "upStockCount": 605,
+    "limitUpCount": 86,
+    "downStockCount": 308,
+    "limitDownCount": 10,
+    "volume": 21503.68,
+    "maxConsecutive": 5,
+    "limitUpRate": 0.8,
+    "positiveStockCount": 2378,
+    "totalStockCount": 5494,
+    "profitEffect": 0.43283582089552236
   }
 ]
 
@@ -5037,6 +5051,24 @@ const stockResultsData = [
     "prevHigh": 8.06,
     "open": 8.74,
     "close": 8.75
+  },
+  {
+    "date": "2026-04-13",
+    "stockCode": "000987",
+    "stockName": "越秀资本",
+    "prevClose": 8.38,
+    "prevHigh": 8.58,
+    "open": 8.98,
+    "close": 8.81
+  },
+  {
+    "date": "2026-04-13",
+    "stockCode": "000026",
+    "stockName": "飞亚达",
+    "prevClose": 14.92,
+    "prevHigh": 15.41,
+    "open": 15.75,
+    "close": 16.41
   }
 ]
 
